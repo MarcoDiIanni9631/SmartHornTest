@@ -18,11 +18,22 @@ cd $GREY_DIR
 python3 src/grey_main.py \
   -s /absolute/path/to/MyContract/MyContract.sol \
   -v -if sol -o output -solc ./solc-latest
-mv output/intermediate.json /absolute/path/to/MyContract/MyContract.json
+mv $GREY_DIR/intermediate.json /absolute/path/to/MyContract/MyContract.json
 ```
 
-> **Warning:** GREY always writes to `output/intermediate.json` inside its own directory.
-> Do not run multiple conversions in parallel — they overwrite each other.
+> **Warning — naming matters, rename before yul2chc:**
+> GREY always writes `intermediate.json` in its own root directory (not in `output/`).
+> The `mv` **must rename** it to the final contract name (e.g. `MyContract.json`) before
+> running yul2chc. This is because:
+> - yul2chc names all its outputs after the `.json` file stem
+>   (`intermediate.json` → `intermediate.pl`, `intermediate.txt`)
+> - the generated `.pl` embeds `:- include('intermediate.aux.pl')` — the transform
+>   will look for that exact filename regardless of any later renaming
+>
+> If you end up with `intermediate.*` files by mistake, either start over with the correct
+> `mv`, or copy your `MyContract.aux.pl` to `intermediate.aux.pl` before running transform.
+>
+> Do not run multiple grey conversions in parallel — they overwrite each other.
 
 ---
 
