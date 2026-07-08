@@ -13,6 +13,7 @@ set -euo pipefail
 SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 ZMIOUT2VARS_Z3="$SCRIPT_DIR/zmiout2vars_z3.py"
 ZMIOUT2VARS_CLPQ="$SCRIPT_DIR/zmiout2vars_clpq.py"
+ZMIOUT2JSON="$SCRIPT_DIR/zmiout2json.py"
 
 DO_Z3=false
 DO_CLPQ=false
@@ -49,3 +50,6 @@ if $DO_CLPQ; then
   echo "[CLPQ]"
   python3 "$ZMIOUT2VARS_CLPQ" "$SOL" "$DEFS" "$ZMIOUT"
 fi
+
+echo "[JSON]"
+python3 "$ZMIOUT2JSON" "$SOL" "$DEFS" "$ZMIOUT"

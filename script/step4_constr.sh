@@ -1,6 +1,9 @@
 #!/bin/bash
 # step4_constr.sh <contract.t.pl>
 # Riscrive le operazioni aritmetiche in forma constr(). Produce ContractName.t_constr.pl.
+#
+# Esempio:
+#   bash script/step4_constr.sh test/MyContract/MyContract.t.pl
 
 set -euo pipefail
 

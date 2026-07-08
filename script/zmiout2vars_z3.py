@@ -6,6 +6,7 @@ Usage: python3 zmiout2vars.py <contract.sol> <defs.txt> <analysis.zmiout>
 For each Solidity variable, finds which predicate in the call trace carries it,
 at which argument position, and what concrete value Z3 assigned.
 Output is written to <analysis.zmiout>.vars.txt
+Always also writes a .test_cases.json with structured test data.
 """
 import re, sys, os
 
@@ -148,6 +149,256 @@ def _parse_z3_constraint(s, var_map):
         from z3 import BoolVal; return BoolVal(True)
     return And(atoms) if len(atoms) > 1 else atoms[0]
 
+def _expr_str(x):
+    """Z3 expression or string → readable string with normalized notation."""
+    s = str(x)
+    s = re.sub(r'\+\s*-(\d+)\*', r'- \1*', s)
+    s = re.sub(r'\+\s*-1\*', r'- ', s)
+    return s.strip()
+
+
+def _atoms_readable(result):
+    """Split Z3 formula into a list of readable strings; merge ineq pairs into equalities."""
+    from z3 import is_and, is_le, is_ge, simplify
+
+    atoms = list(result.children()) if is_and(result) else [result]
+
+    def to_le(atom):
+        if is_le(atom): return atom.arg(0), atom.arg(1)
+        if is_ge(atom): return atom.arg(1), atom.arg(0)
+        return None
+
+    used = set()
+    out = []
+    for i in range(len(atoms)):
+        if i in used:
+            continue
+        ni = to_le(atoms[i])
+        merged = False
+        if ni is not None:
+            la, ra = ni
+            for j in range(i + 1, len(atoms)):
+                if j in used:
+                    continue
+                nj = to_le(atoms[j])
+                if nj is None:
+                    continue
+                lb, rb = nj
+                try:
+                    if str(simplify((la - ra) - (rb - lb))) == '0':
+                        la_s = _expr_str(la)
+                        ra_s = _expr_str(ra)
+                        if re.match(r'^-?\d+$', la_s):
+                            la_s, ra_s = ra_s, la_s
+                        if ra_s == '0':
+                            m = re.match(r'^(.+?)\s+-\s+(.+)$', la_s)
+                            if m:
+                                la_s, ra_s = m.group(1).strip(), m.group(2).strip()
+                        out.append(f"{la_s} == {ra_s}")
+                        used.update([i, j])
+                        merged = True
+                        break
+                except Exception:
+                    pass
+        if not merged and i not in used:
+            out.append(_expr_str(atoms[i]))
+
+    return out
+
+
+def _prune_weak_bounds(atom_strs, state_var_names):
+    """Remove redundant atoms from Z3 QE output:
+    - Weak lower/upper bounds on func-args implied by tighter ones or equalities
+    - Or(x >= k1, x <= k2) when one disjunct is already implied
+    - Duplicate Or constraints (regardless of argument order)
+    - "0 <= x" duplicate of "x >= 0"
+    State variable constraints are protected from tightness-based removal.
+    """
+    sv = set(state_var_names) if state_var_names else set()
+
+    # Collect bounds from ALL atoms (state vars too, for Or-pruning)
+    best_lower = {}   # var -> max k from "var >= k"
+    best_upper = {}   # var -> min k from "k >= var" / "var <= k"
+    eq_vals    = {}   # var -> k from "var == k"
+
+    def _collect(s):
+        m = re.match(r'^(\w+)\s*>=\s*(-?\d+)$', s)
+        if m:
+            v, k = m.group(1), int(m.group(2))
+            best_lower[v] = max(best_lower.get(v, k), k)
+            return
+        m = re.match(r'^(-?\d+)\s*>=\s*(\w+)$', s)
+        if m:
+            k, v = int(m.group(1)), m.group(2)
+            best_upper[v] = min(best_upper.get(v, k), k)
+            return
+        m = re.match(r'^(\w+)\s*<=\s*(-?\d+)$', s)
+        if m:
+            v, k = m.group(1), int(m.group(2))
+            best_upper[v] = min(best_upper.get(v, k), k)
+            return
+        m = re.match(r'^(\w+)\s*==\s*(-?\d+)$', s)
+        if m:
+            eq_vals[m.group(1)] = int(m.group(2))
+
+    for s in atom_strs:
+        _collect(s)
+
+    def _atom_implied(atom_s):
+        """Check if simple atom var >= k / var <= k is implied by collected bounds."""
+        m = re.match(r'^(\w+)\s*>=\s*(-?\d+)$', atom_s)
+        if m:
+            v, k = m.group(1), int(m.group(2))
+            return (v in eq_vals and eq_vals[v] >= k) or best_lower.get(v, -10**9) >= k
+        m = re.match(r'^(-?\d+)\s*>=\s*(\w+)$', atom_s)
+        if m:
+            k, v = int(m.group(1)), m.group(2)
+            return (v in eq_vals and eq_vals[v] <= k) or best_upper.get(v, 10**9) <= k
+        m = re.match(r'^(\w+)\s*<=\s*(-?\d+)$', atom_s)
+        if m:
+            v, k = m.group(1), int(m.group(2))
+            return (v in eq_vals and eq_vals[v] <= k) or best_upper.get(v, 10**9) <= k
+        return False
+
+    def _or_canonical(s):
+        """Canonical key for Or(a, b) ignoring argument order."""
+        m = re.match(r'^Or\((.+),\s*(.+)\)$', s)
+        if m:
+            return 'Or(' + ', '.join(sorted([m.group(1).strip(), m.group(2).strip()])) + ')'
+        return s
+
+    def _normalize(s):
+        """Normalize common ugly Z3 forms to cleaner equivalents."""
+        # "0 == x"  →  "x == 0"  (put variable on left)
+        m = re.match(r'^(-?\d+)\s*==\s*(\w+)$', s)
+        if m: s = f"{m.group(2)} == {m.group(1)}"
+        # Not(0 == x) or Not(x == 0)  →  x != 0
+        m = re.match(r'^Not\(0\s*==\s*(\w+)\)$', s)
+        if m: return f"{m.group(1)} != 0"
+        m = re.match(r'^Not\((\w+)\s*==\s*0\)$', s)
+        if m: return f"{m.group(1)} != 0"
+        # Or(x >= 1, x <= -1) / Or(x <= -1, x >= 1)  →  x != 0  (integer semantics)
+        m = re.match(r'^Or\((\w+)\s*>=\s*1,\s*(\w+)\s*<=\s*-1\)$', s)
+        if m and m.group(1) == m.group(2): return f"{m.group(1)} != 0"
+        m = re.match(r'^Or\((\w+)\s*<=\s*-1,\s*(\w+)\s*>=\s*1\)$', s)
+        if m and m.group(1) == m.group(2): return f"{m.group(1)} != 0"
+        return s
+
+    def _neq_implied(v):
+        """True if x != 0 is redundant (x has a non-zero equality, or a bound >= 1 or <= -1)."""
+        return (v in eq_vals and eq_vals[v] != 0) \
+            or best_lower.get(v, 0) >= 1 \
+            or best_upper.get(v, 0) <= -1
+
+    seen_atoms = set()
+    seen_or    = set()
+    result = []
+    for s in atom_strs:
+        s = _normalize(s)
+        is_sv = any(v in s for v in sv)
+
+        # --- x != 0 ---
+        m_neq = re.match(r'^(\w+)\s*!=\s*0$', s)
+        if m_neq:
+            v = m_neq.group(1)
+            if _neq_implied(v):
+                continue
+            if s in seen_atoms:
+                continue
+            seen_atoms.add(s)
+            result.append(s)
+            continue
+
+        # --- Or constraints ---
+        if s.startswith('Or('):
+            canon = _or_canonical(s)
+            if canon in seen_or:
+                continue          # duplicate (possibly different arg order)
+            seen_or.add(canon)
+            # Remove if one disjunct is already implied by a simple bound
+            m = re.match(r'^Or\((.+),\s*(.+)\)$', s)
+            if m:
+                a1, a2 = m.group(1).strip(), m.group(2).strip()
+                if _atom_implied(a1) or _atom_implied(a2):
+                    continue
+            result.append(s)
+            continue
+
+        # --- "0 <= x" is same as "x >= 0" ---
+        m0 = re.match(r'^0\s*<=\s*(\w+)$', s)
+        if m0:
+            v = m0.group(1)
+            if best_lower.get(v, -1) >= 0 or v in eq_vals:
+                continue
+            result.append(s)
+            continue
+
+        # --- State variable atoms: always keep, no tightness pruning ---
+        if is_sv:
+            if s not in seen_atoms:
+                seen_atoms.add(s)
+                result.append(s)
+            continue
+
+        # --- Func-arg lower bound: keep only if it's the tightest ---
+        m = re.match(r'^(\w+)\s*>=\s*(-?\d+)$', s)
+        if m:
+            v, k = m.group(1), int(m.group(2))
+            if v in eq_vals or best_lower.get(v, k) > k:
+                continue
+            result.append(s)
+            continue
+
+        # --- Func-arg upper bound "k >= var" ---
+        m = re.match(r'^(-?\d+)\s*>=\s*(\w+)$', s)
+        if m:
+            k, v = int(m.group(1)), m.group(2)
+            if v in eq_vals or best_upper.get(v, k) < k:
+                continue
+            result.append(s)
+            continue
+
+        # --- Func-arg upper bound "var <= k" ---
+        m = re.match(r'^(\w+)\s*<=\s*(-?\d+)$', s)
+        if m:
+            v, k = m.group(1), int(m.group(2))
+            if v in eq_vals or best_upper.get(v, k) < k:
+                continue
+            result.append(s)
+            continue
+
+        if s not in seen_atoms:
+            seen_atoms.add(s)
+            result.append(s)
+
+    return result
+
+
+def _minimize_and(formula):
+    """Remove every atom that is implied by the conjunction of all others."""
+    from z3 import And, Not, Solver, unsat, is_and, BoolVal
+    if not is_and(formula):
+        return formula
+    atoms = list(formula.children())
+    changed = True
+    while changed:
+        changed = False
+        for i in range(len(atoms)):
+            rest = [atoms[j] for j in range(len(atoms)) if j != i]
+            if not rest:
+                continue
+            s = Solver()
+            s.add(And(rest) if len(rest) > 1 else rest[0])
+            s.add(Not(atoms[i]))
+            if s.check() == unsat:
+                atoms.pop(i)
+                changed = True
+                break
+    if not atoms:
+        from z3 import BoolVal; return BoolVal(True)
+    return And(atoms) if len(atoms) > 1 else atoms[0]
+
+
 def _project_constraints_fallback(constraints, rv_to_sol):
     """Fallback: string substitution of runtime vars → Solidity names."""
     results = []
@@ -159,8 +410,12 @@ def _project_constraints_fallback(constraints, rv_to_sol):
             results.append(s)
     return results if results else ["(nessun vincolo con variabili Solidity)"]
 
-def project_constraints(constraints, rv_to_sol):
-    """Apply Z3 qe to project constraints onto Solidity variables only."""
+def project_constraints(constraints, rv_to_sol, state_var_names=None):
+    """Apply Z3 qe to project constraints onto Solidity variables only.
+
+    state_var_names: if provided, their constraints are always kept even if
+    logically redundant (e.g. currentBalance >= 5 from assertion violation).
+    """
     try:
         from z3 import And, Exists, Tactic, Goal, Int, substitute
     except ImportError:
@@ -194,7 +449,9 @@ def project_constraints(constraints, rv_to_sol):
     if subst:
         result = substitute(result, subst)
 
-    return [str(result)]
+    atoms = _atoms_readable(result)
+    atoms = _prune_weak_bounds(atoms, state_var_names or [])
+    return atoms
 
 
 # ---- constraint extraction ----
@@ -380,13 +637,22 @@ def process_test(test_block, blocks, state_vars, func, func_args, entry_pred='ne
     lines.append("")
     lines.append("=== VINCOLI PROIETTATI (solo variabili Solidity) ===")
     if rv_to_sol:
-        projected = project_constraints(constraints, rv_to_sol)
+        projected = project_constraints(constraints, rv_to_sol, state_vars)
         for p in projected:
             lines.append(f"  {p}")
     else:
         lines.append("  (nessuna variabile Solidity identificata)")
 
     return lines
+
+
+def build_func_signature(sol, func):
+    """Build Solidity signature like 'claimRewards(uint256)'."""
+    m = re.search(rf'function\s+{func}\s*\(([^)]*)\)', sol)
+    if not m or not m.group(1).strip():
+        return f"{func}()"
+    types = [p.strip().split()[0] for p in m.group(1).split(',') if p.strip()]
+    return f"{func}({','.join(types)})"
 
 
 # ---- Main ----

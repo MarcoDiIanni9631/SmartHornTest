@@ -1,0 +1,42 @@
+{
+  "stateVariables": [
+    "owner",
+    "playerCount",
+    "lastPlayer"
+  ],
+  "functions": [
+    {
+      "signature": "enter(uint256)",
+      "params": [
+        "newPlayer"
+      ],
+      "test_cases": [
+        {
+          "id": 1,
+          "kind": "negative",
+          "concrete_values": [
+            "newPlayer == 1",
+            "owner == 0",
+            "playerCount == 0",
+            "lastPlayer == 0"
+          ],
+          "constraints_z3": [
+            "0 == playerCount",
+            "0 == lastPlayer",
+            "newPlayer >= 1",
+            "playerCount == 0",
+            "lastPlayer == 0",
+            "owner == 1"
+          ],
+          "constraints_clpq": [
+            "owner=1",
+            "playerCount=0",
+            "lastPlayer=0",
+            "newPlayer=\\=0",
+            "newPlayer>0"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "stateVariables": [],
+  "functions": [
+    {
+      "signature": "positiveDifference(uint256,uint256)",
+      "params": [
+        "x",
+        "y"
+      ],
+      "test_cases": [
+        {
+          "id": 1,
+          "kind": "negative",
+          "concrete_values": [
+            "x == 2",
+            "y == 1"
+          ],
+          "constraints_z3": [
+            "Not(x == y)",
+            "Not(x <= y)",
+            "x >= 1",
+            "y >= 1",
+            "y - 1*x <= 0"
+          ],
+          "constraints_clpq": [
+            "x-y>0",
+            "x-y=\\=0",
+            "y>0"
+          ]
+        },
+        {
+          "id": 2,
+          "kind": "positive",
+          "concrete_values": [
+            "x == 1",
+            "y == 2"
+          ],
+          "constraints_z3": [
+            "Not(x == y)",
+            "x <= y",
+            "x >= 1",
+            "y >= 1",
+            "x - 1*y <= -1"
+          ],
+          "constraints_clpq": [
+            "x-y<0",
+            "x>0",
+            "x-y=\\=0"
+          ]
+        }
+      ]
+    }
+  ]
+}

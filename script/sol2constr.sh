@@ -1,129 +1,82 @@
 #!/bin/bash
 # ============================================================
-# sol2constr.sh — Pipeline: Solidity → .t.pl → .t_constr.pl
+# sol2constr.sh — Steps 1–4: Solidity → .t_constr.pl
 #
-# Uso: bash sol2constr.sh <contratto.sol> [nome_funzione]
+# Uso: bash sol2constr.sh [opzioni] <contratto.sol>
 #
-# Gira sempre sul server (compute-clai.unich.it) via SSH.
-# I file generati vanno nella stessa cartella del .sol.
+# Opzioni:
+#   --gen-aux           genera .aux.pl automaticamente (step 2.5)
+#   --aux-hint HINT     suggerisce il nome della funzione a sol2tpl.py
+#
+# Chiama in sequenza:
+#   step1_grey.sh      → .json
+#   step2_yul2chc.sh   → .pl
+#   [step2.5: sol2tpl  → .aux.pl]  (solo con --gen-aux)
+#   step3_transform.sh → .t.pl  (richiede .aux.pl nella stessa cartella)
+#   step4_constr.sh    → .t_constr.pl
+#
+# Ogni step gestisce autonomamente l'esecuzione sul server se necessario.
 # ============================================================
 
 set -euo pipefail
 
 SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
-SOL2TPL="$SCRIPT_DIR/sol2tpl.py"
-YULPL2CONSTR="$SCRIPT_DIR/yulPl2Constr.py"
 
-# --- Percorsi locali ---
-LOCAL_GREY="/home/marco/Downloads/grey"
-LOCAL_YULCHC="/home/marco/Desktop/yul9Marzo/yul-chc"
+GEN_AUX=false
+AUX_HINT=""
 
-# --- Percorsi server ---
-SERVER_GREY="/home/labeconomia/mdiianni/verimap_projects/grey"
-SERVER_YULCHC="/home/labeconomia/mdiianni/verimap_projects/yul-chc"
-SERVER_SCRIPT="$SCRIPT_DIR/sol2tpl.py"   # stesso file, via mount SSHFS
-SERVER_YULPL2CONSTR="$SCRIPT_DIR/yulPl2Constr.py"
-LOCAL_BASE="/home/marco/remote_verimap"
-SERVER_BASE="/home/labeconomia/mdiianni/verimap_projects"
-SERVER_USER="mdiianni"
-SERVER_HOST="compute-clai.unich.it"
-
-# Rilevamento automatico: locale o server
-if hostname | grep -q "compute-clai"; then
-  ON_SERVER=true
-else
-  ON_SERVER=false
-fi
-
-# Traduce path locale → server (no-op se già sul server)
-to_server_path() { $ON_SERVER && echo "$1" || echo "${1/$LOCAL_BASE/$SERVER_BASE}"; }
-
-# Esegue un comando sul server (SSH se locale, bash diretto se sul server)
-run_on_server() {
-  if $ON_SERVER; then
-    bash -c "$1"
-  else
-    ssh "${SERVER_USER}@${SERVER_HOST}" "$1"
-  fi
-}
-
-usage() {
-  echo "Uso: $0 <contratto.sol> [nome_funzione]"
-  echo ""
-  echo "  <contratto.sol> : path al file Solidity"
-  echo "  [nome_funzione] : opzionale"
-  exit 1
-}
-
-# ------------------------------------------------------------------
-# PARSING ARGOMENTI
-# ------------------------------------------------------------------
-POSITIONAL=()
 while [ "$#" -gt 0 ]; do
   case "$1" in
-    *)  POSITIONAL+=("$1"); shift ;;
+    --gen-aux)  GEN_AUX=true; shift ;;
+    --aux-hint) AUX_HINT="$2"; shift 2 ;;
+    *) break ;;
   esac
 done
 
-[ "${#POSITIONAL[@]}" -lt 1 ] && usage
+[ "$#" -lt 1 ] && { echo "Uso: $0 [--gen-aux] [--aux-hint HINT] <contratto.sol>"; exit 1; }
 
-SOL="$(readlink -f "${POSITIONAL[0]}")"
-FUNC="${POSITIONAL[1]:-}"
-
+SOL="$(readlink -f "$1")"
 [ -f "$SOL" ] || { echo "❌ File non trovato: $SOL"; exit 1; }
 
-# Auto-rileva funzione dal .sol se non fornita
-if [ -z "$FUNC" ]; then
-  FUNCS=($(grep -oP 'function\s+\K\w+(?=\s*\([^)]*\)\s*public)' "$SOL"))
-  case "${#FUNCS[@]}" in
-    0) echo "❌ Nessuna funzione public trovata in $(basename "$SOL")"; exit 1 ;;
-    1) FUNC="${FUNCS[0]}"; echo "ℹ️  Funzione rilevata: $FUNC" ;;
-    *) echo "❌ Più funzioni trovate: ${FUNCS[*]}"; echo "   Specificala come secondo argomento."; exit 1 ;;
-  esac
+BASE="$(basename "$SOL" .sol)"
+DIR="$(dirname "$SOL")"
+
+echo "=================================="
+echo "📜 Contratto: $BASE.sol"
+echo "📂 Cartella:  $DIR"
+echo "=================================="
+echo ""
+
+bash "$SCRIPT_DIR/step1_grey.sh"    "$SOL"
+echo ""
+bash "$SCRIPT_DIR/step2_yul2chc.sh" "$DIR/$BASE.json"
+
+if $GEN_AUX; then
+  echo ""
+  echo "=== STEP 2.5: sol2tpl → $BASE.aux.pl ==="
+  python3 - "$DIR/$BASE.pl" "$AUX_HINT" "$SCRIPT_DIR" << 'PYEOF'
+import sys
+sys.path.insert(0, sys.argv[3])
+from sol2tpl import parse_fun_declarations, choose_function, generate_aux_pl
+import os
+pl_path = sys.argv[1]
+hint    = sys.argv[2] if (len(sys.argv) > 2 and sys.argv[2]) else None
+funs    = parse_fun_declarations(pl_path)
+fun     = choose_function(funs, hint)
+aux     = os.path.splitext(pl_path)[0] + '.aux.pl'
+sol     = os.path.splitext(pl_path)[0] + '.sol'
+generate_aux_pl(aux, fun, sol)
+print('[OK] aux.pl generato (fun: ' + fun['name'] + ')')
+PYEOF
 fi
 
-echo "=================================="
-echo "📜 Contratto: $(basename "$SOL")"
-echo "📂 Cartella:  $(dirname "$SOL")"
-echo "⚙️  Funzione:  $FUNC"
-echo "🖥️  Server:    $SERVER_HOST"
-echo "=================================="
-
-# ------------------------------------------------------------------
-# STEP 1+2: CONVERSIONE
-# ------------------------------------------------------------------
-SERVER_SOL="$(to_server_path "$SOL")"
-SERVER_TPL="${SERVER_SOL%.sol}.t.pl"
-SERVER_SOL2TPL="$(to_server_path "$SOL2TPL")"
-SERVER_YULPL2CONSTR_PATH="$(to_server_path "$YULPL2CONSTR")"
-
-FUNC_ARG="${FUNC:+\"$FUNC\"}"
-
 echo ""
-echo "🔄 Step 1: sol → .t.pl  (grey server)..."
-run_on_server "
-  set -e
-  python3 '$SERVER_SOL2TPL' '$SERVER_SOL' $FUNC_ARG
-  echo '✅ .t.pl generato'
-"
-
-TPL="${SOL%.sol}.t.pl"
-[ -f "$TPL" ] || { echo "❌ .t.pl non trovato: $TPL"; exit 1; }
-
+bash "$SCRIPT_DIR/step3_transform.sh" "$DIR/$BASE.pl"
 echo ""
-echo "🔄 Step 2: .t.pl → .t_constr.pl  (yulPl2Constr, server)..."
-run_on_server "
-  python3 '$SERVER_YULPL2CONSTR_PATH' '$SERVER_TPL'
-"
-
-# ------------------------------------------------------------------
-# VERIFICA FINALE
-# ------------------------------------------------------------------
-CONSTR="${SOL%.sol}.t_constr.pl"
-[ -f "$CONSTR" ] || { echo "❌ .t_constr.pl non generato"; exit 1; }
+bash "$SCRIPT_DIR/step4_constr.sh"    "$DIR/$BASE.t.pl"
 
 echo ""
 echo "=================================="
 echo "✅ Conversione completata!"
-echo "   .t_constr.pl → $CONSTR"
+echo "   → $DIR/$BASE.t_constr.pl"
 echo "=================================="

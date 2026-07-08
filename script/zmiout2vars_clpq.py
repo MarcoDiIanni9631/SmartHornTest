@@ -80,6 +80,27 @@ def find_body_from_trace(trace_dict, blocks, n_args):
 
 # ---- CLPQ projection ----
 
+def _remove_redundant_diseq(lines):
+    """Remove A=\\=B lines when A>B or A<B (exact text) is also present."""
+    strict = set()
+    for l in lines:
+        m = re.match(r'^(.+?)>(?!=)(.+)$', l.strip())
+        if m:
+            strict.add((m.group(1).strip(), m.group(2).strip(), '>'))
+        m = re.match(r'^(.+?)<(?!=)(.+)$', l.strip())
+        if m:
+            strict.add((m.group(1).strip(), m.group(2).strip(), '<'))
+    result = []
+    for l in lines:
+        m = re.match(r'^(.+?)=\\=(.+)$', l.strip())
+        if m:
+            a, b = m.group(1).strip(), m.group(2).strip()
+            if (a, b, '>') in strict or (a, b, '<') in strict \
+               or (b, a, '>') in strict or (b, a, '<') in strict:
+                continue
+        result.append(l)
+    return result
+
 def _split_and_at_depth0(s):
     """Split 's' on 'and' at parenthesis depth 0."""
     s = re.sub(r'\s*\band\b\s*', ' and ', s)
@@ -196,6 +217,7 @@ def project_constraints(constraints, rv_to_sol):
         l = l.strip()
         if l and l not in seen:
             seen.add(l); result.append(l)
+    result = [l for l in result if not re.search(r'\b_\d+\b', l)]
     return result
 
 

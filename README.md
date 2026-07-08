@@ -29,6 +29,7 @@ conversion → analysis → variable mapping → annotated .sol → CHC graph.
 
 ```bash
 nohup bash script/sol2analysis.sh \
+  --gen-aux \
   --stop-first-per-loop \
   --timeout 300 \
   --varz3 \
@@ -41,6 +42,8 @@ nohup bash script/sol2analysis.sh \
 
 > Run with `nohup ... &` so it keeps running even if the terminal closes.
 > All output files are written to the same folder as the `.sol`.
+
+> **Important:** always include `--gen-aux` unless you have already manually created the `.aux.pl` file. Without it, the pipeline will fail at step 3 with `aux.pl non trovato`. If the contract has multiple public functions, also add `--aux-hint <functionName>` to tell the script which one to analyse.
 
 **Available flags:**
 
@@ -84,7 +87,11 @@ nohup bash script/sol2analysis.sh \
         ▼
  .vars_z3.txt  /  .vars_clpq.txt
         │
-        │  STEP 5 — annotate_sol.py
+        │  STEP 5 — zmiout2json.py
+        ▼
+ .test_cases.json  (structured test cases with concrete values + projected constraints)
+        │
+        │  STEP 6 — annotate_sol.py
         ▼
  .annotated.sol   (original source + projected constraints as comment)
 ```
@@ -104,8 +111,48 @@ nohup bash script/sol2analysis.sh \
 | `Contract.t_constr.pl.*.zmiout` | InterpreterAnalysis5.2.sh | Analysis output |
 | `...zmiout.vars_z3.txt` | zmiout2vars_z3.py | Witness values + projected constraints (Z3) |
 | `...zmiout.vars_clpq.txt` | zmiout2vars_clpq.py | Witness values + projected constraints (CLP(Q)) |
+| `Contract.test_cases.json` | zmiout2json.py | Structured test cases (concrete values + Z3/CLP(Q) constraints) |
 | `Contract.annotated.sol` | annotate_sol.py | Original .sol with constraints appended as comment |
 | `dot_dias/*.svg` | chcviz | CHC dependency graph |
+
+---
+
+## Generating JSON test cases: `zmiout2json.py`
+
+After the analysis produces a `.zmiout` file, run this script to generate a structured `.test_cases.json` with concrete witness values and projected constraints for each test case found.
+
+```bash
+python3 script/zmiout2json.py \
+  path/to/Contract.sol \
+  path/to/Contract.t.pl-defs.txt \
+  path/to/Contract.zmiout
+```
+
+The output file `Contract.test_cases.json` is written to the same folder as the `.zmiout`. Example structure:
+
+```json
+{
+  "stateVariables": ["bid", "cash"],
+  "functions": [{
+    "signature": "offer(uint,uint)",
+    "params": ["newBid", "payment"],
+    "test_cases": [{
+      "id": 1,
+      "kind": "negative",
+      "concrete_values": ["newBid == 2", "payment == 1", "bid == 0", "cash == 0"],
+      "constraints_z3": ["bid == 1*newBid", "cash == 1*payment", "newBid - payment >= 1"],
+      "constraints_clpq": ["bid=newBid", "cash=payment", "newBid-payment>0"]
+    }]
+  }]
+}
+```
+
+- `kind`: `"negative"` = counterexample (assertion violation), `"positive"` = safe witness path.
+- `concrete_values`: exact values assigned by Z3 to Solidity variables.
+- `constraints_z3`: constraints projected onto Solidity variables via Z3 quantifier elimination.
+- `constraints_clpq`: same projection via SWI-Prolog CLP(Q) `dump/3`.
+
+**Requirements:** Python 3, `z3-solver` (`pip install z3-solver`), SWI-Prolog with CLP(Q) library.
 
 ---
 

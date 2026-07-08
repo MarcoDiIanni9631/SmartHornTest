@@ -1,6 +1,9 @@
 #!/bin/bash
 # step2_yul2chc.sh <contract.json>
 # Traduce il JSON in clausole CHC Prolog. Produce ContractName.pl nella stessa cartella.
+#
+# Esempio:
+#   bash script/step2_yul2chc.sh test/MyContract/MyContract.json
 
 set -euo pipefail
 

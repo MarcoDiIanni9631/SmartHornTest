@@ -1,0 +1,14 @@
+=== ANALISI: RewardStateVar_10.t_constr.pl ===
+Comando:     bash InterpreterAnalysis5.2.sh --stop-first-per-loop --timeout 300 /home/labeconomia/mdiianni/verimap_projects/swipl_z3_clpq_interpreter/test2/test3/RewardStateVar_10.t_constr.pl incorrect
+Inizio:      2026-07-08 12:42:34
+--- Parametri ---
+MaxDepth:    10000000
+LoopLimit:   default
+Timeout:     300s
+OnlyFirstTestGlobal: no
+OnlyFirstPerLoop: yes
+Debug:            no
+SkipIfDone:       no
+-----------------
+
+📂 Analisi del file: /home/labeconomia/mdiianni/verimap_projects/swipl_z3_clpq_interpreter/test2/test3/RewardStateVar_10.t_constr.pl con target: incorrect

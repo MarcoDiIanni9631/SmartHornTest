@@ -149,9 +149,7 @@ def generate_aux_pl(aux_path, fun, sol_path):
     func_name   = fun['name']
     start_block = fun['start_block']
     inputs      = fun['inputs']
-    sol_base    = os.path.basename(sol_path)
 
-    # Ogni input var(vN) diventa num(_V_vN) — simbolico, prefisso _ sopprime warning singleton
     if inputs:
         input_list = "[" + ", ".join(f"num(_V_{v})" for v in inputs) + "]"
     else:

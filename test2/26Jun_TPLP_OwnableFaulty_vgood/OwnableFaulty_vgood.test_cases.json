@@ -1,0 +1,46 @@
+{
+  "stateVariables": [
+    "_owner"
+  ],
+  "functions": [
+    {
+      "signature": "unsafeSetOwner(uint256)",
+      "params": [
+        "newOwner"
+      ],
+      "test_cases": [
+        {
+          "id": 1,
+          "kind": "negative",
+          "concrete_values": [
+            "newOwner == 1461501637330902918203684832716283019655932542976",
+            "_owner == 0"
+          ],
+          "constraints_z3": [
+            "_owner >= 1461501637330902918203684832716283019655932542976"
+          ],
+          "constraints_clpq": [
+            "_owner=\\=0",
+            "_owner>1461501637330902918203684832716283019655932542975"
+          ]
+        },
+        {
+          "id": 2,
+          "kind": "positive",
+          "concrete_values": [
+            "newOwner == -1",
+            "_owner == 0"
+          ],
+          "constraints_z3": [
+            "_owner != 0",
+            "_owner <= 1461501637330902918203684832716283019655932542975"
+          ],
+          "constraints_clpq": [
+            "_owner=\\=0",
+            "_owner=<1461501637330902918203684832716283019655932542975"
+          ]
+        }
+      ]
+    }
+  ]
+}

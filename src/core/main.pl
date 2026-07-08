@@ -25,7 +25,8 @@
 :- dynamic test_counter/1.
 :- dynamic loop_limit/1.
 :- dynamic skip_pred/1.
-:- dynamic sat_found_for/1.   % sat_found_for(F/A) — SAT già trovato per questo pred ricorsivo
+:- dynamic sat_found_positive/1. % sat_found_positive(F/A) — trovato test positivo (vgood) per questo pred ricorsivo
+:- dynamic sat_found_negative/1. % sat_found_negative(F/A) — trovato test negativo per questo pred ricorsivo
 :- dynamic stop_per_loop/0.   % flag: --stop-first-per-loop attivo
 :- discontiguous zmi_aux/10.
 
@@ -196,7 +197,8 @@ zmi(Head) :-
 zmi(Head, MaxDepths, StopFirst) :-
     set_solver(turibe),
     reset_test_counter,
-    retractall(sat_found_for(_)),
+    retractall(sat_found_positive(_)),
+    retractall(sat_found_negative(_)),
     ( StopFirst == true ->
         ( zmi_branch_sat((Head; falseVerimap), MaxDepths, _) -> true ; true ),
         ( test_counter(0) -> format('No SAT branches found in MaxDepths = ~w.\n', [MaxDepths]) ; true )
@@ -275,8 +277,17 @@ zmi_branch_sat(Head, MaxDepths, model(FinalZ3, FinalCLPQ, FinalCalls, Tree)) :-
     % Verifica SAT
     z3_sat_check(FinalZ3, sat, ModelPretty, _Pairs),
 
+    get_dict(constants, ModelPretty, Consts),
+    classify_test_from_vmapgood_consts(Consts, TestResult),
+
+    % Filtro duplicati: se stop_per_loop è attivo e questo tipo di test
+    % (positivo o negativo) è già stato trovato per i predicati ricorsivi
+    % di questa derivazione, scarta il test (fail → findall backtraca).
+    ( stop_per_loop, is_duplicate_test_type(FinalCalls, TestResult) -> fail ; true ),
+
     % Marca i predicati ricorsivi come "già trovato SAT" (se --stop-first-per-loop)
-    mark_loop_preds(FinalCalls),
+    % distinguendo tra test positivi (vgood) e negativi
+    mark_loop_preds(FinalCalls, TestResult),
 
     next_test_id(TestId),
     nl,
@@ -284,8 +295,7 @@ zmi_branch_sat(Head, MaxDepths, model(FinalZ3, FinalCLPQ, FinalCalls, Tree)) :-
     nl,
     format('✅ INCORRECT/FF FOUND: ~w~n', [FinalZ3]),
     nl,nl,
-    get_dict(constants, ModelPretty, Consts),
-    %Recupero primo predicato con arità diversa da 0 
+    %Recupero primo predicato con arità diversa da 0
     first_nonzero_arity_atom(FinalCalls, FirstCall),
    % writeln('first non zero arity fatto'),
     % writeln('Stampo FinalCalls'),
@@ -306,7 +316,6 @@ zmi_branch_sat(Head, MaxDepths, model(FinalZ3, FinalCLPQ, FinalCalls, Tree)) :-
 
     %Costruisco le coppie
     extract_values_from_model(VarList, Consts, ValueList),
-    classify_test_from_vmapgood_consts(Consts, TestResult),
     writeln('RISULTATO TEST:'),
     writeln(TestResult),
     % Stampa finale della CALL TRACE simbolica
@@ -329,21 +338,48 @@ writeln(InputBindings),
     format('\n============================================\n\n', []).
 
 
-% mark_loop_preds(+Calls)
-% Se --stop-first-per-loop è attivo, marca come "SAT trovato" solo i predicati
-% che compaiono >= 2 volte nella call trace E sono ricorsivi nel CHC.
-mark_loop_preds(Calls) :-
+% is_duplicate_test_type(+Calls, +TestResult)
+% Vero se in questa derivazione c'è almeno un predicato ricorsivo (che appare
+% >= 2 volte) per cui abbiamo già trovato un test dello stesso tipo (positivo
+% o negativo). Usato per scartare test ridondanti quando --stop-first-per-loop
+% è attivo.
+is_duplicate_test_type(Calls, testVerimapGood) :-
+    member(Call, Calls),
+    functor(Call, F, A),
+    calls_count(Calls, F, A, N),
+    N >= 2,
+    is_directly_recursive(F/A),
+    sat_found_positive(F/A), !.
+is_duplicate_test_type(Calls, TestResult) :-
+    TestResult \= testVerimapGood,
+    member(Call, Calls),
+    functor(Call, F, A),
+    calls_count(Calls, F, A, N),
+    N >= 2,
+    is_directly_recursive(F/A),
+    sat_found_negative(F/A), !.
+
+% mark_loop_preds(+Calls, +TestResult)
+% Se --stop-first-per-loop è attivo, marca i predicati ricorsivi che compaiono
+% >= 2 volte nella call trace come "SAT trovato" per il tipo di test corrente
+% (positivo/vgood o negativo). Il ramo viene tagliato solo quando ENTRAMBI i
+% tipi sono stati trovati per quel predicato.
+mark_loop_preds(Calls, TestResult) :-
     ( stop_per_loop ->
         forall(
             ( member(Call, Calls),
               functor(Call, F, A),
               calls_count(Calls, F, A, N),
               N >= 2,
-              is_directly_recursive(F/A),
-              \+ sat_found_for(F/A) ),
-            assertz(sat_found_for(F/A))
+              is_directly_recursive(F/A) ),
+            mark_loop_pred_by_type(F/A, TestResult)
         )
     ; true ).
+
+mark_loop_pred_by_type(FA, testVerimapGood) :-
+    ( \+ sat_found_positive(FA) -> assertz(sat_found_positive(FA)) ; true ).
+mark_loop_pred_by_type(FA, _) :-
+    ( \+ sat_found_negative(FA) -> assertz(sat_found_negative(FA)) ; true ).
 
 % is_directly_recursive(+F/A)
 % Vero se il predicato F/A ha almeno una clausola che chiama F/A nel corpo.
@@ -612,8 +648,9 @@ zmi_aux(Head, Z3In, CLPQIn, SymTabIn, CallsIn, Steps,
         debug_print(Head),
         fail)
     ; true ),
-    % stop-first-per-loop: se siamo al secondo+ unrolling e SAT già trovato per questo pred, taglia
-    ( HeadCount >= 1, sat_found_for(HeadF/HeadA) -> fail ; true ),
+    % stop-first-per-loop: taglia solo se abbiamo già trovato sia un test positivo
+    % (vgood) che uno negativo per questo predicato ricorsivo
+    ( HeadCount >= 1, sat_found_positive(HeadF/HeadA), sat_found_negative(HeadF/HeadA) -> fail ; true ),
     % ─────────────────────────────────────────────────────────
 
     HeadCopy = Head,

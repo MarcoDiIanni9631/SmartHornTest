@@ -40,7 +40,7 @@ DIR="$(dirname "$CONSTR")"
 
 echo "=== STEP 5: analisi → $BASE.*.zmiout (target: $TARGET) ==="
 cd "$SCRIPT_DIR"
-nohup bash InterpreterAnalysis5.2.sh "${FLAGS[@]}" "$CONSTR" "$TARGET" \
+nohup bash InterpreterAnalysis5.2.sh "${FLAGS[@]+"${FLAGS[@]}"}" "$CONSTR" "$TARGET" \
   > "$DIR/analysis.log" 2>&1 &
 echo "[OK] Analisi avviata in background (PID: $!)"
 echo "     Log: $DIR/analysis.log"

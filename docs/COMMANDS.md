@@ -143,13 +143,38 @@ Requires a `.vars_z3.txt` file in the same folder. Output: `MyContract.annotated
 
 ---
 
+### Steps 1–4 in one command (conversion only)
+
+```bash
+bash script/sol2constr.sh test/MyContract/MyContract.sol
+```
+
+Runs step1 → step2 → step3 → step4 in sequence.
+Requires `MyContract.aux.pl` to exist in the same folder (needed by step 3).
+
+---
+
 ### Full pipeline in one command
 
-To run all steps at once (`.sol` through analysis):
+`sol2analysis.sh` orchestrates all steps by calling the individual step scripts.
 
 ```bash
 nohup bash script/sol2analysis.sh \
   --stop-first-per-loop --timeout 300 \
+  --varz3 --varclpq --annotate \
   test/MyContract/MyContract.sol \
   incorrect &
 ```
+
+**Pipeline flags:**
+
+| Flag | Effect |
+|---|---|
+| `--until-tpl` | Run steps 1-4 only (equivalent to `sol2constr.sh`) |
+| `--skip-convert` | Skip steps 1-4 (use existing `.t_constr.pl`) |
+| `--varz3` | Run step 6 with Z3 backend after analysis |
+| `--varclpq` | Run step 6 with CLPQ backend after analysis |
+| `--graph` | Run step 7 (CHC graph) after conversion |
+| `--annotate` | Run step 8 (annotated `.sol`) after analysis |
+
+All `--stop-first`, `--timeout`, `--maxdepth`, etc. flags are forwarded to step 5.

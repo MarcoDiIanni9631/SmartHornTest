@@ -1,0 +1,61 @@
+================ TEST #1 ================
+=== STATE VARIABLES (valori POST-chiamata) ===
+  (no subO_ predicate with env slots found in trace)
+
+=== FUNCTION ARGS: positiveDifference(x, y) ===
+  x             v0 = K  ->  pos 10 in new3  ->  _11270  =  2
+  y             v1 = J  ->  pos 9 in new3  ->  _11258  =  1
+
+=== VINCOLI ===
+  _360=0
+  _59792=0
+  _94114=1
+  not(_11718=0)and _59792=0
+  _134=0 and _146=0 and _158=0 and _170=0 and _182=0 and _194=0 and _206=0 and _218=0 and _230=0 and _242=0 and _254=0 and _266=0 and _278=0 and _290=0 and _296=0
+  _342=128 and _360=_230
+  _11258=_368 and _11270=_370 and _11282=0 and _11294=0 and _11306=0 and _11318=0 and _11330=0 and _11342=0 and _11354=0 and _11366=0 and _11378=0 and _11390=0 and _11402=0 and _11414=0 and _11426=0 and _11438=0 and _11450=0 and _11462=0 and _11474=0 and _11486=0 and _11498=0 and _11510=0 and _11522=0 and _11534=0 and _11546=0 and _11558=0 and _11570=0 and _11576=0
+  _11686=0 and _11684=0 and _19698=0 and _19710=0 and _19722=0 and _11270>_11684 and _11712=1
+  _11696=0 and _94114=1
+  _11710=1 and not(_11270=_11258)and _11688=0 and _11688=0 and _11682=1 and _11682=_11718 and _59616=0 and _59628=0 and _59640=0 and _59652=0 and _59664=0 and _11708=0 and _11270>_11258 and _11722=1 and not(_11722=_59714)and _11716=0 and _59714=0
+  _11712=1 and _11728=0 and _39054=0 and _39066=0 and _39078=0 and _11258>_11728 and _11700=1 and _11700=_11710
+  _11716=0 and _11720=_11258-_11270 and _11720=_11694 and _11704=0 and _93954=0 and _93966=0 and _93978=0 and _11694=<_11704 and _11696=0 and _94008=0
+
+=== VINCOLI PROIETTATI (solo variabili Solidity) ===
+  Not(x == y)
+  Not(x <= y)
+  x >= 1
+  y >= 1
+  y - 1*x <= 0
+
+================ TEST #2 ================
+[POSITIVE WITNESS — verimapGood]
+=== STATE VARIABLES (valori POST-chiamata) ===
+  (no subO_ predicate with env slots found in trace)
+
+=== FUNCTION ARGS: positiveDifference(x, y) ===
+  x             v0 = K  ->  pos 10 in new3  ->  _11268  =  1
+  y             v1 = J  ->  pos 9 in new3  ->  _11256  =  2
+
+=== VINCOLI ===
+  _360=0
+  _59792=0
+  _94248=0
+  _94402=1
+  not(_11694=0)and _94248=0
+  not(_11716=0)and _59792=0
+  _134=0 and _146=0 and _158=0 and _170=0 and _182=0 and _194=0 and _206=0 and _218=0 and _230=0 and _242=0 and _254=0 and _266=0 and _278=0 and _290=0 and _296=0
+  _342=128 and _360=_230
+  _11256=_368 and _11268=_370 and _11280=0 and _11292=0 and _11304=0 and _11316=0 and _11328=0 and _11340=0 and _11352=0 and _11364=0 and _11376=0 and _11388=0 and _11400=0 and _11412=0 and _11424=0 and _11436=0 and _11448=0 and _11460=0 and _11472=0 and _11484=0 and _11496=0 and _11508=0 and _11520=0 and _11532=0 and _11544=0 and _11556=0 and _11568=0 and _11574=0
+  _11684=0 and _11682=0 and _19696=0 and _19708=0 and _19720=0 and _11268>_11682 and _11710=1
+  _11708=1 and not(_11268=_11256)and _11686=0 and _11686=0 and _11680=1 and _11680=_11716 and _59616=0 and _59628=0 and _59640=0 and _59652=0 and _59664=0 and _11706=0 and _11268=<_11256 and _11720=0 and _11720=_59714 and _11714=1 and _59714=0
+  _11710=1 and _11726=0 and _39052=0 and _39064=0 and _39076=0 and _11256>_11726 and _11698=1 and _11698=_11708
+  _11712=0 and _94402=1
+  _11714=1 and _11690=_11256-_11268 and _11690=_11692 and _11702=0 and _93956=0 and _93968=0 and _93980=0 and _11692>_11702 and _11694=1 and _94016=0 and _11722=1042 and _94040=0 and _94052=0 and _94064=0 and _11696=1000 and _94088=0 and _94100=0 and _94112=0 and _11722>=_11696 and _11712=0 and _94142=0
+
+=== VINCOLI PROIETTATI (solo variabili Solidity) ===
+  Not(x == y)
+  x <= y
+  x >= 1
+  y >= 1
+  x - 1*y <= -1
+

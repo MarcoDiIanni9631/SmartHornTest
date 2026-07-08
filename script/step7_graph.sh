@@ -10,7 +10,7 @@ set -euo pipefail
 [ $# -lt 1 ] && { echo "Uso: $0 <contract.t.pl>"; exit 1; }
 
 TPL="$(readlink -f "$1")"
-BASE="$(basename "$TPL" .pl)"   # → es. CounterTest.t
+BASE="$(basename "$TPL" .pl)"
 DIR="$(dirname "$TPL")"
 
 echo "=== STEP 7: chcviz → grafo SVG ==="

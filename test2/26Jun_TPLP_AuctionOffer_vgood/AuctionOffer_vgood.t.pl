@@ -1,0 +1,887 @@
+:- pred incorrect.
+:- pred new1(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new2(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new3(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new423(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new51(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new42(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new4(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new5(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new8(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new10(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new11(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new12(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new13(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new14(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new15(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new18(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new19(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new20(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new21(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new9(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new121(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new126(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new130(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new428(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new135(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new424(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new136(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new137(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new426(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new429(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new427(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new432(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new430(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new437(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new439(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new440(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new443(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new444(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new446(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new448(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new449(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new452(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new455(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new456(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new457(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new458(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new459(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new460(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+:- pred new461(int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int).
+
+:- mode new1(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new2(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new3(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new423(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new51(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new42(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new4(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new5(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new8(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new10(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new11(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new12(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new13(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new14(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new15(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new18(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new19(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new20(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new21(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new9(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new121(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new126(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new130(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new428(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new135(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new424(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new136(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new137(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new426(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new429(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new427(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new432(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new430(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new437(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new439(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new440(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new443(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new444(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new446(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new448(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new449(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new452(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new455(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new456(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new457(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new458(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new459(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new460(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+:- mode new461(in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in).
+
+:- query incorrect/0.
+
+new461(A,B,C,D,E,F,G,H,I,J,K,L,M,A,B,C,D,E,F,G,H,I,J,K,L,N) :- L=0, N=0.
+new461(A,B,C,D,E,F,G,H,I,J,K,L,M,A,B,C,D,E,F,G,H,I,J,K,L,N) :- L=\=0, O=0, N=L, 
+          O=0.
+new460(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,L,M,D1,E1,F1,G1,H1) :- 
+          I1=0, 
+          G1=115792089237316195423570985008687907853269984665640564039457584007913129639935-J1, 
+          J1=115792089237316195423570985008687907853269984665640564039457584007913129639935, 
+          G1=0, D1=0, K1=\=0, H1=\=0, F1=H1, 
+          K1=115792089237316195423570985008687907853269984665640564039457584007913129639935, 
+          F1=\=0, D1=0, E1=F1, 
+          new461(A,B,C,D,E,F,G,H,I,J,K,L,I1,S,T,U,V,W,X,Y,Z,A1,B1,C1,L1,H1).
+new460(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,L,M,D1,E1,F1,G1,H1) :- 
+          I1=0, 
+          G1=115792089237316195423570985008687907853269984665640564039457584007913129639935-J1, 
+          J1=115792089237316195423570985008687907853269984665640564039457584007913129639935, 
+          G1=0, D1=0, K1=\=0, H1=0, F1=0, 
+          K1=115792089237316195423570985008687907853269984665640564039457584007913129639935, 
+          F1=0, D1=0, E1=0, 
+          new461(A,B,C,D,E,F,G,H,I,J,K,L,I1,S,T,U,V,W,X,Y,Z,A1,B1,C1,L1,H1).
+new459(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,A,B,C,D,E,F,G,H,I,J,K,L,L,L,L).
+new458(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,L,B1,C1,S,C1) :- 
+          D1=0, E1=0, F1=0, B1=G1, H1=0, I1=0, J1=0, K1=0, L1=0, 
+          new459(A,B,C,D,E,F,G,H,I,J,K,L,D1,E1,F1,M1,N1,G1,O1,P1,Q1,R1,S1,T1,U1,V1,W1,C1,X1,Y1), 
+          new460(M1,N1,G1,O1,P1,Q1,R1,S1,T1,U1,V1,C1,B1,H1,I1,J1,K1,L1,Q,R,Z1,T,U,V,W,X,Y,Z,A1,A2,B2,C2,S,D2,E2,F2).
+new457(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,L,B1,C1,R,C1) :- 
+          D1=0, E1=0, F1=0, B1=G1, H1=0, I1=0, J1=0, K1=0, L1=0, 
+          new459(A,B,C,D,E,F,G,H,I,J,K,L,D1,E1,F1,M1,G1,N1,O1,P1,Q1,R1,S1,T1,U1,V1,W1,C1,X1,Y1), 
+          new460(M1,G1,N1,O1,P1,Q1,R1,S1,T1,U1,V1,C1,B1,H1,I1,J1,K1,L1,Q,Z1,S,T,U,V,W,X,Y,Z,A1,A2,B2,C2,R,D2,E2,F2).
+new456(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V) :- W=0, X=0, Y=0, Z=0, 
+          A1=0, B1=0, C1=0, D1=0, E1=0, F1=0, 
+          new457(A,B,C,D,E,F,G,H,I,J,K,W,X,Y,Z,A1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,Q1,R1,S1,T1,U1,V1), 
+          new458(G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,Q1,B1,C1,D1,E1,F1,L,M,N,O,P,Q,R,S,T,U,V,W1,X1,Y1,Z1,A2).
+new455(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,L,M,N,F,O,P) :- 
+          M=0, new456(A,B,C,D,E,F,G,H,I,J,K,Q,R,S,T,U,V,W,X,Y,Z,A1).
+new452(A,B,C,D,E,F,G,H,I,J,K,L,M,A,B,C,D,E,F,G,H,I,J,K,L,M) :- M=0.
+new449(A,B,C,D,E,F,G,H,I,J,K,L,M,A,B,C,D,E,F,G,H,I,J,K,L,N) :- L=0, N=0.
+new449(A,B,C,D,E,F,G,H,I,J,K,L,M,A,B,C,D,E,F,G,H,I,J,K,L,N) :- L=\=0, O=0, N=L, 
+          O=0.
+new448(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,L,Z,Z) :- A1=0, 
+          new449(A,B,C,D,E,F,G,H,I,J,K,L,A1,O,P,Q,R,S,T,U,V,W,X,Y,B1,Z).
+new446(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,A,B,C,D,E,F,G,H,I,J,K,L,M,L,M,N,O) :- O=0.
+new444(A,B,C,D,E,F,G,H,I,J,K,L,M,A,B,C,D,E,F,G,H,I,J,K,L,N) :- L=0, N=0.
+new444(A,B,C,D,E,F,G,H,I,J,K,L,M,A,B,C,D,E,F,G,H,I,J,K,L,N) :- L=\=0, O=0, N=L, 
+          O=0.
+new443(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,L,M,D1,E1,F1,G1,H1) :- 
+          I1=0, 
+          G1=115792089237316195423570985008687907853269984665640564039457584007913129639935-J1, 
+          J1=115792089237316195423570985008687907853269984665640564039457584007913129639935, 
+          G1=0, D1=0, K1=\=0, H1=\=0, F1=H1, 
+          K1=115792089237316195423570985008687907853269984665640564039457584007913129639935, 
+          F1=\=0, D1=0, E1=F1, 
+          new444(A,B,C,D,E,F,G,H,I,J,K,L,I1,S,T,U,V,W,X,Y,Z,A1,B1,C1,L1,H1).
+new443(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,L,M,D1,E1,F1,G1,H1) :- 
+          I1=0, 
+          G1=115792089237316195423570985008687907853269984665640564039457584007913129639935-J1, 
+          J1=115792089237316195423570985008687907853269984665640564039457584007913129639935, 
+          G1=0, D1=0, K1=\=0, H1=0, F1=0, 
+          K1=115792089237316195423570985008687907853269984665640564039457584007913129639935, 
+          F1=0, D1=0, E1=0, 
+          new444(A,B,C,D,E,F,G,H,I,J,K,L,I1,S,T,U,V,W,X,Y,Z,A1,B1,C1,L1,H1).
+new440(A,B,C,D,E,F,G,H,I,J,K,L,M,A,B,C,D,E,F,G,H,I,J,K,L,M) :- M=0.
+new439(A,B,C,D,E,F,G,H,I,J,K,A,B,C,D,E,F,G,H,I,J,K).
+new437(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,L,M) :- M=1, 
+          new439(A,B,C,D,E,F,G,H,I,J,K,N,O,P,Q,R,S,T,U,V,W,X).
+new430(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,L,M,L,M,N,O) :- O=1, 
+          new432(A,B,C,D,E,F,G,H,I,J,K,P,Q,R,S,T,U,V,W,X,Y,Z).
+new427(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,L,M,N,O,P,Q,R) :- 
+          D1=0, 
+          new429(A,B,C,D,E,F,G,H,I,J,K,L,D1,S,T,U,V,W,X,Y,Z,A1,B1,C1,E1,F1).
+new426(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,A,B,C,D,E,F,G,H,I,J,K,L,L,L,L).
+new137(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,A,B,C,D,E,F,G,H,I,J,K,L,L,L,L).
+new136(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z) :- L=0, A1=1, 
+          new424(A,B,C,D,E,F,G,H,I,J,K,L,A1,N,O,P,Q,R,S,T,U,V,W,X,Y,Z).
+new136(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z) :- L=\=0, A1=0, 
+          new424(A,B,C,D,E,F,G,H,I,J,K,L,A1,N,O,P,Q,R,S,T,U,V,W,X,Y,Z).
+new135(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,L,B1,C1,O,C1) :- 
+          D1=0, E1=0, F1=0, B1=G1, H1=0, I1=0, J1=0, K1=0, L1=0, 
+          new426(A,B,C,D,E,F,G,H,I,J,K,L,D1,E1,F1,M1,G1,N1,O1,P1,Q1,R1,S1,T1,U1,V1,W1,C1,X1,Y1), 
+          new427(M1,G1,N1,O1,P1,Q1,R1,S1,T1,U1,V1,C1,B1,H1,I1,J1,K1,L1,Q,R,S,T,U,V,W,X,Y,Z,A1,Z1,A2,B2,C2,D2,E2,F2).
+new135(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,L,M,N,O,P) :- 
+          B1=0, C1=0, D1=0, 
+          new428(A,B,C,D,E,F,G,H,I,J,K,L,B1,C1,D1,Q,R,S,T,U,V,W,X,Y,Z,A1,E1,F1,G1,H1).
+new130(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1) :- 
+          I1=M+L, M>I1, J1=1, 
+          new430(A,B,C,D,E,F,G,H,I,J,K,L,M,I1,J1,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1).
+new130(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1) :- 
+          I1=M+L, M=<I1, J1=0, 
+          new430(A,B,C,D,E,F,G,H,I,J,K,L,M,I1,J1,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1).
+new126(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,L,B1,C1,O,C1) :- 
+          D1=0, E1=0, F1=0, B1=G1, H1=0, I1=0, J1=0, K1=0, L1=0, 
+          new426(A,B,C,D,E,F,G,H,I,J,K,L,D1,E1,F1,M1,N1,G1,O1,P1,Q1,R1,S1,T1,U1,V1,W1,C1,X1,Y1), 
+          new427(M1,N1,G1,O1,P1,Q1,R1,S1,T1,U1,V1,C1,B1,H1,I1,J1,K1,L1,Q,R,S,T,U,V,W,X,Y,Z,A1,Z1,A2,B2,C2,D2,E2,F2).
+new126(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,L,M,N,O,P) :- 
+          B1=0, C1=0, D1=0, 
+          new428(A,B,C,D,E,F,G,H,I,J,K,L,B1,C1,D1,Q,R,S,T,U,V,W,X,Y,Z,A1,E1,F1,G1,H1).
+new121(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,L,Y) :- Y=C, Z=0, A1=0, 
+          new9(A,B,C,D,E,F,G,H,I,J,K,Y,Z,A1,N,O,P,Q,R,S,T,U,V,W,X,B1,C1,D1).
+new21(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z) :- L=0, A1=1, 
+          new437(A,B,C,D,E,F,G,H,I,J,K,L,A1,N,O,P,Q,R,S,T,U,V,W,X,Y,Z).
+new21(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z) :- L=\=0, A1=0, 
+          new437(A,B,C,D,E,F,G,H,I,J,K,L,A1,N,O,P,Q,R,S,T,U,V,W,X,Y,Z).
+new20(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,A,B,C,D,E,F,G,H,I,J,K,L,L,L,L).
+new19(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,A,B,C,D,E,F,G,H,I,J,K,L,L,L,L).
+new18(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z) :- L=0, A1=1, 
+          new440(A,B,C,D,E,F,G,H,I,J,K,L,A1,N,O,P,Q,R,S,T,U,V,W,X,Y,Z).
+new18(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z) :- L=\=0, A1=0, 
+          new440(A,B,C,D,E,F,G,H,I,J,K,L,A1,N,O,P,Q,R,S,T,U,V,W,X,Y,Z).
+new15(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,L,B1,C1,S,C1) :- 
+          D1=0, E1=0, F1=0, B1=G1, H1=0, I1=0, J1=0, K1=0, L1=0, 
+          new426(A,B,C,D,E,F,G,H,I,J,K,L,D1,E1,F1,M1,N1,G1,O1,P1,Q1,R1,S1,T1,U1,V1,W1,C1,X1,Y1), 
+          new443(M1,N1,G1,O1,P1,Q1,R1,S1,T1,U1,V1,C1,B1,H1,I1,J1,K1,L1,Q,R,Z1,T,U,V,W,X,Y,Z,A1,A2,B2,C2,S,D2,E2,F2).
+new14(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1) :- 
+          I1=M+L, M>I1, J1=1, 
+          new446(A,B,C,D,E,F,G,H,I,J,K,L,M,I1,J1,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1).
+new14(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1) :- 
+          I1=M+L, M=<I1, J1=0, 
+          new446(A,B,C,D,E,F,G,H,I,J,K,L,M,I1,J1,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1).
+new13(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z) :- Z=C, A1=0, B1=0, 
+          new448(A,B,C,D,E,F,G,H,I,J,K,Z,A1,B1,N,O,P,Q,R,S,T,U,V,W,X,C1,Y,D1).
+new12(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,L,B1,C1,R,C1) :- 
+          D1=0, E1=0, F1=0, B1=G1, H1=0, I1=0, J1=0, K1=0, L1=0, 
+          new426(A,B,C,D,E,F,G,H,I,J,K,L,D1,E1,F1,M1,G1,N1,O1,P1,Q1,R1,S1,T1,U1,V1,W1,C1,X1,Y1), 
+          new443(M1,G1,N1,O1,P1,Q1,R1,S1,T1,U1,V1,C1,B1,H1,I1,J1,K1,L1,Q,Z1,S,T,U,V,W,X,Y,Z,A1,A2,B2,C2,R,D2,E2,F2).
+new11(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z) :- L=0, A1=1, 
+          new452(A,B,C,D,E,F,G,H,I,J,K,L,A1,N,O,P,Q,R,S,T,U,V,W,X,Y,Z).
+new11(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z) :- L=\=0, A1=0, 
+          new452(A,B,C,D,E,F,G,H,I,J,K,L,A1,N,O,P,Q,R,S,T,U,V,W,X,Y,Z).
+new9(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,L,M,N) :- Z=0, 
+          new10(A,B,C,D,E,F,G,H,I,J,K,L,Z,O,P,Q,R,S,T,U,V,W,X,Y,A1,B1).
+new8(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,L,Y) :- Y=B, Z=0, A1=0, 
+          new9(A,B,C,D,E,F,G,H,I,J,K,Y,Z,A1,N,O,P,Q,R,S,T,U,V,W,X,B1,C1,D1).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,Q1,O,P,R1,S1,T1,T,U1,V,V1,Q1,V,V1,W1,X1,B1,Y1,Z1,M,W1) :- 
+          B1=0, B1=S1, A2=0, B2=0, C2=0, D2=0, E2=0, F2=0, G2=0, H2=0, I2=0, 
+          J2=0, K2=0, L2=0, M2=0, N2=0, O2=0, P2=0, Q2=0, R2=0, S2=0, W1<V1, 
+          T1=1, T1=\=0, Z1=0, T2=0, U2=1042, V2=0, W2=0, X2=0, Y2=1000, Z2=0, 
+          A3=0, B3=0, Q1<Y1, R1=1, C3=0, 
+          new11(A,B,C,D,E,F,G,H,I,J,K,S1,A2,D3,E3,F3,G3,H3,I3,J3,K3,L3,M3,N3,O3,P3), 
+          new12(D3,E3,F3,G3,H3,I3,J3,K3,L3,M3,N3,M,B2,C2,D2,E2,Q3,R3,S3,T3,U3,V3,W3,X3,Y3,Z3,A4,B4,C4,D4,E4,F4), 
+          new13(Q3,R3,S3,T3,U3,V3,W3,X3,Y3,Z3,A4,F2,G2,G4,H4,I4,J4,K4,L4,M4,N4,O4,P4,Q4,X1,R4), 
+          new14(G4,H4,I4,J4,K4,L4,M4,N4,O4,P4,Q4,L,X1,H2,I2,J2,K2,S4,T4,U4,V4,W4,X4,Y4,Z4,A5,B5,C5,D5,E5,F5,G5,U1,H5), 
+          new15(S4,T4,U4,V4,W4,X4,Y4,Z4,A5,B5,C5,U1,L2,M2,N2,O2,I5,J5,K5,L5,M5,N5,O5,P5,Q5,R5,S5,T5,U5,V5,W5,X5), 
+          new13(I5,J5,K5,L5,M5,N5,O5,P5,Q5,R5,S5,P2,Q2,Y5,Z5,A6,B6,C6,D6,E6,F6,G6,H6,I6,W1,J6), 
+          new4(Y5,Z5,A6,B6,C6,D6,E6,F6,G6,H6,I6,R2,S2,K6,L6,M6,N6,O6,P6,Q6,R6,S6,T6,U6,V1,V6), 
+          new18(K6,L6,M6,N6,O6,P6,Q6,R6,S6,T6,U6,Z1,T2,W6,X6,Y6,Z6,A7,B7,C7,D7,E7,F7,G7,H7,I7), 
+          new19(W6,X6,Y6,Z6,A7,B7,C7,D7,E7,F7,G7,U2,V2,W2,X2,J7,K7,L7,M7,N7,O7,P7,Q7,R7,S7,T7,U7,Q1,V7,W7), 
+          new20(J7,K7,L7,M7,N7,O7,P7,Q7,R7,S7,T7,Y2,Z2,A3,B3,X7,Y7,Z7,A8,B8,C8,D8,E8,F8,G8,H8,I8,Y1,J8,K8), 
+          new21(X7,Y7,Z7,A8,B8,C8,D8,E8,F8,G8,H8,R1,C3,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L8,M8).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,Q1,O,P,R1,S1,T1,T,U1,V,V1,Q1,V,V1,W1,X1,B1,Y1,Z1,M,W1) :- 
+          B1=0, B1=S1, A2=0, B2=0, C2=0, D2=0, E2=0, F2=0, G2=0, H2=0, I2=0, 
+          J2=0, K2=0, L2=0, M2=0, N2=0, O2=0, P2=0, Q2=0, R2=0, S2=0, W1<V1, 
+          T1=1, T1=\=0, Z1=0, T2=0, U2=1042, V2=0, W2=0, X2=0, Y2=1000, Z2=0, 
+          A3=0, B3=0, Q1>=Y1, R1=0, C3=0, 
+          new11(A,B,C,D,E,F,G,H,I,J,K,S1,A2,D3,E3,F3,G3,H3,I3,J3,K3,L3,M3,N3,O3,P3), 
+          new12(D3,E3,F3,G3,H3,I3,J3,K3,L3,M3,N3,M,B2,C2,D2,E2,Q3,R3,S3,T3,U3,V3,W3,X3,Y3,Z3,A4,B4,C4,D4,E4,F4), 
+          new13(Q3,R3,S3,T3,U3,V3,W3,X3,Y3,Z3,A4,F2,G2,G4,H4,I4,J4,K4,L4,M4,N4,O4,P4,Q4,X1,R4), 
+          new14(G4,H4,I4,J4,K4,L4,M4,N4,O4,P4,Q4,L,X1,H2,I2,J2,K2,S4,T4,U4,V4,W4,X4,Y4,Z4,A5,B5,C5,D5,E5,F5,G5,U1,H5), 
+          new15(S4,T4,U4,V4,W4,X4,Y4,Z4,A5,B5,C5,U1,L2,M2,N2,O2,I5,J5,K5,L5,M5,N5,O5,P5,Q5,R5,S5,T5,U5,V5,W5,X5), 
+          new13(I5,J5,K5,L5,M5,N5,O5,P5,Q5,R5,S5,P2,Q2,Y5,Z5,A6,B6,C6,D6,E6,F6,G6,H6,I6,W1,J6), 
+          new4(Y5,Z5,A6,B6,C6,D6,E6,F6,G6,H6,I6,R2,S2,K6,L6,M6,N6,O6,P6,Q6,R6,S6,T6,U6,V1,V6), 
+          new18(K6,L6,M6,N6,O6,P6,Q6,R6,S6,T6,U6,Z1,T2,W6,X6,Y6,Z6,A7,B7,C7,D7,E7,F7,G7,H7,I7), 
+          new19(W6,X6,Y6,Z6,A7,B7,C7,D7,E7,F7,G7,U2,V2,W2,X2,J7,K7,L7,M7,N7,O7,P7,Q7,R7,S7,T7,U7,Q1,V7,W7), 
+          new20(J7,K7,L7,M7,N7,O7,P7,Q7,R7,S7,T7,Y2,Z2,A3,B3,X7,Y7,Z7,A8,B8,C8,D8,E8,F8,G8,H8,I8,Y1,J8,K8), 
+          new21(X7,Y7,Z7,A8,B8,C8,D8,E8,F8,G8,H8,R1,C3,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L8,M8).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,Q1,O,P,Q,R1,S1,T,T1,V,U1,X,V,U1,V1,W1,B1,C1,X1,M,V1) :- 
+          B1=0, B1=R1, Y1=0, Z1=0, A2=0, B2=0, C2=0, D2=0, E2=0, F2=0, G2=0, 
+          H2=0, I2=0, J2=0, K2=0, L2=0, M2=0, N2=0, O2=0, P2=0, Q2=0, V1<U1, 
+          S1=1, S1=\=0, X1=0, R2=0, S2=1042, T2=0, U2=0, V2=0, W2=1000, X2=0, 
+          Y2=0, Z2=0, 
+          new11(A,B,C,D,E,F,G,H,I,J,K,R1,Y1,A3,B3,C3,D3,E3,F3,G3,H3,I3,J3,K3,L3,M3), 
+          new12(A3,B3,C3,D3,E3,F3,G3,H3,I3,J3,K3,M,Z1,A2,B2,C2,N3,O3,P3,Q3,R3,S3,T3,U3,V3,W3,X3,Y3,Z3,A4,B4,C4), 
+          new13(N3,O3,P3,Q3,R3,S3,T3,U3,V3,W3,X3,D2,E2,D4,E4,F4,G4,H4,I4,J4,K4,L4,M4,N4,W1,O4), 
+          new14(D4,E4,F4,G4,H4,I4,J4,K4,L4,M4,N4,L,W1,F2,G2,H2,I2,P4,Q4,R4,S4,T4,U4,V4,W4,X4,Y4,Z4,A5,B5,C5,D5,T1,E5), 
+          new15(P4,Q4,R4,S4,T4,U4,V4,W4,X4,Y4,Z4,T1,J2,K2,L2,M2,F5,G5,H5,I5,J5,K5,L5,M5,N5,O5,P5,Q5,R5,S5,T5,U5), 
+          new13(F5,G5,H5,I5,J5,K5,L5,M5,N5,O5,P5,N2,O2,V5,W5,X5,Y5,Z5,A6,B6,C6,D6,E6,F6,V1,G6), 
+          new4(V5,W5,X5,Y5,Z5,A6,B6,C6,D6,E6,F6,P2,Q2,H6,I6,J6,K6,L6,M6,N6,O6,P6,Q6,R6,U1,S6), 
+          new18(H6,I6,J6,K6,L6,M6,N6,O6,P6,Q6,R6,X1,R2,T6,U6,V6,W6,X6,Y6,Z6,A7,B7,C7,D7,E7,F7), 
+          new19(T6,U6,V6,W6,X6,Y6,Z6,A7,B7,C7,D7,S2,T2,U2,V2,G7,H7,I7,J7,K7,L7,M7,N7,O7,P7,Q7,R7,Q1,S7,T7), 
+          new42(G7,H7,I7,J7,K7,L7,M7,N7,O7,P7,Q7,W2,X2,Y2,Z2,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,U7,V7,W7,X7).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,N,O,P,Q,Q1,R1,T,S1,V,T1,X,V,T1,U1,V1,B1,C1,W1,M,U1) :- 
+          B1=0, B1=Q1, X1=0, Y1=0, Z1=0, A2=0, B2=0, C2=0, D2=0, E2=0, F2=0, 
+          G2=0, H2=0, I2=0, J2=0, K2=0, L2=0, M2=0, N2=0, O2=0, P2=0, U1<T1, 
+          R1=1, R1=\=0, W1=0, Q2=0, R2=1042, S2=0, T2=0, U2=0, 
+          new11(A,B,C,D,E,F,G,H,I,J,K,Q1,X1,V2,W2,X2,Y2,Z2,A3,B3,C3,D3,E3,F3,G3,H3), 
+          new12(V2,W2,X2,Y2,Z2,A3,B3,C3,D3,E3,F3,M,Y1,Z1,A2,B2,I3,J3,K3,L3,M3,N3,O3,P3,Q3,R3,S3,T3,U3,V3,W3,X3), 
+          new13(I3,J3,K3,L3,M3,N3,O3,P3,Q3,R3,S3,C2,D2,Y3,Z3,A4,B4,C4,D4,E4,F4,G4,H4,I4,V1,J4), 
+          new14(Y3,Z3,A4,B4,C4,D4,E4,F4,G4,H4,I4,L,V1,E2,F2,G2,H2,K4,L4,M4,N4,O4,P4,Q4,R4,S4,T4,U4,V4,W4,X4,Y4,S1,Z4), 
+          new15(K4,L4,M4,N4,O4,P4,Q4,R4,S4,T4,U4,S1,I2,J2,K2,L2,A5,B5,C5,D5,E5,F5,G5,H5,I5,J5,K5,L5,M5,N5,O5,P5), 
+          new13(A5,B5,C5,D5,E5,F5,G5,H5,I5,J5,K5,M2,N2,Q5,R5,S5,T5,U5,V5,W5,X5,Y5,Z5,A6,U1,B6), 
+          new4(Q5,R5,S5,T5,U5,V5,W5,X5,Y5,Z5,A6,O2,P2,C6,D6,E6,F6,G6,H6,I6,J6,K6,L6,M6,T1,N6), 
+          new18(C6,D6,E6,F6,G6,H6,I6,J6,K6,L6,M6,W1,Q2,O6,P6,Q6,R6,S6,T6,U6,V6,W6,X6,Y6,Z6,A7), 
+          new51(O6,P6,Q6,R6,S6,T6,U6,V6,W6,X6,Y6,R2,S2,T2,U2,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,B7,C7,D7,E7).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,N,O,P,Q,Q1,R1,T,S1,V,T1,X,V,T1,U1,V1,B1,C1,W1,M,U1) :- 
+          B1=0, B1=Q1, X1=0, Y1=0, Z1=0, A2=0, B2=0, C2=0, D2=0, E2=0, F2=0, 
+          G2=0, H2=0, I2=0, J2=0, K2=0, L2=0, M2=0, N2=0, O2=0, P2=0, U1<T1, 
+          R1=1, R1=\=0, W1=0, Q2=0, 
+          new11(A,B,C,D,E,F,G,H,I,J,K,Q1,X1,R2,S2,T2,U2,V2,W2,X2,Y2,Z2,A3,B3,C3,D3), 
+          new12(R2,S2,T2,U2,V2,W2,X2,Y2,Z2,A3,B3,M,Y1,Z1,A2,B2,E3,F3,G3,H3,I3,J3,K3,L3,M3,N3,O3,P3,Q3,R3,S3,T3), 
+          new13(E3,F3,G3,H3,I3,J3,K3,L3,M3,N3,O3,C2,D2,U3,V3,W3,X3,Y3,Z3,A4,B4,C4,D4,E4,V1,F4), 
+          new14(U3,V3,W3,X3,Y3,Z3,A4,B4,C4,D4,E4,L,V1,E2,F2,G2,H2,G4,H4,I4,J4,K4,L4,M4,N4,O4,P4,Q4,R4,S4,T4,U4,S1,V4), 
+          new15(G4,H4,I4,J4,K4,L4,M4,N4,O4,P4,Q4,S1,I2,J2,K2,L2,W4,X4,Y4,Z4,A5,B5,C5,D5,E5,F5,G5,H5,I5,J5,K5,L5), 
+          new13(W4,X4,Y4,Z4,A5,B5,C5,D5,E5,F5,G5,M2,N2,M5,N5,O5,P5,Q5,R5,S5,T5,U5,V5,W5,U1,X5), 
+          new4(M5,N5,O5,P5,Q5,R5,S5,T5,U5,V5,W5,O2,P2,Y5,Z5,A6,B6,C6,D6,E6,F6,G6,H6,I6,T1,J6), 
+          new21(Y5,Z5,A6,B6,C6,D6,E6,F6,G6,H6,I6,W1,Q2,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,K6,L6).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,Q1,O,P,R1,S1,T1,T,U1,V,V1,Q1,V,V1,W1,X1,B1,Y1,Z1,M,W1) :- 
+          B1=0, B1=S1, A2=0, B2=0, C2=0, D2=0, E2=0, F2=0, G2=0, H2=0, I2=0, 
+          J2=0, K2=0, L2=0, M2=0, N2=0, O2=0, P2=0, Q2=0, R2=0, S2=0, W1>=V1, 
+          T1=0, T1=0, Z1=1, T2=0, U2=1042, V2=0, W2=0, X2=0, Y2=1000, Z2=0, 
+          A3=0, B3=0, Q1<Y1, R1=1, C3=0, 
+          new11(A,B,C,D,E,F,G,H,I,J,K,S1,A2,D3,E3,F3,G3,H3,I3,J3,K3,L3,M3,N3,O3,P3), 
+          new12(D3,E3,F3,G3,H3,I3,J3,K3,L3,M3,N3,M,B2,C2,D2,E2,Q3,R3,S3,T3,U3,V3,W3,X3,Y3,Z3,A4,B4,C4,D4,E4,F4), 
+          new13(Q3,R3,S3,T3,U3,V3,W3,X3,Y3,Z3,A4,F2,G2,G4,H4,I4,J4,K4,L4,M4,N4,O4,P4,Q4,X1,R4), 
+          new14(G4,H4,I4,J4,K4,L4,M4,N4,O4,P4,Q4,L,X1,H2,I2,J2,K2,S4,T4,U4,V4,W4,X4,Y4,Z4,A5,B5,C5,D5,E5,F5,G5,U1,H5), 
+          new15(S4,T4,U4,V4,W4,X4,Y4,Z4,A5,B5,C5,U1,L2,M2,N2,O2,I5,J5,K5,L5,M5,N5,O5,P5,Q5,R5,S5,T5,U5,V5,W5,X5), 
+          new13(I5,J5,K5,L5,M5,N5,O5,P5,Q5,R5,S5,P2,Q2,Y5,Z5,A6,B6,C6,D6,E6,F6,G6,H6,I6,W1,J6), 
+          new4(Y5,Z5,A6,B6,C6,D6,E6,F6,G6,H6,I6,R2,S2,K6,L6,M6,N6,O6,P6,Q6,R6,S6,T6,U6,V1,V6), 
+          new18(K6,L6,M6,N6,O6,P6,Q6,R6,S6,T6,U6,Z1,T2,W6,X6,Y6,Z6,A7,B7,C7,D7,E7,F7,G7,H7,I7), 
+          new19(W6,X6,Y6,Z6,A7,B7,C7,D7,E7,F7,G7,U2,V2,W2,X2,J7,K7,L7,M7,N7,O7,P7,Q7,R7,S7,T7,U7,Q1,V7,W7), 
+          new20(J7,K7,L7,M7,N7,O7,P7,Q7,R7,S7,T7,Y2,Z2,A3,B3,X7,Y7,Z7,A8,B8,C8,D8,E8,F8,G8,H8,I8,Y1,J8,K8), 
+          new21(X7,Y7,Z7,A8,B8,C8,D8,E8,F8,G8,H8,R1,C3,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L8,M8).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,Q1,O,P,R1,S1,T1,T,U1,V,V1,Q1,V,V1,W1,X1,B1,Y1,Z1,M,W1) :- 
+          B1=0, B1=S1, A2=0, B2=0, C2=0, D2=0, E2=0, F2=0, G2=0, H2=0, I2=0, 
+          J2=0, K2=0, L2=0, M2=0, N2=0, O2=0, P2=0, Q2=0, R2=0, S2=0, W1>=V1, 
+          T1=0, T1=0, Z1=1, T2=0, U2=1042, V2=0, W2=0, X2=0, Y2=1000, Z2=0, 
+          A3=0, B3=0, Q1>=Y1, R1=0, C3=0, 
+          new11(A,B,C,D,E,F,G,H,I,J,K,S1,A2,D3,E3,F3,G3,H3,I3,J3,K3,L3,M3,N3,O3,P3), 
+          new12(D3,E3,F3,G3,H3,I3,J3,K3,L3,M3,N3,M,B2,C2,D2,E2,Q3,R3,S3,T3,U3,V3,W3,X3,Y3,Z3,A4,B4,C4,D4,E4,F4), 
+          new13(Q3,R3,S3,T3,U3,V3,W3,X3,Y3,Z3,A4,F2,G2,G4,H4,I4,J4,K4,L4,M4,N4,O4,P4,Q4,X1,R4), 
+          new14(G4,H4,I4,J4,K4,L4,M4,N4,O4,P4,Q4,L,X1,H2,I2,J2,K2,S4,T4,U4,V4,W4,X4,Y4,Z4,A5,B5,C5,D5,E5,F5,G5,U1,H5), 
+          new15(S4,T4,U4,V4,W4,X4,Y4,Z4,A5,B5,C5,U1,L2,M2,N2,O2,I5,J5,K5,L5,M5,N5,O5,P5,Q5,R5,S5,T5,U5,V5,W5,X5), 
+          new13(I5,J5,K5,L5,M5,N5,O5,P5,Q5,R5,S5,P2,Q2,Y5,Z5,A6,B6,C6,D6,E6,F6,G6,H6,I6,W1,J6), 
+          new4(Y5,Z5,A6,B6,C6,D6,E6,F6,G6,H6,I6,R2,S2,K6,L6,M6,N6,O6,P6,Q6,R6,S6,T6,U6,V1,V6), 
+          new18(K6,L6,M6,N6,O6,P6,Q6,R6,S6,T6,U6,Z1,T2,W6,X6,Y6,Z6,A7,B7,C7,D7,E7,F7,G7,H7,I7), 
+          new19(W6,X6,Y6,Z6,A7,B7,C7,D7,E7,F7,G7,U2,V2,W2,X2,J7,K7,L7,M7,N7,O7,P7,Q7,R7,S7,T7,U7,Q1,V7,W7), 
+          new20(J7,K7,L7,M7,N7,O7,P7,Q7,R7,S7,T7,Y2,Z2,A3,B3,X7,Y7,Z7,A8,B8,C8,D8,E8,F8,G8,H8,I8,Y1,J8,K8), 
+          new21(X7,Y7,Z7,A8,B8,C8,D8,E8,F8,G8,H8,R1,C3,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L8,M8).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,Q1,O,P,Q,R1,S1,T,T1,V,U1,X,V,U1,V1,W1,B1,C1,X1,M,V1) :- 
+          B1=0, B1=R1, Y1=0, Z1=0, A2=0, B2=0, C2=0, D2=0, E2=0, F2=0, G2=0, 
+          H2=0, I2=0, J2=0, K2=0, L2=0, M2=0, N2=0, O2=0, P2=0, Q2=0, V1>=U1, 
+          S1=0, S1=0, X1=1, R2=0, S2=1042, T2=0, U2=0, V2=0, W2=1000, X2=0, 
+          Y2=0, Z2=0, 
+          new11(A,B,C,D,E,F,G,H,I,J,K,R1,Y1,A3,B3,C3,D3,E3,F3,G3,H3,I3,J3,K3,L3,M3), 
+          new12(A3,B3,C3,D3,E3,F3,G3,H3,I3,J3,K3,M,Z1,A2,B2,C2,N3,O3,P3,Q3,R3,S3,T3,U3,V3,W3,X3,Y3,Z3,A4,B4,C4), 
+          new13(N3,O3,P3,Q3,R3,S3,T3,U3,V3,W3,X3,D2,E2,D4,E4,F4,G4,H4,I4,J4,K4,L4,M4,N4,W1,O4), 
+          new14(D4,E4,F4,G4,H4,I4,J4,K4,L4,M4,N4,L,W1,F2,G2,H2,I2,P4,Q4,R4,S4,T4,U4,V4,W4,X4,Y4,Z4,A5,B5,C5,D5,T1,E5), 
+          new15(P4,Q4,R4,S4,T4,U4,V4,W4,X4,Y4,Z4,T1,J2,K2,L2,M2,F5,G5,H5,I5,J5,K5,L5,M5,N5,O5,P5,Q5,R5,S5,T5,U5), 
+          new13(F5,G5,H5,I5,J5,K5,L5,M5,N5,O5,P5,N2,O2,V5,W5,X5,Y5,Z5,A6,B6,C6,D6,E6,F6,V1,G6), 
+          new4(V5,W5,X5,Y5,Z5,A6,B6,C6,D6,E6,F6,P2,Q2,H6,I6,J6,K6,L6,M6,N6,O6,P6,Q6,R6,U1,S6), 
+          new18(H6,I6,J6,K6,L6,M6,N6,O6,P6,Q6,R6,X1,R2,T6,U6,V6,W6,X6,Y6,Z6,A7,B7,C7,D7,E7,F7), 
+          new19(T6,U6,V6,W6,X6,Y6,Z6,A7,B7,C7,D7,S2,T2,U2,V2,G7,H7,I7,J7,K7,L7,M7,N7,O7,P7,Q7,R7,Q1,S7,T7), 
+          new42(G7,H7,I7,J7,K7,L7,M7,N7,O7,P7,Q7,W2,X2,Y2,Z2,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,U7,V7,W7,X7).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,N,O,P,Q,Q1,R1,T,S1,V,T1,X,V,T1,U1,V1,B1,C1,W1,M,U1) :- 
+          B1=0, B1=Q1, X1=0, Y1=0, Z1=0, A2=0, B2=0, C2=0, D2=0, E2=0, F2=0, 
+          G2=0, H2=0, I2=0, J2=0, K2=0, L2=0, M2=0, N2=0, O2=0, P2=0, U1>=T1, 
+          R1=0, R1=0, W1=1, Q2=0, R2=1042, S2=0, T2=0, U2=0, 
+          new11(A,B,C,D,E,F,G,H,I,J,K,Q1,X1,V2,W2,X2,Y2,Z2,A3,B3,C3,D3,E3,F3,G3,H3), 
+          new12(V2,W2,X2,Y2,Z2,A3,B3,C3,D3,E3,F3,M,Y1,Z1,A2,B2,I3,J3,K3,L3,M3,N3,O3,P3,Q3,R3,S3,T3,U3,V3,W3,X3), 
+          new13(I3,J3,K3,L3,M3,N3,O3,P3,Q3,R3,S3,C2,D2,Y3,Z3,A4,B4,C4,D4,E4,F4,G4,H4,I4,V1,J4), 
+          new14(Y3,Z3,A4,B4,C4,D4,E4,F4,G4,H4,I4,L,V1,E2,F2,G2,H2,K4,L4,M4,N4,O4,P4,Q4,R4,S4,T4,U4,V4,W4,X4,Y4,S1,Z4), 
+          new15(K4,L4,M4,N4,O4,P4,Q4,R4,S4,T4,U4,S1,I2,J2,K2,L2,A5,B5,C5,D5,E5,F5,G5,H5,I5,J5,K5,L5,M5,N5,O5,P5), 
+          new13(A5,B5,C5,D5,E5,F5,G5,H5,I5,J5,K5,M2,N2,Q5,R5,S5,T5,U5,V5,W5,X5,Y5,Z5,A6,U1,B6), 
+          new4(Q5,R5,S5,T5,U5,V5,W5,X5,Y5,Z5,A6,O2,P2,C6,D6,E6,F6,G6,H6,I6,J6,K6,L6,M6,T1,N6), 
+          new18(C6,D6,E6,F6,G6,H6,I6,J6,K6,L6,M6,W1,Q2,O6,P6,Q6,R6,S6,T6,U6,V6,W6,X6,Y6,Z6,A7), 
+          new51(O6,P6,Q6,R6,S6,T6,U6,V6,W6,X6,Y6,R2,S2,T2,U2,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,B7,C7,D7,E7).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,N,O,P,Q,Q1,R1,T,S1,V,T1,X,V,T1,U1,V1,B1,C1,W1,M,U1) :- 
+          B1=0, B1=Q1, X1=0, Y1=0, Z1=0, A2=0, B2=0, C2=0, D2=0, E2=0, F2=0, 
+          G2=0, H2=0, I2=0, J2=0, K2=0, L2=0, M2=0, N2=0, O2=0, P2=0, U1>=T1, 
+          R1=0, R1=0, W1=1, Q2=0, 
+          new11(A,B,C,D,E,F,G,H,I,J,K,Q1,X1,R2,S2,T2,U2,V2,W2,X2,Y2,Z2,A3,B3,C3,D3), 
+          new12(R2,S2,T2,U2,V2,W2,X2,Y2,Z2,A3,B3,M,Y1,Z1,A2,B2,E3,F3,G3,H3,I3,J3,K3,L3,M3,N3,O3,P3,Q3,R3,S3,T3), 
+          new13(E3,F3,G3,H3,I3,J3,K3,L3,M3,N3,O3,C2,D2,U3,V3,W3,X3,Y3,Z3,A4,B4,C4,D4,E4,V1,F4), 
+          new14(U3,V3,W3,X3,Y3,Z3,A4,B4,C4,D4,E4,L,V1,E2,F2,G2,H2,G4,H4,I4,J4,K4,L4,M4,N4,O4,P4,Q4,R4,S4,T4,U4,S1,V4), 
+          new15(G4,H4,I4,J4,K4,L4,M4,N4,O4,P4,Q4,S1,I2,J2,K2,L2,W4,X4,Y4,Z4,A5,B5,C5,D5,E5,F5,G5,H5,I5,J5,K5,L5), 
+          new13(W4,X4,Y4,Z4,A5,B5,C5,D5,E5,F5,G5,M2,N2,M5,N5,O5,P5,Q5,R5,S5,T5,U5,V5,W5,U1,X5), 
+          new4(M5,N5,O5,P5,Q5,R5,S5,T5,U5,V5,W5,O2,P2,Y5,Z5,A6,B6,C6,D6,E6,F6,G6,H6,I6,T1,J6), 
+          new21(Y5,Z5,A6,B6,C6,D6,E6,F6,G6,H6,I6,W1,Q2,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,K6,L6).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,N,O,P,Q,Q1,S,T,R1,V,W,X,V,Y,Z,S1,B1,C1,D1,M,T1) :- 
+          B1=0, B1=Q1, U1=0, V1=0, W1=0, X1=0, Y1=0, Z1=0, A2=0, B2=0, C2=0, 
+          D2=0, E2=0, F2=0, G2=0, H2=0, I2=0, J2=0, K2=0, L2=0, M2=0, 
+          new11(A,B,C,D,E,F,G,H,I,J,K,Q1,U1,N2,O2,P2,Q2,R2,S2,T2,U2,V2,W2,X2,Y2,Z2), 
+          new12(N2,O2,P2,Q2,R2,S2,T2,U2,V2,W2,X2,M,V1,W1,X1,Y1,A3,B3,C3,D3,E3,F3,G3,H3,I3,J3,K3,L3,M3,N3,O3,P3), 
+          new13(A3,B3,C3,D3,E3,F3,G3,H3,I3,J3,K3,Z1,A2,Q3,R3,S3,T3,U3,V3,W3,X3,Y3,Z3,A4,S1,B4), 
+          new14(Q3,R3,S3,T3,U3,V3,W3,X3,Y3,Z3,A4,L,S1,B2,C2,D2,E2,C4,D4,E4,F4,G4,H4,I4,J4,K4,L4,M4,N4,O4,P4,Q4,R1,R4), 
+          new15(C4,D4,E4,F4,G4,H4,I4,J4,K4,L4,M4,R1,F2,G2,H2,I2,S4,T4,U4,V4,W4,X4,Y4,Z4,A5,B5,C5,D5,E5,F5,G5,H5), 
+          new13(S4,T4,U4,V4,W4,X4,Y4,Z4,A5,B5,C5,J2,K2,I5,J5,K5,L5,M5,N5,O5,P5,Q5,R5,S5,T1,T5), 
+          new8(I5,J5,K5,L5,M5,N5,O5,P5,Q5,R5,S5,L2,M2,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,U5,V5).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,N,O,P,Q,Q1,S,T,R1,V,W,X,V,Y,Z,S1,B1,C1,D1,M,E1) :- 
+          B1=0, B1=Q1, T1=0, U1=0, V1=0, W1=0, X1=0, Y1=0, Z1=0, A2=0, B2=0, 
+          C2=0, D2=0, E2=0, F2=0, G2=0, H2=0, I2=0, J2=0, 
+          new11(A,B,C,D,E,F,G,H,I,J,K,Q1,T1,K2,L2,M2,N2,O2,P2,Q2,R2,S2,T2,U2,V2,W2), 
+          new12(K2,L2,M2,N2,O2,P2,Q2,R2,S2,T2,U2,M,U1,V1,W1,X1,X2,Y2,Z2,A3,B3,C3,D3,E3,F3,G3,H3,I3,J3,K3,L3,M3), 
+          new13(X2,Y2,Z2,A3,B3,C3,D3,E3,F3,G3,H3,Y1,Z1,N3,O3,P3,Q3,R3,S3,T3,U3,V3,W3,X3,S1,Y3), 
+          new14(N3,O3,P3,Q3,R3,S3,T3,U3,V3,W3,X3,L,S1,A2,B2,C2,D2,Z3,A4,B4,C4,D4,E4,F4,G4,H4,I4,J4,K4,L4,M4,N4,R1,O4), 
+          new15(Z3,A4,B4,C4,D4,E4,F4,G4,H4,I4,J4,R1,E2,F2,G2,H2,P4,Q4,R4,S4,T4,U4,V4,W4,X4,Y4,Z4,A5,B5,C5,D5,E5), 
+          new121(P4,Q4,R4,S4,T4,U4,V4,W4,X4,Y4,Z4,I2,J2,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,F5,G5).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,N,O,P,Q,Q1,S,T,R1,V,W,X,V,Y,Z,S1,B1,C1,D1,M,E1) :- 
+          B1=0, B1=Q1, T1=0, U1=0, V1=0, W1=0, X1=0, Y1=0, Z1=0, A2=0, B2=0, 
+          C2=0, D2=0, E2=0, F2=0, G2=0, H2=0, 
+          new11(A,B,C,D,E,F,G,H,I,J,K,Q1,T1,I2,J2,K2,L2,M2,N2,O2,P2,Q2,R2,S2,T2,U2), 
+          new12(I2,J2,K2,L2,M2,N2,O2,P2,Q2,R2,S2,M,U1,V1,W1,X1,V2,W2,X2,Y2,Z2,A3,B3,C3,D3,E3,F3,G3,H3,I3,J3,K3), 
+          new13(V2,W2,X2,Y2,Z2,A3,B3,C3,D3,E3,F3,Y1,Z1,L3,M3,N3,O3,P3,Q3,R3,S3,T3,U3,V3,S1,W3), 
+          new14(L3,M3,N3,O3,P3,Q3,R3,S3,T3,U3,V3,L,S1,A2,B2,C2,D2,X3,Y3,Z3,A4,B4,C4,D4,E4,F4,G4,H4,I4,J4,K4,L4,R1,M4), 
+          new126(X3,Y3,Z3,A4,B4,C4,D4,E4,F4,G4,H4,R1,E2,F2,G2,H2,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,N4,O4,P4,Q4,R4).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,N,O,P,Q,Q1,S,T,U,V,W,X,V,Y,Z,R1,B1,C1,D1,M,E1) :- 
+          B1=0, B1=Q1, S1=0, T1=0, U1=0, V1=0, W1=0, X1=0, Y1=0, Z1=0, A2=0, 
+          B2=0, C2=0, 
+          new11(A,B,C,D,E,F,G,H,I,J,K,Q1,S1,D2,E2,F2,G2,H2,I2,J2,K2,L2,M2,N2,O2,P2), 
+          new12(D2,E2,F2,G2,H2,I2,J2,K2,L2,M2,N2,M,T1,U1,V1,W1,Q2,R2,S2,T2,U2,V2,W2,X2,Y2,Z2,A3,B3,C3,D3,E3,F3), 
+          new13(Q2,R2,S2,T2,U2,V2,W2,X2,Y2,Z2,A3,X1,Y1,G3,H3,I3,J3,K3,L3,M3,N3,O3,P3,Q3,R1,R3), 
+          new130(G3,H3,I3,J3,K3,L3,M3,N3,O3,P3,Q3,L,R1,Z1,A2,B2,C2,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,S3,T3,U3,V3,W3,X3).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,N,O,P,Q,Q1,S,T,U,V,W,X,V,Y,Z,A1,B1,C1,D1,M,E1) :- 
+          B1=0, B1=Q1, R1=0, S1=0, T1=0, U1=0, V1=0, W1=0, X1=0, 
+          new11(A,B,C,D,E,F,G,H,I,J,K,Q1,R1,Y1,Z1,A2,B2,C2,D2,E2,F2,G2,H2,I2,J2,K2), 
+          new12(Y1,Z1,A2,B2,C2,D2,E2,F2,G2,H2,I2,M,S1,T1,U1,V1,L2,M2,N2,O2,P2,Q2,R2,S2,T2,U2,V2,W2,X2,Y2,Z2,A3), 
+          new121(L2,M2,N2,O2,P2,Q2,R2,S2,T2,U2,V2,W1,X1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,B3,C3).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,N,O,P,Q,Q1,S,T,U,V,W,X,V,Y,Z,A1,B1,C1,D1,M,E1) :- 
+          B1=0, B1=Q1, R1=0, S1=0, T1=0, U1=0, V1=0, 
+          new11(A,B,C,D,E,F,G,H,I,J,K,Q1,R1,W1,X1,Y1,Z1,A2,B2,C2,D2,E2,F2,G2,H2,I2), 
+          new135(W1,X1,Y1,Z1,A2,B2,C2,D2,E2,F2,G2,M,S1,T1,U1,V1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,J2,K2,L2,M2,N2).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,N,O,P,Q,Q1,S,T,U,V,W,X,V,Y,Z,A1,B1,C1,D1,M,E1) :- 
+          B1=0, B1=Q1, R1=0, 
+          new136(A,B,C,D,E,F,G,H,I,J,K,Q1,R1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,S1,T1).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,Q1,L,R1,S1,T1,U1,V1,W1,V,X1,Q1,V,X1,Y1,Z1,B1,A2,B2,M,Y1) :- 
+          B1=1, C2=0, D2=0, E2=0, F2=0, L>R1, V1=1, V1=T1, G2=0, H2=0, I2=0, 
+          J2=0, K2=0, L2=0, M2=0, N2=0, O2=0, P2=0, Q2=0, R2=0, S2=0, T2=0, 
+          U2=0, V2=0, W2=0, X2=0, Y2=0, Y1<X1, U1=1, U1=\=0, B2=0, Z2=0, 
+          A3=1042, B3=0, C3=0, D3=0, E3=1000, F3=0, G3=0, H3=0, Q1<A2, S1=1, 
+          I3=0, 
+          new137(A,B,C,D,E,F,G,H,I,J,K,C2,D2,E2,F2,J3,K3,L3,M3,N3,O3,P3,Q3,R3,S3,T3,U3,R1,V3,W3), 
+          new11(J3,K3,L3,M3,N3,O3,P3,Q3,R3,S3,T3,T1,G2,X3,Y3,Z3,A4,B4,C4,D4,E4,F4,G4,H4,I4,J4), 
+          new12(X3,Y3,Z3,A4,B4,C4,D4,E4,F4,G4,H4,M,H2,I2,J2,K2,K4,L4,M4,N4,O4,P4,Q4,R4,S4,T4,U4,V4,W4,X4,Y4,Z4), 
+          new13(K4,L4,M4,N4,O4,P4,Q4,R4,S4,T4,U4,L2,M2,A5,B5,C5,D5,E5,F5,G5,H5,I5,J5,K5,Z1,L5), 
+          new14(A5,B5,C5,D5,E5,F5,G5,H5,I5,J5,K5,L,Z1,N2,O2,P2,Q2,M5,N5,O5,P5,Q5,R5,S5,T5,U5,V5,W5,X5,Y5,Z5,A6,W1,B6), 
+          new15(M5,N5,O5,P5,Q5,R5,S5,T5,U5,V5,W5,W1,R2,S2,T2,U2,C6,D6,E6,F6,G6,H6,I6,J6,K6,L6,M6,N6,O6,P6,Q6,R6), 
+          new13(C6,D6,E6,F6,G6,H6,I6,J6,K6,L6,M6,V2,W2,S6,T6,U6,V6,W6,X6,Y6,Z6,A7,B7,C7,Y1,D7), 
+          new4(S6,T6,U6,V6,W6,X6,Y6,Z6,A7,B7,C7,X2,Y2,E7,F7,G7,H7,I7,J7,K7,L7,M7,N7,O7,X1,P7), 
+          new18(E7,F7,G7,H7,I7,J7,K7,L7,M7,N7,O7,B2,Z2,Q7,R7,S7,T7,U7,V7,W7,X7,Y7,Z7,A8,B8,C8), 
+          new19(Q7,R7,S7,T7,U7,V7,W7,X7,Y7,Z7,A8,A3,B3,C3,D3,D8,E8,F8,G8,H8,I8,J8,K8,L8,M8,N8,O8,Q1,P8,Q8), 
+          new20(D8,E8,F8,G8,H8,I8,J8,K8,L8,M8,N8,E3,F3,G3,H3,R8,S8,T8,U8,V8,W8,X8,Y8,Z8,A9,B9,C9,A2,D9,E9), 
+          new21(R8,S8,T8,U8,V8,W8,X8,Y8,Z8,A9,B9,S1,I3,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,F9,G9).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,Q1,L,R1,S1,T1,U1,V1,W1,V,X1,Q1,V,X1,Y1,Z1,B1,A2,B2,M,Y1) :- 
+          B1=1, C2=0, D2=0, E2=0, F2=0, L>R1, V1=1, V1=T1, G2=0, H2=0, I2=0, 
+          J2=0, K2=0, L2=0, M2=0, N2=0, O2=0, P2=0, Q2=0, R2=0, S2=0, T2=0, 
+          U2=0, V2=0, W2=0, X2=0, Y2=0, Y1<X1, U1=1, U1=\=0, B2=0, Z2=0, 
+          A3=1042, B3=0, C3=0, D3=0, E3=1000, F3=0, G3=0, H3=0, Q1>=A2, S1=0, 
+          I3=0, 
+          new137(A,B,C,D,E,F,G,H,I,J,K,C2,D2,E2,F2,J3,K3,L3,M3,N3,O3,P3,Q3,R3,S3,T3,U3,R1,V3,W3), 
+          new11(J3,K3,L3,M3,N3,O3,P3,Q3,R3,S3,T3,T1,G2,X3,Y3,Z3,A4,B4,C4,D4,E4,F4,G4,H4,I4,J4), 
+          new12(X3,Y3,Z3,A4,B4,C4,D4,E4,F4,G4,H4,M,H2,I2,J2,K2,K4,L4,M4,N4,O4,P4,Q4,R4,S4,T4,U4,V4,W4,X4,Y4,Z4), 
+          new13(K4,L4,M4,N4,O4,P4,Q4,R4,S4,T4,U4,L2,M2,A5,B5,C5,D5,E5,F5,G5,H5,I5,J5,K5,Z1,L5), 
+          new14(A5,B5,C5,D5,E5,F5,G5,H5,I5,J5,K5,L,Z1,N2,O2,P2,Q2,M5,N5,O5,P5,Q5,R5,S5,T5,U5,V5,W5,X5,Y5,Z5,A6,W1,B6), 
+          new15(M5,N5,O5,P5,Q5,R5,S5,T5,U5,V5,W5,W1,R2,S2,T2,U2,C6,D6,E6,F6,G6,H6,I6,J6,K6,L6,M6,N6,O6,P6,Q6,R6), 
+          new13(C6,D6,E6,F6,G6,H6,I6,J6,K6,L6,M6,V2,W2,S6,T6,U6,V6,W6,X6,Y6,Z6,A7,B7,C7,Y1,D7), 
+          new4(S6,T6,U6,V6,W6,X6,Y6,Z6,A7,B7,C7,X2,Y2,E7,F7,G7,H7,I7,J7,K7,L7,M7,N7,O7,X1,P7), 
+          new18(E7,F7,G7,H7,I7,J7,K7,L7,M7,N7,O7,B2,Z2,Q7,R7,S7,T7,U7,V7,W7,X7,Y7,Z7,A8,B8,C8), 
+          new19(Q7,R7,S7,T7,U7,V7,W7,X7,Y7,Z7,A8,A3,B3,C3,D3,D8,E8,F8,G8,H8,I8,J8,K8,L8,M8,N8,O8,Q1,P8,Q8), 
+          new20(D8,E8,F8,G8,H8,I8,J8,K8,L8,M8,N8,E3,F3,G3,H3,R8,S8,T8,U8,V8,W8,X8,Y8,Z8,A9,B9,C9,A2,D9,E9), 
+          new21(R8,S8,T8,U8,V8,W8,X8,Y8,Z8,A9,B9,S1,I3,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,F9,G9).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,Q1,L,R1,Q,S1,T1,U1,V1,V,W1,X,V,W1,X1,Y1,B1,C1,Z1,M,X1) :- 
+          B1=1, A2=0, B2=0, C2=0, D2=0, L>R1, U1=1, U1=S1, E2=0, F2=0, G2=0, 
+          H2=0, I2=0, J2=0, K2=0, L2=0, M2=0, N2=0, O2=0, P2=0, Q2=0, R2=0, 
+          S2=0, T2=0, U2=0, V2=0, W2=0, X1<W1, T1=1, T1=\=0, Z1=0, X2=0, 
+          Y2=1042, Z2=0, A3=0, B3=0, C3=1000, D3=0, E3=0, F3=0, 
+          new137(A,B,C,D,E,F,G,H,I,J,K,A2,B2,C2,D2,G3,H3,I3,J3,K3,L3,M3,N3,O3,P3,Q3,R3,R1,S3,T3), 
+          new11(G3,H3,I3,J3,K3,L3,M3,N3,O3,P3,Q3,S1,E2,U3,V3,W3,X3,Y3,Z3,A4,B4,C4,D4,E4,F4,G4), 
+          new12(U3,V3,W3,X3,Y3,Z3,A4,B4,C4,D4,E4,M,F2,G2,H2,I2,H4,I4,J4,K4,L4,M4,N4,O4,P4,Q4,R4,S4,T4,U4,V4,W4), 
+          new13(H4,I4,J4,K4,L4,M4,N4,O4,P4,Q4,R4,J2,K2,X4,Y4,Z4,A5,B5,C5,D5,E5,F5,G5,H5,Y1,I5), 
+          new14(X4,Y4,Z4,A5,B5,C5,D5,E5,F5,G5,H5,L,Y1,L2,M2,N2,O2,J5,K5,L5,M5,N5,O5,P5,Q5,R5,S5,T5,U5,V5,W5,X5,V1,Y5), 
+          new15(J5,K5,L5,M5,N5,O5,P5,Q5,R5,S5,T5,V1,P2,Q2,R2,S2,Z5,A6,B6,C6,D6,E6,F6,G6,H6,I6,J6,K6,L6,M6,N6,O6), 
+          new13(Z5,A6,B6,C6,D6,E6,F6,G6,H6,I6,J6,T2,U2,P6,Q6,R6,S6,T6,U6,V6,W6,X6,Y6,Z6,X1,A7), 
+          new4(P6,Q6,R6,S6,T6,U6,V6,W6,X6,Y6,Z6,V2,W2,B7,C7,D7,E7,F7,G7,H7,I7,J7,K7,L7,W1,M7), 
+          new18(B7,C7,D7,E7,F7,G7,H7,I7,J7,K7,L7,Z1,X2,N7,O7,P7,Q7,R7,S7,T7,U7,V7,W7,X7,Y7,Z7), 
+          new19(N7,O7,P7,Q7,R7,S7,T7,U7,V7,W7,X7,Y2,Z2,A3,B3,A8,B8,C8,D8,E8,F8,G8,H8,I8,J8,K8,L8,Q1,M8,N8), 
+          new42(A8,B8,C8,D8,E8,F8,G8,H8,I8,J8,K8,C3,D3,E3,F3,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,O8,P8,Q8,R8).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,N,L,Q1,Q,R1,S1,T1,U1,V,V1,X,V,V1,W1,X1,B1,C1,Y1,M,W1) :- 
+          B1=1, Z1=0, A2=0, B2=0, C2=0, L>Q1, T1=1, T1=R1, D2=0, E2=0, F2=0, 
+          G2=0, H2=0, I2=0, J2=0, K2=0, L2=0, M2=0, N2=0, O2=0, P2=0, Q2=0, 
+          R2=0, S2=0, T2=0, U2=0, V2=0, W1<V1, S1=1, S1=\=0, Y1=0, W2=0, 
+          X2=1042, Y2=0, Z2=0, A3=0, 
+          new137(A,B,C,D,E,F,G,H,I,J,K,Z1,A2,B2,C2,B3,C3,D3,E3,F3,G3,H3,I3,J3,K3,L3,M3,Q1,N3,O3), 
+          new11(B3,C3,D3,E3,F3,G3,H3,I3,J3,K3,L3,R1,D2,P3,Q3,R3,S3,T3,U3,V3,W3,X3,Y3,Z3,A4,B4), 
+          new12(P3,Q3,R3,S3,T3,U3,V3,W3,X3,Y3,Z3,M,E2,F2,G2,H2,C4,D4,E4,F4,G4,H4,I4,J4,K4,L4,M4,N4,O4,P4,Q4,R4), 
+          new13(C4,D4,E4,F4,G4,H4,I4,J4,K4,L4,M4,I2,J2,S4,T4,U4,V4,W4,X4,Y4,Z4,A5,B5,C5,X1,D5), 
+          new14(S4,T4,U4,V4,W4,X4,Y4,Z4,A5,B5,C5,L,X1,K2,L2,M2,N2,E5,F5,G5,H5,I5,J5,K5,L5,M5,N5,O5,P5,Q5,R5,S5,U1,T5), 
+          new15(E5,F5,G5,H5,I5,J5,K5,L5,M5,N5,O5,U1,O2,P2,Q2,R2,U5,V5,W5,X5,Y5,Z5,A6,B6,C6,D6,E6,F6,G6,H6,I6,J6), 
+          new13(U5,V5,W5,X5,Y5,Z5,A6,B6,C6,D6,E6,S2,T2,K6,L6,M6,N6,O6,P6,Q6,R6,S6,T6,U6,W1,V6), 
+          new4(K6,L6,M6,N6,O6,P6,Q6,R6,S6,T6,U6,U2,V2,W6,X6,Y6,Z6,A7,B7,C7,D7,E7,F7,G7,V1,H7), 
+          new18(W6,X6,Y6,Z6,A7,B7,C7,D7,E7,F7,G7,Y1,W2,I7,J7,K7,L7,M7,N7,O7,P7,Q7,R7,S7,T7,U7), 
+          new51(I7,J7,K7,L7,M7,N7,O7,P7,Q7,R7,S7,X2,Y2,Z2,A3,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,V7,W7,X7,Y7).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,N,L,Q1,Q,R1,S1,T1,U1,V,V1,X,V,V1,W1,X1,B1,C1,Y1,M,W1) :- 
+          B1=1, Z1=0, A2=0, B2=0, C2=0, L>Q1, T1=1, T1=R1, D2=0, E2=0, F2=0, 
+          G2=0, H2=0, I2=0, J2=0, K2=0, L2=0, M2=0, N2=0, O2=0, P2=0, Q2=0, 
+          R2=0, S2=0, T2=0, U2=0, V2=0, W1<V1, S1=1, S1=\=0, Y1=0, W2=0, 
+          new137(A,B,C,D,E,F,G,H,I,J,K,Z1,A2,B2,C2,X2,Y2,Z2,A3,B3,C3,D3,E3,F3,G3,H3,I3,Q1,J3,K3), 
+          new11(X2,Y2,Z2,A3,B3,C3,D3,E3,F3,G3,H3,R1,D2,L3,M3,N3,O3,P3,Q3,R3,S3,T3,U3,V3,W3,X3), 
+          new12(L3,M3,N3,O3,P3,Q3,R3,S3,T3,U3,V3,M,E2,F2,G2,H2,Y3,Z3,A4,B4,C4,D4,E4,F4,G4,H4,I4,J4,K4,L4,M4,N4), 
+          new13(Y3,Z3,A4,B4,C4,D4,E4,F4,G4,H4,I4,I2,J2,O4,P4,Q4,R4,S4,T4,U4,V4,W4,X4,Y4,X1,Z4), 
+          new14(O4,P4,Q4,R4,S4,T4,U4,V4,W4,X4,Y4,L,X1,K2,L2,M2,N2,A5,B5,C5,D5,E5,F5,G5,H5,I5,J5,K5,L5,M5,N5,O5,U1,P5), 
+          new15(A5,B5,C5,D5,E5,F5,G5,H5,I5,J5,K5,U1,O2,P2,Q2,R2,Q5,R5,S5,T5,U5,V5,W5,X5,Y5,Z5,A6,B6,C6,D6,E6,F6), 
+          new13(Q5,R5,S5,T5,U5,V5,W5,X5,Y5,Z5,A6,S2,T2,G6,H6,I6,J6,K6,L6,M6,N6,O6,P6,Q6,W1,R6), 
+          new4(G6,H6,I6,J6,K6,L6,M6,N6,O6,P6,Q6,U2,V2,S6,T6,U6,V6,W6,X6,Y6,Z6,A7,B7,C7,V1,D7), 
+          new21(S6,T6,U6,V6,W6,X6,Y6,Z6,A7,B7,C7,Y1,W2,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,E7,F7).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,Q1,L,R1,S1,T1,U1,V1,W1,V,X1,Q1,V,X1,Y1,Z1,B1,A2,B2,M,Y1) :- 
+          B1=1, C2=0, D2=0, E2=0, F2=0, L>R1, V1=1, V1=T1, G2=0, H2=0, I2=0, 
+          J2=0, K2=0, L2=0, M2=0, N2=0, O2=0, P2=0, Q2=0, R2=0, S2=0, T2=0, 
+          U2=0, V2=0, W2=0, X2=0, Y2=0, Y1>=X1, U1=0, U1=0, B2=1, Z2=0, 
+          A3=1042, B3=0, C3=0, D3=0, E3=1000, F3=0, G3=0, H3=0, Q1<A2, S1=1, 
+          I3=0, 
+          new137(A,B,C,D,E,F,G,H,I,J,K,C2,D2,E2,F2,J3,K3,L3,M3,N3,O3,P3,Q3,R3,S3,T3,U3,R1,V3,W3), 
+          new11(J3,K3,L3,M3,N3,O3,P3,Q3,R3,S3,T3,T1,G2,X3,Y3,Z3,A4,B4,C4,D4,E4,F4,G4,H4,I4,J4), 
+          new12(X3,Y3,Z3,A4,B4,C4,D4,E4,F4,G4,H4,M,H2,I2,J2,K2,K4,L4,M4,N4,O4,P4,Q4,R4,S4,T4,U4,V4,W4,X4,Y4,Z4), 
+          new13(K4,L4,M4,N4,O4,P4,Q4,R4,S4,T4,U4,L2,M2,A5,B5,C5,D5,E5,F5,G5,H5,I5,J5,K5,Z1,L5), 
+          new14(A5,B5,C5,D5,E5,F5,G5,H5,I5,J5,K5,L,Z1,N2,O2,P2,Q2,M5,N5,O5,P5,Q5,R5,S5,T5,U5,V5,W5,X5,Y5,Z5,A6,W1,B6), 
+          new15(M5,N5,O5,P5,Q5,R5,S5,T5,U5,V5,W5,W1,R2,S2,T2,U2,C6,D6,E6,F6,G6,H6,I6,J6,K6,L6,M6,N6,O6,P6,Q6,R6), 
+          new13(C6,D6,E6,F6,G6,H6,I6,J6,K6,L6,M6,V2,W2,S6,T6,U6,V6,W6,X6,Y6,Z6,A7,B7,C7,Y1,D7), 
+          new4(S6,T6,U6,V6,W6,X6,Y6,Z6,A7,B7,C7,X2,Y2,E7,F7,G7,H7,I7,J7,K7,L7,M7,N7,O7,X1,P7), 
+          new18(E7,F7,G7,H7,I7,J7,K7,L7,M7,N7,O7,B2,Z2,Q7,R7,S7,T7,U7,V7,W7,X7,Y7,Z7,A8,B8,C8), 
+          new19(Q7,R7,S7,T7,U7,V7,W7,X7,Y7,Z7,A8,A3,B3,C3,D3,D8,E8,F8,G8,H8,I8,J8,K8,L8,M8,N8,O8,Q1,P8,Q8), 
+          new20(D8,E8,F8,G8,H8,I8,J8,K8,L8,M8,N8,E3,F3,G3,H3,R8,S8,T8,U8,V8,W8,X8,Y8,Z8,A9,B9,C9,A2,D9,E9), 
+          new21(R8,S8,T8,U8,V8,W8,X8,Y8,Z8,A9,B9,S1,I3,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,F9,G9).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,Q1,L,R1,S1,T1,U1,V1,W1,V,X1,Q1,V,X1,Y1,Z1,B1,A2,B2,M,Y1) :- 
+          B1=1, C2=0, D2=0, E2=0, F2=0, L>R1, V1=1, V1=T1, G2=0, H2=0, I2=0, 
+          J2=0, K2=0, L2=0, M2=0, N2=0, O2=0, P2=0, Q2=0, R2=0, S2=0, T2=0, 
+          U2=0, V2=0, W2=0, X2=0, Y2=0, Y1>=X1, U1=0, U1=0, B2=1, Z2=0, 
+          A3=1042, B3=0, C3=0, D3=0, E3=1000, F3=0, G3=0, H3=0, Q1>=A2, S1=0, 
+          I3=0, 
+          new137(A,B,C,D,E,F,G,H,I,J,K,C2,D2,E2,F2,J3,K3,L3,M3,N3,O3,P3,Q3,R3,S3,T3,U3,R1,V3,W3), 
+          new11(J3,K3,L3,M3,N3,O3,P3,Q3,R3,S3,T3,T1,G2,X3,Y3,Z3,A4,B4,C4,D4,E4,F4,G4,H4,I4,J4), 
+          new12(X3,Y3,Z3,A4,B4,C4,D4,E4,F4,G4,H4,M,H2,I2,J2,K2,K4,L4,M4,N4,O4,P4,Q4,R4,S4,T4,U4,V4,W4,X4,Y4,Z4), 
+          new13(K4,L4,M4,N4,O4,P4,Q4,R4,S4,T4,U4,L2,M2,A5,B5,C5,D5,E5,F5,G5,H5,I5,J5,K5,Z1,L5), 
+          new14(A5,B5,C5,D5,E5,F5,G5,H5,I5,J5,K5,L,Z1,N2,O2,P2,Q2,M5,N5,O5,P5,Q5,R5,S5,T5,U5,V5,W5,X5,Y5,Z5,A6,W1,B6), 
+          new15(M5,N5,O5,P5,Q5,R5,S5,T5,U5,V5,W5,W1,R2,S2,T2,U2,C6,D6,E6,F6,G6,H6,I6,J6,K6,L6,M6,N6,O6,P6,Q6,R6), 
+          new13(C6,D6,E6,F6,G6,H6,I6,J6,K6,L6,M6,V2,W2,S6,T6,U6,V6,W6,X6,Y6,Z6,A7,B7,C7,Y1,D7), 
+          new4(S6,T6,U6,V6,W6,X6,Y6,Z6,A7,B7,C7,X2,Y2,E7,F7,G7,H7,I7,J7,K7,L7,M7,N7,O7,X1,P7), 
+          new18(E7,F7,G7,H7,I7,J7,K7,L7,M7,N7,O7,B2,Z2,Q7,R7,S7,T7,U7,V7,W7,X7,Y7,Z7,A8,B8,C8), 
+          new19(Q7,R7,S7,T7,U7,V7,W7,X7,Y7,Z7,A8,A3,B3,C3,D3,D8,E8,F8,G8,H8,I8,J8,K8,L8,M8,N8,O8,Q1,P8,Q8), 
+          new20(D8,E8,F8,G8,H8,I8,J8,K8,L8,M8,N8,E3,F3,G3,H3,R8,S8,T8,U8,V8,W8,X8,Y8,Z8,A9,B9,C9,A2,D9,E9), 
+          new21(R8,S8,T8,U8,V8,W8,X8,Y8,Z8,A9,B9,S1,I3,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,F9,G9).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,Q1,L,R1,Q,S1,T1,U1,V1,V,W1,X,V,W1,X1,Y1,B1,C1,Z1,M,X1) :- 
+          B1=1, A2=0, B2=0, C2=0, D2=0, L>R1, U1=1, U1=S1, E2=0, F2=0, G2=0, 
+          H2=0, I2=0, J2=0, K2=0, L2=0, M2=0, N2=0, O2=0, P2=0, Q2=0, R2=0, 
+          S2=0, T2=0, U2=0, V2=0, W2=0, X1>=W1, T1=0, T1=0, Z1=1, X2=0, 
+          Y2=1042, Z2=0, A3=0, B3=0, C3=1000, D3=0, E3=0, F3=0, 
+          new137(A,B,C,D,E,F,G,H,I,J,K,A2,B2,C2,D2,G3,H3,I3,J3,K3,L3,M3,N3,O3,P3,Q3,R3,R1,S3,T3), 
+          new11(G3,H3,I3,J3,K3,L3,M3,N3,O3,P3,Q3,S1,E2,U3,V3,W3,X3,Y3,Z3,A4,B4,C4,D4,E4,F4,G4), 
+          new12(U3,V3,W3,X3,Y3,Z3,A4,B4,C4,D4,E4,M,F2,G2,H2,I2,H4,I4,J4,K4,L4,M4,N4,O4,P4,Q4,R4,S4,T4,U4,V4,W4), 
+          new13(H4,I4,J4,K4,L4,M4,N4,O4,P4,Q4,R4,J2,K2,X4,Y4,Z4,A5,B5,C5,D5,E5,F5,G5,H5,Y1,I5), 
+          new14(X4,Y4,Z4,A5,B5,C5,D5,E5,F5,G5,H5,L,Y1,L2,M2,N2,O2,J5,K5,L5,M5,N5,O5,P5,Q5,R5,S5,T5,U5,V5,W5,X5,V1,Y5), 
+          new15(J5,K5,L5,M5,N5,O5,P5,Q5,R5,S5,T5,V1,P2,Q2,R2,S2,Z5,A6,B6,C6,D6,E6,F6,G6,H6,I6,J6,K6,L6,M6,N6,O6), 
+          new13(Z5,A6,B6,C6,D6,E6,F6,G6,H6,I6,J6,T2,U2,P6,Q6,R6,S6,T6,U6,V6,W6,X6,Y6,Z6,X1,A7), 
+          new4(P6,Q6,R6,S6,T6,U6,V6,W6,X6,Y6,Z6,V2,W2,B7,C7,D7,E7,F7,G7,H7,I7,J7,K7,L7,W1,M7), 
+          new18(B7,C7,D7,E7,F7,G7,H7,I7,J7,K7,L7,Z1,X2,N7,O7,P7,Q7,R7,S7,T7,U7,V7,W7,X7,Y7,Z7), 
+          new19(N7,O7,P7,Q7,R7,S7,T7,U7,V7,W7,X7,Y2,Z2,A3,B3,A8,B8,C8,D8,E8,F8,G8,H8,I8,J8,K8,L8,Q1,M8,N8), 
+          new42(A8,B8,C8,D8,E8,F8,G8,H8,I8,J8,K8,C3,D3,E3,F3,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,O8,P8,Q8,R8).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,N,L,Q1,Q,R1,S1,T1,U1,V,V1,X,V,V1,W1,X1,B1,C1,Y1,M,W1) :- 
+          B1=1, Z1=0, A2=0, B2=0, C2=0, L>Q1, T1=1, T1=R1, D2=0, E2=0, F2=0, 
+          G2=0, H2=0, I2=0, J2=0, K2=0, L2=0, M2=0, N2=0, O2=0, P2=0, Q2=0, 
+          R2=0, S2=0, T2=0, U2=0, V2=0, W1>=V1, S1=0, S1=0, Y1=1, W2=0, 
+          X2=1042, Y2=0, Z2=0, A3=0, 
+          new137(A,B,C,D,E,F,G,H,I,J,K,Z1,A2,B2,C2,B3,C3,D3,E3,F3,G3,H3,I3,J3,K3,L3,M3,Q1,N3,O3), 
+          new11(B3,C3,D3,E3,F3,G3,H3,I3,J3,K3,L3,R1,D2,P3,Q3,R3,S3,T3,U3,V3,W3,X3,Y3,Z3,A4,B4), 
+          new12(P3,Q3,R3,S3,T3,U3,V3,W3,X3,Y3,Z3,M,E2,F2,G2,H2,C4,D4,E4,F4,G4,H4,I4,J4,K4,L4,M4,N4,O4,P4,Q4,R4), 
+          new13(C4,D4,E4,F4,G4,H4,I4,J4,K4,L4,M4,I2,J2,S4,T4,U4,V4,W4,X4,Y4,Z4,A5,B5,C5,X1,D5), 
+          new14(S4,T4,U4,V4,W4,X4,Y4,Z4,A5,B5,C5,L,X1,K2,L2,M2,N2,E5,F5,G5,H5,I5,J5,K5,L5,M5,N5,O5,P5,Q5,R5,S5,U1,T5), 
+          new15(E5,F5,G5,H5,I5,J5,K5,L5,M5,N5,O5,U1,O2,P2,Q2,R2,U5,V5,W5,X5,Y5,Z5,A6,B6,C6,D6,E6,F6,G6,H6,I6,J6), 
+          new13(U5,V5,W5,X5,Y5,Z5,A6,B6,C6,D6,E6,S2,T2,K6,L6,M6,N6,O6,P6,Q6,R6,S6,T6,U6,W1,V6), 
+          new4(K6,L6,M6,N6,O6,P6,Q6,R6,S6,T6,U6,U2,V2,W6,X6,Y6,Z6,A7,B7,C7,D7,E7,F7,G7,V1,H7), 
+          new18(W6,X6,Y6,Z6,A7,B7,C7,D7,E7,F7,G7,Y1,W2,I7,J7,K7,L7,M7,N7,O7,P7,Q7,R7,S7,T7,U7), 
+          new51(I7,J7,K7,L7,M7,N7,O7,P7,Q7,R7,S7,X2,Y2,Z2,A3,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,V7,W7,X7,Y7).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,N,L,Q1,Q,R1,S1,T1,U1,V,V1,X,V,V1,W1,X1,B1,C1,Y1,M,W1) :- 
+          B1=1, Z1=0, A2=0, B2=0, C2=0, L>Q1, T1=1, T1=R1, D2=0, E2=0, F2=0, 
+          G2=0, H2=0, I2=0, J2=0, K2=0, L2=0, M2=0, N2=0, O2=0, P2=0, Q2=0, 
+          R2=0, S2=0, T2=0, U2=0, V2=0, W1>=V1, S1=0, S1=0, Y1=1, W2=0, 
+          new137(A,B,C,D,E,F,G,H,I,J,K,Z1,A2,B2,C2,X2,Y2,Z2,A3,B3,C3,D3,E3,F3,G3,H3,I3,Q1,J3,K3), 
+          new11(X2,Y2,Z2,A3,B3,C3,D3,E3,F3,G3,H3,R1,D2,L3,M3,N3,O3,P3,Q3,R3,S3,T3,U3,V3,W3,X3), 
+          new12(L3,M3,N3,O3,P3,Q3,R3,S3,T3,U3,V3,M,E2,F2,G2,H2,Y3,Z3,A4,B4,C4,D4,E4,F4,G4,H4,I4,J4,K4,L4,M4,N4), 
+          new13(Y3,Z3,A4,B4,C4,D4,E4,F4,G4,H4,I4,I2,J2,O4,P4,Q4,R4,S4,T4,U4,V4,W4,X4,Y4,X1,Z4), 
+          new14(O4,P4,Q4,R4,S4,T4,U4,V4,W4,X4,Y4,L,X1,K2,L2,M2,N2,A5,B5,C5,D5,E5,F5,G5,H5,I5,J5,K5,L5,M5,N5,O5,U1,P5), 
+          new15(A5,B5,C5,D5,E5,F5,G5,H5,I5,J5,K5,U1,O2,P2,Q2,R2,Q5,R5,S5,T5,U5,V5,W5,X5,Y5,Z5,A6,B6,C6,D6,E6,F6), 
+          new13(Q5,R5,S5,T5,U5,V5,W5,X5,Y5,Z5,A6,S2,T2,G6,H6,I6,J6,K6,L6,M6,N6,O6,P6,Q6,W1,R6), 
+          new4(G6,H6,I6,J6,K6,L6,M6,N6,O6,P6,Q6,U2,V2,S6,T6,U6,V6,W6,X6,Y6,Z6,A7,B7,C7,V1,D7), 
+          new21(S6,T6,U6,V6,W6,X6,Y6,Z6,A7,B7,C7,Y1,W2,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,E7,F7).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,N,L,Q1,Q,R1,S,S1,T1,V,W,X,V,Y,Z,U1,B1,C1,D1,M,V1) :- 
+          B1=1, W1=0, X1=0, Y1=0, Z1=0, L>Q1, S1=1, S1=R1, A2=0, B2=0, C2=0, 
+          D2=0, E2=0, F2=0, G2=0, H2=0, I2=0, J2=0, K2=0, L2=0, M2=0, N2=0, 
+          O2=0, P2=0, Q2=0, R2=0, S2=0, 
+          new137(A,B,C,D,E,F,G,H,I,J,K,W1,X1,Y1,Z1,T2,U2,V2,W2,X2,Y2,Z2,A3,B3,C3,D3,E3,Q1,F3,G3), 
+          new11(T2,U2,V2,W2,X2,Y2,Z2,A3,B3,C3,D3,R1,A2,H3,I3,J3,K3,L3,M3,N3,O3,P3,Q3,R3,S3,T3), 
+          new12(H3,I3,J3,K3,L3,M3,N3,O3,P3,Q3,R3,M,B2,C2,D2,E2,U3,V3,W3,X3,Y3,Z3,A4,B4,C4,D4,E4,F4,G4,H4,I4,J4), 
+          new13(U3,V3,W3,X3,Y3,Z3,A4,B4,C4,D4,E4,F2,G2,K4,L4,M4,N4,O4,P4,Q4,R4,S4,T4,U4,U1,V4), 
+          new14(K4,L4,M4,N4,O4,P4,Q4,R4,S4,T4,U4,L,U1,H2,I2,J2,K2,W4,X4,Y4,Z4,A5,B5,C5,D5,E5,F5,G5,H5,I5,J5,K5,T1,L5), 
+          new15(W4,X4,Y4,Z4,A5,B5,C5,D5,E5,F5,G5,T1,L2,M2,N2,O2,M5,N5,O5,P5,Q5,R5,S5,T5,U5,V5,W5,X5,Y5,Z5,A6,B6), 
+          new13(M5,N5,O5,P5,Q5,R5,S5,T5,U5,V5,W5,P2,Q2,C6,D6,E6,F6,G6,H6,I6,J6,K6,L6,M6,V1,N6), 
+          new8(C6,D6,E6,F6,G6,H6,I6,J6,K6,L6,M6,R2,S2,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,O6,P6).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,N,L,Q1,Q,R1,S,S1,T1,V,W,X,V,Y,Z,U1,B1,C1,D1,M,E1) :- 
+          B1=1, V1=0, W1=0, X1=0, Y1=0, L>Q1, S1=1, S1=R1, Z1=0, A2=0, B2=0, 
+          C2=0, D2=0, E2=0, F2=0, G2=0, H2=0, I2=0, J2=0, K2=0, L2=0, M2=0, 
+          N2=0, O2=0, P2=0, 
+          new137(A,B,C,D,E,F,G,H,I,J,K,V1,W1,X1,Y1,Q2,R2,S2,T2,U2,V2,W2,X2,Y2,Z2,A3,B3,Q1,C3,D3), 
+          new11(Q2,R2,S2,T2,U2,V2,W2,X2,Y2,Z2,A3,R1,Z1,E3,F3,G3,H3,I3,J3,K3,L3,M3,N3,O3,P3,Q3), 
+          new12(E3,F3,G3,H3,I3,J3,K3,L3,M3,N3,O3,M,A2,B2,C2,D2,R3,S3,T3,U3,V3,W3,X3,Y3,Z3,A4,B4,C4,D4,E4,F4,G4), 
+          new13(R3,S3,T3,U3,V3,W3,X3,Y3,Z3,A4,B4,E2,F2,H4,I4,J4,K4,L4,M4,N4,O4,P4,Q4,R4,U1,S4), 
+          new14(H4,I4,J4,K4,L4,M4,N4,O4,P4,Q4,R4,L,U1,G2,H2,I2,J2,T4,U4,V4,W4,X4,Y4,Z4,A5,B5,C5,D5,E5,F5,G5,H5,T1,I5), 
+          new15(T4,U4,V4,W4,X4,Y4,Z4,A5,B5,C5,D5,T1,K2,L2,M2,N2,J5,K5,L5,M5,N5,O5,P5,Q5,R5,S5,T5,U5,V5,W5,X5,Y5), 
+          new121(J5,K5,L5,M5,N5,O5,P5,Q5,R5,S5,T5,O2,P2,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,Z5,A6).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,N,L,Q1,Q,R1,S,S1,T1,V,W,X,V,Y,Z,U1,B1,C1,D1,M,E1) :- 
+          B1=1, V1=0, W1=0, X1=0, Y1=0, L>Q1, S1=1, S1=R1, Z1=0, A2=0, B2=0, 
+          C2=0, D2=0, E2=0, F2=0, G2=0, H2=0, I2=0, J2=0, K2=0, L2=0, M2=0, 
+          N2=0, 
+          new137(A,B,C,D,E,F,G,H,I,J,K,V1,W1,X1,Y1,O2,P2,Q2,R2,S2,T2,U2,V2,W2,X2,Y2,Z2,Q1,A3,B3), 
+          new11(O2,P2,Q2,R2,S2,T2,U2,V2,W2,X2,Y2,R1,Z1,C3,D3,E3,F3,G3,H3,I3,J3,K3,L3,M3,N3,O3), 
+          new12(C3,D3,E3,F3,G3,H3,I3,J3,K3,L3,M3,M,A2,B2,C2,D2,P3,Q3,R3,S3,T3,U3,V3,W3,X3,Y3,Z3,A4,B4,C4,D4,E4), 
+          new13(P3,Q3,R3,S3,T3,U3,V3,W3,X3,Y3,Z3,E2,F2,F4,G4,H4,I4,J4,K4,L4,M4,N4,O4,P4,U1,Q4), 
+          new14(F4,G4,H4,I4,J4,K4,L4,M4,N4,O4,P4,L,U1,G2,H2,I2,J2,R4,S4,T4,U4,V4,W4,X4,Y4,Z4,A5,B5,C5,D5,E5,F5,T1,G5), 
+          new126(R4,S4,T4,U4,V4,W4,X4,Y4,Z4,A5,B5,T1,K2,L2,M2,N2,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,H5,I5,J5,K5,L5).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,N,L,Q1,Q,R1,S,S1,U,V,W,X,V,Y,Z,T1,B1,C1,D1,M,E1) :- 
+          B1=1, U1=0, V1=0, W1=0, X1=0, L>Q1, S1=1, S1=R1, Y1=0, Z1=0, A2=0, 
+          B2=0, C2=0, D2=0, E2=0, F2=0, G2=0, H2=0, I2=0, 
+          new137(A,B,C,D,E,F,G,H,I,J,K,U1,V1,W1,X1,J2,K2,L2,M2,N2,O2,P2,Q2,R2,S2,T2,U2,Q1,V2,W2), 
+          new11(J2,K2,L2,M2,N2,O2,P2,Q2,R2,S2,T2,R1,Y1,X2,Y2,Z2,A3,B3,C3,D3,E3,F3,G3,H3,I3,J3), 
+          new12(X2,Y2,Z2,A3,B3,C3,D3,E3,F3,G3,H3,M,Z1,A2,B2,C2,K3,L3,M3,N3,O3,P3,Q3,R3,S3,T3,U3,V3,W3,X3,Y3,Z3), 
+          new13(K3,L3,M3,N3,O3,P3,Q3,R3,S3,T3,U3,D2,E2,A4,B4,C4,D4,E4,F4,G4,H4,I4,J4,K4,T1,L4), 
+          new130(A4,B4,C4,D4,E4,F4,G4,H4,I4,J4,K4,L,T1,F2,G2,H2,I2,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,M4,N4,O4,P4,Q4,R4).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,N,L,Q1,Q,R1,S,S1,U,V,W,X,V,Y,Z,A1,B1,C1,D1,M,E1) :- 
+          B1=1, T1=0, U1=0, V1=0, W1=0, L>Q1, S1=1, S1=R1, X1=0, Y1=0, Z1=0, 
+          A2=0, B2=0, C2=0, D2=0, 
+          new137(A,B,C,D,E,F,G,H,I,J,K,T1,U1,V1,W1,E2,F2,G2,H2,I2,J2,K2,L2,M2,N2,O2,P2,Q1,Q2,R2), 
+          new11(E2,F2,G2,H2,I2,J2,K2,L2,M2,N2,O2,R1,X1,S2,T2,U2,V2,W2,X2,Y2,Z2,A3,B3,C3,D3,E3), 
+          new12(S2,T2,U2,V2,W2,X2,Y2,Z2,A3,B3,C3,M,Y1,Z1,A2,B2,F3,G3,H3,I3,J3,K3,L3,M3,N3,O3,P3,Q3,R3,S3,T3,U3), 
+          new121(F3,G3,H3,I3,J3,K3,L3,M3,N3,O3,P3,C2,D2,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,V3,W3).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,N,L,Q1,Q,R1,S,S1,U,V,W,X,V,Y,Z,A1,B1,C1,D1,M,E1) :- 
+          B1=1, T1=0, U1=0, V1=0, W1=0, L>Q1, S1=1, S1=R1, X1=0, Y1=0, Z1=0, 
+          A2=0, B2=0, 
+          new137(A,B,C,D,E,F,G,H,I,J,K,T1,U1,V1,W1,C2,D2,E2,F2,G2,H2,I2,J2,K2,L2,M2,N2,Q1,O2,P2), 
+          new11(C2,D2,E2,F2,G2,H2,I2,J2,K2,L2,M2,R1,X1,Q2,R2,S2,T2,U2,V2,W2,X2,Y2,Z2,A3,B3,C3), 
+          new135(Q2,R2,S2,T2,U2,V2,W2,X2,Y2,Z2,A3,M,Y1,Z1,A2,B2,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,D3,E3,F3,G3,H3).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,N,L,Q1,Q,R1,S,S1,U,V,W,X,V,Y,Z,A1,B1,C1,D1,M,E1) :- 
+          B1=1, T1=0, U1=0, V1=0, W1=0, L>Q1, S1=1, S1=R1, X1=0, 
+          new137(A,B,C,D,E,F,G,H,I,J,K,T1,U1,V1,W1,Y1,Z1,A2,B2,C2,D2,E2,F2,G2,H2,I2,J2,Q1,K2,L2), 
+          new136(Y1,Z1,A2,B2,C2,D2,E2,F2,G2,H2,I2,R1,X1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,M2,N2).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,Q1,L,R1,S1,T1,U1,V1,W1,V,X1,Q1,V,X1,Y1,Z1,B1,A2,B2,M,Y1) :- 
+          B1=1, C2=0, D2=0, E2=0, F2=0, L=<R1, V1=0, V1=T1, G2=0, H2=0, I2=0, 
+          J2=0, K2=0, L2=0, M2=0, N2=0, O2=0, P2=0, Q2=0, R2=0, S2=0, T2=0, 
+          U2=0, V2=0, W2=0, X2=0, Y2=0, Y1<X1, U1=1, U1=\=0, B2=0, Z2=0, 
+          A3=1042, B3=0, C3=0, D3=0, E3=1000, F3=0, G3=0, H3=0, Q1<A2, S1=1, 
+          I3=0, 
+          new137(A,B,C,D,E,F,G,H,I,J,K,C2,D2,E2,F2,J3,K3,L3,M3,N3,O3,P3,Q3,R3,S3,T3,U3,R1,V3,W3), 
+          new11(J3,K3,L3,M3,N3,O3,P3,Q3,R3,S3,T3,T1,G2,X3,Y3,Z3,A4,B4,C4,D4,E4,F4,G4,H4,I4,J4), 
+          new12(X3,Y3,Z3,A4,B4,C4,D4,E4,F4,G4,H4,M,H2,I2,J2,K2,K4,L4,M4,N4,O4,P4,Q4,R4,S4,T4,U4,V4,W4,X4,Y4,Z4), 
+          new13(K4,L4,M4,N4,O4,P4,Q4,R4,S4,T4,U4,L2,M2,A5,B5,C5,D5,E5,F5,G5,H5,I5,J5,K5,Z1,L5), 
+          new14(A5,B5,C5,D5,E5,F5,G5,H5,I5,J5,K5,L,Z1,N2,O2,P2,Q2,M5,N5,O5,P5,Q5,R5,S5,T5,U5,V5,W5,X5,Y5,Z5,A6,W1,B6), 
+          new15(M5,N5,O5,P5,Q5,R5,S5,T5,U5,V5,W5,W1,R2,S2,T2,U2,C6,D6,E6,F6,G6,H6,I6,J6,K6,L6,M6,N6,O6,P6,Q6,R6), 
+          new13(C6,D6,E6,F6,G6,H6,I6,J6,K6,L6,M6,V2,W2,S6,T6,U6,V6,W6,X6,Y6,Z6,A7,B7,C7,Y1,D7), 
+          new4(S6,T6,U6,V6,W6,X6,Y6,Z6,A7,B7,C7,X2,Y2,E7,F7,G7,H7,I7,J7,K7,L7,M7,N7,O7,X1,P7), 
+          new18(E7,F7,G7,H7,I7,J7,K7,L7,M7,N7,O7,B2,Z2,Q7,R7,S7,T7,U7,V7,W7,X7,Y7,Z7,A8,B8,C8), 
+          new19(Q7,R7,S7,T7,U7,V7,W7,X7,Y7,Z7,A8,A3,B3,C3,D3,D8,E8,F8,G8,H8,I8,J8,K8,L8,M8,N8,O8,Q1,P8,Q8), 
+          new20(D8,E8,F8,G8,H8,I8,J8,K8,L8,M8,N8,E3,F3,G3,H3,R8,S8,T8,U8,V8,W8,X8,Y8,Z8,A9,B9,C9,A2,D9,E9), 
+          new21(R8,S8,T8,U8,V8,W8,X8,Y8,Z8,A9,B9,S1,I3,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,F9,G9).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,Q1,L,R1,S1,T1,U1,V1,W1,V,X1,Q1,V,X1,Y1,Z1,B1,A2,B2,M,Y1) :- 
+          B1=1, C2=0, D2=0, E2=0, F2=0, L=<R1, V1=0, V1=T1, G2=0, H2=0, I2=0, 
+          J2=0, K2=0, L2=0, M2=0, N2=0, O2=0, P2=0, Q2=0, R2=0, S2=0, T2=0, 
+          U2=0, V2=0, W2=0, X2=0, Y2=0, Y1<X1, U1=1, U1=\=0, B2=0, Z2=0, 
+          A3=1042, B3=0, C3=0, D3=0, E3=1000, F3=0, G3=0, H3=0, Q1>=A2, S1=0, 
+          I3=0, 
+          new137(A,B,C,D,E,F,G,H,I,J,K,C2,D2,E2,F2,J3,K3,L3,M3,N3,O3,P3,Q3,R3,S3,T3,U3,R1,V3,W3), 
+          new11(J3,K3,L3,M3,N3,O3,P3,Q3,R3,S3,T3,T1,G2,X3,Y3,Z3,A4,B4,C4,D4,E4,F4,G4,H4,I4,J4), 
+          new12(X3,Y3,Z3,A4,B4,C4,D4,E4,F4,G4,H4,M,H2,I2,J2,K2,K4,L4,M4,N4,O4,P4,Q4,R4,S4,T4,U4,V4,W4,X4,Y4,Z4), 
+          new13(K4,L4,M4,N4,O4,P4,Q4,R4,S4,T4,U4,L2,M2,A5,B5,C5,D5,E5,F5,G5,H5,I5,J5,K5,Z1,L5), 
+          new14(A5,B5,C5,D5,E5,F5,G5,H5,I5,J5,K5,L,Z1,N2,O2,P2,Q2,M5,N5,O5,P5,Q5,R5,S5,T5,U5,V5,W5,X5,Y5,Z5,A6,W1,B6), 
+          new15(M5,N5,O5,P5,Q5,R5,S5,T5,U5,V5,W5,W1,R2,S2,T2,U2,C6,D6,E6,F6,G6,H6,I6,J6,K6,L6,M6,N6,O6,P6,Q6,R6), 
+          new13(C6,D6,E6,F6,G6,H6,I6,J6,K6,L6,M6,V2,W2,S6,T6,U6,V6,W6,X6,Y6,Z6,A7,B7,C7,Y1,D7), 
+          new4(S6,T6,U6,V6,W6,X6,Y6,Z6,A7,B7,C7,X2,Y2,E7,F7,G7,H7,I7,J7,K7,L7,M7,N7,O7,X1,P7), 
+          new18(E7,F7,G7,H7,I7,J7,K7,L7,M7,N7,O7,B2,Z2,Q7,R7,S7,T7,U7,V7,W7,X7,Y7,Z7,A8,B8,C8), 
+          new19(Q7,R7,S7,T7,U7,V7,W7,X7,Y7,Z7,A8,A3,B3,C3,D3,D8,E8,F8,G8,H8,I8,J8,K8,L8,M8,N8,O8,Q1,P8,Q8), 
+          new20(D8,E8,F8,G8,H8,I8,J8,K8,L8,M8,N8,E3,F3,G3,H3,R8,S8,T8,U8,V8,W8,X8,Y8,Z8,A9,B9,C9,A2,D9,E9), 
+          new21(R8,S8,T8,U8,V8,W8,X8,Y8,Z8,A9,B9,S1,I3,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,F9,G9).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,Q1,L,R1,Q,S1,T1,U1,V1,V,W1,X,V,W1,X1,Y1,B1,C1,Z1,M,X1) :- 
+          B1=1, A2=0, B2=0, C2=0, D2=0, L=<R1, U1=0, U1=S1, E2=0, F2=0, G2=0, 
+          H2=0, I2=0, J2=0, K2=0, L2=0, M2=0, N2=0, O2=0, P2=0, Q2=0, R2=0, 
+          S2=0, T2=0, U2=0, V2=0, W2=0, X1<W1, T1=1, T1=\=0, Z1=0, X2=0, 
+          Y2=1042, Z2=0, A3=0, B3=0, C3=1000, D3=0, E3=0, F3=0, 
+          new137(A,B,C,D,E,F,G,H,I,J,K,A2,B2,C2,D2,G3,H3,I3,J3,K3,L3,M3,N3,O3,P3,Q3,R3,R1,S3,T3), 
+          new11(G3,H3,I3,J3,K3,L3,M3,N3,O3,P3,Q3,S1,E2,U3,V3,W3,X3,Y3,Z3,A4,B4,C4,D4,E4,F4,G4), 
+          new12(U3,V3,W3,X3,Y3,Z3,A4,B4,C4,D4,E4,M,F2,G2,H2,I2,H4,I4,J4,K4,L4,M4,N4,O4,P4,Q4,R4,S4,T4,U4,V4,W4), 
+          new13(H4,I4,J4,K4,L4,M4,N4,O4,P4,Q4,R4,J2,K2,X4,Y4,Z4,A5,B5,C5,D5,E5,F5,G5,H5,Y1,I5), 
+          new14(X4,Y4,Z4,A5,B5,C5,D5,E5,F5,G5,H5,L,Y1,L2,M2,N2,O2,J5,K5,L5,M5,N5,O5,P5,Q5,R5,S5,T5,U5,V5,W5,X5,V1,Y5), 
+          new15(J5,K5,L5,M5,N5,O5,P5,Q5,R5,S5,T5,V1,P2,Q2,R2,S2,Z5,A6,B6,C6,D6,E6,F6,G6,H6,I6,J6,K6,L6,M6,N6,O6), 
+          new13(Z5,A6,B6,C6,D6,E6,F6,G6,H6,I6,J6,T2,U2,P6,Q6,R6,S6,T6,U6,V6,W6,X6,Y6,Z6,X1,A7), 
+          new4(P6,Q6,R6,S6,T6,U6,V6,W6,X6,Y6,Z6,V2,W2,B7,C7,D7,E7,F7,G7,H7,I7,J7,K7,L7,W1,M7), 
+          new18(B7,C7,D7,E7,F7,G7,H7,I7,J7,K7,L7,Z1,X2,N7,O7,P7,Q7,R7,S7,T7,U7,V7,W7,X7,Y7,Z7), 
+          new19(N7,O7,P7,Q7,R7,S7,T7,U7,V7,W7,X7,Y2,Z2,A3,B3,A8,B8,C8,D8,E8,F8,G8,H8,I8,J8,K8,L8,Q1,M8,N8), 
+          new42(A8,B8,C8,D8,E8,F8,G8,H8,I8,J8,K8,C3,D3,E3,F3,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,O8,P8,Q8,R8).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,N,L,Q1,Q,R1,S1,T1,U1,V,V1,X,V,V1,W1,X1,B1,C1,Y1,M,W1) :- 
+          B1=1, Z1=0, A2=0, B2=0, C2=0, L=<Q1, T1=0, T1=R1, D2=0, E2=0, F2=0, 
+          G2=0, H2=0, I2=0, J2=0, K2=0, L2=0, M2=0, N2=0, O2=0, P2=0, Q2=0, 
+          R2=0, S2=0, T2=0, U2=0, V2=0, W1<V1, S1=1, S1=\=0, Y1=0, W2=0, 
+          X2=1042, Y2=0, Z2=0, A3=0, 
+          new137(A,B,C,D,E,F,G,H,I,J,K,Z1,A2,B2,C2,B3,C3,D3,E3,F3,G3,H3,I3,J3,K3,L3,M3,Q1,N3,O3), 
+          new11(B3,C3,D3,E3,F3,G3,H3,I3,J3,K3,L3,R1,D2,P3,Q3,R3,S3,T3,U3,V3,W3,X3,Y3,Z3,A4,B4), 
+          new12(P3,Q3,R3,S3,T3,U3,V3,W3,X3,Y3,Z3,M,E2,F2,G2,H2,C4,D4,E4,F4,G4,H4,I4,J4,K4,L4,M4,N4,O4,P4,Q4,R4), 
+          new13(C4,D4,E4,F4,G4,H4,I4,J4,K4,L4,M4,I2,J2,S4,T4,U4,V4,W4,X4,Y4,Z4,A5,B5,C5,X1,D5), 
+          new14(S4,T4,U4,V4,W4,X4,Y4,Z4,A5,B5,C5,L,X1,K2,L2,M2,N2,E5,F5,G5,H5,I5,J5,K5,L5,M5,N5,O5,P5,Q5,R5,S5,U1,T5), 
+          new15(E5,F5,G5,H5,I5,J5,K5,L5,M5,N5,O5,U1,O2,P2,Q2,R2,U5,V5,W5,X5,Y5,Z5,A6,B6,C6,D6,E6,F6,G6,H6,I6,J6), 
+          new13(U5,V5,W5,X5,Y5,Z5,A6,B6,C6,D6,E6,S2,T2,K6,L6,M6,N6,O6,P6,Q6,R6,S6,T6,U6,W1,V6), 
+          new4(K6,L6,M6,N6,O6,P6,Q6,R6,S6,T6,U6,U2,V2,W6,X6,Y6,Z6,A7,B7,C7,D7,E7,F7,G7,V1,H7), 
+          new18(W6,X6,Y6,Z6,A7,B7,C7,D7,E7,F7,G7,Y1,W2,I7,J7,K7,L7,M7,N7,O7,P7,Q7,R7,S7,T7,U7), 
+          new51(I7,J7,K7,L7,M7,N7,O7,P7,Q7,R7,S7,X2,Y2,Z2,A3,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,V7,W7,X7,Y7).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,N,L,Q1,Q,R1,S1,T1,U1,V,V1,X,V,V1,W1,X1,B1,C1,Y1,M,W1) :- 
+          B1=1, Z1=0, A2=0, B2=0, C2=0, L=<Q1, T1=0, T1=R1, D2=0, E2=0, F2=0, 
+          G2=0, H2=0, I2=0, J2=0, K2=0, L2=0, M2=0, N2=0, O2=0, P2=0, Q2=0, 
+          R2=0, S2=0, T2=0, U2=0, V2=0, W1<V1, S1=1, S1=\=0, Y1=0, W2=0, 
+          new137(A,B,C,D,E,F,G,H,I,J,K,Z1,A2,B2,C2,X2,Y2,Z2,A3,B3,C3,D3,E3,F3,G3,H3,I3,Q1,J3,K3), 
+          new11(X2,Y2,Z2,A3,B3,C3,D3,E3,F3,G3,H3,R1,D2,L3,M3,N3,O3,P3,Q3,R3,S3,T3,U3,V3,W3,X3), 
+          new12(L3,M3,N3,O3,P3,Q3,R3,S3,T3,U3,V3,M,E2,F2,G2,H2,Y3,Z3,A4,B4,C4,D4,E4,F4,G4,H4,I4,J4,K4,L4,M4,N4), 
+          new13(Y3,Z3,A4,B4,C4,D4,E4,F4,G4,H4,I4,I2,J2,O4,P4,Q4,R4,S4,T4,U4,V4,W4,X4,Y4,X1,Z4), 
+          new14(O4,P4,Q4,R4,S4,T4,U4,V4,W4,X4,Y4,L,X1,K2,L2,M2,N2,A5,B5,C5,D5,E5,F5,G5,H5,I5,J5,K5,L5,M5,N5,O5,U1,P5), 
+          new15(A5,B5,C5,D5,E5,F5,G5,H5,I5,J5,K5,U1,O2,P2,Q2,R2,Q5,R5,S5,T5,U5,V5,W5,X5,Y5,Z5,A6,B6,C6,D6,E6,F6), 
+          new13(Q5,R5,S5,T5,U5,V5,W5,X5,Y5,Z5,A6,S2,T2,G6,H6,I6,J6,K6,L6,M6,N6,O6,P6,Q6,W1,R6), 
+          new4(G6,H6,I6,J6,K6,L6,M6,N6,O6,P6,Q6,U2,V2,S6,T6,U6,V6,W6,X6,Y6,Z6,A7,B7,C7,V1,D7), 
+          new21(S6,T6,U6,V6,W6,X6,Y6,Z6,A7,B7,C7,Y1,W2,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,E7,F7).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,Q1,L,R1,S1,T1,U1,V1,W1,V,X1,Q1,V,X1,Y1,Z1,B1,A2,B2,M,Y1) :- 
+          B1=1, C2=0, D2=0, E2=0, F2=0, L=<R1, V1=0, V1=T1, G2=0, H2=0, I2=0, 
+          J2=0, K2=0, L2=0, M2=0, N2=0, O2=0, P2=0, Q2=0, R2=0, S2=0, T2=0, 
+          U2=0, V2=0, W2=0, X2=0, Y2=0, Y1>=X1, U1=0, U1=0, B2=1, Z2=0, 
+          A3=1042, B3=0, C3=0, D3=0, E3=1000, F3=0, G3=0, H3=0, Q1<A2, S1=1, 
+          I3=0, 
+          new137(A,B,C,D,E,F,G,H,I,J,K,C2,D2,E2,F2,J3,K3,L3,M3,N3,O3,P3,Q3,R3,S3,T3,U3,R1,V3,W3), 
+          new11(J3,K3,L3,M3,N3,O3,P3,Q3,R3,S3,T3,T1,G2,X3,Y3,Z3,A4,B4,C4,D4,E4,F4,G4,H4,I4,J4), 
+          new12(X3,Y3,Z3,A4,B4,C4,D4,E4,F4,G4,H4,M,H2,I2,J2,K2,K4,L4,M4,N4,O4,P4,Q4,R4,S4,T4,U4,V4,W4,X4,Y4,Z4), 
+          new13(K4,L4,M4,N4,O4,P4,Q4,R4,S4,T4,U4,L2,M2,A5,B5,C5,D5,E5,F5,G5,H5,I5,J5,K5,Z1,L5), 
+          new14(A5,B5,C5,D5,E5,F5,G5,H5,I5,J5,K5,L,Z1,N2,O2,P2,Q2,M5,N5,O5,P5,Q5,R5,S5,T5,U5,V5,W5,X5,Y5,Z5,A6,W1,B6), 
+          new15(M5,N5,O5,P5,Q5,R5,S5,T5,U5,V5,W5,W1,R2,S2,T2,U2,C6,D6,E6,F6,G6,H6,I6,J6,K6,L6,M6,N6,O6,P6,Q6,R6), 
+          new13(C6,D6,E6,F6,G6,H6,I6,J6,K6,L6,M6,V2,W2,S6,T6,U6,V6,W6,X6,Y6,Z6,A7,B7,C7,Y1,D7), 
+          new4(S6,T6,U6,V6,W6,X6,Y6,Z6,A7,B7,C7,X2,Y2,E7,F7,G7,H7,I7,J7,K7,L7,M7,N7,O7,X1,P7), 
+          new18(E7,F7,G7,H7,I7,J7,K7,L7,M7,N7,O7,B2,Z2,Q7,R7,S7,T7,U7,V7,W7,X7,Y7,Z7,A8,B8,C8), 
+          new19(Q7,R7,S7,T7,U7,V7,W7,X7,Y7,Z7,A8,A3,B3,C3,D3,D8,E8,F8,G8,H8,I8,J8,K8,L8,M8,N8,O8,Q1,P8,Q8), 
+          new20(D8,E8,F8,G8,H8,I8,J8,K8,L8,M8,N8,E3,F3,G3,H3,R8,S8,T8,U8,V8,W8,X8,Y8,Z8,A9,B9,C9,A2,D9,E9), 
+          new21(R8,S8,T8,U8,V8,W8,X8,Y8,Z8,A9,B9,S1,I3,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,F9,G9).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,Q1,L,R1,S1,T1,U1,V1,W1,V,X1,Q1,V,X1,Y1,Z1,B1,A2,B2,M,Y1) :- 
+          B1=1, C2=0, D2=0, E2=0, F2=0, L=<R1, V1=0, V1=T1, G2=0, H2=0, I2=0, 
+          J2=0, K2=0, L2=0, M2=0, N2=0, O2=0, P2=0, Q2=0, R2=0, S2=0, T2=0, 
+          U2=0, V2=0, W2=0, X2=0, Y2=0, Y1>=X1, U1=0, U1=0, B2=1, Z2=0, 
+          A3=1042, B3=0, C3=0, D3=0, E3=1000, F3=0, G3=0, H3=0, Q1>=A2, S1=0, 
+          I3=0, 
+          new137(A,B,C,D,E,F,G,H,I,J,K,C2,D2,E2,F2,J3,K3,L3,M3,N3,O3,P3,Q3,R3,S3,T3,U3,R1,V3,W3), 
+          new11(J3,K3,L3,M3,N3,O3,P3,Q3,R3,S3,T3,T1,G2,X3,Y3,Z3,A4,B4,C4,D4,E4,F4,G4,H4,I4,J4), 
+          new12(X3,Y3,Z3,A4,B4,C4,D4,E4,F4,G4,H4,M,H2,I2,J2,K2,K4,L4,M4,N4,O4,P4,Q4,R4,S4,T4,U4,V4,W4,X4,Y4,Z4), 
+          new13(K4,L4,M4,N4,O4,P4,Q4,R4,S4,T4,U4,L2,M2,A5,B5,C5,D5,E5,F5,G5,H5,I5,J5,K5,Z1,L5), 
+          new14(A5,B5,C5,D5,E5,F5,G5,H5,I5,J5,K5,L,Z1,N2,O2,P2,Q2,M5,N5,O5,P5,Q5,R5,S5,T5,U5,V5,W5,X5,Y5,Z5,A6,W1,B6), 
+          new15(M5,N5,O5,P5,Q5,R5,S5,T5,U5,V5,W5,W1,R2,S2,T2,U2,C6,D6,E6,F6,G6,H6,I6,J6,K6,L6,M6,N6,O6,P6,Q6,R6), 
+          new13(C6,D6,E6,F6,G6,H6,I6,J6,K6,L6,M6,V2,W2,S6,T6,U6,V6,W6,X6,Y6,Z6,A7,B7,C7,Y1,D7), 
+          new4(S6,T6,U6,V6,W6,X6,Y6,Z6,A7,B7,C7,X2,Y2,E7,F7,G7,H7,I7,J7,K7,L7,M7,N7,O7,X1,P7), 
+          new18(E7,F7,G7,H7,I7,J7,K7,L7,M7,N7,O7,B2,Z2,Q7,R7,S7,T7,U7,V7,W7,X7,Y7,Z7,A8,B8,C8), 
+          new19(Q7,R7,S7,T7,U7,V7,W7,X7,Y7,Z7,A8,A3,B3,C3,D3,D8,E8,F8,G8,H8,I8,J8,K8,L8,M8,N8,O8,Q1,P8,Q8), 
+          new20(D8,E8,F8,G8,H8,I8,J8,K8,L8,M8,N8,E3,F3,G3,H3,R8,S8,T8,U8,V8,W8,X8,Y8,Z8,A9,B9,C9,A2,D9,E9), 
+          new21(R8,S8,T8,U8,V8,W8,X8,Y8,Z8,A9,B9,S1,I3,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,F9,G9).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,Q1,L,R1,Q,S1,T1,U1,V1,V,W1,X,V,W1,X1,Y1,B1,C1,Z1,M,X1) :- 
+          B1=1, A2=0, B2=0, C2=0, D2=0, L=<R1, U1=0, U1=S1, E2=0, F2=0, G2=0, 
+          H2=0, I2=0, J2=0, K2=0, L2=0, M2=0, N2=0, O2=0, P2=0, Q2=0, R2=0, 
+          S2=0, T2=0, U2=0, V2=0, W2=0, X1>=W1, T1=0, T1=0, Z1=1, X2=0, 
+          Y2=1042, Z2=0, A3=0, B3=0, C3=1000, D3=0, E3=0, F3=0, 
+          new137(A,B,C,D,E,F,G,H,I,J,K,A2,B2,C2,D2,G3,H3,I3,J3,K3,L3,M3,N3,O3,P3,Q3,R3,R1,S3,T3), 
+          new11(G3,H3,I3,J3,K3,L3,M3,N3,O3,P3,Q3,S1,E2,U3,V3,W3,X3,Y3,Z3,A4,B4,C4,D4,E4,F4,G4), 
+          new12(U3,V3,W3,X3,Y3,Z3,A4,B4,C4,D4,E4,M,F2,G2,H2,I2,H4,I4,J4,K4,L4,M4,N4,O4,P4,Q4,R4,S4,T4,U4,V4,W4), 
+          new13(H4,I4,J4,K4,L4,M4,N4,O4,P4,Q4,R4,J2,K2,X4,Y4,Z4,A5,B5,C5,D5,E5,F5,G5,H5,Y1,I5), 
+          new14(X4,Y4,Z4,A5,B5,C5,D5,E5,F5,G5,H5,L,Y1,L2,M2,N2,O2,J5,K5,L5,M5,N5,O5,P5,Q5,R5,S5,T5,U5,V5,W5,X5,V1,Y5), 
+          new15(J5,K5,L5,M5,N5,O5,P5,Q5,R5,S5,T5,V1,P2,Q2,R2,S2,Z5,A6,B6,C6,D6,E6,F6,G6,H6,I6,J6,K6,L6,M6,N6,O6), 
+          new13(Z5,A6,B6,C6,D6,E6,F6,G6,H6,I6,J6,T2,U2,P6,Q6,R6,S6,T6,U6,V6,W6,X6,Y6,Z6,X1,A7), 
+          new4(P6,Q6,R6,S6,T6,U6,V6,W6,X6,Y6,Z6,V2,W2,B7,C7,D7,E7,F7,G7,H7,I7,J7,K7,L7,W1,M7), 
+          new18(B7,C7,D7,E7,F7,G7,H7,I7,J7,K7,L7,Z1,X2,N7,O7,P7,Q7,R7,S7,T7,U7,V7,W7,X7,Y7,Z7), 
+          new19(N7,O7,P7,Q7,R7,S7,T7,U7,V7,W7,X7,Y2,Z2,A3,B3,A8,B8,C8,D8,E8,F8,G8,H8,I8,J8,K8,L8,Q1,M8,N8), 
+          new42(A8,B8,C8,D8,E8,F8,G8,H8,I8,J8,K8,C3,D3,E3,F3,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,O8,P8,Q8,R8).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,N,L,Q1,Q,R1,S1,T1,U1,V,V1,X,V,V1,W1,X1,B1,C1,Y1,M,W1) :- 
+          B1=1, Z1=0, A2=0, B2=0, C2=0, L=<Q1, T1=0, T1=R1, D2=0, E2=0, F2=0, 
+          G2=0, H2=0, I2=0, J2=0, K2=0, L2=0, M2=0, N2=0, O2=0, P2=0, Q2=0, 
+          R2=0, S2=0, T2=0, U2=0, V2=0, W1>=V1, S1=0, S1=0, Y1=1, W2=0, 
+          X2=1042, Y2=0, Z2=0, A3=0, 
+          new137(A,B,C,D,E,F,G,H,I,J,K,Z1,A2,B2,C2,B3,C3,D3,E3,F3,G3,H3,I3,J3,K3,L3,M3,Q1,N3,O3), 
+          new11(B3,C3,D3,E3,F3,G3,H3,I3,J3,K3,L3,R1,D2,P3,Q3,R3,S3,T3,U3,V3,W3,X3,Y3,Z3,A4,B4), 
+          new12(P3,Q3,R3,S3,T3,U3,V3,W3,X3,Y3,Z3,M,E2,F2,G2,H2,C4,D4,E4,F4,G4,H4,I4,J4,K4,L4,M4,N4,O4,P4,Q4,R4), 
+          new13(C4,D4,E4,F4,G4,H4,I4,J4,K4,L4,M4,I2,J2,S4,T4,U4,V4,W4,X4,Y4,Z4,A5,B5,C5,X1,D5), 
+          new14(S4,T4,U4,V4,W4,X4,Y4,Z4,A5,B5,C5,L,X1,K2,L2,M2,N2,E5,F5,G5,H5,I5,J5,K5,L5,M5,N5,O5,P5,Q5,R5,S5,U1,T5), 
+          new15(E5,F5,G5,H5,I5,J5,K5,L5,M5,N5,O5,U1,O2,P2,Q2,R2,U5,V5,W5,X5,Y5,Z5,A6,B6,C6,D6,E6,F6,G6,H6,I6,J6), 
+          new13(U5,V5,W5,X5,Y5,Z5,A6,B6,C6,D6,E6,S2,T2,K6,L6,M6,N6,O6,P6,Q6,R6,S6,T6,U6,W1,V6), 
+          new4(K6,L6,M6,N6,O6,P6,Q6,R6,S6,T6,U6,U2,V2,W6,X6,Y6,Z6,A7,B7,C7,D7,E7,F7,G7,V1,H7), 
+          new18(W6,X6,Y6,Z6,A7,B7,C7,D7,E7,F7,G7,Y1,W2,I7,J7,K7,L7,M7,N7,O7,P7,Q7,R7,S7,T7,U7), 
+          new51(I7,J7,K7,L7,M7,N7,O7,P7,Q7,R7,S7,X2,Y2,Z2,A3,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,V7,W7,X7,Y7).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,N,L,Q1,Q,R1,S1,T1,U1,V,V1,X,V,V1,W1,X1,B1,C1,Y1,M,W1) :- 
+          B1=1, Z1=0, A2=0, B2=0, C2=0, L=<Q1, T1=0, T1=R1, D2=0, E2=0, F2=0, 
+          G2=0, H2=0, I2=0, J2=0, K2=0, L2=0, M2=0, N2=0, O2=0, P2=0, Q2=0, 
+          R2=0, S2=0, T2=0, U2=0, V2=0, W1>=V1, S1=0, S1=0, Y1=1, W2=0, 
+          new137(A,B,C,D,E,F,G,H,I,J,K,Z1,A2,B2,C2,X2,Y2,Z2,A3,B3,C3,D3,E3,F3,G3,H3,I3,Q1,J3,K3), 
+          new11(X2,Y2,Z2,A3,B3,C3,D3,E3,F3,G3,H3,R1,D2,L3,M3,N3,O3,P3,Q3,R3,S3,T3,U3,V3,W3,X3), 
+          new12(L3,M3,N3,O3,P3,Q3,R3,S3,T3,U3,V3,M,E2,F2,G2,H2,Y3,Z3,A4,B4,C4,D4,E4,F4,G4,H4,I4,J4,K4,L4,M4,N4), 
+          new13(Y3,Z3,A4,B4,C4,D4,E4,F4,G4,H4,I4,I2,J2,O4,P4,Q4,R4,S4,T4,U4,V4,W4,X4,Y4,X1,Z4), 
+          new14(O4,P4,Q4,R4,S4,T4,U4,V4,W4,X4,Y4,L,X1,K2,L2,M2,N2,A5,B5,C5,D5,E5,F5,G5,H5,I5,J5,K5,L5,M5,N5,O5,U1,P5), 
+          new15(A5,B5,C5,D5,E5,F5,G5,H5,I5,J5,K5,U1,O2,P2,Q2,R2,Q5,R5,S5,T5,U5,V5,W5,X5,Y5,Z5,A6,B6,C6,D6,E6,F6), 
+          new13(Q5,R5,S5,T5,U5,V5,W5,X5,Y5,Z5,A6,S2,T2,G6,H6,I6,J6,K6,L6,M6,N6,O6,P6,Q6,W1,R6), 
+          new4(G6,H6,I6,J6,K6,L6,M6,N6,O6,P6,Q6,U2,V2,S6,T6,U6,V6,W6,X6,Y6,Z6,A7,B7,C7,V1,D7), 
+          new21(S6,T6,U6,V6,W6,X6,Y6,Z6,A7,B7,C7,Y1,W2,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,E7,F7).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,N,L,Q1,Q,R1,S,S1,T1,V,W,X,V,Y,Z,U1,B1,C1,D1,M,V1) :- 
+          B1=1, W1=0, X1=0, Y1=0, Z1=0, L=<Q1, S1=0, S1=R1, A2=0, B2=0, C2=0, 
+          D2=0, E2=0, F2=0, G2=0, H2=0, I2=0, J2=0, K2=0, L2=0, M2=0, N2=0, 
+          O2=0, P2=0, Q2=0, R2=0, S2=0, 
+          new137(A,B,C,D,E,F,G,H,I,J,K,W1,X1,Y1,Z1,T2,U2,V2,W2,X2,Y2,Z2,A3,B3,C3,D3,E3,Q1,F3,G3), 
+          new11(T2,U2,V2,W2,X2,Y2,Z2,A3,B3,C3,D3,R1,A2,H3,I3,J3,K3,L3,M3,N3,O3,P3,Q3,R3,S3,T3), 
+          new12(H3,I3,J3,K3,L3,M3,N3,O3,P3,Q3,R3,M,B2,C2,D2,E2,U3,V3,W3,X3,Y3,Z3,A4,B4,C4,D4,E4,F4,G4,H4,I4,J4), 
+          new13(U3,V3,W3,X3,Y3,Z3,A4,B4,C4,D4,E4,F2,G2,K4,L4,M4,N4,O4,P4,Q4,R4,S4,T4,U4,U1,V4), 
+          new14(K4,L4,M4,N4,O4,P4,Q4,R4,S4,T4,U4,L,U1,H2,I2,J2,K2,W4,X4,Y4,Z4,A5,B5,C5,D5,E5,F5,G5,H5,I5,J5,K5,T1,L5), 
+          new15(W4,X4,Y4,Z4,A5,B5,C5,D5,E5,F5,G5,T1,L2,M2,N2,O2,M5,N5,O5,P5,Q5,R5,S5,T5,U5,V5,W5,X5,Y5,Z5,A6,B6), 
+          new13(M5,N5,O5,P5,Q5,R5,S5,T5,U5,V5,W5,P2,Q2,C6,D6,E6,F6,G6,H6,I6,J6,K6,L6,M6,V1,N6), 
+          new8(C6,D6,E6,F6,G6,H6,I6,J6,K6,L6,M6,R2,S2,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,O6,P6).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,N,L,Q1,Q,R1,S,S1,T1,V,W,X,V,Y,Z,U1,B1,C1,D1,M,E1) :- 
+          B1=1, V1=0, W1=0, X1=0, Y1=0, L=<Q1, S1=0, S1=R1, Z1=0, A2=0, B2=0, 
+          C2=0, D2=0, E2=0, F2=0, G2=0, H2=0, I2=0, J2=0, K2=0, L2=0, M2=0, 
+          N2=0, O2=0, P2=0, 
+          new137(A,B,C,D,E,F,G,H,I,J,K,V1,W1,X1,Y1,Q2,R2,S2,T2,U2,V2,W2,X2,Y2,Z2,A3,B3,Q1,C3,D3), 
+          new11(Q2,R2,S2,T2,U2,V2,W2,X2,Y2,Z2,A3,R1,Z1,E3,F3,G3,H3,I3,J3,K3,L3,M3,N3,O3,P3,Q3), 
+          new12(E3,F3,G3,H3,I3,J3,K3,L3,M3,N3,O3,M,A2,B2,C2,D2,R3,S3,T3,U3,V3,W3,X3,Y3,Z3,A4,B4,C4,D4,E4,F4,G4), 
+          new13(R3,S3,T3,U3,V3,W3,X3,Y3,Z3,A4,B4,E2,F2,H4,I4,J4,K4,L4,M4,N4,O4,P4,Q4,R4,U1,S4), 
+          new14(H4,I4,J4,K4,L4,M4,N4,O4,P4,Q4,R4,L,U1,G2,H2,I2,J2,T4,U4,V4,W4,X4,Y4,Z4,A5,B5,C5,D5,E5,F5,G5,H5,T1,I5), 
+          new15(T4,U4,V4,W4,X4,Y4,Z4,A5,B5,C5,D5,T1,K2,L2,M2,N2,J5,K5,L5,M5,N5,O5,P5,Q5,R5,S5,T5,U5,V5,W5,X5,Y5), 
+          new121(J5,K5,L5,M5,N5,O5,P5,Q5,R5,S5,T5,O2,P2,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,Z5,A6).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,N,L,Q1,Q,R1,S,S1,T1,V,W,X,V,Y,Z,U1,B1,C1,D1,M,E1) :- 
+          B1=1, V1=0, W1=0, X1=0, Y1=0, L=<Q1, S1=0, S1=R1, Z1=0, A2=0, B2=0, 
+          C2=0, D2=0, E2=0, F2=0, G2=0, H2=0, I2=0, J2=0, K2=0, L2=0, M2=0, 
+          N2=0, 
+          new137(A,B,C,D,E,F,G,H,I,J,K,V1,W1,X1,Y1,O2,P2,Q2,R2,S2,T2,U2,V2,W2,X2,Y2,Z2,Q1,A3,B3), 
+          new11(O2,P2,Q2,R2,S2,T2,U2,V2,W2,X2,Y2,R1,Z1,C3,D3,E3,F3,G3,H3,I3,J3,K3,L3,M3,N3,O3), 
+          new12(C3,D3,E3,F3,G3,H3,I3,J3,K3,L3,M3,M,A2,B2,C2,D2,P3,Q3,R3,S3,T3,U3,V3,W3,X3,Y3,Z3,A4,B4,C4,D4,E4), 
+          new13(P3,Q3,R3,S3,T3,U3,V3,W3,X3,Y3,Z3,E2,F2,F4,G4,H4,I4,J4,K4,L4,M4,N4,O4,P4,U1,Q4), 
+          new14(F4,G4,H4,I4,J4,K4,L4,M4,N4,O4,P4,L,U1,G2,H2,I2,J2,R4,S4,T4,U4,V4,W4,X4,Y4,Z4,A5,B5,C5,D5,E5,F5,T1,G5), 
+          new126(R4,S4,T4,U4,V4,W4,X4,Y4,Z4,A5,B5,T1,K2,L2,M2,N2,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,H5,I5,J5,K5,L5).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,N,L,Q1,Q,R1,S,S1,U,V,W,X,V,Y,Z,T1,B1,C1,D1,M,E1) :- 
+          B1=1, U1=0, V1=0, W1=0, X1=0, L=<Q1, S1=0, S1=R1, Y1=0, Z1=0, A2=0, 
+          B2=0, C2=0, D2=0, E2=0, F2=0, G2=0, H2=0, I2=0, 
+          new137(A,B,C,D,E,F,G,H,I,J,K,U1,V1,W1,X1,J2,K2,L2,M2,N2,O2,P2,Q2,R2,S2,T2,U2,Q1,V2,W2), 
+          new11(J2,K2,L2,M2,N2,O2,P2,Q2,R2,S2,T2,R1,Y1,X2,Y2,Z2,A3,B3,C3,D3,E3,F3,G3,H3,I3,J3), 
+          new12(X2,Y2,Z2,A3,B3,C3,D3,E3,F3,G3,H3,M,Z1,A2,B2,C2,K3,L3,M3,N3,O3,P3,Q3,R3,S3,T3,U3,V3,W3,X3,Y3,Z3), 
+          new13(K3,L3,M3,N3,O3,P3,Q3,R3,S3,T3,U3,D2,E2,A4,B4,C4,D4,E4,F4,G4,H4,I4,J4,K4,T1,L4), 
+          new130(A4,B4,C4,D4,E4,F4,G4,H4,I4,J4,K4,L,T1,F2,G2,H2,I2,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,M4,N4,O4,P4,Q4,R4).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,N,L,Q1,Q,R1,S,S1,U,V,W,X,V,Y,Z,A1,B1,C1,D1,M,E1) :- 
+          B1=1, T1=0, U1=0, V1=0, W1=0, L=<Q1, S1=0, S1=R1, X1=0, Y1=0, Z1=0, 
+          A2=0, B2=0, C2=0, D2=0, 
+          new137(A,B,C,D,E,F,G,H,I,J,K,T1,U1,V1,W1,E2,F2,G2,H2,I2,J2,K2,L2,M2,N2,O2,P2,Q1,Q2,R2), 
+          new11(E2,F2,G2,H2,I2,J2,K2,L2,M2,N2,O2,R1,X1,S2,T2,U2,V2,W2,X2,Y2,Z2,A3,B3,C3,D3,E3), 
+          new12(S2,T2,U2,V2,W2,X2,Y2,Z2,A3,B3,C3,M,Y1,Z1,A2,B2,F3,G3,H3,I3,J3,K3,L3,M3,N3,O3,P3,Q3,R3,S3,T3,U3), 
+          new121(F3,G3,H3,I3,J3,K3,L3,M3,N3,O3,P3,C2,D2,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,V3,W3).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,N,L,Q1,Q,R1,S,S1,U,V,W,X,V,Y,Z,A1,B1,C1,D1,M,E1) :- 
+          B1=1, T1=0, U1=0, V1=0, W1=0, L=<Q1, S1=0, S1=R1, X1=0, Y1=0, Z1=0, 
+          A2=0, B2=0, 
+          new137(A,B,C,D,E,F,G,H,I,J,K,T1,U1,V1,W1,C2,D2,E2,F2,G2,H2,I2,J2,K2,L2,M2,N2,Q1,O2,P2), 
+          new11(C2,D2,E2,F2,G2,H2,I2,J2,K2,L2,M2,R1,X1,Q2,R2,S2,T2,U2,V2,W2,X2,Y2,Z2,A3,B3,C3), 
+          new135(Q2,R2,S2,T2,U2,V2,W2,X2,Y2,Z2,A3,M,Y1,Z1,A2,B2,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,D3,E3,F3,G3,H3).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,N,L,Q1,Q,R1,S,S1,U,V,W,X,V,Y,Z,A1,B1,C1,D1,M,E1) :- 
+          B1=1, T1=0, U1=0, V1=0, W1=0, L=<Q1, S1=0, S1=R1, X1=0, 
+          new137(A,B,C,D,E,F,G,H,I,J,K,T1,U1,V1,W1,Y1,Z1,A2,B2,C2,D2,E2,F2,G2,H2,I2,J2,Q1,K2,L2), 
+          new136(Y1,Z1,A2,B2,C2,D2,E2,F2,G2,H2,I2,R1,X1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,M2,N2).
+new5(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,L,M,N,O,P,Q,R,S,T,U,V,W,X,V,Y,Z,A1,B1,C1,D1,M,E1) :- 
+          B1=1, Q1=0, R1=0, S1=0, T1=0, 
+          new423(A,B,C,D,E,F,G,H,I,J,K,Q1,R1,S1,T1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,U1,V1,W1,X1).
+new4(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z) :- Z=B, A1=0, B1=0, 
+          new448(A,B,C,D,E,F,G,H,I,J,K,Z,A1,B1,N,O,P,Q,R,S,T,U,V,W,X,C1,Y,D1).
+new3(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,Q1,R1,S1,T1,U1,V1,W1,X1,Y1,Z1,A2,B2,C2,D2,E2,F2,G2,H2,I2,J2,K2,L2,M2,N2) :- 
+          O2=0, P2=0, M>Q2, R2=1, 
+          new4(A,B,C,D,E,F,G,H,I,J,K,O2,P2,S2,T2,U2,V2,W2,X2,Y2,Z2,A3,B3,C3,Q2,D3), 
+          new5(S2,T2,U2,V2,W2,X2,Y2,Z2,A3,B3,C3,L,M,N,O,P,Q,R,S,T,U,Q2,W,X,Z,A1,B1,R2,D1,E1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,Q1,R1,S1,T1,U1,V1,W1,X1,Y1,Z1,A2,B2,C2,D2,E2,F2,G2,H2,I2,J2,K2,L2,M2,N2).
+new3(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,Q1,R1,S1,T1,U1,V1,W1,X1,Y1,Z1,A2,B2,C2,D2,E2,F2,G2,H2,I2,J2,K2,L2,M2,N2) :- 
+          O2=0, P2=0, M=<Q2, R2=0, 
+          new4(A,B,C,D,E,F,G,H,I,J,K,O2,P2,S2,T2,U2,V2,W2,X2,Y2,Z2,A3,B3,C3,Q2,D3), 
+          new5(S2,T2,U2,V2,W2,X2,Y2,Z2,A3,B3,C3,L,M,N,O,P,Q,R,S,T,U,Q2,W,X,Z,A1,B1,R2,D1,E1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,Q1,R1,S1,T1,U1,V1,W1,X1,Y1,Z1,A2,B2,C2,D2,E2,F2,G2,H2,I2,J2,K2,L2,M2,N2).
+new3(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,Q1,R1,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1) :- 
+          S1=0, T1=0, 
+          new8(A,B,C,D,E,F,G,H,I,J,K,S1,T1,H1,I1,J1,K1,L1,M1,N1,O1,P1,Q1,R1,U1,V1).
+new2(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X) :- Y=A, Z=B, A1=0, B1=0, 
+          C1=0, D1=0, E1=0, F1=0, G1=0, H1=0, I1=0, J1=0, K1=0, L1=0, M1=0, 
+          N1=0, O1=0, P1=0, Q1=0, R1=0, S1=0, T1=0, 
+          new3(C,D,E,F,G,H,I,J,K,L,M,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1,P1,Q1,R1,S1,T1,N,O,P,Q,R,S,T,U,V,W,X,U1,V1,W1,X1,Y1,Z1,A2,B2,C2,D2,E2,F2,G2,H2,I2,J2,K2,L2,M2,N2,O2,P2).
+new1(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1) :- 
+          I1=128, J1=A, 
+          new455(A,B,C,D,E,I1,G,H,I,J,K,L,J1,N,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1).
+incorrect :- A=0, B=0, C=0, D=0, E=0, F=0, G=0, H=0, I=0, J=0, K=0, L=0, M=0, 
+          N=0, O=0, P=0, Q=0, 
+          new1(K,A,B,C,D,E,F,G,H,I,J,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A1,B1,C1,D1,E1,F1,G1,H1), 
+          new2(I1,J1,R,S,T,U,V,W,X,Y,Z,A1,B1,K1,L1,M1,N1,O1,P1,Q1,R1,S1,T1,U1).

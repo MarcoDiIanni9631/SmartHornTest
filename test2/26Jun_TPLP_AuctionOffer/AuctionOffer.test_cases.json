@@ -1,0 +1,44 @@
+{
+  "stateVariables": [
+    "bid",
+    "cash"
+  ],
+  "functions": [
+    {
+      "signature": "offer(uint,uint)",
+      "params": [
+        "newBid",
+        "payment"
+      ],
+      "test_cases": [
+        {
+          "id": 1,
+          "kind": "negative",
+          "concrete_values": [
+            "newBid == 2",
+            "payment == 1",
+            "bid == 0",
+            "cash == 0"
+          ],
+          "constraints_z3": [
+            "cash != 0",
+            "bid != 0",
+            "payment >= 1",
+            "cash - 1*bid <= -1",
+            "newBid >= 1",
+            "bid == 1*newBid",
+            "cash == 1*payment"
+          ],
+          "constraints_clpq": [
+            "payment=\\=0",
+            "payment>0",
+            "bid=newBid",
+            "cash=payment",
+            "newBid-payment>0",
+            "newBid=\\=0"
+          ]
+        }
+      ]
+    }
+  ]
+}

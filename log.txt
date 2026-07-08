@@ -1,0 +1,20 @@
+[14:22:44:898389]
+./docker_solcmc_updated tmp CounterTest_updated.sol CounterTest 10 z3
+[14:22:45:257266]
+./docker_solcmc_updated tmp CounterTest_updated.sol CounterTest 10 z3
+1
+b''
+
+b'the input device is not a TTY
+'
+
+[14:33:00:956662]
+./docker_solcmc_updated tmp CounterTest_updated.sol CounterTest 10 z3
+[14:33:01:265371]
+./docker_solcmc_updated tmp CounterTest_updated.sol CounterTest 10 z3
+1
+b''
+
+b'the input device is not a TTY
+'
+

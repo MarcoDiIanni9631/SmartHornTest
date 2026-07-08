@@ -1,6 +1,9 @@
 #!/bin/bash
 # step1_grey.sh <contract.sol>
 # Compila il contratto Solidity con GREY e produce ContractName.json nella stessa cartella.
+#
+# Esempio:
+#   bash script/step1_grey.sh test/MyContract/MyContract.sol
 
 set -euo pipefail
 

@@ -1,0 +1,72 @@
+{
+  "stateVariables": [
+    "currentBalance"
+  ],
+  "functions": [
+    {
+      "signature": "claimRewards(uint256)",
+      "params": [
+        "points"
+      ],
+      "test_cases": [
+        {
+          "id": 1,
+          "kind": "negative",
+          "concrete_values": [
+            "points == 9",
+            "currentBalance == 0"
+          ],
+          "constraints_z3": [
+            "points == 9",
+            "currentBalance >= 5",
+            "currentBalance == 9*points"
+          ],
+          "constraints_clpq": [
+            "points=\\=0",
+            "currentBalance=9*points",
+            "points>8",
+            "points=<9"
+          ]
+        },
+        {
+          "id": 2,
+          "kind": "positive",
+          "concrete_values": [
+            "points == 2",
+            "currentBalance == 0"
+          ],
+          "constraints_z3": [
+            "currentBalance != 0",
+            "currentBalance <= 4",
+            "points == 2",
+            "currentBalance == 2*points"
+          ],
+          "constraints_clpq": [
+            "points=\\=0",
+            "currentBalance=2*points",
+            "points>1",
+            "points=<2"
+          ]
+        },
+        {
+          "id": 3,
+          "kind": "negative",
+          "concrete_values": [
+            "points == 10",
+            "currentBalance == 0"
+          ],
+          "constraints_z3": [
+            "currentBalance >= 5",
+            "points >= 10",
+            "currentBalance >= 0"
+          ],
+          "constraints_clpq": [
+            "currentBalance=2*points",
+            "points=\\=0",
+            "points>=10"
+          ]
+        }
+      ]
+    }
+  ]
+}

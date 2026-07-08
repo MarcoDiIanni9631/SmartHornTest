@@ -2,6 +2,9 @@
 # step3_transform.sh <contract.pl>
 # Applica il transform CHC. Richiede che ContractName.aux.pl esista nella stessa cartella.
 # Produce ContractName.t.pl e ContractName.t.pl-defs.txt.
+#
+# Esempio:
+#   bash script/step3_transform.sh test/MyContract/MyContract.pl
 
 set -euo pipefail
 

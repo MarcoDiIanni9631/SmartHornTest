@@ -1,0 +1,205 @@
+{
+  "stateVariables": [
+    "currentBalance"
+  ],
+  "functions": [
+    {
+      "signature": "claimRewards(uint256)",
+      "params": [
+        "points"
+      ],
+      "test_cases": [
+        {
+          "id": 1,
+          "kind": "negative",
+          "concrete_values": [
+            "points == 9",
+            "currentBalance == 0"
+          ],
+          "constraints_z3": [
+            "points == 9",
+            "currentBalance >= 5",
+            "currentBalance == 9*points"
+          ],
+          "constraints_clpq": [
+            "points=\\=0",
+            "currentBalance=9*points",
+            "points>8",
+            "points=<9"
+          ]
+        },
+        {
+          "id": 2,
+          "kind": "negative",
+          "concrete_values": [
+            "points == 8",
+            "currentBalance == 0"
+          ],
+          "constraints_z3": [
+            "currentBalance >= 5",
+            "points == 8",
+            "currentBalance == 8*points"
+          ],
+          "constraints_clpq": [
+            "points=\\=0",
+            "currentBalance=8*points",
+            "points>7",
+            "points=<8"
+          ]
+        },
+        {
+          "id": 3,
+          "kind": "negative",
+          "concrete_values": [
+            "points == 7",
+            "currentBalance == 0"
+          ],
+          "constraints_z3": [
+            "currentBalance >= 5",
+            "points == 7",
+            "currentBalance == 7*points"
+          ],
+          "constraints_clpq": [
+            "points=\\=0",
+            "currentBalance=7*points",
+            "points>6",
+            "points=<7"
+          ]
+        },
+        {
+          "id": 4,
+          "kind": "negative",
+          "concrete_values": [
+            "points == 6",
+            "currentBalance == 0"
+          ],
+          "constraints_z3": [
+            "currentBalance >= 5",
+            "points == 6",
+            "currentBalance == 6*points"
+          ],
+          "constraints_clpq": [
+            "points=\\=0",
+            "currentBalance=6*points",
+            "points>5",
+            "points=<6"
+          ]
+        },
+        {
+          "id": 5,
+          "kind": "negative",
+          "concrete_values": [
+            "points == 5",
+            "currentBalance == 0"
+          ],
+          "constraints_z3": [
+            "currentBalance >= 5",
+            "points == 5",
+            "currentBalance == 5*points"
+          ],
+          "constraints_clpq": [
+            "points=\\=0",
+            "currentBalance=5*points",
+            "points>4",
+            "points=<5"
+          ]
+        },
+        {
+          "id": 6,
+          "kind": "negative",
+          "concrete_values": [
+            "points == 4",
+            "currentBalance == 0"
+          ],
+          "constraints_z3": [
+            "currentBalance >= 5",
+            "points == 4",
+            "currentBalance == 4*points"
+          ],
+          "constraints_clpq": [
+            "points=\\=0",
+            "currentBalance=4*points",
+            "points>3",
+            "points=<4"
+          ]
+        },
+        {
+          "id": 7,
+          "kind": "negative",
+          "concrete_values": [
+            "points == 3",
+            "currentBalance == 0"
+          ],
+          "constraints_z3": [
+            "currentBalance >= 5",
+            "points == 3",
+            "currentBalance == 3*points"
+          ],
+          "constraints_clpq": [
+            "points=\\=0",
+            "currentBalance=3*points",
+            "points>2",
+            "points=<3"
+          ]
+        },
+        {
+          "id": 8,
+          "kind": "positive",
+          "concrete_values": [
+            "points == 2",
+            "currentBalance == 0"
+          ],
+          "constraints_z3": [
+            "currentBalance != 0",
+            "currentBalance <= 4",
+            "points == 2",
+            "currentBalance == 2*points"
+          ],
+          "constraints_clpq": [
+            "points=\\=0",
+            "currentBalance=2*points",
+            "points>1",
+            "points=<2"
+          ]
+        },
+        {
+          "id": 9,
+          "kind": "positive",
+          "concrete_values": [
+            "points == 1",
+            "currentBalance == 0"
+          ],
+          "constraints_z3": [
+            "currentBalance != 0",
+            "points == 1",
+            "currentBalance <= 4",
+            "currentBalance == 1*points"
+          ],
+          "constraints_clpq": [
+            "points=\\=0",
+            "currentBalance=points",
+            "points>0",
+            "points=<1"
+          ]
+        },
+        {
+          "id": 10,
+          "kind": "negative",
+          "concrete_values": [
+            "points == 10",
+            "currentBalance == 0"
+          ],
+          "constraints_z3": [
+            "points >= 10",
+            "currentBalance >= 5"
+          ],
+          "constraints_clpq": [
+            "currentBalance=2*points",
+            "points=\\=0",
+            "points>=10"
+          ]
+        }
+      ]
+    }
+  ]
+}

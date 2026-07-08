@@ -1,0 +1,28 @@
+=== STATE VARIABLES (valori POST-chiamata) ===
+  (no subO_ predicate with env slots found in trace)
+
+=== FUNCTION ARGS: positiveDifference(x, y) ===
+  x             v0 = K  ->  pos 10 in new3  ->  _11270  =  2
+  y             v1 = J  ->  pos 9 in new3  ->  _11258  =  1
+
+=== VINCOLI ===
+  _358=0
+  _55902=0
+  _88002=1
+  not(_11638=0)and _55902=0
+  _134=0 and _146=0 and _158=0 and _170=0 and _182=0 and _194=0 and _206=0 and _218=0 and _230=0 and _242=0 and _254=0 and _266=0 and _278=0 and _290=0 and _296=0
+  _342=128 and _358=_230
+  _11258=_368 and _11270=_370 and _11282=0 and _11294=0 and _11306=0 and _11318=0 and _11330=0 and _11342=0 and _11354=0 and _11366=0 and _11378=0 and _11390=0 and _11402=0 and _11414=0 and _11426=0 and _11438=0 and _11450=0 and _11462=0 and _11474=0 and _11486=0 and _11498=0 and _11510=0 and _11522=0 and _11528=0
+  _11628=0 and _88002=1
+  _11634=1 and not(_11270=_11258)and _11640=0 and _11640=0 and _11626=1 and _11626=_11638 and _55728=0 and _55740=0 and _55752=0 and _55764=0 and _55776=0 and _11642=0 and _11270>_11258 and _11632=1 and not(_11632=_55826)and _11644=0 and _55826=0
+  _11644=0 and _11654=_11258-_11270 and _11654=_11658 and _11662=0 and _87842=0 and _87854=0 and _87866=0 and _11658=<_11662 and _11628=0 and _87896=0
+  _11652=0 and _11648=0 and _18946=0 and _18958=0 and _18970=0 and _11270>_11648 and _11668=1
+  _11668=1 and _11636=0 and _36734=0 and _36746=0 and _36758=0 and _11258>_11636 and _11656=1 and _11656=_11634
+
+=== VINCOLI PROIETTATI (solo variabili Solidity) ===
+  Not(x == y)
+  Not(x <= y)
+  y - 1*x <= 0
+  x >= 1
+  y >= 1
+
