@@ -218,6 +218,7 @@ def project_constraints(constraints, rv_to_sol):
         if l and l not in seen:
             seen.add(l); result.append(l)
     result = [l for l in result if not re.search(r'\b_\d+\b', l)]
+    result = [l.replace('=\\=', '!=') for l in result]
     return result
 
 

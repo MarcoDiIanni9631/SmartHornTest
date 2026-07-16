@@ -1,0 +1,34 @@
+{
+  "stateVariables": [
+    "currentBalance"
+  ],
+  "functions": [
+    {
+      "signature": "claimRewards(uint256)",
+      "params": [
+        "points"
+      ],
+      "test_cases": [
+        {
+          "id": 1,
+          "kind": "negative",
+          "concrete_values": [
+            "points == 9",
+            "currentBalance == 0"
+          ],
+          "constraints_z3": [
+            "currentBalance >= 5",
+            "points == 9",
+            "currentBalance == 9*points"
+          ],
+          "constraints_clpq": [
+            "points!=0",
+            "currentBalance=9*points",
+            "points>8",
+            "points=<9"
+          ]
+        }
+      ]
+    }
+  ]
+}
