@@ -82,17 +82,16 @@ fi
 
 # ----------------------------------------------------------
 # CONFIGURAZIONE AMBIENTE
-# Percorsi assoluti: funzionano per qualsiasi utente sul server.
-# Sovrascrivibili via variabili d'ambiente se necessario.
+# Path presi da config.sh (override via variabili d'ambiente:
+# GREY_DIR, YULCHC_DIR, SWIPL_BIN, SWIZ3_TURIBE_PATH, Z3_LIB_DIR).
 # ----------------------------------------------------------
-_VERIMAP="/home/labeconomia/mdiianni/verimap_projects"
-SWIPL_BIN="${SWIPL_BIN:-/home/labeconomia/mdiianni/local/swipl-9.3.31/bin/swipl}"
-export SWIZ3_TURIBE_PATH="${SWIZ3_TURIBE_PATH:-$_VERIMAP/swi-prolog-z3}"
-export LD_LIBRARY_PATH="/home/labeconomia/mdiianni/local/z3-4.15.3/lib:${SWIZ3_TURIBE_PATH}:${SWIZ3_TURIBE_PATH}/z3/build:${LD_LIBRARY_PATH:-}"
+source "$SCRIPT_DIR/config.sh"
+
+export LD_LIBRARY_PATH="${Z3_LIB_DIR:+$Z3_LIB_DIR:}${SWIZ3_TURIBE_PATH}:${SWIZ3_TURIBE_PATH}/z3/build:${LD_LIBRARY_PATH:-}"
 TIMEOUT_SEC=60000
 
 if [ -z "$SWIPL_BIN" ] || [ ! -x "$SWIPL_BIN" ]; then
-  echo "❌ SWI-Prolog non trovato."
+  echo "❌ SWI-Prolog non trovato (SWIPL_BIN='$SWIPL_BIN'). Impostalo con: export SWIPL_BIN=/path/to/swipl"
   exit 1
 fi
 
