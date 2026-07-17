@@ -7,14 +7,14 @@
 
 set -euo pipefail
 
-[ $# -lt 1 ] && { echo "Uso: $0 <contract.t.pl>"; exit 1; }
+[ $# -lt 1 ] && { echo "Usage: $0 <contract.t.pl>"; exit 1; }
 
 TPL="$(readlink -f "$1")"
 BASE="$(basename "$TPL" .pl)"
 DIR="$(dirname "$TPL")"
 
-echo "=== STEP 7: chcviz → grafo SVG ==="
+echo "=== STEP 7: chcviz → SVG graph ==="
 chcviz "$TPL" 2>&1 | grep -v '^%\|^Warning\|^\$' || true
 
 SVG="$DIR/dot_dias/${BASE}_clean_object_xref_diagram.dot.svg"
-[ -f "$SVG" ] && echo "[OK] SVG → $SVG" || echo "⚠️  SVG non trovato: $SVG"
+[ -f "$SVG" ] && echo "[OK] SVG → $SVG" || echo "⚠️  SVG not found: $SVG"

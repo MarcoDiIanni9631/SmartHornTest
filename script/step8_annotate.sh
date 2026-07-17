@@ -12,7 +12,7 @@ set -euo pipefail
 SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 ANNOTATE_SOL="$SCRIPT_DIR/annotate_sol.py"
 
-[ $# -lt 1 ] && { echo "Uso: $0 <contract.sol>"; exit 1; }
+[ $# -lt 1 ] && { echo "Usage: $0 <contract.sol>"; exit 1; }
 
 SOL="$(readlink -f "$1")"
 DIR="$(dirname "$SOL")"

@@ -11,7 +11,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)"
 source "$SCRIPT_DIR/config.sh"
 
-[ $# -lt 1 ] && { echo "Uso: $0 <contract.pl>"; exit 1; }
+[ $# -lt 1 ] && { echo "Usage: $0 <contract.pl>"; exit 1; }
 [ -d "$YULCHC_DIR" ] || { echo "❌ YULCHC_DIR not found: $YULCHC_DIR (clone yul-chc there, or set YULCHC_DIR)"; exit 1; }
 
 PL="$(readlink -f "$1")"
@@ -19,9 +19,9 @@ BASE="$(basename "$PL" .pl)"
 DIR="$(dirname "$PL")"
 AUX="$DIR/$BASE.aux.pl"
 
-[ -f "$AUX" ] || { echo "❌ aux.pl non trovato: $AUX"; exit 1; }
+[ -f "$AUX" ] || { echo "❌ aux.pl not found: $AUX"; exit 1; }
 
 echo "=== STEP 3: transform → $BASE.t.pl ==="
 cd "$YULCHC_DIR"
 ./scripts/transform --interactive "$PL" lib/yul/configs/vcg_multistep.iteration
-echo "[OK] $BASE.t.pl generato"
+echo "[OK] $BASE.t.pl generated"

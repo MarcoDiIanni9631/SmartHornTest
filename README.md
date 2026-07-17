@@ -51,9 +51,13 @@ already installed with `which swipl swipl-ld git python3 gcc unzip rsync`.
 ### 2. Clone this repo
 
 ```bash
-git clone https://github.com/MarcoDiIanni9631/SmartHornTest.git swipl_z3_clpq_interpreter
+git clone --depth 1 https://github.com/MarcoDiIanni9631/SmartHornTest.git swipl_z3_clpq_interpreter
 cd swipl_z3_clpq_interpreter
 ```
+
+`--depth 1` skips the old commit history, which makes the clone much
+faster (the full history is large because of old test output files).
+If you need the full history later, run `git fetch --unshallow`.
 
 ### 3. Run the install script
 

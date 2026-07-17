@@ -1,17 +1,17 @@
 #!/bin/bash
-# step5_analysis.sh [opzioni] <contract.t_constr.pl> <target>
-# Lancia l'analisi CHC in background con nohup. Produce un file .zmiout.
+# step5_analysis.sh [options] <contract.t_constr.pl> <target>
+# Runs the CHC analysis in the background with nohup. Produces a .zmiout file.
 #
-# Opzioni:
-#   --stop-first-per-loop   un controesempio per loop (consigliato)
-#   --stop-first            ferma al primo controesempio in assoluto
-#   --timeout SEC           timeout in secondi (default: 300)
-#   --maxdepth N            profondita massima di unfolding
-#   --looplimit N           numero massimo di iterazioni del loop
-#   --skip-existing         salta se esiste gia un .zmiout
-#   --debug                 output verboso
+# Options:
+#   --stop-first-per-loop   one counterexample per loop (recommended)
+#   --stop-first            stop at the very first counterexample
+#   --timeout SEC           timeout in seconds (default: 300)
+#   --maxdepth N            maximum unfolding depth
+#   --looplimit N           maximum number of loop iterations
+#   --skip-existing         skip if a .zmiout already exists
+#   --debug                 verbose output
 #
-# Esempio:
+# Example:
 #   bash script/step5_analysis.sh --stop-first-per-loop --timeout 300 \
 #     test/MyContract/MyContract.t_constr.pl incorrect
 
@@ -31,16 +31,16 @@ while [ $# -gt 0 ]; do
   esac
 done
 
-[ "${#POSITIONAL[@]}" -lt 2 ] && { echo "Uso: $0 [opzioni] <contract.t_constr.pl> <target>"; exit 1; }
+[ "${#POSITIONAL[@]}" -lt 2 ] && { echo "Usage: $0 [options] <contract.t_constr.pl> <target>"; exit 1; }
 
 CONSTR="$(readlink -f "${POSITIONAL[0]}")"
 TARGET="${POSITIONAL[1]}"
 BASE="$(basename "$CONSTR" .t_constr.pl)"
 DIR="$(dirname "$CONSTR")"
 
-echo "=== STEP 5: analisi → $BASE.*.zmiout (target: $TARGET) ==="
+echo "=== STEP 5: analysis → $BASE.*.zmiout (target: $TARGET) ==="
 cd "$SCRIPT_DIR"
 nohup bash InterpreterAnalysis5.2.sh "${FLAGS[@]+"${FLAGS[@]}"}" "$CONSTR" "$TARGET" \
   > "$DIR/analysis.log" 2>&1 &
-echo "[OK] Analisi avviata in background (PID: $!)"
+echo "[OK] Analysis started in the background (PID: $!)"
 echo "     Log: $DIR/analysis.log"

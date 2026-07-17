@@ -31,7 +31,7 @@ done
 if ! $DO_Z3 && ! $DO_CLPQ; then DO_Z3=true; fi
 
 [ "${#POSITIONAL[@]}" -lt 3 ] && {
-  echo "Uso: $0 [--z3] [--clpq] <contract.sol> <contract.t.pl-defs.txt> <contract.*.zmiout>"
+  echo "Usage: $0 [--z3] [--clpq] <contract.sol> <contract.t.pl-defs.txt> <contract.*.zmiout>"
   exit 1
 }
 

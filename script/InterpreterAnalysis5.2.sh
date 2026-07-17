@@ -45,7 +45,7 @@ while [ "$#" -gt 0 ]; do
       elif [ -z "$TARGET" ]; then
         TARGET="$1"
       else
-        echo "❌ Argomento inaspettato: $1"
+        echo "❌ Unexpected argument: $1"
         exit 1
       fi
       shift ;;
@@ -58,8 +58,8 @@ MAXDEPTH="${MAXDEPTH:-10000000}"
 # CONTROLLO ARGOMENTI OBBLIGATORI
 # ----------------------------------------------------------
 if [ -z "$INPUT_PATH" ] || [ -z "$TARGET" ]; then
-  echo "Uso:"
-  echo "  nohup $0 [--debug] [--stop-first] [--stop-first-per-loop] [--skip-existing] [--maxdepth N] [--looplimit N] [--timeout SEC] [--skip-file F] <file_o_cartella> <predicato> &"
+  echo "Usage:"
+  echo "  nohup $0 [--debug] [--stop-first] [--stop-first-per-loop] [--skip-existing] [--maxdepth N] [--looplimit N] [--timeout SEC] [--skip-file F] <file_or_folder> <predicate> &"
   exit 1
 fi
 
@@ -71,12 +71,12 @@ MAIN="$SCRIPT_DIR/../src/core/main.pl"
 # CONTROLLI DI BASE
 # ----------------------------------------------------------
 if [ ! -e "$INPUT_PATH" ]; then
-  echo "❌ File o cartella non trovati: $INPUT_PATH"
+  echo "❌ File or folder not found: $INPUT_PATH"
   exit 1
 fi
 
 if [ ! -f "$MAIN" ]; then
-  echo "❌ main.pl non trovato: $MAIN"
+  echo "❌ main.pl not found: $MAIN"
   exit 1
 fi
 
@@ -178,11 +178,11 @@ process_file() {
   base_no_ext="$filename"
   tmpout="$dir/${base_no_ext}.tmpout"
 
-  echo "🔎 Analizzo ora: $filename"
+  echo "🔎 Now analyzing: $filename"
 
   if [ "$SKIP_EXISTING" = "yes" ]; then
     if compgen -G "$dir/${base_no_ext}".*.zmiout > /dev/null; then
-      echo "⏭️  Skip: $filename (zmiout già presente)"
+      echo "⏭️  Skip: $filename (zmiout already present)"
       return
     fi
   fi
@@ -195,10 +195,10 @@ process_file() {
 
   FILE_START_TS="$(date '+%Y-%m-%d %H:%M:%S')"
   FILE_START_EPOCH="$(date +%s)"
-  echo "=== ANALISI: $filename ===" > "$tmpout"
-  echo "Comando:     bash InterpreterAnalysis5.2.sh $ORIG_CMDLINE" >> "$tmpout"
-  echo "Inizio:      $FILE_START_TS" >> "$tmpout"
-  echo "--- Parametri ---" >> "$tmpout"
+  echo "=== ANALYSIS: $filename ===" > "$tmpout"
+  echo "Command:     bash InterpreterAnalysis5.2.sh $ORIG_CMDLINE" >> "$tmpout"
+  echo "Start:       $FILE_START_TS" >> "$tmpout"
+  echo "--- Parameters ---" >> "$tmpout"
   echo "MaxDepth:    $MAXDEPTH" >> "$tmpout"
   echo "LoopLimit:   ${LOOPLIMIT:-default}" >> "$tmpout"
   echo "Timeout:     ${TIMEOUT_SEC}s" >> "$tmpout"
@@ -221,8 +221,8 @@ process_file() {
   FILE_ELAPSED=$(( $(date +%s) - FILE_START_EPOCH ))
   FILE_ELAPSED_FMT="$(printf '%02dh %02dm %02ds' $((FILE_ELAPSED/3600)) $(((FILE_ELAPSED%3600)/60)) $((FILE_ELAPSED%60)))"
   echo "" >> "$tmpout"
-  echo "Fine:   $FILE_END_TS" >> "$tmpout"
-  echo "Durata: $FILE_ELAPSED_FMT" >> "$tmpout"
+  echo "End:      $FILE_END_TS" >> "$tmpout"
+  echo "Duration: $FILE_ELAPSED_FMT" >> "$tmpout"
 
   # ----------------------------------------------------------
   # TAGGING OUTPUT (IDENTICO A 5.0)
@@ -267,11 +267,11 @@ export MAIN SWIPL_BIN TIMEOUT_SEC TARGET SKIP_EXISTING MAXDEPTH LOOPLIMIT SKIP_F
 # ----------------------------------------------------------
 START_TS="$(date '+%Y-%m-%d %H:%M:%S')"
 START_EPOCH="$(date +%s)"
-echo "🕐 Inizio analisi: $START_TS"
+echo "🕐 Analysis started: $START_TS"
 echo "==========================================="
 
 if [ -d "$INPUT_PATH" ]; then
-  echo "⚙️ Esecuzione parallela su: $INPUT_PATH"
+  echo "⚙️ Running in parallel on: $INPUT_PATH"
   find "$INPUT_PATH" -type f -name "*.pl" -exec readlink -f {} \; \
     | parallel -j 16 process_file {}
 else
@@ -284,8 +284,8 @@ ELAPSED=$(( END_EPOCH - START_EPOCH ))
 ELAPSED_FMT="$(printf '%02dh %02dm %02ds' $((ELAPSED/3600)) $(((ELAPSED%3600)/60)) $((ELAPSED%60)))"
 
 echo "==========================================="
-echo "✅ Analisi completata!"
-echo "🕐 Inizio:  $START_TS"
-echo "🕑 Fine:    $END_TS"
-echo "⏱️  Durata:  $ELAPSED_FMT"
+echo "✅ Analysis complete!"
+echo "🕐 Start:    $START_TS"
+echo "🕑 End:      $END_TS"
+echo "⏱️  Duration: $ELAPSED_FMT"
 echo "==========================================="

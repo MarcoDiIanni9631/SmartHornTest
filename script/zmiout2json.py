@@ -143,7 +143,7 @@ def main():
     json_path = os.path.join(os.path.dirname(zmiout_path), sol_stem + ".test_cases.json")
     with open(json_path, 'w') as f:
         json.dump(json_data, f, indent=2)
-    print(f"JSON scritto in: {json_path}")
+    print(f"JSON written to: {json_path}")
 
 
 if __name__ == '__main__':

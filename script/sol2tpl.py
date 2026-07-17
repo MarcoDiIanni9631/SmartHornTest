@@ -127,7 +127,7 @@ def choose_function(funs, hint=None):
             funs = candidates   # restringe la scelta
 
     if len(funs) == 1:
-        print(f"[OK] Funzione selezionata automaticamente: {funs[0]['name']}")
+        print(f"[OK] Function selected automatically: {funs[0]['name']}")
         return funs[0]
 
     # Selezione interattiva

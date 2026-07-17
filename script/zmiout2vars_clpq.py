@@ -203,7 +203,7 @@ def project_constraints(constraints, rv_to_sol):
     except subprocess.TimeoutExpired:
         return ["(timeout CLPQ)"]
     except FileNotFoundError:
-        return ["(swipl non trovato nel PATH)"]
+        return ["(swipl not found in PATH)"]
     finally:
         os.unlink(tmp)
 
@@ -459,7 +459,7 @@ def main():
     with open(out_path, 'w') as f:
         f.write(output)
 
-    print(f"Output scritto in: {out_path} ({len(tests)} test trovati)")
+    print(f"Output written to: {out_path} ({len(tests)} test cases found)")
 
 
 if __name__ == '__main__':

@@ -2,20 +2,18 @@
 # ============================================================
 # sol2constr.sh — Steps 1–4: Solidity → .t_constr.pl
 #
-# Uso: bash sol2constr.sh [opzioni] <contratto.sol>
+# Usage: bash sol2constr.sh [options] <contract.sol>
 #
-# Opzioni:
-#   --gen-aux           genera .aux.pl automaticamente (step 2.5)
-#   --aux-hint HINT     suggerisce il nome della funzione a sol2tpl.py
+# Options:
+#   --gen-aux           auto-generate .aux.pl (step 2.5)
+#   --aux-hint HINT     suggests the function name to sol2tpl.py
 #
-# Chiama in sequenza:
+# Calls in order:
 #   step1_grey.sh      → .json
 #   step2_yul2chc.sh   → .pl
-#   [step2.5: sol2tpl  → .aux.pl]  (solo con --gen-aux)
-#   step3_transform.sh → .t.pl  (richiede .aux.pl nella stessa cartella)
+#   [step2.5: sol2tpl  → .aux.pl]  (only with --gen-aux)
+#   step3_transform.sh → .t.pl  (needs .aux.pl in the same folder)
 #   step4_constr.sh    → .t_constr.pl
-#
-# Ogni step gestisce autonomamente l'esecuzione sul server se necessario.
 # ============================================================
 
 set -euo pipefail
@@ -33,17 +31,17 @@ while [ "$#" -gt 0 ]; do
   esac
 done
 
-[ "$#" -lt 1 ] && { echo "Uso: $0 [--gen-aux] [--aux-hint HINT] <contratto.sol>"; exit 1; }
+[ "$#" -lt 1 ] && { echo "Usage: $0 [--gen-aux] [--aux-hint HINT] <contract.sol>"; exit 1; }
 
 SOL="$(readlink -f "$1")"
-[ -f "$SOL" ] || { echo "❌ File non trovato: $SOL"; exit 1; }
+[ -f "$SOL" ] || { echo "❌ File not found: $SOL"; exit 1; }
 
 BASE="$(basename "$SOL" .sol)"
 DIR="$(dirname "$SOL")"
 
 echo "=================================="
-echo "📜 Contratto: $BASE.sol"
-echo "📂 Cartella:  $DIR"
+echo "📜 Contract: $BASE.sol"
+echo "📂 Folder:   $DIR"
 echo "=================================="
 echo ""
 
@@ -66,7 +64,7 @@ fun     = choose_function(funs, hint)
 aux     = os.path.splitext(pl_path)[0] + '.aux.pl'
 sol     = os.path.splitext(pl_path)[0] + '.sol'
 generate_aux_pl(aux, fun, sol)
-print('[OK] aux.pl generato (fun: ' + fun['name'] + ')')
+print('[OK] aux.pl generated (fun: ' + fun['name'] + ')')
 PYEOF
 fi
 
@@ -77,6 +75,6 @@ bash "$SCRIPT_DIR/step4_constr.sh"    "$DIR/$BASE.t.pl"
 
 echo ""
 echo "=================================="
-echo "✅ Conversione completata!"
+echo "✅ Conversion complete!"
 echo "   → $DIR/$BASE.t_constr.pl"
 echo "=================================="

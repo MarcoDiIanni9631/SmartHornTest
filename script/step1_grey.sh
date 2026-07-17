@@ -10,7 +10,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)"
 source "$SCRIPT_DIR/config.sh"
 
-[ $# -lt 1 ] && { echo "Uso: $0 <contract.sol>"; exit 1; }
+[ $# -lt 1 ] && { echo "Usage: $0 <contract.sol>"; exit 1; }
 [ -d "$GREY_DIR" ] || { echo "❌ GREY_DIR not found: $GREY_DIR (clone grey there, or set GREY_DIR)"; exit 1; }
 
 SOL="$(readlink -f "$1")"
@@ -22,4 +22,4 @@ echo "=== STEP 1: grey → $BASE.json ==="
 cd "$GREY_DIR"
 python3 src/grey_main.py -s "$SOL" -v -if sol -o output -solc ./solc-latest
 mv "$GREY_DIR/intermediate.json" "$JSON"
-echo "[OK] $BASE.json generato"
+echo "[OK] $BASE.json generated"

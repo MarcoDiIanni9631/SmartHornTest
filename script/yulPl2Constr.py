@@ -142,7 +142,7 @@ def main():
         for st in transformed:
             f.write(st.rstrip() + "\n")
 
-    print(f"[OK] Creato: {output_path}")
+    print(f"[OK] Created: {output_path}")
 
 if __name__ == "__main__":
     main()

@@ -1,24 +1,24 @@
 #!/bin/bash
 # ====================================================================
-# sol2analysis.sh — Pipeline completa: .sol → .zmiout → vars + grafo
+# sol2analysis.sh — Full pipeline: .sol → .zmiout → vars + graph
 #
-# Uso: nohup bash script/sol2analysis.sh [opzioni] <contratto.sol> <target> &
+# Usage: nohup bash script/sol2analysis.sh [options] <contract.sol> <target> &
 #
-# Opzioni pipeline:
-#   --until-tpl     ferma dopo i step 1-4 (no analisi)
-#   --skip-convert  salta i step 1-4 (usa file esistenti)
-#   --gen-aux       genera .aux.pl automaticamente (step 2.5, passato a sol2constr.sh)
-#   --aux-hint HINT suggerisce il nome della funzione a sol2tpl.py
-#   --varz3         genera .vars_z3.txt dopo l'analisi  (step 6)
-#   --varclpq       genera .vars_clpq.txt dopo l'analisi (step 6)
-#   --graph         genera il grafo CHC SVG             (step 7)
-#   --annotate      genera .annotated.sol               (step 8)
+# Pipeline options:
+#   --until-tpl     stop after steps 1-4 (no analysis)
+#   --skip-convert  skip steps 1-4 (use existing files)
+#   --gen-aux       auto-generate .aux.pl (step 2.5, passed to sol2constr.sh)
+#   --aux-hint HINT suggests the function name to sol2tpl.py
+#   --varz3         generate .vars_z3.txt after the analysis  (step 6)
+#   --varclpq       generate .vars_clpq.txt after the analysis (step 6)
+#   --graph         generate the CHC SVG graph             (step 7)
+#   --annotate      generate .annotated.sol               (step 8)
 #
-# Opzioni analisi (passate a InterpreterAnalysis5.2.sh, step 5):
+# Analysis options (passed to InterpreterAnalysis5.2.sh, step 5):
 #   --debug, --stop-first, --stop-first-per-loop, --skip-existing
 #   --maxdepth N, --looplimit N, --timeout SEC, --skip-file F
 #
-# Esempi:
+# Examples:
 #   nohup bash script/sol2analysis.sh --stop-first-per-loop --timeout 300 \
 #        --varz3 --varclpq --annotate \
 #        test/MyContract/MyContract.sol incorrect &
@@ -32,8 +32,8 @@ set -euo pipefail
 SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 
 usage() {
-  echo "Uso: $0 [opzioni] <contratto.sol> <target>"
-  echo "     $0 --until-tpl <contratto.sol>"
+  echo "Usage: $0 [options] <contract.sol> <target>"
+  echo "       $0 --until-tpl <contract.sol>"
   exit 1
 }
 
@@ -73,53 +73,53 @@ else
 fi
 
 SOL="$(readlink -f "$SOL")"
-[ -f "$SOL" ] || { echo "❌ File non trovato: $SOL"; exit 1; }
+[ -f "$SOL" ] || { echo "❌ File not found: $SOL"; exit 1; }
 
 BASE="$(basename "$SOL" .sol)"
 DIR="$(dirname "$SOL")"
 
 # ------------------------------------------------------------------
-# STEP 1-4: CONVERSIONE
+# STEP 1-4: CONVERSION
 # ------------------------------------------------------------------
 if $SKIP_CONVERT; then
-  echo "⏭️  Conversione saltata (--skip-convert)"
-  [ -f "$DIR/$BASE.t_constr.pl" ] || { echo "❌ $BASE.t_constr.pl non trovato"; exit 1; }
+  echo "⏭️  Conversion skipped (--skip-convert)"
+  [ -f "$DIR/$BASE.t_constr.pl" ] || { echo "❌ $BASE.t_constr.pl not found"; exit 1; }
 else
   bash "$SCRIPT_DIR/sol2constr.sh" "${CONSTR_FLAGS[@]+"${CONSTR_FLAGS[@]}"}" "$SOL"
 fi
 
 # ------------------------------------------------------------------
-# STEP 7 (opzionale): GRAFO CHC
+# STEP 7 (optional): CHC GRAPH
 # ------------------------------------------------------------------
 if $DO_GRAPH; then
   echo ""
   bash "$SCRIPT_DIR/step7_graph.sh" "$DIR/$BASE.t.pl"
 fi
 
-# Ferma qui se --until-tpl
+# Stop here if --until-tpl
 if ! $DO_ANALYSIS; then
   echo ""
-  echo "✅ Conversione completata (--until-tpl)"
+  echo "✅ Conversion complete (--until-tpl)"
   exit 0
 fi
 
 # ------------------------------------------------------------------
-# STEP 5: ANALISI (sincrona — aspetta la fine prima di step 6)
+# STEP 5: ANALYSIS (synchronous — waits before running step 6)
 # ------------------------------------------------------------------
 echo ""
 echo "=================================================="
-echo "🔍 ANALISI: $BASE.t_constr.pl → target: $TARGET"
+echo "🔍 ANALYSIS: $BASE.t_constr.pl → target: $TARGET"
 echo "=================================================="
 cd "$SCRIPT_DIR"
 bash InterpreterAnalysis5.2.sh "${ANALYSIS_FLAGS[@]+"${ANALYSIS_FLAGS[@]}"}" \
   "$DIR/$BASE.t_constr.pl" "$TARGET"
 
 # ------------------------------------------------------------------
-# STEP 6: VARS + JSON (z3 e clpq sempre)
+# STEP 6: VARS + JSON (z3 and clpq always)
 # ------------------------------------------------------------------
 ZMIOUT=$(ls -t "$DIR"/*.zmiout 2>/dev/null | head -1 || true)
 if [ -z "$ZMIOUT" ]; then
-  echo "⚠️  Nessun .zmiout trovato in $DIR, skip step 6"
+  echo "⚠️  No .zmiout found in $DIR, skipping step 6"
 else
   DEFS="$DIR/$BASE.t.pl-defs.txt"
   echo ""
@@ -127,7 +127,7 @@ else
 fi
 
 # ------------------------------------------------------------------
-# STEP 8 (opzionale): ANNOTATE
+# STEP 8 (optional): ANNOTATE
 # ------------------------------------------------------------------
 if $DO_ANNOTATE; then
   echo ""
@@ -136,5 +136,5 @@ fi
 
 echo ""
 echo "=================================================="
-echo "✅ Pipeline completata!"
+echo "✅ Pipeline complete!"
 echo "=================================================="

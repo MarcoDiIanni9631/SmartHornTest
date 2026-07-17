@@ -700,7 +700,7 @@ def main():
     with open(out_path, 'w') as f:
         f.write(output)
 
-    print(f"Output scritto in: {out_path} ({len(tests)} test trovati)")
+    print(f"Output written to: {out_path} ({len(tests)} test cases found)")
 
 
 if __name__ == '__main__':
