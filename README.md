@@ -31,27 +31,27 @@ The `solc` Solidity compiler is also required and is bundled inside grey.
 
 ## Installation
 
-Setup is 3 commands:
-
+**1. Clone this repo**
 ```bash
 git clone --depth 1 https://github.com/MarcoDiIanni9631/SmartHornTest.git swipl_z3_clpq_interpreter
 cd swipl_z3_clpq_interpreter
-bash script/install.sh
 ```
 
-`install.sh` sets up everything the pipeline needs: it clones `grey`,
-`yul-chc`, and `swi-prolog-z3` next to this repo, downloads a ready-to-use
-Z3 build, and compiles the SWI-Prolog/Z3 bridge. If it ends with
-`BRIDGE OK` and `Setup complete.`, you are done.
+**2. Run the install script**
+```bash
+bash script/install.sh
+```
+This sets up everything the pipeline needs: it clones `grey`, `yul-chc`,
+and `swi-prolog-z3` next to this repo, downloads a ready-to-use Z3 build,
+and compiles the SWI-Prolog/Z3 bridge. If it ends with `BRIDGE OK` and
+`Setup complete.`, you are done.
 
-Then try it on a contract:
-
+**3. Try it on a contract**
 ```bash
 bash script/sol2analysis.sh --gen-aux --stop-first-per-loop --timeout 300 \
   --varz3 --varclpq --annotate \
   path/to/YourContract.sol incorrect
 ```
-
 This produces `YourContract.test_cases.json` in the same folder as the
 `.sol` file.
 
