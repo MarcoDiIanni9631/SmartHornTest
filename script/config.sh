@@ -28,6 +28,6 @@ _PROJECTS_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 : "${YULCHC_DIR:=$_PROJECTS_ROOT/yul-chc}"
 : "${SWIZ3_TURIBE_PATH:=$_PROJECTS_ROOT/swi-prolog-z3}"
 : "${SWIPL_BIN:=$(command -v swipl || true)}"
-: "${Z3_LIB_DIR:=}"
+: "${Z3_LIB_DIR:=$([ -d "$_PROJECTS_ROOT/z3/bin" ] && echo "$_PROJECTS_ROOT/z3/bin" || true)}"
 
 export GREY_DIR YULCHC_DIR SWIZ3_TURIBE_PATH SWIPL_BIN Z3_LIB_DIR
