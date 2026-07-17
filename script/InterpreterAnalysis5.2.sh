@@ -91,7 +91,7 @@ export LD_LIBRARY_PATH="${Z3_LIB_DIR:+$Z3_LIB_DIR:}${SWIZ3_TURIBE_PATH}:${SWIZ3_
 TIMEOUT_SEC=60000
 
 if [ -z "$SWIPL_BIN" ] || [ ! -x "$SWIPL_BIN" ]; then
-  echo "❌ SWI-Prolog non trovato (SWIPL_BIN='$SWIPL_BIN'). Impostalo con: export SWIPL_BIN=/path/to/swipl"
+  echo "❌ SWI-Prolog not found (SWIPL_BIN='$SWIPL_BIN'). Set it with: export SWIPL_BIN=/path/to/swipl"
   exit 1
 fi
 

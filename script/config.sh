@@ -20,7 +20,7 @@
 #   export Z3_LIB_DIR=/home/user/local/z3-4.15.3/lib
 # before calling any pipeline script.
 
-[ -n "${SCRIPT_DIR:-}" ] || { echo "❌ config.sh: SCRIPT_DIR non impostata (non chiamarlo direttamente)"; exit 1; }
+[ -n "${SCRIPT_DIR:-}" ] || { echo "config.sh: SCRIPT_DIR is not set (do not call this file directly)"; exit 1; }
 
 _PROJECTS_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 

@@ -10,15 +10,122 @@ SmartHornTest compiles a Solidity contract into CHC clauses, interprets them wit
 
 | Tool | Tested version | Notes |
 |---|---|---|
-| [SWI-Prolog](https://www.swi-prolog.org/Download.html) | 9.3.31 | Core interpreter |
-| [Z3](https://github.com/Z3Prover/z3) | 4.15.3 | SMT solver |
+| [SWI-Prolog](https://www.swi-prolog.org/Download.html) | 9.2+ | Core interpreter |
+| [Z3](https://github.com/Z3Prover/z3) | 4.15.2 | SMT solver |
 | Python | 3.8+ | Pipeline scripts |
-| [GREY](https://github.com/costa-group/grey) | — | Solidity → YUL compiler |
-| [yul-chc](https://github.com/chc-lab/yul-chc) | — | YUL → CHC translator + transformer |
+| [grey](https://github.com/MarcoDiIanni9631/grey) | — | Solidity → YUL compiler |
+| [yul-chc](https://github.com/MarcoDiIanni9631/yul-chc) | — | YUL → CHC translator + transformer |
 | [swi-prolog-z3](https://github.com/MarcoDiIanni9631/swi-prolog-z3) | — | SWI-Prolog / Z3 bridge |
 
 All of the above must be installed and available before running the pipeline.
-The `solc` Solidity compiler is also required and is bundled inside GREY.
+The `solc` Solidity compiler is also required and is bundled inside grey.
+
+> **Note:** `grey` and `yul-chc` above point to forks, not the original
+> `costa-group/grey` and `chc-lab/yul-chc`. The public versions of these two
+> projects do not work together out of the box (the JSON that `grey` produces
+> and the JSON that `yul-chc` expects do not match, and `yul-chc` is missing
+> one file). The forks fix both problems and are the versions this pipeline
+> is tested against.
+
+---
+
+## Installation
+
+This section explains how to set up everything this repo needs on a new
+machine (a new server, a laptop, anywhere).
+
+### 1. Install the basic tools
+
+You need: `git`, `python3`, SWI-Prolog (`swipl` and `swipl-ld`), a C compiler
+(`gcc`), `unzip`, `rsync`, and `curl` or `wget`.
+
+On Ubuntu/Debian:
+```bash
+sudo apt install git python3 swi-prolog build-essential unzip rsync curl
+```
+
+If you don't have `sudo` access (common on shared university/lab servers),
+ask whoever manages the server to install these, or check if they are
+already installed with `which swipl swipl-ld git python3 gcc unzip rsync`.
+
+### 2. Clone this repo
+
+```bash
+git clone https://github.com/MarcoDiIanni9631/SmartHornTest.git swipl_z3_clpq_interpreter
+cd swipl_z3_clpq_interpreter
+```
+
+### 3. Run the install script
+
+```bash
+bash script/install.sh
+```
+
+This script:
+- clones `grey`, `yul-chc`, and `swi-prolog-z3` as folders next to this repo
+  (it skips this step if a folder is already there, so it is safe to run
+  more than once),
+- downloads a ready-to-use Z3 build (no need to compile Z3 from source),
+- compiles the SWI-Prolog/Z3 bridge (`z3_swi_foreign.so`),
+- runs a quick test to check the bridge loads correctly.
+
+If it ends with `BRIDGE OK` and `Setup complete.`, the installation worked.
+
+If `swipl` is installed but not on your `PATH` (for example, you built it
+from source into a custom folder), set `SWIPL_BIN` before running the
+script:
+```bash
+export SWIPL_BIN=/path/to/your/swipl
+bash script/install.sh
+```
+
+If your machine is not Linux x86_64, the default Z3 download will not work.
+Get the right build from the [Z3 releases page](https://github.com/Z3Prover/z3/releases)
+and point the script at it:
+```bash
+ARCHIVE_URL=https://github.com/Z3Prover/z3/releases/download/z3-4.15.2/<your-build>.zip bash script/install.sh
+```
+Or, if you already have Z3 installed somewhere, skip the download entirely:
+```bash
+SKIP_Z3=1 Z3_INCLUDE=/path/to/z3/include Z3_LIB_DIR=/path/to/z3/lib bash script/install.sh
+```
+
+### 4. Try it on a contract
+
+```bash
+bash script/sol2analysis.sh --gen-aux --stop-first-per-loop --timeout 300 \
+  --varz3 --varclpq --annotate \
+  path/to/YourContract.sol incorrect
+```
+
+This produces `YourContract.test_cases.json` in the same folder as the
+`.sol` file.
+
+### How the paths work (`script/config.sh`)
+
+Every pipeline script (`step1_grey.sh`, `step2_yul2chc.sh`,
+`step3_transform.sh`, `InterpreterAnalysis5.2.sh`) reads its paths from
+`script/config.sh`. By default it assumes this layout:
+
+```
+<parent folder>/
+  swipl_z3_clpq_interpreter/   <- this repo
+  grey/
+  yul-chc/
+  swi-prolog-z3/
+  z3/
+```
+
+which is exactly what `script/install.sh` sets up. You can override any of
+these with an environment variable, without touching any file:
+
+```bash
+export GREY_DIR=/somewhere/else/grey
+export YULCHC_DIR=/somewhere/else/yul-chc
+export SWIZ3_TURIBE_PATH=/somewhere/else/swi-prolog-z3
+export SWIPL_BIN=/somewhere/else/swipl
+export Z3_LIB_DIR=/somewhere/else/z3/lib
+```
 
 ---
 

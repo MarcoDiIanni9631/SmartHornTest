@@ -12,7 +12,7 @@ SCRIPT_DIR="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)"
 source "$SCRIPT_DIR/config.sh"
 
 [ $# -lt 1 ] && { echo "Uso: $0 <contract.pl>"; exit 1; }
-[ -d "$YULCHC_DIR" ] || { echo "❌ YULCHC_DIR non trovato: $YULCHC_DIR (clona chc-lab/yul-chc lì, o imposta YULCHC_DIR)"; exit 1; }
+[ -d "$YULCHC_DIR" ] || { echo "❌ YULCHC_DIR not found: $YULCHC_DIR (clone yul-chc there, or set YULCHC_DIR)"; exit 1; }
 
 PL="$(readlink -f "$1")"
 BASE="$(basename "$PL" .pl)"
