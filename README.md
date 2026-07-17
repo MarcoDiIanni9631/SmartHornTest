@@ -31,49 +31,36 @@ The `solc` Solidity compiler is also required and is bundled inside grey.
 
 ## Installation
 
-This section explains how to set up everything this repo needs on a new
-machine (a new server, a laptop, anywhere).
-
-### 1. Install the basic tools
-
-You need: `git`, `python3`, SWI-Prolog (`swipl` and `swipl-ld`), a C compiler
-(`gcc`), `unzip`, `rsync`, and `curl` or `wget`.
-
-On Ubuntu/Debian:
-```bash
-sudo apt install git python3 swi-prolog build-essential unzip rsync curl
-```
-
-If you don't have `sudo` access (common on shared university/lab servers),
-ask whoever manages the server to install these, or check if they are
-already installed with `which swipl swipl-ld git python3 gcc unzip rsync`.
-
-### 2. Clone this repo
+Setup is 3 commands:
 
 ```bash
 git clone --depth 1 https://github.com/MarcoDiIanni9631/SmartHornTest.git swipl_z3_clpq_interpreter
 cd swipl_z3_clpq_interpreter
-```
-
-`--depth 1` skips the old commit history, which makes the clone much
-faster (the full history is large because of old test output files).
-If you need the full history later, run `git fetch --unshallow`.
-
-### 3. Run the install script
-
-```bash
 bash script/install.sh
 ```
 
-This script:
-- clones `grey`, `yul-chc`, and `swi-prolog-z3` as folders next to this repo
-  (it skips this step if a folder is already there, so it is safe to run
-  more than once),
-- downloads a ready-to-use Z3 build (no need to compile Z3 from source),
-- compiles the SWI-Prolog/Z3 bridge (`z3_swi_foreign.so`),
-- runs a quick test to check the bridge loads correctly.
+`install.sh` sets up everything the pipeline needs: it clones `grey`,
+`yul-chc`, and `swi-prolog-z3` next to this repo, downloads a ready-to-use
+Z3 build, and compiles the SWI-Prolog/Z3 bridge. If it ends with
+`BRIDGE OK` and `Setup complete.`, you are done.
 
-If it ends with `BRIDGE OK` and `Setup complete.`, the installation worked.
+Then try it on a contract:
+
+```bash
+bash script/sol2analysis.sh --gen-aux --stop-first-per-loop --timeout 300 \
+  --varz3 --varclpq --annotate \
+  path/to/YourContract.sol incorrect
+```
+
+This produces `YourContract.test_cases.json` in the same folder as the
+`.sol` file.
+
+### If something goes wrong
+
+You need `git`, `python3`, SWI-Prolog (`swipl` and `swipl-ld`), a C compiler
+(`gcc`), `unzip`, `rsync`, and `curl` or `wget` already installed.
+`install.sh` checks for these and tells you exactly what is missing if
+something is not found.
 
 If `swipl` is installed but not on your `PATH` (for example, you built it
 from source into a custom folder), set `SWIPL_BIN` before running the
@@ -93,17 +80,6 @@ Or, if you already have Z3 installed somewhere, skip the download entirely:
 ```bash
 SKIP_Z3=1 Z3_INCLUDE=/path/to/z3/include Z3_LIB_DIR=/path/to/z3/lib bash script/install.sh
 ```
-
-### 4. Try it on a contract
-
-```bash
-bash script/sol2analysis.sh --gen-aux --stop-first-per-loop --timeout 300 \
-  --varz3 --varclpq --annotate \
-  path/to/YourContract.sol incorrect
-```
-
-This produces `YourContract.test_cases.json` in the same folder as the
-`.sol` file.
 
 ### How the paths work (`script/config.sh`)
 
