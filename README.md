@@ -219,6 +219,7 @@ The output file `Contract.test_cases.json` is written to the same folder as the 
 
 ```json
 {
+  "contractName": "AuctionOffer",
   "stateVariables": ["bid", "cash"],
   "functions": [{
     "signature": "offer(uint,uint)",
@@ -234,6 +235,7 @@ The output file `Contract.test_cases.json` is written to the same folder as the 
 }
 ```
 
+- `contractName`: name of the Solidity contract, as declared in the `.sol` file.
 - `kind`: `"negative"` = counterexample (assertion violation), `"positive"` = safe witness path.
 - `concrete_values`: exact values assigned by Z3 to Solidity variables.
 - `constraints_z3`: constraints projected onto Solidity variables via Z3 quantifier elimination.
