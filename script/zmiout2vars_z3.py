@@ -1,91 +1,27 @@
 #!/usr/bin/env python3
 """
-zmiout2vars.py
-Usage: python3 zmiout2vars.py <contract.sol> <defs.txt> <analysis.zmiout>
+zmiout2vars_z3.py
+Usage: python3 zmiout2vars_z3.py <contract.sol> <defs.txt> <analysis.zmiout>
 
-For each Solidity variable, finds which predicate in the call trace carries it,
-at which argument position, and what concrete value Z3 assigned.
-Output is written to <analysis.zmiout>.vars.txt
-Always also writes a .test_cases.json with structured test data.
+Projects constraints onto Solidity variable names via Z3 quantifier elimination.
+Output written to <analysis.zmiout>.vars_z3.txt
 """
-import re, sys, os
+import re, sys, os, importlib.util
 
 
-# ---- Parsing helpers ----
+def _load_parse():
+    here = os.path.dirname(os.path.abspath(__file__))
+    spec = importlib.util.spec_from_file_location('_parse', os.path.join(here, 'zmiout_parse.py'))
+    mod  = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
 
-def parse_state_vars(sol):
-    contract_body = re.search(r'contract\s+\w+\s*\{(.*)', sol, re.DOTALL)
-    if not contract_body:
-        return []
-    body = contract_body.group(1)
-    before_funcs = re.split(r'\bfunction\b', body)[0]
-    return re.findall(
-        r'^\s+(?:uint\d*|int\d*|address|bool|bytes\d*)\s+(?:(?:public|private|internal|constant)\s+)*(\w+)\s*[=;]',
-        before_funcs, re.MULTILINE)
-
-def parse_func_args(sol, func):
-    m = re.search(rf'function\s+{func}\s*\(([^)]*)\)', sol)
-    if not m or not m.group(1).strip():
-        return []
-    args = []
-    for part in m.group(1).split(','):
-        tokens = part.strip().split()
-        if tokens:
-            args.append(tokens[-1])
-    return args
-
-def load_defs_blocks(defs):
-    return re.split(r'\n(?=new\d+\()', defs)
-
-def detect_func_and_entry(blocks):
-    """Return (func_name, entry_pred_name): the function called and the CHC that calls it."""
-    for block in blocks:
-        m_pred = re.match(r'(new\d+)\(', block)
-        if not m_pred:
-            continue
-        m_func = re.search(r'fun_call\(subO_fun_(\w+?)_\d+,', block)
-        if m_func:
-            return m_func.group(1), m_pred.group(1)
-    return None, 'new2'
-
-def get_param_list(block):
-    m = re.match(r'new\d+\(([^)]+)\)', block)
-    if not m:
-        return []
-    return [p.strip() for p in m.group(1).split(',')]
-
-def parse_env_slots(block):
-    start = re.split(r',cf\(', block)[0]
-    m = re.search(r"\('msg\.value',\w+\)((?:,\(\d+,[A-Z]\d*\))*)\]", start)
-    if not m:
-        return {}
-    return {int(s.group(1)): s.group(2)
-            for s in re.finditer(r'\((\d+),([A-Z]\d*)\)', m.group(1))}
-
-def find_block(blocks, name):
-    for block in blocks:
-        if re.match(rf'{name}\(', block):
-            return block
-    return None
-
-def find_body_from_trace(trace_dict, blocks, n_args):
-    for name in trace_dict:
-        block = find_block(blocks, name)
-        if block is None:
-            continue
-        if 'subO_' not in block:
-            continue
-        start = re.split(r',cf\(', block)[0]
-        locals_ = {int(v): l for v, l in re.findall(r'\(v(\d+),([A-Z]\d*)\)', start)}
-        if n_args == 0 or all(i in locals_ for i in range(n_args)):
-            return name, locals_, get_param_list(block)
-    return None, {}, []
+_parse = _load_parse()
 
 
 # ---- Z3 quantifier elimination projection ----
 
 def _split_and_at_depth0(s):
-    """Split 's' on 'and' at parenthesis depth 0."""
     s = re.sub(r'\s*\band\b\s*', ' and ', s)
     parts, current, depth = [], [], 0
     i = 0
@@ -150,17 +86,13 @@ def _parse_z3_constraint(s, var_map):
     return And(atoms) if len(atoms) > 1 else atoms[0]
 
 def _expr_str(x):
-    """Z3 expression or string → readable string with normalized notation."""
     s = str(x)
     s = re.sub(r'\+\s*-(\d+)\*', r'- \1*', s)
     s = re.sub(r'\+\s*-1\*', r'- ', s)
     return s.strip()
 
-
 def _atoms_readable(result):
-    """Split Z3 formula into a list of readable strings; merge ineq pairs into equalities."""
     from z3 import is_and, is_le, is_ge, simplify
-
     atoms = list(result.children()) if is_and(result) else [result]
 
     def to_le(atom):
@@ -202,41 +134,27 @@ def _atoms_readable(result):
                     pass
         if not merged and i not in used:
             out.append(_expr_str(atoms[i]))
-
     return out
 
-
 def _prune_weak_bounds(atom_strs, state_var_names):
-    """Remove redundant atoms from Z3 QE output:
-    - Weak lower/upper bounds on func-args implied by tighter ones or equalities
-    - Or(x >= k1, x <= k2) when one disjunct is already implied
-    - Duplicate Or constraints (regardless of argument order)
-    - "0 <= x" duplicate of "x >= 0"
-    State variable constraints are protected from tightness-based removal.
-    """
     sv = set(state_var_names) if state_var_names else set()
-
-    # Collect bounds from ALL atoms (state vars too, for Or-pruning)
-    best_lower = {}   # var -> max k from "var >= k"
-    best_upper = {}   # var -> min k from "k >= var" / "var <= k"
-    eq_vals    = {}   # var -> k from "var == k"
+    best_lower = {}
+    best_upper = {}
+    eq_vals    = {}
 
     def _collect(s):
         m = re.match(r'^(\w+)\s*>=\s*(-?\d+)$', s)
         if m:
             v, k = m.group(1), int(m.group(2))
-            best_lower[v] = max(best_lower.get(v, k), k)
-            return
+            best_lower[v] = max(best_lower.get(v, k), k); return
         m = re.match(r'^(-?\d+)\s*>=\s*(\w+)$', s)
         if m:
             k, v = int(m.group(1)), m.group(2)
-            best_upper[v] = min(best_upper.get(v, k), k)
-            return
+            best_upper[v] = min(best_upper.get(v, k), k); return
         m = re.match(r'^(\w+)\s*<=\s*(-?\d+)$', s)
         if m:
             v, k = m.group(1), int(m.group(2))
-            best_upper[v] = min(best_upper.get(v, k), k)
-            return
+            best_upper[v] = min(best_upper.get(v, k), k); return
         m = re.match(r'^(\w+)\s*==\s*(-?\d+)$', s)
         if m:
             eq_vals[m.group(1)] = int(m.group(2))
@@ -245,7 +163,6 @@ def _prune_weak_bounds(atom_strs, state_var_names):
         _collect(s)
 
     def _atom_implied(atom_s):
-        """Check if simple atom var >= k / var <= k is implied by collected bounds."""
         m = re.match(r'^(\w+)\s*>=\s*(-?\d+)$', atom_s)
         if m:
             v, k = m.group(1), int(m.group(2))
@@ -261,23 +178,18 @@ def _prune_weak_bounds(atom_strs, state_var_names):
         return False
 
     def _or_canonical(s):
-        """Canonical key for Or(a, b) ignoring argument order."""
         m = re.match(r'^Or\((.+),\s*(.+)\)$', s)
         if m:
             return 'Or(' + ', '.join(sorted([m.group(1).strip(), m.group(2).strip()])) + ')'
         return s
 
     def _normalize(s):
-        """Normalize common ugly Z3 forms to cleaner equivalents."""
-        # "0 == x"  →  "x == 0"  (put variable on left)
         m = re.match(r'^(-?\d+)\s*==\s*(\w+)$', s)
         if m: s = f"{m.group(2)} == {m.group(1)}"
-        # Not(0 == x) or Not(x == 0)  →  x != 0
         m = re.match(r'^Not\(0\s*==\s*(\w+)\)$', s)
         if m: return f"{m.group(1)} != 0"
         m = re.match(r'^Not\((\w+)\s*==\s*0\)$', s)
         if m: return f"{m.group(1)} != 0"
-        # Or(x >= 1, x <= -1) / Or(x <= -1, x >= 1)  →  x != 0  (integer semantics)
         m = re.match(r'^Or\((\w+)\s*>=\s*1,\s*(\w+)\s*<=\s*-1\)$', s)
         if m and m.group(1) == m.group(2): return f"{m.group(1)} != 0"
         m = re.match(r'^Or\((\w+)\s*<=\s*-1,\s*(\w+)\s*>=\s*1\)$', s)
@@ -285,7 +197,6 @@ def _prune_weak_bounds(atom_strs, state_var_names):
         return s
 
     def _neq_implied(v):
-        """True if x != 0 is redundant (x has a non-zero equality, or a bound >= 1 or <= -1)."""
         return (v in eq_vals and eq_vals[v] != 0) \
             or best_lower.get(v, 0) >= 1 \
             or best_upper.get(v, 0) <= -1
@@ -297,85 +208,64 @@ def _prune_weak_bounds(atom_strs, state_var_names):
         s = _normalize(s)
         is_sv = any(v in s for v in sv)
 
-        # --- x != 0 ---
         m_neq = re.match(r'^(\w+)\s*!=\s*0$', s)
         if m_neq:
             v = m_neq.group(1)
-            if _neq_implied(v):
+            if _neq_implied(v) or s in seen_atoms:
                 continue
-            if s in seen_atoms:
-                continue
-            seen_atoms.add(s)
-            result.append(s)
-            continue
+            seen_atoms.add(s); result.append(s); continue
 
-        # --- Or constraints ---
         if s.startswith('Or('):
             canon = _or_canonical(s)
             if canon in seen_or:
-                continue          # duplicate (possibly different arg order)
+                continue
             seen_or.add(canon)
-            # Remove if one disjunct is already implied by a simple bound
             m = re.match(r'^Or\((.+),\s*(.+)\)$', s)
             if m:
                 a1, a2 = m.group(1).strip(), m.group(2).strip()
                 if _atom_implied(a1) or _atom_implied(a2):
                     continue
-            result.append(s)
-            continue
+            result.append(s); continue
 
-        # --- "0 <= x" is same as "x >= 0" ---
         m0 = re.match(r'^0\s*<=\s*(\w+)$', s)
         if m0:
             v = m0.group(1)
             if best_lower.get(v, -1) >= 0 or v in eq_vals:
                 continue
-            result.append(s)
-            continue
+            result.append(s); continue
 
-        # --- State variable atoms: always keep, no tightness pruning ---
         if is_sv:
             if s not in seen_atoms:
-                seen_atoms.add(s)
-                result.append(s)
+                seen_atoms.add(s); result.append(s)
             continue
 
-        # --- Func-arg lower bound: keep only if it's the tightest ---
         m = re.match(r'^(\w+)\s*>=\s*(-?\d+)$', s)
         if m:
             v, k = m.group(1), int(m.group(2))
             if v in eq_vals or best_lower.get(v, k) > k:
                 continue
-            result.append(s)
-            continue
+            result.append(s); continue
 
-        # --- Func-arg upper bound "k >= var" ---
         m = re.match(r'^(-?\d+)\s*>=\s*(\w+)$', s)
         if m:
             k, v = int(m.group(1)), m.group(2)
             if v in eq_vals or best_upper.get(v, k) < k:
                 continue
-            result.append(s)
-            continue
+            result.append(s); continue
 
-        # --- Func-arg upper bound "var <= k" ---
         m = re.match(r'^(\w+)\s*<=\s*(-?\d+)$', s)
         if m:
             v, k = m.group(1), int(m.group(2))
             if v in eq_vals or best_upper.get(v, k) < k:
                 continue
-            result.append(s)
-            continue
+            result.append(s); continue
 
         if s not in seen_atoms:
-            seen_atoms.add(s)
-            result.append(s)
+            seen_atoms.add(s); result.append(s)
 
     return result
 
-
 def _minimize_and(formula):
-    """Remove every atom that is implied by the conjunction of all others."""
     from z3 import And, Not, Solver, unsat, is_and, BoolVal
     if not is_and(formula):
         return formula
@@ -391,16 +281,12 @@ def _minimize_and(formula):
             s.add(And(rest) if len(rest) > 1 else rest[0])
             s.add(Not(atoms[i]))
             if s.check() == unsat:
-                atoms.pop(i)
-                changed = True
-                break
+                atoms.pop(i); changed = True; break
     if not atoms:
         from z3 import BoolVal; return BoolVal(True)
     return And(atoms) if len(atoms) > 1 else atoms[0]
 
-
 def _project_constraints_fallback(constraints, rv_to_sol):
-    """Fallback: string substitution of runtime vars → Solidity names."""
     results = []
     for c in constraints:
         s = c
@@ -408,14 +294,10 @@ def _project_constraints_fallback(constraints, rv_to_sol):
             s = re.sub(r'\b' + re.escape(rv) + r'\b', name, s)
         if any(name in s for name in rv_to_sol.values()):
             results.append(s)
-    return results if results else ["(nessun vincolo con variabili Solidity)"]
+    return results if results else ["(no Solidity-variable constraints found)"]
 
 def project_constraints(constraints, rv_to_sol, state_var_names=None):
-    """Apply Z3 qe to project constraints onto Solidity variables only.
-
-    state_var_names: if provided, their constraints are always kept even if
-    logically redundant (e.g. currentBalance >= 5 from assertion violation).
-    """
+    """Project constraints onto Solidity variables via Z3 quantifier elimination."""
     try:
         from z3 import And, Exists, Tactic, Goal, Int, substitute
     except ImportError:
@@ -454,212 +336,11 @@ def project_constraints(constraints, rv_to_sol, state_var_names=None):
     return atoms
 
 
-# ---- constraint extraction ----
-
-def parse_incorrect_line(block):
-    """Return the raw constraint string from the INCORRECT/FF FOUND line."""
-    m = re.search(r'INCORRECT/FF FOUND:\s*(.*)', block)
-    return m.group(1) if m else ""
-
-def split_clauses(text):
-    """Split comma-separated constraint clauses respecting parentheses depth."""
-    clauses, current, depth = [], [], 0
-    for ch in text:
-        if ch == '(':
-            depth += 1
-        elif ch == ')':
-            depth -= 1
-        if ch == ',' and depth == 0:
-            clauses.append(''.join(current).strip())
-            current = []
-        else:
-            current.append(ch)
-    if current:
-        clauses.append(''.join(current).strip())
-    return clauses
-
-def extract_var_constraints(clauses, rv_to_sol):
-    """Return all non-trivial clauses (skip type annotations and 'true')."""
-    results = []
-    for clause in clauses:
-        if ':int=' in clause or clause == 'true':
-            continue
-        results.append(clause)
-    return results
-
-
-# ---- zmiout parsing ----
-
-def split_tests(zmiout):
-    """Split zmiout into individual test blocks by TEST #N marker."""
-    parts = re.split(r'={3,}\s*TEST #\d+\s*={3,}', zmiout)
-    return [p for p in parts if 'CALL TRACE' in p or 'model{' in p]
-
-def parse_call_trace(block):
-    trace = []
-    in_trace = False
-    for line in block.split('\n'):
-        s = line.strip()
-        if 'CALL TRACE' in s:
-            in_trace = True
-            continue
-        if in_trace:
-            if 'MODELLO Z3' in s or s.startswith('model{'):
-                break
-            m = re.match(r'(new\d+)\((.+)\)\s*$', s)
-            if m:
-                args = [a.strip() for a in m.group(2).split(',')]
-                trace.append((m.group(1), args))
-    return trace
-
-def parse_z3_model(block):
-    m = re.search(r'model\{constants:\[([^\]]+)\]', block)
-    if not m:
-        return {}
-    model = {}
-    for item in m.group(1).split(','):
-        kv = item.strip().split('=', 1)
-        if len(kv) == 2:
-            key, val = kv[0].strip(), kv[1].strip()
-            if re.match(r'^-?\d+$', val):
-                model[key] = int(val)
-    return model
-
-def process_test(test_block, blocks, state_vars, func, func_args, entry_pred='new2'):
-    n_args = len(func_args)
-    call_trace = parse_call_trace(test_block)
-    z3_model   = parse_z3_model(test_block)
-
-    trace_dict = {}
-    for name, args in call_trace:
-        if name not in trace_dict:
-            trace_dict[name] = args
-
-    lines = []
-    new2_args = trace_dict.get(entry_pred)
-
-    lines.append("=== STATE VARIABLES (valori POST-chiamata) ===")
-
-    ref_name, ref_env, ref_params = None, {}, []
-    for cname in trace_dict:
-        block = find_block(blocks, cname)
-        if block is None:
-            continue
-        if 'subO_' not in block:
-            continue
-        env = parse_env_slots(block)
-        if env:
-            ref_name   = cname
-            ref_env    = env
-            ref_params = get_param_list(block)
-            break
-
-    if new2_args is None:
-        lines.append("  (new2 not found in call trace)")
-    elif ref_name is None:
-        lines.append("  (no subO_ predicate with env slots found in trace)")
-    else:
-        offset = (len(new2_args) - n_args) // 2
-        for i, var in enumerate(state_vars):
-            letter = ref_env.get(i)
-            if letter is None:
-                lines.append(f"  {var:<12}  slot {i}  ->  slot not found in env")
-                continue
-            if letter not in ref_params:
-                lines.append(f"  {var:<12}  slot {i}  ->  letter {letter} not in param list")
-                continue
-            pre_pos  = ref_params.index(letter)
-            post_pos = pre_pos + offset
-            rv  = new2_args[post_pos] if post_pos < len(new2_args) else '?'
-            val = z3_model.get(rv, '?')
-            lines.append(f"  {var:<12}  slot {i}  ->  pos {post_pos} in new2  ->  {rv}  =  {val}")
-
-    lines.append("")
-    lines.append(f"=== FUNCTION ARGS: {func}({', '.join(func_args)}) ===")
-
-    chosen_name, chosen_locals, chosen_params = find_body_from_trace(
-        trace_dict, blocks, n_args
-    )
-
-    if chosen_name is None:
-        lines.append("  (no body predicate found)")
-    else:
-        body_args = trace_dict.get(chosen_name)
-        for j, arg in enumerate(func_args):
-            letter = chosen_locals.get(j)
-            if letter is None:
-                lines.append(f"  {arg:<12}  v{j}  ->  letter NOT FOUND in defs")
-                continue
-            if letter not in chosen_params:
-                lines.append(f"  {arg:<12}  v{j} = {letter}  ->  not in param list of {chosen_name}")
-                continue
-            pos = chosen_params.index(letter)
-            if body_args and pos < len(body_args):
-                rv  = body_args[pos]
-                val = z3_model.get(rv, '?')
-                lines.append(f"  {arg:<12}  v{j} = {letter}  ->  pos {pos} in {chosen_name}  ->  {rv}  =  {val}")
-            else:
-                lines.append(f"  {arg:<12}  v{j} = {letter}  ->  pos {pos} in {chosen_name}  ->  NOT IN TRACE")
-
-    # ---- constraint section ----
-    # Build runtime_var -> solidity_name map from what we resolved above
-    rv_to_sol = {}
-
-    if new2_args is not None and ref_name is not None:
-        offset = (len(new2_args) - n_args) // 2
-        for i, var in enumerate(state_vars):
-            letter = ref_env.get(i)
-            if letter and letter in ref_params:
-                post_pos = ref_params.index(letter) + offset
-                if post_pos < len(new2_args):
-                    rv_to_sol[new2_args[post_pos]] = var
-
-    if chosen_name is not None:
-        body_args = trace_dict.get(chosen_name)
-        for j, arg in enumerate(func_args):
-            letter = chosen_locals.get(j)
-            if letter and letter in chosen_params:
-                pos = chosen_params.index(letter)
-                if body_args and pos < len(body_args):
-                    rv_to_sol[body_args[pos]] = arg
-
-    raw = parse_incorrect_line(test_block)
-    clauses = split_clauses(raw)
-    constraints = extract_var_constraints(clauses, rv_to_sol)
-    lines.append("")
-    lines.append("=== VINCOLI ===")
-    if constraints:
-        for c in constraints:
-            lines.append(f"  {c}")
-    else:
-        lines.append("  (nessun vincolo trovato)")
-
-    lines.append("")
-    lines.append("=== VINCOLI PROIETTATI (solo variabili Solidity) ===")
-    if rv_to_sol:
-        projected = project_constraints(constraints, rv_to_sol, state_vars)
-        for p in projected:
-            lines.append(f"  {p}")
-    else:
-        lines.append("  (nessuna variabile Solidity identificata)")
-
-    return lines
-
-
-def build_func_signature(sol, func):
-    """Build Solidity signature like 'claimRewards(uint256)'."""
-    m = re.search(rf'function\s+{func}\s*\(([^)]*)\)', sol)
-    if not m or not m.group(1).strip():
-        return f"{func}()"
-    types = [p.strip().split()[0] for p in m.group(1).split(',') if p.strip()]
-    return f"{func}({','.join(types)})"
-
-
 # ---- Main ----
 
 def main():
     if len(sys.argv) != 4:
-        print("Usage: zmiout2vars.py <contract.sol> <defs.txt> <analysis.zmiout>")
+        print("Usage: zmiout2vars_z3.py <contract.sol> <defs.txt> <analysis.zmiout>")
         sys.exit(1)
 
     sol_path    = sys.argv[1]
@@ -673,33 +354,40 @@ def main():
     sol_stem = os.path.splitext(os.path.basename(sol_path))[0]
     out_path = os.path.join(os.path.dirname(zmiout_path), sol_stem + ".vars_z3.txt")
 
-    blocks           = load_defs_blocks(defs)
-    func, entry_pred = detect_func_and_entry(blocks)
+    blocks           = _parse.load_defs_blocks(defs)
+    func, entry_pred = _parse.detect_func_and_entry(blocks)
     if not func:
-        print("ERROR: function name not found (no fun_call with subO_fun_ in any predicate)")
+        print("ERROR: function name not found")
         sys.exit(1)
 
-    state_vars = parse_state_vars(sol)
-    func_args  = parse_func_args(sol, func)
+    state_vars = _parse.parse_state_vars(sol)
+    func_args  = _parse.parse_func_args(sol, func)
 
-    tests = split_tests(zmiout)
+    tests = _parse.split_tests(zmiout)
     if not tests:
-        tests = [zmiout]  # single test, no markers
+        tests = [zmiout]
 
     all_lines = []
     for i, test_block in enumerate(tests, 1):
         if len(tests) > 1:
             all_lines.append(f"================ TEST #{i} ================")
-        if 'testVerimapGood' in test_block:
+        is_pos, concrete, rv_to_sol, raw_constrs = _parse.resolve_test(
+            test_block, blocks, state_vars, func_args, entry_pred)
+        if is_pos:
             all_lines.append("[POSITIVE WITNESS — verimapGood]")
-        all_lines.extend(process_test(test_block, blocks, state_vars, func, func_args, entry_pred))
+        all_lines.append("=== CONCRETE VALUES ===")
+        all_lines.extend(f"  {v}" for v in concrete)
+        all_lines.append("")
+        all_lines.append("=== PROJECTED CONSTRAINTS (Z3) ===")
+        if rv_to_sol:
+            for p in project_constraints(raw_constrs, rv_to_sol, state_vars):
+                all_lines.append(f"  {p}")
+        else:
+            all_lines.append("  (no Solidity variables identified)")
         all_lines.append("")
 
-    output = "\n".join(all_lines) + "\n"
-
     with open(out_path, 'w') as f:
-        f.write(output)
-
+        f.write("\n".join(all_lines) + "\n")
     print(f"Output written to: {out_path} ({len(tests)} test cases found)")
 
 
