@@ -147,6 +147,7 @@ nohup bash script/sol2analysis.sh \
 | `--varsmt` | Generate `.vars_smt.txt` with SMT-LIB projected constraints |
 | `--annotate` | Generate `.annotated.sol` with constraints as comment |
 | `--graph` | Generate CHC dependency graph in SVG (via chcviz) |
+| `--highlight` | Highlight the counterexample derivation path(s) on the CHC graph, one graph per test found (implies `--graph`) |
 | `--skip-existing` | Skip if a .zmiout already exists |
 
 ---
@@ -201,6 +202,8 @@ nohup bash script/sol2analysis.sh \
 | `Contract.test_cases.json` | zmiout2json.py | Structured test cases (concrete values + Z3/CLP(Q) constraints) |
 | `Contract.annotated.sol` | annotate_sol.py | Original .sol with constraints appended as comment |
 | `dot_dias/*.svg` | chcviz | CHC dependency graph |
+| `dot_dias/*_testN_<kind>_highlighted.{dot.svg,html}` | zmiout2dot_highlight.py / dot2html.py | CHC graph with test N's derivation path highlighted (one per test found) |
+| `dot_dias/*_alltests_index.html` | step9_highlight.sh | Index linking every per-test highlighted graph |
 
 ---
 

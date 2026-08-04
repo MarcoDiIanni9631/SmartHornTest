@@ -13,6 +13,9 @@
 #   --varclpq       generate .vars_clpq.txt after the analysis (step 6)
 #   --graph         generate the CHC SVG graph             (step 7)
 #   --annotate      generate .annotated.sol               (step 8)
+#   --highlight     highlight the counterexample path(s) on the CHC graph,
+#                   one highlighted graph per test found in the .zmiout
+#                   (step 9; implies --graph)
 #
 # Analysis options (passed to InterpreterAnalysis5.2.sh, step 5):
 #   --debug, --stop-first, --stop-first-per-loop, --skip-existing
@@ -44,6 +47,7 @@ DO_ANALYSIS=true
 DO_VARS=()
 DO_GRAPH=false
 DO_ANNOTATE=false
+DO_HIGHLIGHT=false
 SKIP_CONVERT=false
 
 while [ "$#" -gt 0 ]; do
@@ -56,6 +60,7 @@ while [ "$#" -gt 0 ]; do
     --varclpq)      DO_VARS+=("clpq");  shift ;;
     --graph)        DO_GRAPH=true;      shift ;;
     --annotate)     DO_ANNOTATE=true;   shift ;;
+    --highlight)    DO_HIGHLIGHT=true;  DO_GRAPH=true; shift ;;
     --debug|--stop-first|--stop-first-per-loop|--skip-existing)
       ANALYSIS_FLAGS+=("$1"); shift ;;
     --maxdepth|--looplimit|--timeout|--skip-file)
@@ -124,6 +129,18 @@ else
   DEFS="$DIR/$BASE.t.pl-defs.txt"
   echo ""
   bash "$SCRIPT_DIR/step6_vars.sh" --z3 --clpq "$SOL" "$DEFS" "$ZMIOUT"
+fi
+
+# ------------------------------------------------------------------
+# STEP 9 (optional): HIGHLIGHT DERIVATION PATH ON THE CHC GRAPH
+# ------------------------------------------------------------------
+if $DO_HIGHLIGHT; then
+  if [ -z "$ZMIOUT" ]; then
+    echo "⚠️  No .zmiout found in $DIR, skipping step 9"
+  else
+    echo ""
+    bash "$SCRIPT_DIR/step9_highlight.sh" --all-tests "$DIR/$BASE.t.pl" "$ZMIOUT"
+  fi
 fi
 
 # ------------------------------------------------------------------

@@ -143,6 +143,40 @@ Requires a `.vars_z3.txt` file in the same folder. Output: `MyContract.annotated
 
 ---
 
+### Step 10 — highlight the derivation path on the CHC graph
+
+```bash
+bash script/step9_highlight.sh --all-tests test/MyContract/MyContract.t.pl
+```
+
+This is what `sol2analysis.sh --highlight` (the full pipeline) runs. It
+requires the `.dot` graph from Step 8 and a `.zmiout` from Step 6 in the
+same folder, and produces **one highlighted graph (+ interactive HTML) per
+test found in the `.zmiout`** — one per violation (`testFail`/
+`testUnknown`) plus one per `testVerimapGood` test — instead of a single
+combined one, so nothing is picked/skipped. Each test's `📌 CALL TRACE` is
+re-colored over the existing graph (bold red for a violation, bold green
+for a `testVerimapGood` test, everything else grayed out), plus a
+`MyContract_alltests_index.html` linking every generated page.
+
+Output: `dot_dias/MyContract_alltests_index.html` and, per test,
+`dot_dias/MyContract.t_clean_object_xref_diagram_testN_<kind>_highlighted.{dot,dot.svg,html}`.
+
+Called without `--all-tests`, `step9_highlight.sh` instead auto-picks a
+single pair to compare (first violation + first `testVerimapGood`, drawn
+together — shared trunk in blue, the parts where they diverge in red/green,
+the split point outlined in orange) or, if only one kind is present, just
+that single path in bold. Useful for a quick one-off comparison. To compare
+two specific tests (e.g. two different `.zmiout` files, or two specific
+test indices in the same file) call the underlying script directly:
+
+```bash
+python3 script/zmiout2dot_highlight.py <graph.dot> <zmiout1> [zmiout2] \
+  [--test1 N] [--test2 N] [--single] [-o out.dot]
+```
+
+---
+
 ### Steps 1–4 in one command (conversion only)
 
 ```bash
