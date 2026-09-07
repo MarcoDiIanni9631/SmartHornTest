@@ -5,6 +5,22 @@ Output files are written to the same folder as the input file, with the correct 
 
 > For the original manual commands (reference only): see [`COMMANDS_old.md`](COMMANDS_old.md)
 
+## Overview
+
+| Step | Script | What it does |
+|---|---|---|
+| 1 | `step1_grey.sh` | Compile Solidity to Yul IR (GREY) |
+| 2 | `step2_yul2chc.sh` | Translate the Yul IR into raw CHC clauses |
+| 3 | *(manual)* `MyContract.aux.pl` | Declare the function entry point to analyze |
+| 4 | `step3_transform.sh` | Clean up the CHC clauses into `.t.pl` + `.t.pl-defs.txt` |
+| 5 | `step4_constr.sh` | Add CLP(Q) constraints to the CHC clauses |
+| 6 | `step5_analysis.sh` | Run the CLP(Q)+Z3 interpreter; try to derive a violation |
+| 7 | `step6_vars.sh` | Project the counterexample onto concrete Solidity variable values |
+| 8 | `step7_graph.sh` | Render the CHC dependency graph (via chcviz) |
+| 9 | `step8_annotate.sh` | Annotate the original `.sol` with the projected constraints |
+| 10 | `step9_highlight.sh` | Highlight each test's derivation path on the CHC graph, as clickable HTML with a counterexample-values panel |
+| 11 | `step10_sol_cfg.sh` | Generate each function's Solidity-level CFG (via Slither), cross-linked with the CHC graph from step 10 |
+
 ---
 
 ### Step 1 — `.sol` → `.json` (GREY)
@@ -174,6 +190,35 @@ test indices in the same file) call the underlying script directly:
 python3 script/zmiout2dot_highlight.py <graph.dot> <zmiout1> [zmiout2] \
   [--test1 N] [--test2 N] [--single] [-o out.dot]
 ```
+
+---
+
+### Step 11 — `.sol` → Solidity CFG per function (Slither), linked to the CHC graph
+
+```bash
+bash script/step10_sol_cfg.sh test/MyContract/MyContract.sol
+```
+
+Runs Slither's `--print cfg` on the contract and wraps the resulting `.dot`
+(one per function) into the same pannable/zoomable HTML viewer used for the
+CHC graph. Unlike the CHC graph (predicates over Yul blocks), this is the
+control-flow graph at the Solidity source level — useful on its own, and as
+a point of comparison against a "black-box" static analyzer.
+
+If step 10's `dot_dias/MyContract_alltests_index.html` already exists, this
+step cross-links the two: every CHC node that resolves to a known function
+(via the same best-effort `.sol` name matching `dot2html.py` already does)
+gets a "View in the Slither CFG" link in its panel, and every Slither CFG
+page gets a link back to the CHC graph. Run step 10 first if you want the
+link — order does not matter otherwise, and everything degrades gracefully
+if one side is missing.
+
+Output: `dot_dias/sol_cfg/index.html` and, per function,
+`dot_dias/sol_cfg/MyContract.sol-Contract-function(args).html`.
+
+> Not yet wired into `sol2analysis.sh` — run it as a separate step after
+> `--graph`/`--highlight`. Requires Slither (see `script/config.sh` for the
+> `SLITHER_DIR`/`SLITHER_PY`/`SLITHER_BIN` setup).
 
 ---
 

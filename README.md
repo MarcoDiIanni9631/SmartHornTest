@@ -204,6 +204,7 @@ nohup bash script/sol2analysis.sh \
 | `dot_dias/*.svg` | chcviz | CHC dependency graph |
 | `dot_dias/*_testN_<kind>_highlighted.{dot.svg,html}` | zmiout2dot_highlight.py / dot2html.py | CHC graph with test N's derivation path highlighted (one per test found) |
 | `dot_dias/*_alltests_index.html` | step9_highlight.sh | Index linking every per-test highlighted graph |
+| `dot_dias/sol_cfg/*.html` | step10_sol_cfg.sh | Solidity-level CFG per function (via Slither), cross-linked with the CHC graph |
 
 ---
 

@@ -32,6 +32,8 @@ SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 HIGHLIGHT_PY="$SCRIPT_DIR/zmiout2dot_highlight.py"
 DOT2HTML_PY="$SCRIPT_DIR/dot2html.py"
 
+[ -f "$1" ] || { echo "❌ file not found: $1 (wrong machine? this path must be reachable from wherever you're running this script)"; exit 1; }
+
 TPL="$(readlink -f "$1")"
 BASE="$(basename "$TPL" .t.pl)"
 DIR="$(dirname "$TPL")"
@@ -72,7 +74,10 @@ if [ "$ALL_TESTS" -eq 1 ]; then
     {
         echo "<!doctype html><meta charset='utf-8'><title>${BASE} — all tests</title>"
         echo "<body style='font-family:sans-serif;max-width:640px;margin:40px auto'>"
-        echo "<h2>${BASE} — all tests found</h2><ul>"
+        echo "<h2>${BASE} — all tests found</h2>"
+        [ -f "$(dirname "$DOT")/sol_cfg/index.html" ] && \
+            echo "<p><a href=\"sol_cfg/index.html\">Solidity CFG (Slither) &rarr;</a></p>"
+        echo "<ul>"
     } > "$INDEX"
     while IFS=$'\t' read -r idx kind ncalls dotpath; do
         svgpath="${dotpath}.svg"

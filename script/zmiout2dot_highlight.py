@@ -20,7 +20,7 @@ walked by one or two tests found in a .zmiout analysis output:
 
 Output: <graph>_highlighted.dot next to the input .dot, unless -o is given.
 """
-import re, sys, os, argparse, importlib.util
+import re, sys, os, json, argparse, importlib.util
 from collections import Counter
 
 
@@ -71,8 +71,63 @@ def load_tests(zmiout_path):
     for b in blocks:
         trace = extract_call_trace(b)
         if trace:
-            tests.append({'trace': trace, 'kind': classify(b)})
+            tests.append({'trace': trace, 'kind': classify(b), 'block': b})
     return tests
+
+
+# ---- concrete counterexample values (Certora-style "variable values box") ----
+
+def sol_defs_paths_for_dot(dot_path):
+    """.sol / .t.pl-defs.txt next to the .pl this dot was generated from
+    (same naming convention as dot2html.py's related_paths_for_dot)."""
+    base = re.sub(r'(_clean)?_object_xref_diagram(_test\d+_\w+)?(_highlighted)?\.dot$', '',
+                  os.path.basename(dot_path))
+    root_dir = os.path.dirname(os.path.dirname(dot_path))
+    stem = re.sub(r'\.t$', '', base)
+    return (os.path.join(root_dir, base + '.pl-defs.txt'),
+            os.path.join(root_dir, stem + '.sol'))
+
+
+def concrete_values_for_test(test_block, sol_path, defs_path):
+    """Best-effort: {'kind':..., 'is_positive':bool, 'values':[...]} using the
+    same resolution logic zmiout2vars_z3.py/zmiout2vars_clpq.py use (Z3 model
+    values renamed to their Solidity identifiers), or None if the .sol/.defs
+    aren't found or the contract's shape isn't one detect_func_and_entry
+    recognizes."""
+    if not (os.path.isfile(sol_path) and os.path.isfile(defs_path)):
+        return None
+    try:
+        sol = open(sol_path, encoding='utf-8').read()
+        defs = open(defs_path, encoding='utf-8').read()
+        blocks = _parse.load_defs_blocks(defs)
+        func, entry_pred = _parse.detect_func_and_entry(blocks)
+        if not func:
+            return None
+        state_vars = _parse.parse_state_vars(sol)
+        func_args = _parse.parse_func_args(sol, func)
+        is_positive, concrete, _rv_to_sol, _raw = _parse.resolve_test(
+            test_block, blocks, state_vars, func_args, entry_pred)
+        return {'is_positive': is_positive, 'values': concrete}
+    except Exception as e:
+        print(f"(note: could not resolve concrete values for this test: {e})")
+        return None
+
+
+def write_vars_sidecar(dot_out_path, tests_by_key):
+    """tests_by_key: {'A': test_dict} or {'A': test_dict, 'B': test_dict}.
+    Writes <dot_out_path minus .dot>.vars.json with each test's kind +
+    concrete values, best-effort (silently no-ops if nothing resolves)."""
+    defs_path, sol_path = sol_defs_paths_for_dot(dot_out_path)
+    out = {}
+    for key, test in tests_by_key.items():
+        summary = concrete_values_for_test(test['block'], sol_path, defs_path)
+        if summary is not None:
+            out[key] = {'kind': test['kind'], **summary}
+    if out:
+        vars_path = re.sub(r'\.dot$', '.vars.json', dot_out_path)
+        with open(vars_path, 'w', encoding='utf-8') as f:
+            json.dump(out, f, indent=1)
+        print(f"Concrete values written to: {vars_path}")
 
 
 # ---- reconstruct the walked path against the static call graph ----
@@ -394,6 +449,7 @@ def main():
             out_path = re.sub(r'\.dot$', f'_test{idx}_{test["kind"]}_highlighted.dot', args.dot_file)
             with open(out_path, 'w') as f:
                 f.writelines(out_lines)
+            write_vars_sidecar(out_path, {'A': test})
             manifest.append(f"{idx}\t{test['kind']}\t{len(test['trace'])}\t{out_path}")
             print(f"Test #{idx} ({test['kind']}, {len(test['trace'])} calls): {out_path}")
         with open(manifest_path, 'w') as f:
@@ -486,6 +542,9 @@ def main():
     with open(out_path, 'w') as f:
         f.writelines(out_lines)
     print(f"Highlighted dot written to: {out_path}")
+
+    tests_by_key = {'A': testA, 'B': testB} if dual else {'A': testA}
+    write_vars_sidecar(out_path, tests_by_key)
 
 
 if __name__ == '__main__':

@@ -63,23 +63,48 @@ SOL_DECL_RE = re.compile(
 
 
 def parse_sol_declarations(sol_path):
-    """{identifier: (line_no, line_text)} for every function and public state
-    variable declared in the contract, so nodes whose GREY block label
+    """{identifier: (line_no, line_text, kind)} for every function and public
+    state variable declared in the contract, so nodes whose GREY block label
     mentions that identifier can be linked back to a real line of Solidity.
-    Deliberately shallow (regex over lines, not a real Solidity parser) —
-    good enough to catch user-written functions/public vars, which is exactly
-    the part of the graph that GREY's own IR carries no source-location for."""
+    kind is 'function' or 'var', kept so callers can tell which identifiers
+    might also have a Slither CFG page (functions only, see
+    build_sol_cfg_index). Deliberately shallow (regex over lines, not a real
+    Solidity parser) — good enough to catch user-written functions/public
+    vars, which is exactly the part of the graph that GREY's own IR carries
+    no source-location for."""
     decls = {}
     if not os.path.isfile(sol_path):
         return decls
     for i, line in enumerate(open(sol_path, encoding='utf-8'), 1):
         for m in SOL_DECL_RE.finditer(line):
-            name = m.group(1) or m.group(2)
-            decls.setdefault(name, (i, line.strip()))
+            if m.group(1):
+                name, kind = m.group(1), 'function'
+            else:
+                name, kind = m.group(2), 'var'
+            decls.setdefault(name, (i, line.strip(), kind))
     return decls
 
 
-def sol_link_for(defs_text, decls):
+SLITHER_CFG_FNAME_RE = re.compile(r'-([A-Za-z_]\w*)\([^)]*\)\.html$')
+
+
+def build_sol_cfg_index(dot_path):
+    """{function_name: 'sol_cfg/<file>.html'} for the Slither CFG pages step10
+    (script/step10_sol_cfg.sh + sol_cfg2html.py) may have generated next to
+    this CHC graph, in a sibling sol_cfg/ folder. Absent (returns {}) unless
+    step10 was actually run for this contract."""
+    cfg_dir = os.path.join(os.path.dirname(dot_path), 'sol_cfg')
+    index = {}
+    if not os.path.isdir(cfg_dir):
+        return index
+    for fname in os.listdir(cfg_dir):
+        m = SLITHER_CFG_FNAME_RE.search(fname)
+        if m:
+            index[m.group(1)] = f'sol_cfg/{fname}'
+    return index
+
+
+def sol_link_for(defs_text, decls, cfg_index=None):
     """Best-effort: does this node's defs text mention one of the contract's
     own declared identifiers? Longest match wins (so e.g. 'released0' isn't
     shadowed by a coincidental shorter name). Substring-based, not a real
@@ -88,14 +113,46 @@ def sol_link_for(defs_text, decls):
     if not defs_text or not decls:
         return None
     best = None
-    for name, (line_no, line_text) in decls.items():
+    for name, (line_no, line_text, kind) in decls.items():
         if name in defs_text:
             if best is None or len(name) > len(best[0]):
-                best = (name, line_no, line_text)
+                best = (name, line_no, line_text, kind)
     if not best:
         return None
-    name, line_no, line_text = best
-    return {'name': name, 'line': line_no, 'text': line_text}
+    name, line_no, line_text, kind = best
+    result = {'name': name, 'line': line_no, 'text': line_text}
+    if kind == 'function' and cfg_index and name in cfg_index:
+        result['cfg_href'] = cfg_index[name]
+    return result
+
+
+KIND_LABEL = {'negative': 'violation (red path)', 'positive': 'testVerimapGood (green path)'}
+
+
+def render_vars_panel(vars_json_path):
+    """Certora-style fixed 'variable values for this counterexample' box,
+    sourced from the .vars.json sidecar zmiout2dot_highlight.py writes next
+    to a highlighted .dot (best-effort: absent for a plain, non-highlighted
+    graph, in which case this renders nothing)."""
+    if not os.path.isfile(vars_json_path):
+        return ''
+    try:
+        data = json.load(open(vars_json_path, encoding='utf-8'))
+    except (OSError, json.JSONDecodeError):
+        return ''
+    parts = []
+    for key in ('A', 'B'):
+        entry = data.get(key)
+        if not entry:
+            continue
+        label = KIND_LABEL.get(entry.get('kind'), entry.get('kind', '?'))
+        parts.append(f'<h4>Counterexample {key} — {html.escape(label)}</h4>')
+        values = entry.get('values') or []
+        if values:
+            parts.append('<pre>' + html.escape('\n'.join(values)) + '</pre>')
+        else:
+            parts.append('<p class="placeholder">No concrete values resolved for this test.</p>')
+    return ''.join(parts)
 
 
 def ensure_svg(dot_path, svg_path):
@@ -104,7 +161,7 @@ def ensure_svg(dot_path, svg_path):
     subprocess.run(['dot', '-Tsvg', dot_path, '-o', svg_path], check=True)
 
 
-def build_node_info(node_ids, clauses_by_name, defs_by_name, sol_decls):
+def build_node_info(node_ids, clauses_by_name, defs_by_name, sol_decls, cfg_index=None):
     """{node_id: {'clause': str|None, 'defs': str|None, 'sol': {...}|None}}"""
     info = {}
     for node_id in node_ids:
@@ -117,7 +174,7 @@ def build_node_info(node_ids, clauses_by_name, defs_by_name, sol_decls):
         info[node_id] = {
             'clause': '\n\n'.join(clauses) if clauses else None,
             'defs': defs_text,
-            'sol': sol_link_for(defs_text, sol_decls),
+            'sol': sol_link_for(defs_text, sol_decls, cfg_index),
         }
     return info
 
@@ -153,6 +210,8 @@ PAGE_TEMPLATE = """<!doctype html>
                 padding: 8px; white-space: pre-wrap; word-break: break-word;
                 font-size: 12.5px; line-height: 1.4; }}
   #panel .placeholder {{ color: #888; }}
+  #vars-panel:empty {{ display: none; }}
+  #vars-panel {{ border-bottom: 2px solid #ddd; margin-bottom: 14px; padding-bottom: 10px; }}
   .node {{ transition: opacity .15s; }}
   .search-hit polygon, .search-hit ellipse, .search-hit path {{ stroke: orange !important; stroke-width: 5px !important; }}
   #search-box {{ width: 160px; border: 1px solid #ccc; border-radius: 4px; padding: 0 6px;
@@ -172,8 +231,11 @@ PAGE_TEMPLATE = """<!doctype html>
 {svg}
     </div>
   </div>
-  <div id="panel"><p class="placeholder">Click a node in the graph to see its CHC clause
-  and (when available) the block / Yul instruction / variable mapping behind it.</p></div>
+  <div id="panel">
+    <div id="vars-panel">{vars_panel}</div>
+    <div id="click-info"><p class="placeholder">Click a node in the graph to see its CHC clause
+    and (when available) the block / Yul instruction / variable mapping behind it.</p></div>
+  </div>
 </div>
 <script>
 const NODE_INFO = {node_info_json};
@@ -181,7 +243,7 @@ const NODE_INFO = {node_info_json};
 function showInfo(g) {{
   if (dragMoved) {{ dragMoved = false; return; }}
   const titleEl = g.querySelector('title');
-  const panel = document.getElementById('panel');
+  const panel = document.getElementById('click-info');
   if (!titleEl) {{ panel.innerHTML = '<p class="placeholder">(no id found for this node)</p>'; return; }}
   const key = titleEl.textContent;
   const data = NODE_INFO[key];
@@ -191,6 +253,9 @@ function showInfo(g) {{
   }} else {{
     if (data.sol) {{
       out += '<h4>Solidity source (' + data.sol.name + ', line ' + data.sol.line + ')</h4><pre>' + data.sol.text + '</pre>';
+      if (data.sol.cfg_href) {{
+        out += '<p><a href="' + encodeURI(data.sol.cfg_href) + '" target="_blank">View ' + data.sol.name + '() in the Slither CFG &rarr;</a></p>';
+      }}
     }} else {{
       out += '<h4>Solidity source</h4><p class="placeholder">Not traceable to a specific line — likely compiler-generated support code, not user-written Solidity.</p>';
     }}
@@ -309,6 +374,10 @@ def main():
     if not sol_decls:
         print(f"(no .sol found at {sol_path}, Solidity source links will be missing from the panel)")
 
+    cfg_index = build_sol_cfg_index(dot_path)
+    if cfg_index:
+        print(f"Slither CFG links available for: {', '.join(sorted(cfg_index))}")
+
     def esc_value(v):
         if v is None:
             return None
@@ -316,7 +385,7 @@ def main():
             return {kk: (html.escape(vv) if isinstance(vv, str) else vv) for kk, vv in v.items()}
         return html.escape(v)
 
-    node_info = build_node_info(node_ids, clauses_by_name, defs_by_name, sol_decls)
+    node_info = build_node_info(node_ids, clauses_by_name, defs_by_name, sol_decls, cfg_index)
     node_info_escaped = {
         k: {kk: esc_value(vv) for kk, vv in v.items()}
         for k, v in node_info.items()
@@ -328,11 +397,17 @@ def main():
     # drop the XML prolog/doctype: we're embedding the <svg> inline in an HTML page
     svg_text = re.sub(r'^.*?(<svg)', r'\1', svg_text, count=1, flags=re.DOTALL)
 
+    vars_json_path = re.sub(r'\.dot$', '.vars.json', dot_path)
+    vars_panel = render_vars_panel(vars_json_path)
+    if vars_panel:
+        print(f"Counterexample values panel: {vars_json_path}")
+
     title = os.path.basename(dot_path)
     page = PAGE_TEMPLATE.format(
         title=html.escape(title),
         svg=svg_text,
         node_info_json=json.dumps(node_info_escaped),
+        vars_panel=vars_panel,
     )
 
     out_path = args.output or re.sub(r'\.dot$', '.html', dot_path)
