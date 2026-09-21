@@ -1,0 +1,10 @@
+{
+ "A": {
+  "kind": "negative",
+  "is_positive": false,
+  "values": [
+   "x == 2",
+   "y == 1"
+  ]
+ }
+}

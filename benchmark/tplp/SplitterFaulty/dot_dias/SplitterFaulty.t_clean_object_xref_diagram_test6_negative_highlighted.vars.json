@@ -1,0 +1,20 @@
+{
+ "A": {
+  "kind": "negative",
+  "is_positive": false,
+  "values": [
+   "a0 == 1",
+   "a1 == 1",
+   "a2 == 1",
+   "r0 == 0",
+   "r1 == 1",
+   "r2 == 0",
+   "amountp0 == 0",
+   "amountp1 == 0",
+   "amountp2 == 0",
+   "released0 == 0",
+   "released1 == 0",
+   "released2 == 0"
+  ]
+ }
+}

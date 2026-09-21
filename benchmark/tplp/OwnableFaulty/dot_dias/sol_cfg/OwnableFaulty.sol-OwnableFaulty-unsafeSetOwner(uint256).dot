@@ -1,0 +1,49 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+require(bool)(newOwner != 0)
+
+IRs:
+TMP_0(bool) = newOwner != 0
+TMP_1(None) = SOLIDITY_CALL require(bool)(TMP_0)"];
+1->2;
+2[label="Node Type: NEW VARIABLE 2
+"];
+2->3;
+3[label="Node Type: INLINE ASM 3
+"];
+3->4;
+4[label="Node Type: EXPRESSION 4
+
+EXPRESSION:
+sstore(uint256,uint256)(_owner,newOwner)
+
+IRs:
+_owner(uint256) := newOwner(uint256)"];
+4->5;
+5[label="Node Type: EXPRESSION 5
+
+EXPRESSION:
+owner_value = sload(uint256)(_owner)
+
+IRs:
+TMP_2(uint256) := _owner(uint256)
+owner_value(uint256) := TMP_2(uint256)"];
+5->6;
+6[label="Node Type: END INLINE ASM 6
+"];
+6->7;
+7[label="Node Type: EXPRESSION 7
+
+EXPRESSION:
+assert(bool)(owner_value <= type()(uint160).max)
+
+IRs:
+TMP_4(uint160) := 1461501637330902918203684832716283019655932542975(uint160)
+TMP_5(bool) = owner_value <= TMP_4
+TMP_6(None) = SOLIDITY_CALL assert(bool)(TMP_5)"];
+}

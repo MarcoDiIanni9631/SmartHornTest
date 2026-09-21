@@ -1,0 +1,7 @@
+1	negative	68	/home/marco/testing-gas/trunk/TPLP_Contracts/25Ago_retest/26Jun_TPLP_SplitterFaulty/dot_dias/SplitterFaulty.t_clean_object_xref_diagram_test1_negative_highlighted.dot
+2	negative	68	/home/marco/testing-gas/trunk/TPLP_Contracts/25Ago_retest/26Jun_TPLP_SplitterFaulty/dot_dias/SplitterFaulty.t_clean_object_xref_diagram_test2_negative_highlighted.dot
+3	negative	68	/home/marco/testing-gas/trunk/TPLP_Contracts/25Ago_retest/26Jun_TPLP_SplitterFaulty/dot_dias/SplitterFaulty.t_clean_object_xref_diagram_test3_negative_highlighted.dot
+4	negative	68	/home/marco/testing-gas/trunk/TPLP_Contracts/25Ago_retest/26Jun_TPLP_SplitterFaulty/dot_dias/SplitterFaulty.t_clean_object_xref_diagram_test4_negative_highlighted.dot
+5	negative	68	/home/marco/testing-gas/trunk/TPLP_Contracts/25Ago_retest/26Jun_TPLP_SplitterFaulty/dot_dias/SplitterFaulty.t_clean_object_xref_diagram_test5_negative_highlighted.dot
+6	negative	68	/home/marco/testing-gas/trunk/TPLP_Contracts/25Ago_retest/26Jun_TPLP_SplitterFaulty/dot_dias/SplitterFaulty.t_clean_object_xref_diagram_test6_negative_highlighted.dot
+7	negative	68	/home/marco/testing-gas/trunk/TPLP_Contracts/25Ago_retest/26Jun_TPLP_SplitterFaulty/dot_dias/SplitterFaulty.t_clean_object_xref_diagram_test7_negative_highlighted.dot

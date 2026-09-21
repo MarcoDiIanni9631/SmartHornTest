@@ -1,0 +1,178 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+require(bool)(a0 >= r0 && a1 >= r1 && a2 >= r2)
+
+IRs:
+TMP_0(bool) = a0 >= r0
+TMP_1(bool) = a1 >= r1
+TMP_2(bool) = TMP_0 && TMP_1
+TMP_3(bool) = a2 >= r2
+TMP_4(bool) = TMP_2 && TMP_3
+TMP_5(None) = SOLIDITY_CALL require(bool)(TMP_4)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+amountp0 = a0
+
+IRs:
+amountp0(uint256) := a0(uint256)"];
+2->3;
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+amountp1 = a1
+
+IRs:
+amountp1(uint256) := a1(uint256)"];
+3->4;
+4[label="Node Type: EXPRESSION 4
+
+EXPRESSION:
+amountp2 = a2
+
+IRs:
+amountp2(uint256) := a2(uint256)"];
+4->5;
+5[label="Node Type: EXPRESSION 5
+
+EXPRESSION:
+released0 = r0
+
+IRs:
+released0(uint256) := r0(uint256)"];
+5->6;
+6[label="Node Type: EXPRESSION 6
+
+EXPRESSION:
+released1 = r1
+
+IRs:
+released1(uint256) := r1(uint256)"];
+6->7;
+7[label="Node Type: EXPRESSION 7
+
+EXPRESSION:
+released2 = r2
+
+IRs:
+released2(uint256) := r2(uint256)"];
+7->8;
+8[label="Node Type: NEW VARIABLE 8
+"];
+8->9;
+9[label="Node Type: INLINE ASM 9
+"];
+9->10;
+10[label="Node Type: BEGIN_LOOP 10
+"];
+10->12;
+11[label="Node Type: END_LOOP 11
+"];
+11->23;
+12[label="Node Type: NEW VARIABLE 12
+"];
+12->13;
+13[label="Node Type: EXPRESSION 13
+
+EXPRESSION:
+i_releasable_asm_0 = 0
+
+IRs:
+i_releasable_asm_0(uint256) := 0(uint256)"];
+13->14;
+14[label="Node Type: IF_LOOP 14
+
+EXPRESSION:
+i_releasable_asm_0 < 3
+
+IRs:
+TMP_6(bool) = i_releasable_asm_0 < 3
+CONDITION TMP_6"];
+14->11[label="True"];
+14->15[label="False"];
+15[label="Node Type: NEW VARIABLE 15
+"];
+15->16;
+16[label="Node Type: EXPRESSION 16
+
+EXPRESSION:
+amount_releasable_asm_0 = sload(uint256)(i_releasable_asm_0)
+
+IRs:
+TMP_7(uint256) = SOLIDITY_CALL sload(uint256)(i_releasable_asm_0)
+amount_releasable_asm_0(uint256) := TMP_7(uint256)"];
+16->17;
+17[label="Node Type: NEW VARIABLE 17
+"];
+17->18;
+18[label="Node Type: EXPRESSION 18
+
+EXPRESSION:
+rel_releasable_asm_0 = sload(uint256)(3 + i_releasable_asm_0)
+
+IRs:
+TMP_8(uint256) = 3 + i_releasable_asm_0
+TMP_9(uint256) = SOLIDITY_CALL sload(uint256)(TMP_8)
+rel_releasable_asm_0(uint256) := TMP_9(uint256)"];
+18->19;
+19[label="Node Type: NEW VARIABLE 19
+"];
+19->20;
+20[label="Node Type: EXPRESSION 20
+
+EXPRESSION:
+pend_releasable_asm_0 = amount_releasable_asm_0 - rel_releasable_asm_0
+
+IRs:
+TMP_10(uint256) = amount_releasable_asm_0 - rel_releasable_asm_0
+pend_releasable_asm_0(uint256) := TMP_10(uint256)"];
+20->21;
+21[label="Node Type: EXPRESSION 21
+
+EXPRESSION:
+sumPend = sumPend + amount_releasable_asm_0
+
+IRs:
+TMP_11(uint256) = sumPend + amount_releasable_asm_0
+sumPend(uint256) := TMP_11(uint256)"];
+21->22;
+22[label="Node Type: EXPRESSION 22
+
+EXPRESSION:
+i_releasable_asm_0 = i_releasable_asm_0 + 1
+
+IRs:
+TMP_12(uint256) = i_releasable_asm_0 + 1
+i_releasable_asm_0(uint256) := TMP_12(uint256)"];
+22->14;
+23[label="Node Type: END INLINE ASM 23
+"];
+23->24;
+24[label="Node Type: NEW VARIABLE 24
+
+EXPRESSION:
+totalPending = (amountp0 - released0) + (amountp1 - released1) + (amountp2 - released2)
+
+IRs:
+TMP_13(uint256) = amountp0 (c)- released0
+TMP_14(uint256) = amountp1 (c)- released1
+TMP_15(uint256) = TMP_13 (c)+ TMP_14
+TMP_16(uint256) = amountp2 (c)- released2
+TMP_17(uint256) = TMP_15 (c)+ TMP_16
+totalPending(uint256) := TMP_17(uint256)"];
+24->25;
+25[label="Node Type: EXPRESSION 25
+
+EXPRESSION:
+assert(bool)(sumPend <= totalPending)
+
+IRs:
+TMP_18(bool) = sumPend <= totalPending
+TMP_19(None) = SOLIDITY_CALL assert(bool)(TMP_18)"];
+}

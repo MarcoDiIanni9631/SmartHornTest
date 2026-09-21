@@ -1,0 +1,12 @@
+{
+ "A": {
+  "kind": "negative",
+  "is_positive": false,
+  "values": [
+   "newBid == 2",
+   "payment == 1",
+   "bid == 0",
+   "cash == 0"
+  ]
+ }
+}

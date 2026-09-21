@@ -1,0 +1,12 @@
+{
+ "A": {
+  "kind": "negative",
+  "is_positive": false,
+  "values": [
+   "newPlayer == 1",
+   "owner == 0",
+   "playerCount == 0",
+   "lastPlayer == 0"
+  ]
+ }
+}

@@ -1,0 +1,259 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>AuctionOffer.sol-AuctionOffer-offer(uint256,uint256).dot</title>
+<style>
+  html, body { margin: 0; height: 100%; font-family: -apple-system, Segoe UI, sans-serif; }
+  #app { display: flex; height: 100vh; }
+  #graph-wrap { flex: 1 1 auto; overflow: auto; background: #fafafa; position: relative;
+                 cursor: grab; user-select: none; -webkit-user-select: none; }
+  #graph-wrap.panning { cursor: grabbing; }
+  #graph-zoom { transform-origin: 0 0; display: inline-block; padding: 12px; }
+  #zoom-controls { position: sticky; top: 8px; left: 8px; z-index: 10; display: inline-flex;
+                     gap: 4px; background: white; border: 1px solid #ccc; border-radius: 6px;
+                     padding: 4px; margin: 8px; box-shadow: 0 1px 3px rgba(0,0,0,.15); }
+  #zoom-controls button { width: 28px; height: 28px; cursor: pointer; }
+  #panel { flex: 0 0 480px; display: flex; flex-direction: column;
+            border-left: 1px solid #ddd; background: white; overflow: hidden; }
+  #panel h3 { margin-top: 0; font-family: monospace; word-break: break-all; }
+  #panel pre { background: #f4f4f4; border: 1px solid #e0e0e0; border-radius: 4px;
+                padding: 8px; white-space: pre-wrap; word-break: break-word;
+                font-size: 12.5px; line-height: 1.4; }
+  #panel .placeholder { color: #888; }
+  #source-panel { flex: 0 0 45%; overflow: auto; border-bottom: 1px solid #ddd;
+                    padding: 12px 16px; background: #fbfbfb; }
+  #source-panel h4 { margin: 0 0 6px; font-size: 12px; color: #555; text-transform: uppercase; }
+  #source-panel pre { margin: 0; background: none; border: none; padding: 0;
+                        font-size: 12px; line-height: 1.45; white-space: pre; }
+  .src-line { display: block; padding: 0 4px; border-radius: 2px; }
+  .src-line.src-hit { background: #fff3a0; }
+  #click-info { flex: 1 1 auto; overflow: auto; padding: 16px; }
+  .node { transition: opacity .15s; }
+  .search-hit polygon, .search-hit ellipse, .search-hit path { stroke: orange !important; stroke-width: 5px !important; }
+  #search-box { width: 160px; border: 1px solid #ccc; border-radius: 4px; padding: 0 6px;
+                 font-size: 13px; height: 26px; }
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="graph-wrap">
+    <div id="zoom-controls">
+      <button onclick="setZoom(0.2)">+</button>
+      <button onclick="setZoom(-0.2)">-</button>
+      <button onclick="fitToScreen()">fit</button>
+      <input id="search-box" type="text" placeholder="find node...">
+    </div>
+    <div id="graph-zoom">
+<svg width="582pt" height="923pt"
+ viewBox="0.00 0.00 582.17 923.39" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 919.39)">
+<title>%3</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-919.39 578.17,-919.39 578.17,4 -4,4"/>
+<!-- 0 -->
+<g id="node1" class="node" onclick="showInfo(this)" style="cursor:pointer">
+<title>0</title>
+<ellipse fill="none" stroke="black" cx="287.09" cy="-897.39" rx="142.97" ry="18"/>
+<text text-anchor="middle" x="287.09" y="-893.69" font-family="Times,serif" font-size="14.00">Node Type: ENTRY_POINT 0</text>
+</g>
+<!-- 1 -->
+<g id="node2" class="node" onclick="showInfo(this)" style="cursor:pointer">
+<title>1</title>
+<ellipse fill="none" stroke="black" cx="287.09" cy="-730.25" rx="287.17" ry="113.27"/>
+<text text-anchor="middle" x="287.09" y="-795.05" font-family="Times,serif" font-size="14.00">Node Type: EXPRESSION 1</text>
+<text text-anchor="middle" x="287.09" y="-764.05" font-family="Times,serif" font-size="14.00">EXPRESSION:</text>
+<text text-anchor="middle" x="287.09" y="-749.05" font-family="Times,serif" font-size="14.00">require(bool)(newBid &gt; bid &amp;&amp; payment &gt; 0)</text>
+<text text-anchor="middle" x="287.09" y="-718.05" font-family="Times,serif" font-size="14.00">IRs:</text>
+<text text-anchor="middle" x="287.09" y="-703.05" font-family="Times,serif" font-size="14.00">TMP_0(bool) = newBid &gt; bid</text>
+<text text-anchor="middle" x="287.09" y="-688.05" font-family="Times,serif" font-size="14.00">TMP_1(bool) = payment &gt; 0</text>
+<text text-anchor="middle" x="287.09" y="-673.05" font-family="Times,serif" font-size="14.00">TMP_2(bool) = TMP_0 &amp;&amp; TMP_1</text>
+<text text-anchor="middle" x="287.09" y="-658.05" font-family="Times,serif" font-size="14.00">TMP_3(None) = SOLIDITY_CALL require(bool)(TMP_2)</text>
+</g>
+<!-- 0&#45;&gt;1 -->
+<g id="edge1" class="edge">
+<title>0&#45;&gt;1</title>
+<path fill="none" stroke="black" d="M287.09,-879.34C287.09,-872.29 287.09,-863.47 287.09,-853.66"/>
+<polygon fill="black" stroke="black" points="290.59,-853.56 287.09,-843.56 283.59,-853.56 290.59,-853.56"/>
+</g>
+<!-- 2 -->
+<g id="node3" class="node" onclick="showInfo(this)" style="cursor:pointer">
+<title>2</title>
+<ellipse fill="none" stroke="black" cx="287.09" cy="-499.8" rx="176.55" ry="81.13"/>
+<text text-anchor="middle" x="287.09" y="-542.1" font-family="Times,serif" font-size="14.00">Node Type: EXPRESSION 2</text>
+<text text-anchor="middle" x="287.09" y="-511.1" font-family="Times,serif" font-size="14.00">EXPRESSION:</text>
+<text text-anchor="middle" x="287.09" y="-496.1" font-family="Times,serif" font-size="14.00">bid = newBid</text>
+<text text-anchor="middle" x="287.09" y="-465.1" font-family="Times,serif" font-size="14.00">IRs:</text>
+<text text-anchor="middle" x="287.09" y="-450.1" font-family="Times,serif" font-size="14.00">bid(uint256) := newBid(uint256)</text>
+</g>
+<!-- 1&#45;&gt;2 -->
+<g id="edge2" class="edge">
+<title>1&#45;&gt;2</title>
+<path fill="none" stroke="black" d="M287.09,-617.03C287.09,-608.45 287.09,-599.85 287.09,-591.43"/>
+<polygon fill="black" stroke="black" points="290.59,-591.26 287.09,-581.26 283.59,-591.26 290.59,-591.26"/>
+</g>
+<!-- 3 -->
+<g id="node4" class="node" onclick="showInfo(this)" style="cursor:pointer">
+<title>3</title>
+<ellipse fill="none" stroke="black" cx="287.09" cy="-301.17" rx="190.42" ry="81.13"/>
+<text text-anchor="middle" x="287.09" y="-343.47" font-family="Times,serif" font-size="14.00">Node Type: EXPRESSION 3</text>
+<text text-anchor="middle" x="287.09" y="-312.47" font-family="Times,serif" font-size="14.00">EXPRESSION:</text>
+<text text-anchor="middle" x="287.09" y="-297.47" font-family="Times,serif" font-size="14.00">cash += payment</text>
+<text text-anchor="middle" x="287.09" y="-266.47" font-family="Times,serif" font-size="14.00">IRs:</text>
+<text text-anchor="middle" x="287.09" y="-251.47" font-family="Times,serif" font-size="14.00">cash(uint256) = cash (c)+ payment</text>
+</g>
+<!-- 2&#45;&gt;3 -->
+<g id="edge3" class="edge">
+<title>2&#45;&gt;3</title>
+<path fill="none" stroke="black" d="M287.09,-418.25C287.09,-409.88 287.09,-401.34 287.09,-392.86"/>
+<polygon fill="black" stroke="black" points="290.59,-392.59 287.09,-382.59 283.59,-392.59 290.59,-392.59"/>
+</g>
+<!-- 4 -->
+<g id="node5" class="node" onclick="showInfo(this)" style="cursor:pointer">
+<title>4</title>
+<ellipse fill="none" stroke="black" cx="287.09" cy="-91.92" rx="281.36" ry="91.85"/>
+<text text-anchor="middle" x="287.09" y="-141.72" font-family="Times,serif" font-size="14.00">Node Type: EXPRESSION 4</text>
+<text text-anchor="middle" x="287.09" y="-110.72" font-family="Times,serif" font-size="14.00">EXPRESSION:</text>
+<text text-anchor="middle" x="287.09" y="-95.72" font-family="Times,serif" font-size="14.00">assert(bool)(cash &gt;= bid)</text>
+<text text-anchor="middle" x="287.09" y="-64.72" font-family="Times,serif" font-size="14.00">IRs:</text>
+<text text-anchor="middle" x="287.09" y="-49.72" font-family="Times,serif" font-size="14.00">TMP_4(bool) = cash &gt;= bid</text>
+<text text-anchor="middle" x="287.09" y="-34.72" font-family="Times,serif" font-size="14.00">TMP_5(None) = SOLIDITY_CALL assert(bool)(TMP_4)</text>
+</g>
+<!-- 3&#45;&gt;4 -->
+<g id="edge4" class="edge">
+<title>3&#45;&gt;4</title>
+<path fill="none" stroke="black" d="M287.09,-219.74C287.09,-211.32 287.09,-202.68 287.09,-194.07"/>
+<polygon fill="black" stroke="black" points="290.59,-193.98 287.09,-183.98 283.59,-193.98 290.59,-193.98"/>
+</g>
+</g>
+</svg>
+
+    </div>
+  </div>
+  <div id="panel">
+    <div id="source-panel"><h4>AuctionOffer.sol</h4><pre><span class="src-line" data-line="1">// SPDX-License-Identifier: MIT</span>
+<span class="src-line" data-line="2">pragma solidity ^0.8.0;</span>
+<span class="src-line" data-line="3"> </span>
+<span class="src-line" data-line="4">// Simplified auction: tracks highest bid and accumulated cash.</span>
+<span class="src-line" data-line="5">// BUG: no check that payment covers the new bid.</span>
+<span class="src-line" data-line="6">//      assert(cash &gt;= bid) fails when payment &lt; newBid.</span>
+<span class="src-line" data-line="7">// Z3 finds: newBid=2, payment=1 --&gt; cash=1 &lt; 2=bid --&gt; assert fails.</span>
+<span class="src-line" data-line="8">contract AuctionOffer {</span>
+<span class="src-line" data-line="9"> </span>
+<span class="src-line" data-line="10">    uint public bid = 0;</span>
+<span class="src-line" data-line="11">    uint public cash = 0;</span>
+<span class="src-line" data-line="12"> </span>
+<span class="src-line" data-line="13">    function offer(uint newBid, uint payment) public {</span>
+<span class="src-line" data-line="14">        require(newBid &gt; bid &amp;&amp; payment &gt; 0);</span>
+<span class="src-line" data-line="15"> </span>
+<span class="src-line" data-line="16">        bid = newBid;</span>
+<span class="src-line" data-line="17">        cash += payment;</span>
+<span class="src-line" data-line="18"> </span>
+<span class="src-line" data-line="19">        assert(cash &gt;= bid);</span>
+<span class="src-line" data-line="20">    }</span>
+<span class="src-line" data-line="21">}</span>
+</pre></div>
+    <div id="click-info">
+      <p><a href="../AuctionOffer_alltests_index.html">&larr; back to the CHC graph</a></p>
+      <p class="placeholder">Click a node to see its full statement / IR
+      (useful once the graph is zoomed out and labels get too small to read).
+      When the statement is found in the source above, the matching line is
+      highlighted too.</p>
+    </div>
+  </div>
+</div>
+<script>
+const NODE_LABELS = {"0": "Node Type: ENTRY_POINT 0\n", "1": "Node Type: EXPRESSION 1\n\nEXPRESSION:\nrequire(bool)(newBid &gt; bid &amp;&amp; payment &gt; 0)\n\nIRs:\nTMP_0(bool) = newBid &gt; bid\nTMP_1(bool) = payment &gt; 0\nTMP_2(bool) = TMP_0 &amp;&amp; TMP_1\nTMP_3(None) = SOLIDITY_CALL require(bool)(TMP_2)", "2": "Node Type: EXPRESSION 2\n\nEXPRESSION:\nbid = newBid\n\nIRs:\nbid(uint256) := newBid(uint256)", "3": "Node Type: EXPRESSION 3\n\nEXPRESSION:\ncash += payment\n\nIRs:\ncash(uint256) = cash (c)+ payment", "4": "Node Type: EXPRESSION 4\n\nEXPRESSION:\nassert(bool)(cash &gt;= bid)\n\nIRs:\nTMP_4(bool) = cash &gt;= bid\nTMP_5(None) = SOLIDITY_CALL assert(bool)(TMP_4)"};
+const NODE_LINES = {"2": 16, "3": 17};
+let lastSrcHit = null;
+
+function showInfo(g) {
+  if (dragMoved) { dragMoved = false; return; }
+  const titleEl = g.querySelector('title');
+  const panel = document.getElementById('click-info');
+  if (!titleEl) { panel.innerHTML = '<p class="placeholder">(no id found for this node)</p>'; return; }
+  const key = titleEl.textContent;
+  const label = NODE_LABELS[key];
+  let out = '<h3>Node ' + key.replace(/&/g,'&amp;').replace(/</g,'&lt;') + '</h3>';
+  out += label ? '<pre>' + label + '</pre>' : '<p class="placeholder">No label found for this node.</p>';
+  panel.innerHTML = out;
+
+  if (lastSrcHit) { lastSrcHit.classList.remove('src-hit'); lastSrcHit = null; }
+  const lineNo = NODE_LINES[key];
+  if (lineNo) {
+    const lineEl = document.querySelector('.src-line[data-line="' + lineNo + '"]');
+    if (lineEl) {
+      lineEl.classList.add('src-hit');
+      lastSrcHit = lineEl;
+      lineEl.scrollIntoView({behavior: 'smooth', block: 'center'});
+    }
+  }
+}
+
+const wrap = document.getElementById('graph-wrap');
+const zoomEl = document.getElementById('graph-zoom');
+const svgEl = zoomEl.querySelector('svg');
+const svgNativeW = svgEl.getBoundingClientRect().width || 1000;
+const svgNativeH = svgEl.getBoundingClientRect().height || 1000;
+
+let scale = 1;
+function applyZoom() { zoomEl.style.transform = 'scale(' + scale + ')'; }
+function setZoom(delta) { scale = Math.max(0.05, Math.min(4, scale + delta)); applyZoom(); }
+function fitToScreen() {
+  const availW = wrap.clientWidth - 24, availH = wrap.clientHeight - 24;
+  scale = Math.max(0.05, Math.min(availW / svgNativeW, availH / svgNativeH, 1));
+  applyZoom();
+  wrap.scrollLeft = 0; wrap.scrollTop = 0;
+}
+fitToScreen();
+
+let panning = false, dragMoved = false, startX = 0, startY = 0, startLeft = 0, startTop = 0;
+wrap.addEventListener('mousedown', (e) => {
+  panning = true; dragMoved = false;
+  startX = e.clientX; startY = e.clientY;
+  startLeft = wrap.scrollLeft; startTop = wrap.scrollTop;
+  wrap.classList.add('panning');
+});
+window.addEventListener('mousemove', (e) => {
+  if (!panning) return;
+  const dx = e.clientX - startX, dy = e.clientY - startY;
+  if (Math.abs(dx) > 4 || Math.abs(dy) > 4) dragMoved = true;
+  wrap.scrollLeft = startLeft - dx;
+  wrap.scrollTop = startTop - dy;
+});
+window.addEventListener('mouseup', () => { panning = false; wrap.classList.remove('panning'); });
+
+wrap.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  const rect = wrap.getBoundingClientRect();
+  const pointX = e.clientX - rect.left + wrap.scrollLeft;
+  const pointY = e.clientY - rect.top + wrap.scrollTop;
+  const prevScale = scale;
+  scale = Math.max(0.05, Math.min(4, scale + (e.deltaY < 0 ? 0.1 : -0.1)));
+  const ratio = scale / prevScale;
+  applyZoom();
+  wrap.scrollLeft = pointX * ratio - (e.clientX - rect.left);
+  wrap.scrollTop = pointY * ratio - (e.clientY - rect.top);
+}, { passive: false });
+
+const searchBox = document.getElementById('search-box');
+let lastHit = null;
+searchBox.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const q = searchBox.value.trim().toLowerCase();
+  if (!q) return;
+  if (lastHit) lastHit.classList.remove('search-hit');
+  const nodes = zoomEl.querySelectorAll('.node');
+  let hit = null;
+  for (const g of nodes) {
+    const t = g.querySelector('title');
+    if (t && t.textContent.toLowerCase().includes(q)) { hit = g; break; }
+  }
+  if (!hit) { searchBox.style.background = '#fdd'; setTimeout(() => searchBox.style.background = '', 400); return; }
+  hit.classList.add('search-hit');
+  lastHit = hit;
+  hit.scrollIntoView({behavior: 'smooth', block: 'center', inline: 'center'});
+  showInfo(hit);
+});
+</script>
+</body>
+</html>

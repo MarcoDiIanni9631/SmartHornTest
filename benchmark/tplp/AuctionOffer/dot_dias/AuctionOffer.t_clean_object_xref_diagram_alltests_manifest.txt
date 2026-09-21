@@ -1,0 +1,1 @@
+1	negative	43	/home/marco/testing-gas/trunk/TPLP_Contracts/25Ago_retest/26Jun_TPLP_AuctionOffer/dot_dias/AuctionOffer.t_clean_object_xref_diagram_test1_negative_highlighted.dot

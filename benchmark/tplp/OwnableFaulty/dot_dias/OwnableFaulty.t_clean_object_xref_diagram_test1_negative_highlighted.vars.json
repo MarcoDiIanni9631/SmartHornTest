@@ -1,0 +1,10 @@
+{
+ "A": {
+  "kind": "negative",
+  "is_positive": false,
+  "values": [
+   "newOwner == 1461501637330902918203684832716283019655932542976",
+   "_owner == 0"
+  ]
+ }
+}

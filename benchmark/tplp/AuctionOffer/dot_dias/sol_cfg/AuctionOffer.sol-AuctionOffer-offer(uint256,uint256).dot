@@ -1,0 +1,40 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+require(bool)(newBid > bid && payment > 0)
+
+IRs:
+TMP_0(bool) = newBid > bid
+TMP_1(bool) = payment > 0
+TMP_2(bool) = TMP_0 && TMP_1
+TMP_3(None) = SOLIDITY_CALL require(bool)(TMP_2)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+bid = newBid
+
+IRs:
+bid(uint256) := newBid(uint256)"];
+2->3;
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+cash += payment
+
+IRs:
+cash(uint256) = cash (c)+ payment"];
+3->4;
+4[label="Node Type: EXPRESSION 4
+
+EXPRESSION:
+assert(bool)(cash >= bid)
+
+IRs:
+TMP_4(bool) = cash >= bid
+TMP_5(None) = SOLIDITY_CALL assert(bool)(TMP_4)"];
+}

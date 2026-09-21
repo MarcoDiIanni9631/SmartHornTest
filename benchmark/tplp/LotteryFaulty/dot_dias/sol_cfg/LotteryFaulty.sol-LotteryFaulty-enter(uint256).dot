@@ -1,0 +1,40 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+require(bool)(newPlayer > 0)
+
+IRs:
+TMP_0(bool) = newPlayer > 0
+TMP_1(None) = SOLIDITY_CALL require(bool)(TMP_0)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+require(bool)(playerCount < 300)
+
+IRs:
+TMP_2(bool) = playerCount < 300
+TMP_3(None) = SOLIDITY_CALL require(bool)(TMP_2)"];
+2->3;
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+owner = owner + 1
+
+IRs:
+TMP_4(uint256) = owner (c)+ 1
+owner(uint256) := TMP_4(uint256)"];
+3->4;
+4[label="Node Type: EXPRESSION 4
+
+EXPRESSION:
+assert(bool)(lastPlayer == newPlayer)
+
+IRs:
+TMP_5(bool) = lastPlayer == newPlayer
+TMP_6(None) = SOLIDITY_CALL assert(bool)(TMP_5)"];
+}

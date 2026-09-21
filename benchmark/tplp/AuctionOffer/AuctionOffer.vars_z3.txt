@@ -1,0 +1,15 @@
+=== CONCRETE VALUES ===
+  newBid == 2
+  payment == 1
+  bid == 0
+  cash == 0
+
+=== PROJECTED CONSTRAINTS (Z3) ===
+  cash != 0
+  bid != 0
+  payment >= 1
+  cash - 1*bid <= -1
+  newBid >= 1
+  bid == 1*newBid
+  cash == 1*payment
+
