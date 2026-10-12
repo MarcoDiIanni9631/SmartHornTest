@@ -99,14 +99,18 @@ def concrete_values_for_test(test_block, sol_path, defs_path):
     try:
         sol = open(sol_path, encoding='utf-8').read()
         defs = open(defs_path, encoding='utf-8').read()
+        sol_stem = os.path.splitext(os.path.basename(sol_path))[0]
+        aux_path = os.path.join(os.path.dirname(sol_path), sol_stem + ".aux.pl")
+        t_constr_path = os.path.join(os.path.dirname(sol_path), sol_stem + ".t_constr.pl")
+        t_constr_text = open(t_constr_path, encoding='utf-8').read() if os.path.isfile(t_constr_path) else None
         blocks = _parse.load_defs_blocks(defs)
-        func, entry_pred = _parse.detect_func_and_entry(blocks)
+        func, entry_pred = _parse.detect_func_and_entry(blocks, aux_path)
         if not func:
             return None
         state_vars = _parse.parse_state_vars(sol)
         func_args = _parse.parse_func_args(sol, func)
         is_positive, concrete, _rv_to_sol, _raw = _parse.resolve_test(
-            test_block, blocks, state_vars, func_args, entry_pred)
+            test_block, blocks, state_vars, func_args, entry_pred, func, t_constr_text)
         return {'is_positive': is_positive, 'values': concrete}
     except Exception as e:
         print(f"(note: could not resolve concrete values for this test: {e})")

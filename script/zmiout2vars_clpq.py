@@ -174,15 +174,19 @@ def main():
 
     sol_stem = os.path.splitext(os.path.basename(sol_path))[0]
     out_path = os.path.join(os.path.dirname(zmiout_path), sol_stem + ".vars_clpq.txt")
+    aux_path = os.path.join(os.path.dirname(sol_path), sol_stem + ".aux.pl")
+    t_constr_path = os.path.join(os.path.dirname(sol_path), sol_stem + ".t_constr.pl")
+    t_constr_text = open(t_constr_path).read() if os.path.isfile(t_constr_path) else None
 
     blocks           = _parse.load_defs_blocks(defs)
-    func, entry_pred = _parse.detect_func_and_entry(blocks)
+    func, entry_pred = _parse.detect_func_and_entry(blocks, aux_path)
     if not func:
         print("ERROR: function name not found")
         sys.exit(1)
 
     state_vars = _parse.parse_state_vars(sol)
     func_args  = _parse.parse_func_args(sol, func)
+    arg_types  = _parse.parse_func_arg_types(sol, func)
 
     tests = _parse.split_tests(zmiout)
     if not tests:
@@ -193,7 +197,8 @@ def main():
         if len(tests) > 1:
             all_lines.append(f"================ TEST #{i} ================")
         is_pos, concrete, rv_to_sol, raw_constrs = _parse.resolve_test(
-            test_block, blocks, state_vars, func_args, entry_pred)
+            test_block, blocks, state_vars, func_args, entry_pred, func, t_constr_text,
+            arg_types=arg_types)
         if is_pos:
             all_lines.append("[POSITIVE WITNESS — verimapGood]")
         all_lines.append("=== CONCRETE VALUES ===")

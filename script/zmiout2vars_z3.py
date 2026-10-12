@@ -286,14 +286,98 @@ def _minimize_and(formula):
         from z3 import BoolVal; return BoolVal(True)
     return And(atoms) if len(atoms) > 1 else atoms[0]
 
+_TOKEN_RE = re.compile(r'\b[A-Za-z_][A-Za-z0-9_]*\b')
+_NUM_RE = re.compile(r'^-?\d+$')
+_VAR_EQ_NUM_RE = re.compile(r'(\w+)=(-?\d+)')
+_NUM_EQ_VAR_RE = re.compile(r'(-?\d+)=(\w+)')
+_VAR_EQ_VAR_RE = re.compile(r'(\w+)=(\w+)')
+_NOT_WRAP_RE = re.compile(r'not\((.*)\)')
+
+
+def _split_and_atoms(text):
+    """Split on the top-level ' and ' separators (respecting parens) -- the
+    REAL conjunction delimiter in how the "INCORRECT/FF FOUND" formula gets
+    printed. The comma-based split done upstream (extract_var_constraints)
+    only breaks the formula into a handful of coarser fragments collected
+    along the derivation; each fragment is itself a whole ' and '-joined
+    conjunction of many individual atoms, not one atom. Feeding those
+    coarse fragments straight into fullmatch-based atom parsing below would
+    never match anything (they're not single "var=num"-shaped atoms), so
+    every binding discovery would silently fail and everything downstream
+    would look unresolved -- this is what actually produces true atoms."""
+    s = re.sub(r'\s*\band\b\s*', ' and ', text)
+    parts, current, depth = [], [], 0
+    i = 0
+    while i < len(s):
+        if s[i] == '(':
+            depth += 1; current.append(s[i])
+        elif s[i] == ')':
+            depth -= 1; current.append(s[i])
+        elif depth == 0 and s[i:i + 5] == ' and ':
+            parts.append(''.join(current).strip())
+            current = []; i += 5; continue
+        else:
+            current.append(s[i])
+        i += 1
+    if current:
+        parts.append(''.join(current).strip())
+    return [p for p in parts if p]
+
+
 def _project_constraints_fallback(constraints, rv_to_sol):
-    results = []
-    for c in constraints:
-        s = c
-        for rv, name in rv_to_sol.items():
-            s = re.sub(r'\b' + re.escape(rv) + r'\b', name, s)
-        if any(name in s for name in rv_to_sol.values()):
-            results.append(s)
+    """No Z3 Python bindings available (the real, exact projection in
+    project_constraints() above needs them for quantifier elimination) --
+    this is a dependency-free, more conservative substitute: propagate
+    known literal/alias bindings through the raw constraint atoms by
+    simple fixpoint substitution, then keep only the atoms that end up
+    expressed PURELY in terms of the known Solidity names (function
+    args / state vars) plus integer literals -- dropping (never
+    guessing) any atom that still mentions an internal Prolog variable
+    (be it plumbing like msg.value/globals, or a Solidity-level LOCAL
+    that isn't itself a param or state var) once substitution is done.
+    """
+    constraints = _split_and_atoms(' and '.join(constraints))
+    bindings = dict(rv_to_sol)  # raw Prolog var -> resolved Solidity name
+    for _ in range(6):  # small fixpoint; these formulas are shallow
+        changed = False
+        for atom in constraints:
+            m = _VAR_EQ_NUM_RE.fullmatch(atom) or _NUM_EQ_VAR_RE.fullmatch(atom)
+            if m:
+                a, b = m.groups()
+                var, lit = (a, b) if not _NUM_RE.match(a) else (b, a)
+                if var not in bindings:
+                    bindings[var] = lit
+                    changed = True
+                continue
+            m = _VAR_EQ_VAR_RE.fullmatch(atom)
+            if m:
+                a, b = m.groups()
+                if a in bindings and b not in bindings:
+                    bindings[b] = bindings[a]; changed = True
+                elif b in bindings and a not in bindings:
+                    bindings[a] = bindings[b]; changed = True
+        if not changed:
+            break
+
+    sol_names = set(rv_to_sol.values())
+    results, seen = [], set()
+    for atom in constraints:
+        s = atom
+        for var, val in bindings.items():
+            s = re.sub(rf'\b{re.escape(var)}\b', str(val), s)
+        m_not = _NOT_WRAP_RE.fullmatch(s)
+        inner = m_not.group(1) if m_not else s
+        toks = set(_TOKEN_RE.findall(inner)) - {'not'}
+        if any(not _NUM_RE.match(t) and t not in sol_names for t in toks):
+            continue  # an internal/unresolved variable survived -- drop, don't guess
+        if not any(name in toks for name in sol_names):
+            continue  # nothing Solidity-relevant left to say
+        if re.fullmatch(r'(\S+)=\1', s):
+            continue  # trivial identity, left over from substitution
+        if s in seen:
+            continue
+        seen.add(s)
+        results.append(s)
     return results if results else ["(no Solidity-variable constraints found)"]
 
 def project_constraints(constraints, rv_to_sol, state_var_names=None):
@@ -353,15 +437,19 @@ def main():
 
     sol_stem = os.path.splitext(os.path.basename(sol_path))[0]
     out_path = os.path.join(os.path.dirname(zmiout_path), sol_stem + ".vars_z3.txt")
+    aux_path = os.path.join(os.path.dirname(sol_path), sol_stem + ".aux.pl")
+    t_constr_path = os.path.join(os.path.dirname(sol_path), sol_stem + ".t_constr.pl")
+    t_constr_text = open(t_constr_path).read() if os.path.isfile(t_constr_path) else None
 
     blocks           = _parse.load_defs_blocks(defs)
-    func, entry_pred = _parse.detect_func_and_entry(blocks)
+    func, entry_pred = _parse.detect_func_and_entry(blocks, aux_path)
     if not func:
         print("ERROR: function name not found")
         sys.exit(1)
 
     state_vars = _parse.parse_state_vars(sol)
     func_args  = _parse.parse_func_args(sol, func)
+    arg_types  = _parse.parse_func_arg_types(sol, func)
 
     tests = _parse.split_tests(zmiout)
     if not tests:
@@ -372,7 +460,8 @@ def main():
         if len(tests) > 1:
             all_lines.append(f"================ TEST #{i} ================")
         is_pos, concrete, rv_to_sol, raw_constrs = _parse.resolve_test(
-            test_block, blocks, state_vars, func_args, entry_pred)
+            test_block, blocks, state_vars, func_args, entry_pred, func, t_constr_text,
+            arg_types=arg_types)
         if is_pos:
             all_lines.append("[POSITIVE WITNESS — verimapGood]")
         all_lines.append("=== CONCRETE VALUES ===")

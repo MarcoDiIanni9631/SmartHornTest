@@ -34,9 +34,12 @@ def main():
     zmiout = open(zmiout_path).read()
 
     sol_stem = os.path.splitext(os.path.basename(sol_path))[0]
+    aux_path = os.path.join(os.path.dirname(sol_path), sol_stem + ".aux.pl")
+    t_constr_path = os.path.join(os.path.dirname(sol_path), sol_stem + ".t_constr.pl")
+    t_constr_text = open(t_constr_path).read() if os.path.isfile(t_constr_path) else None
 
     blocks           = parse_mod.load_defs_blocks(defs)
-    func, entry_pred = parse_mod.detect_func_and_entry(blocks)
+    func, entry_pred = parse_mod.detect_func_and_entry(blocks, aux_path)
     if not func:
         print("ERROR: function name not found")
         sys.exit(1)
@@ -45,6 +48,7 @@ def main():
     state_vars    = parse_mod.parse_state_vars(sol)
     func_args     = parse_mod.parse_func_args(sol, func)
     func_sig      = parse_mod.build_func_signature(sol, func)
+    arg_types     = parse_mod.parse_func_arg_types(sol, func)
 
     tests = parse_mod.split_tests(zmiout)
     if not tests:
@@ -53,7 +57,8 @@ def main():
     test_cases = []
     for i, test_block in enumerate(tests, 1):
         is_pos, concrete, rv_to_sol, raw_constrs = parse_mod.resolve_test(
-            test_block, blocks, state_vars, func_args, entry_pred)
+            test_block, blocks, state_vars, func_args, entry_pred, func, t_constr_text,
+            arg_types=arg_types)
 
         z3_proj = z3_mod.project_constraints(raw_constrs, rv_to_sol, state_vars) \
                   if rv_to_sol else []

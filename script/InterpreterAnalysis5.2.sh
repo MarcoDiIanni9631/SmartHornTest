@@ -172,6 +172,16 @@ process_file() {
   FILE_ABS="$(readlink -f "$file")"
   [ -f "$FILE_ABS" ] || return
 
+  # Auto-patch missing branch-condition constraints before analysis: when a
+  # straight-line if/else gets folded into a reusable predicate, the
+  # transformer can lose the link between the branch taken and the variable
+  # that decides it (see step4b_fix_branch_constraints.py for the full
+  # explanation). Safe no-op on files it doesn't apply to (e.g. loops,
+  # already-patched files, or shapes it can't derive without guessing).
+  if [[ "$FILE_ABS" == *.t_constr.pl && "${SKIP_STEP4B:-}" != "1" ]]; then
+    python3 "$SCRIPT_DIR/step4b_fix_branch_constraints.py" "$FILE_ABS"
+  fi
+
   local dir filename base_no_ext tmpout
   dir="$(dirname "$FILE_ABS")"
   filename="$(basename "$FILE_ABS")"
@@ -260,7 +270,7 @@ process_file() {
 
 export -f process_file
 export -f run_prolog
-export MAIN SWIPL_BIN TIMEOUT_SEC TARGET SKIP_EXISTING MAXDEPTH LOOPLIMIT SKIP_FILE STOP_FIRST STOP_PER_LOOP ORIG_CMDLINE DEBUG
+export MAIN SWIPL_BIN TIMEOUT_SEC TARGET SKIP_EXISTING MAXDEPTH LOOPLIMIT SKIP_FILE STOP_FIRST STOP_PER_LOOP ORIG_CMDLINE DEBUG SCRIPT_DIR SKIP_STEP4B
 
 # ----------------------------------------------------------
 # ESECUZIONE
