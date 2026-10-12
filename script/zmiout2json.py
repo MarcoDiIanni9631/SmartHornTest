@@ -56,9 +56,9 @@ def main():
 
     test_cases = []
     for i, test_block in enumerate(tests, 1):
-        is_pos, concrete, rv_to_sol, raw_constrs = parse_mod.resolve_test(
+        is_pos, concrete, rv_to_sol, raw_constrs, rv_start = parse_mod.resolve_test(
             test_block, blocks, state_vars, func_args, entry_pred, func, t_constr_text,
-            arg_types=arg_types)
+            arg_types=arg_types, with_start=True)
 
         z3_proj = z3_mod.project_constraints(raw_constrs, rv_to_sol, state_vars) \
                   if rv_to_sol else []
@@ -68,12 +68,24 @@ def main():
         except Exception as e:
             clpq_proj = [f"(CLP(Q) error: {e})"]
 
+        # the same constraints, with the state variables at the start of
+        # the call (the fields above have them where the assert fails)
+        z3_start = z3_mod.project_constraints(raw_constrs, rv_start, state_vars) \
+                   if rv_start else []
+        try:
+            clpq_start = clpq_mod.project_constraints(raw_constrs, rv_start) \
+                         if rv_start else []
+        except Exception as e:
+            clpq_start = [f"(CLP(Q) error: {e})"]
+
         test_cases.append({
             "id":                i,
             "kind":              "positive" if is_pos else "negative",
             "concrete_values":   concrete,
             "constraints_z3":    z3_proj,
             "constraints_clpq":  clpq_proj,
+            "constraints_z3_start":   z3_start,
+            "constraints_clpq_start": clpq_start,
         })
 
     json_data = {

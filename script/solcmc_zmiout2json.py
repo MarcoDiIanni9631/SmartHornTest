@@ -184,12 +184,27 @@ def main(folder):
             if var in values:
                 concrete.append(f"{nm} == {values[var]}")
         # Prolog cannot read a dotted name: block.timestamp -> block_timestamp
-        rv_to_sol = {v: n.replace(".", "_") for v, n in rv_to_sol.items()}
-        z3_proj = z3_mod.project_constraints(raw, rv_to_sol, state_vars) if raw else []
-        try:
-            clpq_proj = clpq_mod.project_constraints(raw, rv_to_sol) if raw else []
-        except Exception as e:
-            clpq_proj = [f"(CLP(Q) error: {e})"]
+        rv_start = {v: n.replace(".", "_") for v, n in rv_to_sol.items()}
+        # Same layout as the json of the Yul route (zmiout2json.py):
+        # constraints_*       state variables where the assert fails (after
+        #                     state' in the summary), parameters as they are;
+        # constraints_*_start state variables when the call starts.
+        rv_end = {v: n for v, n in rv_start.items() if n not in state_vars}
+        post = args[5 + k + len(layout) + 1:]
+        for nm, var in zip(state_vars, post):
+            rv_end[var] = nm
+
+        def project(rvs):
+            if not raw:
+                return [], []
+            z3p = z3_mod.project_constraints(raw, rvs, state_vars)
+            try:
+                clpqp = clpq_mod.project_constraints(raw, rvs)
+            except Exception as e:
+                clpqp = [f"(CLP(Q) error: {e})"]
+            return z3p, clpqp
+        z3_proj, clpq_proj = project(rv_end)
+        z3_start, clpq_start = project(rv_start)
         f = funcs.setdefault(func, {
             "signature": f"{func}({','.join(t for t, _ in params)})",
             "params": [p for _, p in params],
@@ -203,6 +218,8 @@ def main(folder):
             "concrete_values": concrete,
             "constraints_z3": z3_proj,
             "constraints_clpq": clpq_proj,
+            "constraints_z3_start": z3_start,
+            "constraints_clpq_start": clpq_start,
         })
 
     out = {
@@ -220,6 +237,7 @@ def main(folder):
             print(f"  {f['signature']} #{tc['id']} {tc['kind']:8s} {', '.join(tc['concrete_values'])}")
             print(f"      z3:   {', '.join(tc['constraints_z3'])}")
             print(f"      clpq: {', '.join(tc['constraints_clpq'])}")
+            print(f"      clpq (inizio chiamata): {', '.join(tc['constraints_clpq_start'])}")
 
 
 if __name__ == "__main__":

@@ -123,7 +123,10 @@ def _atoms_readable(result):
                         if re.match(r'^-?\d+$', la_s):
                             la_s, ra_s = ra_s, la_s
                         if ra_s == '0':
-                            m = re.match(r'^(.+?)\s+-\s+(.+)$', la_s)
+                            # "A + C - B == 0" -> "A + C == B", only when B is
+                            # the last term: in "A - B + C" moving B alone
+                            # would flip C's sign
+                            m = re.match(r'^(.+)\s+-\s+(\S+)$', la_s)
                             if m:
                                 la_s, ra_s = m.group(1).strip(), m.group(2).strip()
                         out.append(f"{la_s} == {ra_s}")

@@ -162,6 +162,10 @@ GAS_OTT_NOTES = {
 }
 for _name in GAS_OTT_NOTES:
     GROUND_TRUTH.setdefault(_name, ("derivable", None))
+# esempi aggiuntivi del 5/10 (05Ott_esempi_aggiuntivi), nelle versioni con
+# bug del confronto Yul/SolCMC del 13/10: il bug c'e', quindi derivable
+for _name in ("PaymentPlan", "BootVesting"):
+    GROUND_TRUTH.setdefault(_name, ("derivable", None))
 
 NOTES = {
     # soltgBenchmark9Settembre
@@ -438,7 +442,9 @@ def summarize_constraints(data):
     parts = []
     for fn in data.get("functions", []):
         for tc in fn.get("test_cases", []):
-            cs = [c for c in (tc.get("constraints_clpq") or [])
+            # the constraints with the state at the start of the call (the
+            # inputs of the path), when the json has them
+            cs = [c for c in (tc.get("constraints_clpq_start") or tc.get("constraints_clpq") or [])
                   if "115792089237316195423570985008687907853269984665640564039457584007913129639935" not in c]
             if cs:
                 parts.append(f"#{tc.get('id')}: " + ", ".join(cs))
@@ -1065,8 +1071,9 @@ def render_html(groups):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("-o", "--output", default=os.path.join(REPO, ORG, "report", "report_28settembre.html"))
-    ap.add_argument("--folder", help="Cartella (relativa alla repo) da usare al posto di BENCHMARK_GROUPS")
-    ap.add_argument("--title", help="Titolo del gruppo, usato solo insieme a --folder")
+    ap.add_argument("--folder", action="append",
+                    help="Cartella (relativa alla repo) da usare al posto di BENCHMARK_GROUPS; si puo' ripetere")
+    ap.add_argument("--title", action="append", help="Titolo del gruppo, uno per ogni --folder")
     ap.add_argument("--no-foundry", action="store_true", help="Ignora i risultati di Foundry")
     ap.add_argument("--ottobre", action="store_true",
                     help="Solo benchmark gas del 2/10, SolTG, SolCMC (smtCheckerTests di Solidity) e proprieta' sulle variabili")
@@ -1086,7 +1093,8 @@ def main():
 
     groups_override = None
     if args.folder:
-        groups_override = [(args.title or args.folder, args.folder)]
+        titles = args.title or []
+        groups_override = [(titles[i] if i < len(titles) else f, f) for i, f in enumerate(args.folder)]
     elif args.ottobre:
         groups_override = [("Benchmark gas (2 ottobre)", GAS_OTT)] + [
             (t, f) for t, f in BENCHMARK_GROUPS

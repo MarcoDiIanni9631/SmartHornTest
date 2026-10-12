@@ -560,7 +560,7 @@ def state_slots_from_body(trace_dict, blocks, func, n_state):
             return out
     return None
 
-def resolve_test(test_block, blocks, state_vars, func_args, entry_pred, func=None, t_constr_text=None, arg_types=None):
+def resolve_test(test_block, blocks, state_vars, func_args, entry_pred, func=None, t_constr_text=None, arg_types=None, with_start=False):
     """Parse one test block.
 
     Returns (is_positive, concrete_values, rv_to_sol, raw_constraints):
@@ -580,6 +580,12 @@ def resolve_test(test_block, blocks, state_vars, func_args, entry_pred, func=Non
     function's docstring). Optional: callers that don't have it yet (or a
     multi-argument func_args, where this fallback can't safely tell which
     argument it found) simply don't get this fallback.
+
+    with_start: also return a fifth value, rv_start, the same as rv_to_sol
+    but with every state variable mapped to its value when the call STARTS
+    (the one the concrete values show), not where the assert fails. This is
+    what a gas analysis needs: conditions on the inputs of the call. The
+    other four values do not change.
     """
     n_args = len(func_args)
     arg_types = arg_types or {}
@@ -607,8 +613,12 @@ def resolve_test(test_block, blocks, state_vars, func_args, entry_pred, func=Non
     concrete_values = []
     rv_to_sol = {}
 
+    param_rvs = {}
+    state_start = {}
+
     def _add(arg, rv):
         rv_to_sol[rv] = arg
+        param_rvs[rv] = arg
         val = z3_model.get(rv)
         if val is not None:
             val = _format_concrete_value(val, arg_types.get(arg))
@@ -692,6 +702,7 @@ def resolve_test(test_block, blocks, state_vars, func_args, entry_pred, func=Non
                 pre_pos  = ref_params.index(letter)
                 post_pos = pre_pos + offset
                 if pre_pos < len(new2_args):
+                    state_start[new2_args[pre_pos]] = var
                     val = z3_model.get(new2_args[pre_pos])
                     if val is not None:
                         concrete_values.append(f"{var} == {val}")
@@ -706,4 +717,8 @@ def resolve_test(test_block, blocks, state_vars, func_args, entry_pred, func=Non
     clauses = split_clauses(raw)
     raw_constraints = extract_var_constraints(clauses, rv_to_sol)
 
+    if with_start:
+        rv_start = dict(param_rvs)
+        rv_start.update(state_start)
+        return is_positive, concrete_values, rv_to_sol, raw_constraints, rv_start
     return is_positive, concrete_values, rv_to_sol, raw_constraints
