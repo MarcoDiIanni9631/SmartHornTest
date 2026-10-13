@@ -50,9 +50,8 @@ def main():
     func_sig      = parse_mod.build_func_signature(sol, func)
     arg_types     = parse_mod.parse_func_arg_types(sol, func)
 
+    # no test (nonDerivable, timeout): the json only says "no test found"
     tests = parse_mod.split_tests(zmiout)
-    if not tests:
-        tests = [zmiout]
 
     test_cases = []
     for i, test_block in enumerate(tests, 1):
@@ -97,6 +96,9 @@ def main():
             "test_cases": test_cases,
         }],
     }
+
+    if not test_cases:
+        json_data = {"result": parse_mod.no_test_message(zmiout_path)}
 
     json_path = os.path.join(os.path.dirname(zmiout_path), sol_stem + ".test_cases.json")
     with open(json_path, 'w') as f:

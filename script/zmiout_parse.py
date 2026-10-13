@@ -159,6 +159,21 @@ def split_tests(zmiout):
     return [p for p in parts if 'CALL TRACE' in p or 'model{' in p]
 
 
+def no_test_message(zmiout_path):
+    """The json of a contract with no test: only this line, with the
+    reason taken from the verdict in the .zmiout file name."""
+    name = os.path.basename(zmiout_path)
+    if ".TimeoutReached." in name:
+        why = "timeout reached before a test was found"
+    elif ".MaxDepthReached." in name:
+        why = "max depth reached before a test was found"
+    elif ".nonDerivable." in name:
+        why = "all paths explored, none reaches a failing assert"
+    else:
+        why = "the analysis gave no counterexample"
+    return f"no test found ({why})"
+
+
 def dedupe_tests_by_shape(tests):
     """Multiple SAT witnesses can be genuinely redundant, not wrong: two of
     the interpreter's top-level query clauses can independently reach the

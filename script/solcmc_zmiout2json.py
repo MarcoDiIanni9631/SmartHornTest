@@ -144,7 +144,8 @@ def main(folder):
     if not zs:
         sys.exit(f"no .zmiout in {folder}")
     contracts = re.findall(r"\bcontract\s+(\w+)", src)
-    m = re.search(r"\(interface_0_([a-z0-9_]+?)_\d+_\d+ ", smt)
+    # solc >= 0.8.29 drops the last _0 of the predicate names
+    m = re.search(r"\(interface_0_([A-Za-z0-9_]+?)_\d+(?:_\d+)? ", smt)
     cname = next((c for c in contracts if m and c.lower() == m.group(1)), contracts[-1] if contracts else name)
     state_vars = interface_state_vars(smt)
 
@@ -162,7 +163,7 @@ def main(folder):
             continue
         pred, args = call
         smt_pred, layout = summary_layout(smt, pred)
-        func = re.match(r"summary_\d+_function_(\w+?)__\d+_\d+_\d+$", smt_pred).group(1)
+        func = re.match(r"summary_\d+_function_(\w+?)__\d+_\d+(?:_\d+)?$", smt_pred).group(1)
         params = params_of(src, func)
         asserts = function_asserts(src, func)
         err = int(values.get(args[0], "0"))
@@ -228,11 +229,15 @@ def main(folder):
         "source": "SolCMC route (solc CHC query + smt2map + smt2pl_to_constr.pl)",
         "functions": list(funcs.values()),
     }
+    if not funcs:
+        out = {"result": parse_mod.no_test_message(zs[0])}
     path = os.path.join(folder, name + ".test_cases.json")
     with open(path, "w") as fh:
         json.dump(out, fh, indent=2)
     print("JSON written to:", path)
-    for f in out["functions"]:
+    if "result" in out:
+        print(out["result"])
+    for f in out.get("functions", []):
         for tc in f["test_cases"]:
             print(f"  {f['signature']} #{tc['id']} {tc['kind']:8s} {', '.join(tc['concrete_values'])}")
             print(f"      z3:   {', '.join(tc['constraints_z3'])}")
