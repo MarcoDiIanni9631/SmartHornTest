@@ -22,12 +22,12 @@
 #   --maxdepth N, --looplimit N, --timeout SEC, --skip-file F
 #
 # Examples:
-#   nohup bash script/sol2analysis.sh --stop-first-per-loop --timeout 300 \
+#   nohup bash script/sol2analysis.sh --gen-aux --maxdepth 100 --timeout 600 \
 #        --varz3 --varclpq --annotate \
-#        test/MyContract/MyContract.sol incorrect &
-#   bash script/sol2analysis.sh --until-tpl test/MyContract/MyContract.sol
+#        path/to/MyContract/MyContract.sol incorrect &
+#   bash script/sol2analysis.sh --until-tpl path/to/MyContract/MyContract.sol
 #   bash script/sol2analysis.sh --skip-convert --varz3 --graph \
-#        test/MyContract/MyContract.sol incorrect
+#        path/to/MyContract/MyContract.sol incorrect
 # ====================================================================
 
 set -euo pipefail
@@ -106,21 +106,6 @@ if ! $DO_ANALYSIS; then
   echo ""
   echo "✅ Conversion complete (--until-tpl)"
   exit 0
-fi
-
-# ------------------------------------------------------------------
-# STEP 4b: AUTO-PATCH MISSING BRANCH-CONDITION CONSTRAINTS
-# (see script/step4b_fix_branch_constraints.py; safe no-op when it
-# doesn't apply, e.g. loops or shapes it can't derive without guessing.
-# InterpreterAnalysis5.2.sh also runs this itself before analysing, so
-# it's a no-op there too if already applied here.
-# Set SKIP_STEP4B=1 to skip it here too -- kept in sync with the same
-# env var InterpreterAnalysis5.2.sh already honors, so one flag disables
-# it end-to-end instead of leaving this call unconditional.)
-# ------------------------------------------------------------------
-if [ "${SKIP_STEP4B:-}" != "1" ]; then
-  echo ""
-  python3 "$SCRIPT_DIR/step4b_fix_branch_constraints.py" "$DIR/$BASE.t_constr.pl"
 fi
 
 # ------------------------------------------------------------------

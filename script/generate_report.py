@@ -37,7 +37,7 @@ REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # responsabile di almeno 2 falsi positivi confermati (Math_max, simple_if)
 # e di beneficio nullo sul resto del campione controllato a mano.
 # REPORT_ORG: folder with the results to report (default: the 28 September run)
-ORG = os.environ.get("REPORT_ORG", "testOrganizzati28Settembre")
+ORG = os.environ.get("REPORT_ORG", "esperimenti/testOrganizzati28Settembre")
 BENCHMARK_GROUPS = [
     ("SolTG - originali (smtCheckerTests di Solidity)", f"{ORG}/soltg/originali"),
     ("SolTG - asserzioni negate", f"{ORG}/soltg/negati"),
@@ -188,7 +188,7 @@ NOTES = {
     "return_1_negated": ("bad", "Crash trasformazione (memoria)."),
     "only_assert2_fail": ("ok", "Coincide di nuovo con baseline 8/9 (derivable)."),
     "return_1_fail": ("bad", "Crash trasformazione (memoria) — nessun verdetto."),
-    "short_circuit_and_fail": ("ok", "Corretto (verificato anche con il prof): x = 0 e' il valore di x all'inizio della chiamata; SolCMC mostra quello finale (1)."),
+    "short_circuit_and_fail": ("ok", "Corretto: x = 0 e' il valore di x all'inizio della chiamata; SolCMC mostra quello finale (1)."),
     "Math_max": ("ok", "Falso positivo uint256 negativo E il falso positivo residuo di patch_t_constr sono risolti oggi — nonDerivable, corretto."),
     "Math_min": ("ok", "Falso positivo uint256 risolto oggi. Bug reale confermato nel contratto (1 testimone, a=b=0)."),
     "Math_average": ("bad", "Crash: xor non supportato dal backend."),

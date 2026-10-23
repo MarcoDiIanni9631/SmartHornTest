@@ -2,7 +2,7 @@
 # regen_all.sh <cartella_destinazione> [file1.sol file2.sol ...]
 #
 # Rigenera da zero (Solidity -> GREY -> yul2chc -> transform -> constr ->
-# step4b -> analisi Z3/CLP(Q) -> vars/json), un contratto alla volta
+# analisi Z3/CLP(Q) -> vars/json), un contratto alla volta
 # (MAI GREY in concorrenza -- .../grey/intermediate.json e' condiviso e si
 # corrompe se due invocazioni girano insieme), tutti i .sol trovati dentro
 # <cartella_destinazione>/*/<nome_cartella>.sol (oppure, se passati come

@@ -1,7 +1,9 @@
 #!/bin/bash
-# install.sh — sets up everything the SmartHornTest pipeline needs
-# (grey, yul-chc, swi-prolog-z3, Z3) as sibling folders of this repo,
-# and compiles the SWI-Prolog/Z3 bridge.
+# install.sh: sets up what the SmartHornTest pipeline needs
+# (grey, yul-chc, swi-prolog-z3, Z3, forge-std) as sibling folders of this
+# repo, and compiles the SWI-Prolog/Z3 bridge. At the end it checks the
+# tools it does not install (solc, VeriMAP, Foundry, z3-solver, chcviz) and
+# says which parts of the pipeline need them.
 #
 # Usage:
 #   bash script/install.sh
@@ -12,7 +14,9 @@
 #
 # Environment variable overrides:
 #   GREY_REPO_URL, YULCHC_REPO_URL, SWIZ3_REPO_URL   (default: MarcoDiIanni9631's forks)
-#   ARCHIVE_URL                                       (default: Z3 4.15.2, linux x64, glibc 2.39)
+#   ARCHIVE_URL                                       (default: Z3 4.15.2, linux x64, glibc 2.39;
+#                                                      with an older glibc the Z3 of the z3-solver
+#                                                      Python package is used instead)
 #   SKIP_Z3=1                                          (skip the Z3 download, use Z3_LIB_DIR/Z3_INCLUDE already set)
 #   SWIPL_BIN                                          (path to swipl, if it is not on your PATH)
 
@@ -90,6 +94,13 @@ clone_if_missing() {
 clone_if_missing "$PROJECTS_ROOT/grey" "$GREY_REPO_URL"
 clone_if_missing "$PROJECTS_ROOT/yul-chc" "$YULCHC_REPO_URL"
 clone_if_missing "$PROJECTS_ROOT/swi-prolog-z3" "$SWIZ3_REPO_URL"
+# forge-std: used by witnesses2foundry.py to write the Foundry tests
+if [ -f "$PROJECTS_ROOT/forge-std/src/Test.sol" ]; then
+  echo "Skipping forge-std: already cloned"
+else
+  echo "Cloning forge-std..."
+  git clone --quiet --depth 1 --branch "${FORGE_STD_TAG:-v1.9.7}" https://github.com/foundry-rs/forge-std.git "$PROJECTS_ROOT/forge-std"
+fi
 chmod +x "$PROJECTS_ROOT/grey/solc-latest"
 
 # ------------------------------------------------------------------
@@ -101,6 +112,15 @@ if [ "$SKIP_Z3" = "1" ]; then
   echo "SKIP_Z3=1: skipping the Z3 download, using Z3_LIB_DIR/Z3_INCLUDE already set"
 elif [ -f "$Z3_DIR/bin/libz3.so" ] && [ -f "$Z3_DIR/include/z3_api.h" ]; then
   echo "Skipping Z3: already downloaded in $Z3_DIR"
+elif [ "$(printf '%s\n' "$(ldd --version | head -1 | grep -o '[0-9]*\.[0-9]*$')" 2.39 | sort -V | head -1)" != 2.39 ] \
+     && PYZ3="$(python3 -c 'import z3, os; print(os.path.dirname(z3.__file__))' 2>/dev/null)" \
+     && [ -f "$PYZ3/lib/libz3.so" ] && [ -f "$PYZ3/include/z3_api.h" ]; then
+  # the prebuilt release needs glibc 2.39: on an older system use the libz3
+  # of the z3-solver Python package, which is built for older glibc versions
+  echo "glibc older than 2.39: using the Z3 of the z3-solver Python package ($PYZ3)"
+  mkdir -p "$Z3_DIR"
+  ln -sfn "$PYZ3/lib" "$Z3_DIR/bin"
+  ln -sfn "$PYZ3/include" "$Z3_DIR/include"
 else
   echo "Downloading Z3 from $ARCHIVE_URL"
   echo "(If your machine is not linux x86_64/glibc, set ARCHIVE_URL to the right"
@@ -138,6 +158,21 @@ LD_LIBRARY_PATH="$Z3_LIBDIR:$PROJECTS_ROOT/swi-prolog-z3:${LD_LIBRARY_PATH:-}" \
   "$SWIPL_BIN" -q -g "load_foreign_library('$BRIDGE_SO'), writeln('BRIDGE OK'), halt" \
   -t "halt(1)" 2>&1
 
+# ------------------------------------------------------------------
+# 7. Tools this script does not install: only some parts need them
+# ------------------------------------------------------------------
+echo ""
+echo "Other tools (not installed by this script):"
+check() {  # check <ok?> <name> <what needs it>
+  if [ "$1" = 1 ]; then echo "   OK       $2"; else echo "   MISSING  $2: needed for $3"; fi
+}
+check "$(command -v solc >/dev/null && echo 1)" "solc" "the SolCMC route (https://github.com/ethereum/solidity/releases)"
+VM="${VERIMAP:-$PROJECTS_ROOT/verimap}"
+check "$([ -x "$VM/scripts/smt2map" ] && echo 1)" "VeriMAP ($VM/scripts/smt2map)" "the SolCMC route (set VERIMAP=/path/to/verimap)"
+check "$(command -v forge >/dev/null && echo 1)" "forge" "the Foundry tests and coverage (https://getfoundry.sh)"
+check "$(python3 -c 'import z3' 2>/dev/null && echo 1)" "z3-solver (Python)" "the projected constraints (pip install z3-solver)"
+check "$(command -v chcviz >/dev/null && echo 1)" "chcviz" "the CHC graph, --graph/--highlight (https://github.com/MarcoDiIanni9631/CHCViz)"
+
 echo ""
 echo "=================================================="
 echo "Setup complete."
@@ -145,9 +180,8 @@ echo "   grey:          $PROJECTS_ROOT/grey"
 echo "   yul-chc:       $PROJECTS_ROOT/yul-chc"
 echo "   swi-prolog-z3: $PROJECTS_ROOT/swi-prolog-z3"
 echo "   z3:            $Z3_DIR"
+echo "   forge-std:     $PROJECTS_ROOT/forge-std"
 echo ""
-echo "   Example command:"
-echo "   bash \"$SCRIPT_DIR/sol2analysis.sh\" --gen-aux --stop-first-per-loop \\"
-echo "     --timeout 300 --varz3 --varclpq --annotate \\"
-echo "     path/to/Contract.sol incorrect"
+echo "   Try it:"
+echo "   bash \"$(dirname "$SCRIPT_DIR")/smarthorntest_completo.sh\" path/to/Contract.sol -f functionName"
 echo "=================================================="

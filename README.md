@@ -1,24 +1,103 @@
 # SmartHornTest
 
-**Automated test-case generation for Solidity smart contracts via Constrained Horn Clauses (CHC), SWI-Prolog, and Z3.**
+**Test generation for Solidity smart contracts from Constrained Horn Clauses (CHCs), with SWI-Prolog, CLP(Q) and Z3.**
 
-SmartHornTest compiles a Solidity contract into CHC clauses, interprets them with a CLP(Q)+Z3 engine, and — when a property violation is found — automatically generates concrete witness values (counterexamples) mapped back to Solidity variables.
+SmartHornTest translates a Solidity contract into CHCs and explores them with a
+CLP(Q)+Z3 interpreter. Every path it finds becomes a test case: concrete input
+values plus the constraints on the inputs that lead to that path, written with
+the Solidity names. The test cases are then turned into Foundry tests and run
+on the original contract.
+
+- **Negative test**: a path where an `assert` of the contract fails.
+- **Positive test**: a path that ends without breaking any `assert`.
+
+There are two ways to get the CHCs from the contract, called *routes*:
+
+- **yul2chc**: Solidity is compiled to Yul by [grey](https://github.com/MarcoDiIanni9631/grey),
+  then [yul-chc](https://github.com/MarcoDiIanni9631/yul-chc) translates the Yul code into CHCs.
+  It analyses one function at a time.
+- **SolCMC**: the CHCs are the ones written by the solc model checker
+  (`--model-checker-print-query`), converted to Prolog with VeriMAP.
+  It analyses every public function, one transaction after the constructor.
+
+The interpreter is the same for both routes.
+
+---
+
+## Quick start
+
+```bash
+bash smarthorntest_completo.sh path/to/MyContract.sol -f myFunction
+```
+
+This runs the whole process on one contract:
+
+1. adds the `vgood` marker, so that positive tests are found too;
+2. the yul2chc route (function `myFunction`);
+3. the SolCMC route (all functions);
+4. Foundry: every test case becomes a Foundry test and runs on the **original** contract;
+5. `forge coverage` of the generated tests.
+
+Everything is written to `path/to/MyContract_completo/`:
+
+| Path | Contents |
+|---|---|
+| `comandi.txt` | every command that was run, in order (each line can be run again on its own) |
+| `originale/` | the contract as it was given |
+| `MyContract.sol` | the contract with the `vgood` marker (the one analysed) |
+| `yul/`, `solcmc/` | the results of the two routes (`.zmiout`, `.test_cases.json`, ...) |
+| `foundry_yul/`, `foundry_solcmc/` | Foundry projects: `test/*.t.sol` and `forge.json` (the output of `forge test --json`) |
+| `coverage_yul.txt`, `coverage_solcmc.txt` | the output of `forge coverage` |
+
+Options (all optional):
+
+| Option | Meaning |
+|---|---|
+| `-f NAME` | function to analyse on the yul2chc route (default: the first one) |
+| `-t SEC` | interpreter timeout |
+| `-d N` | maxdepth (maximum number of resolution steps) |
+| `-s yul` or `-s solcmc` | run only one route |
+| `-n` | no `vgood` marker: negative tests only |
+
+The default timeout and maxdepth are read from `smarthorntest.conf`.
+`bash smarthorntest_completo.sh -h` prints the help.
+
+### Reading the results
+
+- A **negative** test is *confirmed* when Foundry stops with
+  `panic: assertion failed (0x01)`: the assert really fails with those values.
+- A **positive** test is *confirmed* when the call passes without errors.
+- Foundry only runs the generated tests. It does not verify the contract: a
+  confirmed test tells that the test does what it claims, nothing more.
+- Paths that revert before reaching any assert (for example a `require` that
+  fails) do not become tests. Their branches stay uncovered in `forge coverage`.
 
 ---
 
 ## Requirements
 
-| Tool | Tested version | Notes |
-|---|---|---|
-| [SWI-Prolog](https://www.swi-prolog.org/Download.html) | 9.2+ | Core interpreter |
-| [Z3](https://github.com/Z3Prover/z3) | 4.15.2 | SMT solver |
-| Python | 3.8+ | Pipeline scripts |
-| [grey](https://github.com/MarcoDiIanni9631/grey) | — | Solidity → YUL compiler |
-| [yul-chc](https://github.com/MarcoDiIanni9631/yul-chc) | — | YUL → CHC translator + transformer |
-| [swi-prolog-z3](https://github.com/MarcoDiIanni9631/swi-prolog-z3) | — | SWI-Prolog / Z3 bridge |
+Installed by `script/install.sh`:
 
-All of the above must be installed and available before running the pipeline.
-The `solc` Solidity compiler is also required and is bundled inside grey.
+| Tool | Notes |
+|---|---|
+| [grey](https://github.com/MarcoDiIanni9631/grey) | Solidity to Yul (bundles its own `solc`) |
+| [yul-chc](https://github.com/MarcoDiIanni9631/yul-chc) | Yul to CHCs, plus the transformer |
+| [swi-prolog-z3](https://github.com/MarcoDiIanni9631/swi-prolog-z3) | SWI-Prolog / Z3 bridge (compiled by the script) |
+| [Z3](https://github.com/Z3Prover/z3) 4.15 | SMT solver (prebuilt release) |
+| [forge-std](https://github.com/foundry-rs/forge-std) | standard library for the Foundry tests |
+
+Needed before running the script:
+
+| Tool | Needed for |
+|---|---|
+| [SWI-Prolog](https://www.swi-prolog.org/Download.html) 9.2+ (`swipl`, `swipl-ld`) | the interpreter |
+| Python 3.8+ with `z3-solver` (`pip install z3-solver`) | the pipeline scripts and the projected constraints |
+| `git`, `gcc`, `unzip`, `rsync`, `curl` or `wget` | the installation |
+| [solc](https://github.com/ethereum/solidity/releases) on the `PATH` | the SolCMC route |
+| VeriMAP (`scripts/smt2map`), in `../verimap` or in `$VERIMAP` | the SolCMC route |
+| [Foundry](https://getfoundry.sh) (`forge`) | the Foundry tests and the coverage |
+| [CHCViz](https://github.com/MarcoDiIanni9631/CHCViz) as `chcviz` on the `PATH` | only the CHC graph (`--graph`, `--highlight`) |
+| [Slither](https://github.com/crytic/slither) | only the Solidity CFG (`step10_sol_cfg.sh`) |
 
 > **Note:** `grey` and `yul-chc` above point to forks, not the original
 > `costa-group/grey` and `chc-lab/yul-chc`. The public versions of these two
@@ -41,51 +120,43 @@ cd swipl_z3_clpq_interpreter
 ```bash
 bash script/install.sh
 ```
-This sets up everything the pipeline needs: it clones `grey`, `yul-chc`,
-and `swi-prolog-z3` next to this repo, downloads a ready-to-use Z3 build,
-and compiles the SWI-Prolog/Z3 bridge. If it ends with `BRIDGE OK` and
-`Setup complete.`, you are done.
+It clones `grey`, `yul-chc`, `swi-prolog-z3` and `forge-std` next to this
+repo, gets a ready-to-use Z3 build and compiles the SWI-Prolog/Z3 bridge.
+It does not install system packages (no `sudo`). At the end it prints
+`BRIDGE OK`, then checks the tools it does not install and says what is
+missing and which part of the pipeline needs it.
 
 **3. Try it on a contract**
 ```bash
-bash script/sol2analysis.sh --gen-aux --stop-first-per-loop --timeout 300 \
-  --varz3 --varclpq --annotate \
-  path/to/YourContract.sol incorrect
+bash smarthorntest_completo.sh path/to/MyContract.sol -f myFunction
 ```
-This produces `YourContract.test_cases.json` in the same folder as the
-`.sol` file.
 
 ### If something goes wrong
 
-You need `git`, `python3`, SWI-Prolog (`swipl` and `swipl-ld`), a C compiler
-(`gcc`), `unzip`, `rsync`, and `curl` or `wget` already installed.
-`install.sh` checks for these and tells you exactly what is missing if
-something is not found.
-
 If `swipl` is installed but not on your `PATH` (for example, you built it
-from source into a custom folder), set `SWIPL_BIN` before running the
-script:
+from source into a custom folder), set `SWIPL_BIN` before running the script:
 ```bash
 export SWIPL_BIN=/path/to/your/swipl
 bash script/install.sh
 ```
 
-If your machine is not Linux x86_64, the default Z3 download will not work.
-Get the right build from the [Z3 releases page](https://github.com/Z3Prover/z3/releases)
-and point the script at it:
+The default Z3 download is built for Linux x86_64 with glibc 2.39 or newer.
+On an older system the script uses the Z3 library of the `z3-solver` Python
+package instead (so install `z3-solver` first). On a machine that is not
+Linux x86_64, get the right build from the
+[Z3 releases page](https://github.com/Z3Prover/z3/releases) and point the script at it:
 ```bash
 ARCHIVE_URL=https://github.com/Z3Prover/z3/releases/download/z3-4.15.2/<your-build>.zip bash script/install.sh
 ```
-Or, if you already have Z3 installed somewhere, skip the download entirely:
+Or, if you already have Z3 installed somewhere (for example built from source), skip the download:
 ```bash
 SKIP_Z3=1 Z3_INCLUDE=/path/to/z3/include Z3_LIB_DIR=/path/to/z3/lib bash script/install.sh
 ```
 
 ### How the paths work (`script/config.sh`)
 
-Every pipeline script (`step1_grey.sh`, `step2_yul2chc.sh`,
-`step3_transform.sh`, `InterpreterAnalysis5.2.sh`) reads its paths from
-`script/config.sh`. By default it assumes this layout:
+Every pipeline script reads its paths from `script/config.sh`. By default it
+assumes this layout, which is the one `script/install.sh` sets up:
 
 ```
 <parent folder>/
@@ -94,10 +165,11 @@ Every pipeline script (`step1_grey.sh`, `step2_yul2chc.sh`,
   yul-chc/
   swi-prolog-z3/
   z3/
+  forge-std/
+  verimap/                     <- only for the SolCMC route, not cloned by install.sh
 ```
 
-which is exactly what `script/install.sh` sets up. You can override any of
-these with an environment variable, without touching any file:
+You can override any of these with an environment variable, without touching any file:
 
 ```bash
 export GREY_DIR=/somewhere/else/grey
@@ -105,157 +177,156 @@ export YULCHC_DIR=/somewhere/else/yul-chc
 export SWIZ3_TURIBE_PATH=/somewhere/else/swi-prolog-z3
 export SWIPL_BIN=/somewhere/else/swipl
 export Z3_LIB_DIR=/somewhere/else/z3/lib
+export FORGE_STD=/somewhere/else/forge-std
+export VERIMAP=/somewhere/else/verimap
 ```
 
 ---
 
-## All-in-one script: `sol2analysis.sh`
+## The two routes
 
-**This is the main script.** It runs the entire pipeline automatically:
-conversion → analysis → variable mapping → annotated .sol → CHC graph.
-
-```bash
-nohup bash script/sol2analysis.sh \
-  --gen-aux \
-  --stop-first-per-loop \
-  --timeout 300 \
-  --varz3 \
-  --varclpq \
-  --annotate \
-  --graph \
-  test/MyContract/MyContract.sol \
-  incorrect &
+```
+                    Solidity contract (.sol)
+                              │
+                 add_vgood.py (positive tests)
+                              │
+         ┌────────────────────┴────────────────────┐
+         │ yul2chc                                 │ SolCMC
+         │ grey: .sol -> Yul (.json)               │ solc --model-checker-print-query (.smt2)
+         │ yul-chc: Yul -> CHCs (.pl)              │ solcmc_assume_asserts.py
+         │ transform (.t.pl)                       │ VeriMAP smt2map (.smt2.pl)
+         │ yulPl2Constr.py (.t_constr.pl)          │ smt2pl_to_constr.pl --single-tx (.chc.pl)
+         └────────────────────┬────────────────────┘
+                              │
+            InterpreterAnalysis5.2.sh: CLP(Q)+Z3 interpreter
+            (target incorrect for yul2chc, ff for SolCMC)
+                              │
+                           .zmiout
+                              │
+         zmiout2json.py (yul2chc) / solcmc_zmiout2json.py (SolCMC)
+                              │
+                     .test_cases.json
+                              │
+            witnesses2foundry.py -> forge test, forge coverage
 ```
 
-> Run with `nohup ... &` so it keeps running even if the terminal closes.
-> All output files are written to the same folder as the `.sol`.
+The `.zmiout` file name tells the outcome: `derivable` means that at least one
+test was found, `nonDerivable` that no path reaches the target within the
+given maxdepth and timeout.
 
-> **Important:** always include `--gen-aux` unless you have already manually created the `.aux.pl` file. Without it, the pipeline will fail at step 3 with `aux.pl non trovato`. If the contract has multiple public functions, also add `--aux-hint <functionName>` to tell the script which one to analyse.
+### The `vgood` marker
 
-**Available flags:**
+`script/add_vgood.py` adds `uint256 vgood = 42;` at the start of every function
+and `vgood = 1042; assert(vgood < 20);` before every `return` and at the end.
+That assert fails exactly on the paths that pass every real assert, so the
+interpreter finds those paths too. A test whose model holds the value 1042 is
+positive; the others are negative. The Foundry tests always run on the
+contract without the marker.
+
+---
+
+## The yul2chc route alone: `sol2analysis.sh`
+
+```bash
+nohup bash script/sol2analysis.sh --gen-aux --aux-hint _myFunction_ \
+  --maxdepth 100 --timeout 600 --varz3 --varclpq \
+  path/to/MyContract/MyContract.sol incorrect &
+```
+
+All output files are written to the same folder as the `.sol`.
+`--gen-aux` writes the entry point (`.aux.pl`) automatically; `--aux-hint`
+picks the function when the contract has more than one.
 
 | Flag | Meaning |
 |---|---|
-| `--until-tpl` | Stop after conversion (no analysis) |
-| `--stop-first-per-loop` | One counterexample per loop iteration (recommended) |
-| `--stop-first` | Stop at the very first counterexample |
-| `--timeout SEC` | Analysis timeout in seconds (default: 60000) |
-| `--maxdepth N` | Maximum unfolding depth (default: 10000000) |
-| `--looplimit N` | Maximum number of loop iterations |
-| `--varz3` | Generate `.vars_z3.txt` with Z3 projected constraints |
-| `--varclpq` | Generate `.vars_clpq.txt` with CLP(Q) projected constraints |
-| `--varsmt` | Generate `.vars_smt.txt` with SMT-LIB projected constraints |
-| `--annotate` | Generate `.annotated.sol` with constraints as comment |
-| `--graph` | Generate CHC dependency graph in SVG (via chcviz) |
-| `--highlight` | Highlight the counterexample derivation path(s) on the CHC graph, one graph per test found (implies `--graph`) |
-| `--skip-existing` | Skip if a .zmiout already exists |
+| `--until-tpl` | stop after the conversion (no analysis) |
+| `--skip-convert` | skip the conversion (use the existing `.t_constr.pl`) |
+| `--gen-aux` | write the `.aux.pl` entry point automatically |
+| `--aux-hint NAME` | function to analyse, used by `--gen-aux` |
+| `--timeout SEC` | interpreter timeout in seconds |
+| `--maxdepth N` | maximum number of resolution steps |
+| `--varz3` | write `.vars_z3.txt` with the constraints projected by Z3 |
+| `--varclpq` | write `.vars_clpq.txt` with the constraints projected by CLP(Q) |
+| `--annotate` | write `.annotated.sol` with the constraints as a comment |
+| `--graph` | draw the CHC dependency graph in SVG (needs CHCViz) |
+| `--highlight` | highlight the path of each test on the CHC graph (implies `--graph`) |
+| `--skip-existing` | skip the analysis if a `.zmiout` already exists |
 
----
+`smarthorntest.sh` is a shorter launcher for the same route: it reads its
+defaults from `smarthorntest.conf` and runs in the background
+(`bash smarthorntest.sh -h` for the help).
 
-## Pipeline Overview
-
-```
- Solidity contract (.sol)
-        │
-        │  STEP 1 — sol2tpl.py
-        │  (GREY + yul2chc + transform)
-        ▼
- .json  .pl  .aux.pl  .t.pl  .t.pl-defs.txt
-        │
-        │  STEP 2 — yulPl2Constr.py
-        ▼
- .t_constr.pl
-        │
-        │  STEP 3 — InterpreterAnalysis5.2.sh
-        │  (CLP(Q) + Z3 interpreter)
-        ▼
- .zmiout   (derivable = violation found / nonDerivable = no violation)
-        │
-        │  STEP 4 — zmiout2vars_z3.py / zmiout2vars_clpq.py
-        ▼
- .vars_z3.txt  /  .vars_clpq.txt
-        │
-        │  STEP 5 — zmiout2json.py
-        ▼
- .test_cases.json  (structured test cases with concrete values + projected constraints)
-        │
-        │  STEP 6 — annotate_sol.py
-        ▼
- .annotated.sol   (original source + projected constraints as comment)
-```
-
----
-
-## Output Files Reference
+### Output files of the yul2chc route
 
 | File | Produced by | Contents |
 |---|---|---|
-| `Contract.json` | GREY | YUL intermediate representation |
-| `Contract.pl` | yul2chc | Raw CHC clauses |
-| `Contract.aux.pl` | sol2tpl.py | Function entry point |
-| `Contract.t.pl` | transform | Transformed CHC clauses |
-| `Contract.t.pl-defs.txt` | transform | Predicate definitions (needed by vars scripts) |
+| `Contract.json` | grey | Yul intermediate representation |
+| `Contract.pl` | yul-chc | raw CHC clauses |
+| `Contract.aux.pl` | sol2tpl.py | function entry point |
+| `Contract.t.pl` | transform | transformed CHC clauses |
+| `Contract.t.pl-defs.txt` | transform | predicate definitions (needed by the vars scripts) |
 | `Contract.t_constr.pl` | yulPl2Constr.py | CHC clauses with CLP(Q) constraints |
-| `Contract.t_constr.pl.*.zmiout` | InterpreterAnalysis5.2.sh | Analysis output |
-| `...zmiout.vars_z3.txt` | zmiout2vars_z3.py | Witness values + projected constraints (Z3) |
-| `...zmiout.vars_clpq.txt` | zmiout2vars_clpq.py | Witness values + projected constraints (CLP(Q)) |
-| `Contract.test_cases.json` | zmiout2json.py | Structured test cases (concrete values + Z3/CLP(Q) constraints) |
-| `Contract.annotated.sol` | annotate_sol.py | Original .sol with constraints appended as comment |
+| `Contract.t_constr.pl.*.zmiout` | InterpreterAnalysis5.2.sh | analysis output |
+| `...zmiout.vars_z3.txt` | zmiout2vars_z3.py | test values and projected constraints (Z3) |
+| `...zmiout.vars_clpq.txt` | zmiout2vars_clpq.py | test values and projected constraints (CLP(Q)) |
+| `Contract.test_cases.json` | zmiout2json.py | test cases (see below) |
+| `Contract.annotated.sol` | annotate_sol.py | original `.sol` with the constraints as a comment |
 | `dot_dias/*.svg` | chcviz | CHC dependency graph |
-| `dot_dias/*_testN_<kind>_highlighted.{dot.svg,html}` | zmiout2dot_highlight.py / dot2html.py | CHC graph with test N's derivation path highlighted (one per test found) |
-| `dot_dias/*_alltests_index.html` | step9_highlight.sh | Index linking every per-test highlighted graph |
-| `dot_dias/sol_cfg/*.html` | step10_sol_cfg.sh | Solidity-level CFG per function (via Slither), cross-linked with the CHC graph |
+| `dot_dias/*_testN_<kind>_highlighted.{dot.svg,html}` | zmiout2dot_highlight.py / dot2html.py | CHC graph with the path of test N highlighted |
+| `dot_dias/*_alltests_index.html` | step9_highlight.sh | index of all the highlighted graphs |
+| `dot_dias/sol_cfg/*.html` | step10_sol_cfg.sh | Solidity CFG per function (via Slither), linked to the CHC graph |
+
+The SolCMC route writes `Contract.smt2`, `Contract.smt2.pl`, `Contract.chc.pl`,
+the `.zmiout` and `Contract.test_cases.json`. Its single steps are in
+[`docs/COMMANDS.md`](docs/COMMANDS.md).
 
 ---
 
-## Generating JSON test cases: `zmiout2json.py`
+## The test cases: `.test_cases.json`
 
-After the analysis produces a `.zmiout` file, run this script to generate a structured `.test_cases.json` with concrete witness values and projected constraints for each test case found.
-
-```bash
-python3 script/zmiout2json.py \
-  path/to/Contract.sol \
-  path/to/Contract.t.pl-defs.txt \
-  path/to/Contract.zmiout
-```
-
-The output file `Contract.test_cases.json` is written to the same folder as the `.zmiout`. Example structure:
+Both routes write the same format. This is the first test of the
+`Bonus` example (`addBonus(uint256 points)`, yul2chc route):
 
 ```json
 {
-  "contractName": "AuctionOffer",
-  "stateVariables": ["bid", "cash"],
+  "contractName": "Bonus",
+  "stateVariables": [],
   "functions": [{
-    "signature": "offer(uint,uint)",
-    "params": ["newBid", "payment"],
+    "signature": "addBonus(uint256)",
+    "params": ["points"],
     "test_cases": [{
       "id": 1,
-      "kind": "negative",
-      "concrete_values": ["newBid == 2", "payment == 1", "bid == 0", "cash == 0"],
-      "constraints_z3": ["bid == 1*newBid", "cash == 1*payment", "newBid - payment >= 1"],
-      "constraints_clpq": ["bid=newBid", "cash=payment", "newBid-payment>0"]
+      "kind": "positive",
+      "concrete_values": ["points == 11"],
+      "constraints_z3": ["points >= 11"],
+      "constraints_clpq": ["points>10"],
+      "constraints_z3_start": ["points >= 11"],
+      "constraints_clpq_start": ["points>10"]
     }]
   }]
 }
 ```
 
-- `contractName`: name of the Solidity contract, as declared in the `.sol` file.
-- `kind`: `"negative"` = counterexample (assertion violation), `"positive"` = safe witness path.
-- `concrete_values`: exact values assigned by Z3 to Solidity variables.
-- `constraints_z3`: constraints projected onto Solidity variables via Z3 quantifier elimination.
-- `constraints_clpq`: same projection via SWI-Prolog CLP(Q) `dump/3`.
-
-**Requirements:** Python 3, `z3-solver` (`pip install z3-solver`), SWI-Prolog with CLP(Q) library.
+- `kind`: `negative` (an assert fails) or `positive` (no assert fails).
+- `concrete_values`: the values chosen by Z3 for the parameters and the state variables.
+- `constraints_z3`, `constraints_clpq`: the constraints of the path, projected
+  on the Solidity names by Z3 (quantifier elimination) and by CLP(Q) (`dump/3`).
+  The state variables are taken where the path ends.
+- `constraints_z3_start`, `constraints_clpq_start`: the same, with the state
+  variables taken when the call starts.
+- The SolCMC route also writes `error_code` (the error number of solc) and
+  `failed_assert` (the condition of the failed assert, when it is known).
 
 ---
 
-## Individual pipeline steps
+## Single steps
 
-For experimenting with or debugging a single stage, see [`docs/COMMANDS.md`](docs/COMMANDS.md) — it has ready-to-run commands for each step with concrete examples.
+To try or debug one step at a time (both routes, the `vgood` marker, Foundry
+and coverage), see [`docs/COMMANDS.md`](docs/COMMANDS.md).
 
 ---
 
 ## Acknowledgments
 
-This project is partially supported by the PNRR project FAIR — Future AI Research (PE00000013),
-Spoke 9 — Green-aware AI, under the NRRP MUR program funded by the NextGenerationEU.
+This project is partially supported by the PNRR project FAIR (Future AI Research, PE00000013),
+Spoke 9 (Green-aware AI), under the NRRP MUR program funded by the NextGenerationEU.

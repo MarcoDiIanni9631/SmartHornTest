@@ -32,7 +32,7 @@ Results go to <contract>.replay.json next to the contract, plus one summary
 line per contract on stdout.
 
 Usage:
-    python3 script/replay_witnesses.py testOrganizzati28Settembre/solcmc ...
+    python3 script/replay_witnesses.py esperimenti/testOrganizzati28Settembre/solcmc ...
 """
 import glob
 import json
@@ -223,7 +223,7 @@ def replay_folder(folder, rpc):
 
 
 def main():
-    roots = sys.argv[1:] or ["testOrganizzati28Settembre"]
+    roots = sys.argv[1:] or ["esperimenti/testOrganizzati28Settembre"]
     port = free_port()
     rpc = f"http://127.0.0.1:{port}"
     anvil = subprocess.Popen(["anvil", "--port", str(port), "--silent"],

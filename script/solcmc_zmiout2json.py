@@ -21,9 +21,9 @@ For every test of the .zmiout:
     (with --single-tx it is the only public call after the constructor);
   - the values of its arguments come from the Z3 model (an argument missing
     from the model is unconstrained and is not written);
-  - the error code says which assert fails: k = the k-th assert of the
-    function in the source. If it is the `vgood` marker assert, the test is
-    positive (the path passes every real assert), otherwise negative.
+  - the test is positive when the model holds the `vgood` marker value 1042
+    (the path passes every real assert), otherwise negative; the error code
+    k is shown as the k-th assert of the function in the source.
 
 Usage:
     python3 script/solcmc_zmiout2json.py <folder>
@@ -168,7 +168,15 @@ def main(folder):
         asserts = function_asserts(src, func)
         err = int(values.get(args[0], "0"))
         cond = asserts[err - 1] if 0 < err <= len(asserts) else None
-        kind = "positive" if cond and "vgood" in cond else "negative"
+        # SolCMC numbers the errors over the whole contract, so err does not always
+        # match the k-th assert of the function: as in the Yul route
+        # (classify_test_from_vmapgood_consts in main.pl), the test is positive
+        # when the model holds the marker value 1042
+        if "1042" in values.values():
+            kind, cond = "positive", "vgood < 20"
+        else:
+            kind = "negative"
+            cond = None if cond and "vgood" in cond else cond
         concrete = []
         rv_to_sol = {}
         # error this abi crypto | tx (k ints) | state | state variables, parameters
