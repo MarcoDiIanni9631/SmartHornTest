@@ -112,8 +112,8 @@ Needed before running the script:
 
 **1. Clone this repo**
 ```bash
-git clone --depth 1 https://github.com/MarcoDiIanni9631/SmartHornTest.git swipl_z3_clpq_interpreter
-cd swipl_z3_clpq_interpreter
+git clone --depth 1 https://github.com/MarcoDiIanni9631/SmartHornTest.git smarthorntest
+cd smarthorntest
 ```
 
 **2. Run the install script**
@@ -160,7 +160,7 @@ assumes this layout, which is the one `script/install.sh` sets up:
 
 ```
 <parent folder>/
-  swipl_z3_clpq_interpreter/   <- this repo
+  smarthorntest/               <- this repo
   grey/
   yul-chc/
   swi-prolog-z3/

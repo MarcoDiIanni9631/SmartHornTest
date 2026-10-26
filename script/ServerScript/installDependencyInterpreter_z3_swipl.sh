@@ -23,7 +23,7 @@ export SWIZ3_TURIBE_PATH="${PROJECTS_DIR}/swi-prolog-z3"
 
 
 # # === Repository ===
-REPO_INTERPRETER="https://github.com/MarcoDiIanni9631/swipl_z3_clpq_interpreter.git"
+REPO_INTERPRETER="https://github.com/MarcoDiIanni9631/SmartHornTest.git"
  
 # guida per installare pat github
 # https://stackoverflow.com/questions/2505096/clone-a-private-repository-github
@@ -95,10 +95,10 @@ echo "=== [5/8] Impostazione temporanea variabili ambiente ==="
 echo "=== [6/8] Clonazione repository ==="
 cd "$PROJECTS_DIR"
 
-if [ ! -d "swipl_z3_clpq_interpreter" ]; then
-  git clone "$REPO_INTERPRETER"
+if [ ! -d "smarthorntest" ]; then
+  git clone "$REPO_INTERPRETER" smarthorntest
 else
-  (cd swipl_z3_clpq_interpreter && git pull && cd ..)
+  (cd smarthorntest && git pull && cd ..)
 fi
 
 #usare PAT 

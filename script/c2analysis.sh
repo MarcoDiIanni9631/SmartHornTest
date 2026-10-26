@@ -18,7 +18,7 @@ set -uo pipefail
 
 VERIMAP_DIR=/home/marco/remote_verimap/VeriMAP-linux_x86_64
 SMT2MAP_DIR=/home/marco/remote_verimap/verimap
-INTERP_DIR=/home/marco/remote_verimap/swipl_z3_clpq_interpreter/script
+INTERP_DIR=/home/marco/remote_verimap/smarthorntest/script
 
 [ $# -lt 1 ] && { echo "Usage: $0 <contract.c> [target] [timeout_seconds]"; exit 1; }
 

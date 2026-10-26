@@ -8,7 +8,7 @@
 # cloned as sibling folders of this repo:
 #
 #   <parent>/
-#     swipl_z3_clpq_interpreter/   <- this repo (SCRIPT_DIR is its script/ dir)
+#     smarthorntest/               <- this repo (SCRIPT_DIR is its script/ dir)
 #     grey/
 #     yul-chc/
 #     swi-prolog-z3/
