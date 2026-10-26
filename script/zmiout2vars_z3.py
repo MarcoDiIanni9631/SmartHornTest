@@ -51,6 +51,9 @@ def _parse_z3_term(s, var_map):
     m = re.search(r'^(.+)-(.+?)$', s)
     if m:
         return _parse_z3_term(m.group(1), var_map) - _parse_z3_term(m.group(2), var_map)
+    m = re.search(r'^(.+)\*(.+?)$', s)
+    if m:
+        return _parse_z3_term(m.group(1), var_map) * _parse_z3_term(m.group(2), var_map)
     if s not in var_map:
         var_map[s] = Int(s)
     return var_map[s]
@@ -289,6 +292,34 @@ def _minimize_and(formula):
         from z3 import BoolVal; return BoolVal(True)
     return And(atoms) if len(atoms) > 1 else atoms[0]
 
+def _drop_implied_atoms(formula, timeout_ms=2000):
+    """Drop the atoms of a conjunction that follow from the other atoms.
+    Equalities are tried last, so they are the ones kept. A check that does
+    not answer unsat in time keeps the atom. If the result cannot be proved
+    equivalent to the input, the input is returned unchanged."""
+    from z3 import And, Not, Solver, unsat, is_and, is_eq, BoolVal
+    if not is_and(formula):
+        return formula
+
+    def _unsat(*fs):
+        s = Solver()
+        s.set('timeout', timeout_ms)
+        s.add(*fs)
+        return s.check() == unsat
+
+    atoms = list(formula.children())
+    keep = list(atoms)
+    for a in sorted(atoms, key=lambda x: is_eq(x)):
+        rest = [x for x in keep if not x.eq(a)]
+        if rest and _unsat(And(rest), Not(a)):
+            keep = rest
+    if len(keep) == len(atoms):
+        return formula
+    result = And(keep) if len(keep) > 1 else (keep[0] if keep else BoolVal(True))
+    if not _unsat(Not(formula == result)):
+        return formula
+    return result
+
 _TOKEN_RE = re.compile(r'\b[A-Za-z_][A-Za-z0-9_]*\b')
 _NUM_RE = re.compile(r'^-?\d+$')
 _VAR_EQ_NUM_RE = re.compile(r'(\w+)=(-?\d+)')
@@ -417,6 +448,7 @@ def project_constraints(constraints, rv_to_sol, state_var_names=None):
     subst = [(var_map[rv], Int(name)) for rv, name in rv_to_sol.items() if rv in var_map]
     if subst:
         result = substitute(result, subst)
+    result = _drop_implied_atoms(result)
 
     atoms = _atoms_readable(result)
     atoms = _prune_weak_bounds(atoms, state_var_names or [])
