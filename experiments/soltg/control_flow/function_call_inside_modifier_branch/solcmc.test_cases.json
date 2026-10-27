@@ -1,0 +1,40 @@
+{
+  "contractName": "Cc6",
+  "stateVariables": [],
+  "source": "SolCMC route (solc CHC query + smt2map + smt2pl_to_constr.pl)",
+  "functions": [
+    {
+      "signature": "f(address)",
+      "params": [
+        "a"
+      ],
+      "test_cases": [
+        {
+          "id": 1,
+          "kind": "positive",
+          "error_code": 1,
+          "failed_assert": "vgood < 20",
+          "concrete_values": [
+            "a == 0"
+          ],
+          "constraints_z3": [
+            "0 <= a",
+            "1461501637330902918203684832716283019655932542975 >= a"
+          ],
+          "constraints_clpq": [
+            "a>=0",
+            "a=<1461501637330902918203684832716283019655932542975"
+          ],
+          "constraints_z3_start": [
+            "0 <= a",
+            "1461501637330902918203684832716283019655932542975 >= a"
+          ],
+          "constraints_clpq_start": [
+            "a>=0",
+            "a=<1461501637330902918203684832716283019655932542975"
+          ]
+        }
+      ]
+    }
+  ]
+}

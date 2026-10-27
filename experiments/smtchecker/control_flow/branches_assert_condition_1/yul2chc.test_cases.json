@@ -1,0 +1,52 @@
+{
+  "contractName": "C",
+  "stateVariables": [],
+  "functions": [
+    {
+      "signature": "f(uint)",
+      "params": [
+        "x"
+      ],
+      "test_cases": [
+        {
+          "id": 1,
+          "kind": "positive",
+          "concrete_values": [
+            "x == 11"
+          ],
+          "constraints_z3": [
+            "x >= 11"
+          ],
+          "constraints_clpq": [
+            "x>10"
+          ],
+          "constraints_z3_start": [
+            "x >= 11"
+          ],
+          "constraints_clpq_start": [
+            "x>10"
+          ]
+        },
+        {
+          "id": 2,
+          "kind": "positive",
+          "concrete_values": [
+            "x == 0"
+          ],
+          "constraints_z3": [
+            "x <= 10"
+          ],
+          "constraints_clpq": [
+            "x=<10"
+          ],
+          "constraints_z3_start": [
+            "x <= 10"
+          ],
+          "constraints_clpq_start": [
+            "x=<10"
+          ]
+        }
+      ]
+    }
+  ]
+}

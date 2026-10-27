@@ -1,0 +1,295 @@
+{
+  "contractName": "C",
+  "stateVariables": [],
+  "source": "SolCMC route (solc CHC query + smt2map + smt2pl_to_constr.pl)",
+  "functions": [
+    {
+      "signature": "f(uint)",
+      "params": [
+        "x"
+      ],
+      "test_cases": [
+        {
+          "id": 1,
+          "kind": "positive",
+          "error_code": 2,
+          "failed_assert": "vgood < 20",
+          "concrete_values": [
+            "x == 10"
+          ],
+          "constraints_z3": [
+            "x <= 13",
+            "x >= 10"
+          ],
+          "constraints_clpq": [
+            "x<14",
+            "x>=10"
+          ],
+          "constraints_z3_start": [
+            "x <= 13",
+            "x >= 10"
+          ],
+          "constraints_clpq_start": [
+            "x<14",
+            "x>=10"
+          ]
+        },
+        {
+          "id": 2,
+          "kind": "positive",
+          "error_code": 2,
+          "failed_assert": "vgood < 20",
+          "concrete_values": [
+            "x == 9"
+          ],
+          "constraints_z3": [
+            "x == 9"
+          ],
+          "constraints_clpq": [
+            "x<10",
+            "x>=9"
+          ],
+          "constraints_z3_start": [
+            "x == 9"
+          ],
+          "constraints_clpq_start": [
+            "x<10",
+            "x>=9"
+          ]
+        },
+        {
+          "id": 3,
+          "kind": "positive",
+          "error_code": 2,
+          "failed_assert": "vgood < 20",
+          "concrete_values": [
+            "x == 8"
+          ],
+          "constraints_z3": [
+            "x == 8"
+          ],
+          "constraints_clpq": [
+            "x<9",
+            "x>=8"
+          ],
+          "constraints_z3_start": [
+            "x == 8"
+          ],
+          "constraints_clpq_start": [
+            "x<9",
+            "x>=8"
+          ]
+        },
+        {
+          "id": 4,
+          "kind": "positive",
+          "error_code": 2,
+          "failed_assert": "vgood < 20",
+          "concrete_values": [
+            "x == 7"
+          ],
+          "constraints_z3": [
+            "x == 7"
+          ],
+          "constraints_clpq": [
+            "x<8",
+            "x>=7"
+          ],
+          "constraints_z3_start": [
+            "x == 7"
+          ],
+          "constraints_clpq_start": [
+            "x<8",
+            "x>=7"
+          ]
+        },
+        {
+          "id": 5,
+          "kind": "positive",
+          "error_code": 2,
+          "failed_assert": "vgood < 20",
+          "concrete_values": [
+            "x == 6"
+          ],
+          "constraints_z3": [
+            "x == 6"
+          ],
+          "constraints_clpq": [
+            "x<7",
+            "x>=6"
+          ],
+          "constraints_z3_start": [
+            "x == 6"
+          ],
+          "constraints_clpq_start": [
+            "x<7",
+            "x>=6"
+          ]
+        },
+        {
+          "id": 6,
+          "kind": "positive",
+          "error_code": 2,
+          "failed_assert": "vgood < 20",
+          "concrete_values": [
+            "x == 5"
+          ],
+          "constraints_z3": [
+            "x == 5"
+          ],
+          "constraints_clpq": [
+            "x<6",
+            "x>=5"
+          ],
+          "constraints_z3_start": [
+            "x == 5"
+          ],
+          "constraints_clpq_start": [
+            "x<6",
+            "x>=5"
+          ]
+        },
+        {
+          "id": 7,
+          "kind": "positive",
+          "error_code": 2,
+          "failed_assert": "vgood < 20",
+          "concrete_values": [
+            "x == 4"
+          ],
+          "constraints_z3": [
+            "x == 4"
+          ],
+          "constraints_clpq": [
+            "x<5",
+            "x>=4"
+          ],
+          "constraints_z3_start": [
+            "x == 4"
+          ],
+          "constraints_clpq_start": [
+            "x<5",
+            "x>=4"
+          ]
+        },
+        {
+          "id": 8,
+          "kind": "positive",
+          "error_code": 2,
+          "failed_assert": "vgood < 20",
+          "concrete_values": [
+            "x == 3"
+          ],
+          "constraints_z3": [
+            "x == 3"
+          ],
+          "constraints_clpq": [
+            "x<4",
+            "x>=3"
+          ],
+          "constraints_z3_start": [
+            "x == 3"
+          ],
+          "constraints_clpq_start": [
+            "x<4",
+            "x>=3"
+          ]
+        },
+        {
+          "id": 9,
+          "kind": "positive",
+          "error_code": 2,
+          "failed_assert": "vgood < 20",
+          "concrete_values": [
+            "x == 2"
+          ],
+          "constraints_z3": [
+            "x == 2"
+          ],
+          "constraints_clpq": [
+            "x<3",
+            "x>=2"
+          ],
+          "constraints_z3_start": [
+            "x == 2"
+          ],
+          "constraints_clpq_start": [
+            "x<3",
+            "x>=2"
+          ]
+        },
+        {
+          "id": 10,
+          "kind": "positive",
+          "error_code": 2,
+          "failed_assert": "vgood < 20",
+          "concrete_values": [
+            "x == 1"
+          ],
+          "constraints_z3": [
+            "x == 1"
+          ],
+          "constraints_clpq": [
+            "x<2",
+            "x>=1"
+          ],
+          "constraints_z3_start": [
+            "x == 1"
+          ],
+          "constraints_clpq_start": [
+            "x<2",
+            "x>=1"
+          ]
+        },
+        {
+          "id": 11,
+          "kind": "positive",
+          "error_code": 2,
+          "failed_assert": "vgood < 20",
+          "concrete_values": [
+            "x == 0"
+          ],
+          "constraints_z3": [
+            "x == 0"
+          ],
+          "constraints_clpq": [
+            "x>=0",
+            "x<1"
+          ],
+          "constraints_z3_start": [
+            "x == 0"
+          ],
+          "constraints_clpq_start": [
+            "x>=0",
+            "x<1"
+          ]
+        },
+        {
+          "id": 12,
+          "kind": "negative",
+          "error_code": 1,
+          "failed_assert": "x < 14",
+          "concrete_values": [
+            "x == 14"
+          ],
+          "constraints_z3": [
+            "x <= 99",
+            "x >= 14"
+          ],
+          "constraints_clpq": [
+            "x<100",
+            "x>=14"
+          ],
+          "constraints_z3_start": [
+            "x <= 99",
+            "x >= 14"
+          ],
+          "constraints_clpq_start": [
+            "x<100",
+            "x>=14"
+          ]
+        }
+      ]
+    }
+  ]
+}

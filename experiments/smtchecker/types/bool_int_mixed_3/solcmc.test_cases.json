@@ -1,0 +1,120 @@
+{
+  "contractName": "C",
+  "stateVariables": [],
+  "source": "SolCMC route (solc CHC query + smt2map + smt2pl_to_constr.pl)",
+  "functions": [
+    {
+      "signature": "f(bool,bool)",
+      "params": [
+        "x",
+        "y"
+      ],
+      "test_cases": [
+        {
+          "id": 1,
+          "kind": "positive",
+          "error_code": 2,
+          "failed_assert": "vgood < 20",
+          "concrete_values": [
+            "x == 1",
+            "y == 1"
+          ],
+          "constraints_z3": [
+            "x == 1",
+            "y == 1"
+          ],
+          "constraints_clpq": [
+            "x=1",
+            "y=1"
+          ],
+          "constraints_z3_start": [
+            "x == 1",
+            "y == 1"
+          ],
+          "constraints_clpq_start": [
+            "x=1",
+            "y=1"
+          ]
+        },
+        {
+          "id": 2,
+          "kind": "positive",
+          "error_code": 2,
+          "failed_assert": "vgood < 20",
+          "concrete_values": [
+            "x == 1",
+            "y == 0"
+          ],
+          "constraints_z3": [
+            "x == 1",
+            "y == 0"
+          ],
+          "constraints_clpq": [
+            "x=1",
+            "y=0"
+          ],
+          "constraints_z3_start": [
+            "x == 1",
+            "y == 0"
+          ],
+          "constraints_clpq_start": [
+            "x=1",
+            "y=0"
+          ]
+        },
+        {
+          "id": 3,
+          "kind": "positive",
+          "error_code": 2,
+          "failed_assert": "vgood < 20",
+          "concrete_values": [
+            "x == 0",
+            "y == 1"
+          ],
+          "constraints_z3": [
+            "x == 0",
+            "y == 1"
+          ],
+          "constraints_clpq": [
+            "x=0",
+            "y=1"
+          ],
+          "constraints_z3_start": [
+            "x == 0",
+            "y == 1"
+          ],
+          "constraints_clpq_start": [
+            "x=0",
+            "y=1"
+          ]
+        },
+        {
+          "id": 4,
+          "kind": "positive",
+          "error_code": 2,
+          "failed_assert": "vgood < 20",
+          "concrete_values": [
+            "x == 0",
+            "y == 0"
+          ],
+          "constraints_z3": [
+            "x == 0",
+            "y == 0"
+          ],
+          "constraints_clpq": [
+            "x=0",
+            "y=0"
+          ],
+          "constraints_z3_start": [
+            "x == 0",
+            "y == 0"
+          ],
+          "constraints_clpq_start": [
+            "x=0",
+            "y=0"
+          ]
+        }
+      ]
+    }
+  ]
+}

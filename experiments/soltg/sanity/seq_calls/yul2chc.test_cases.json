@@ -1,0 +1,33 @@
+{
+  "contractName": "Csc",
+  "stateVariables": [
+    "a"
+  ],
+  "functions": [
+    {
+      "signature": "call_1()",
+      "params": [],
+      "test_cases": [
+        {
+          "id": 1,
+          "kind": "positive",
+          "concrete_values": [
+            "a == 0"
+          ],
+          "constraints_z3": [
+            "a == 1"
+          ],
+          "constraints_clpq": [
+            "a=1"
+          ],
+          "constraints_z3_start": [
+            "a == 0"
+          ],
+          "constraints_clpq_start": [
+            "a=0"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "contractName": "Csi",
+  "stateVariables": [],
+  "functions": [
+    {
+      "signature": "f(uint256,uint256)",
+      "params": [
+        "a",
+        "b"
+      ],
+      "test_cases": [
+        {
+          "id": 1,
+          "kind": "positive",
+          "concrete_values": [
+            "a == 0",
+            "b == 2"
+          ],
+          "constraints_z3": [
+            "a == 0"
+          ],
+          "constraints_clpq": [
+            "a=0"
+          ],
+          "constraints_z3_start": [
+            "a == 0"
+          ],
+          "constraints_clpq_start": [
+            "a=0"
+          ]
+        },
+        {
+          "id": 2,
+          "kind": "positive",
+          "concrete_values": [
+            "a == 3",
+            "b == 2"
+          ],
+          "constraints_z3": [
+            "a != 0"
+          ],
+          "constraints_clpq": [
+            "a!=0"
+          ],
+          "constraints_z3_start": [
+            "a != 0"
+          ],
+          "constraints_clpq_start": [
+            "a!=0"
+          ]
+        }
+      ]
+    }
+  ]
+}

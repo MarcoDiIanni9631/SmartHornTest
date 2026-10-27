@@ -1,0 +1,31 @@
+{
+  "contractName": "C",
+  "stateVariables": [],
+  "functions": [
+    {
+      "signature": "f(uint)",
+      "params": [
+        "x"
+      ],
+      "test_cases": [
+        {
+          "id": 1,
+          "kind": "positive",
+          "concrete_values": [],
+          "constraints_z3": [
+            "True"
+          ],
+          "constraints_clpq": [
+            "(CLP(Q) failed: no output)"
+          ],
+          "constraints_z3_start": [
+            "True"
+          ],
+          "constraints_clpq_start": [
+            "(CLP(Q) failed: no output)"
+          ]
+        }
+      ]
+    }
+  ]
+}

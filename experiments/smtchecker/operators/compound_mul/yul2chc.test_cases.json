@@ -1,0 +1,37 @@
+{
+  "contractName": "C",
+  "stateVariables": [],
+  "functions": [
+    {
+      "signature": "f(uint)",
+      "params": [
+        "x"
+      ],
+      "test_cases": [
+        {
+          "id": 1,
+          "kind": "negative",
+          "concrete_values": [
+            "x == 0"
+          ],
+          "constraints_z3": [
+            "x <= 9",
+            "0 <= x"
+          ],
+          "constraints_clpq": [
+            "x>=0",
+            "x=<9"
+          ],
+          "constraints_z3_start": [
+            "x <= 9",
+            "0 <= x"
+          ],
+          "constraints_clpq_start": [
+            "x>=0",
+            "x=<9"
+          ]
+        }
+      ]
+    }
+  ]
+}

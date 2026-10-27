@@ -1,0 +1,14 @@
+contract C
+{
+	function f() public pure { uint256 vgood = 42;
+		uint32 a = 0x12345678;
+		uint16 b = uint16(a); // b will be 0x5678 now
+		assert(b == 0x5678);
+	vgood = 1042; assert(vgood < 20);
+    }
+}
+// ====
+// SMTEngine: all
+// ----
+// Info 1391: CHC: 1 verification condition(s) proved safe! Enable the model checker option "show proved safe" to see all of them.
+// Warning 3993: The BMC engine of the SMTChecker is deprecated and will be removed in a future release. Please use the CHC engine instead.

@@ -1,0 +1,17 @@
+contract Cdw1
+{
+	function f(uint x) public pure { uint256 vgood = 42;
+		require(x < 100);
+		do {
+			x = x + 1;
+		} while (x < 10);
+		assert(x < 14);
+	vgood = 1042; assert(vgood < 20);
+    }
+}
+// ====
+// SMTEngine: all
+// SMTSolvers: z3
+// ----
+// Warning 6328: (110-124): CHC: Assertion violation happens here.\nCounterexample:\n\nx = 14\n\nTransaction trace:\nC.constructor()\nC.f(13)
+

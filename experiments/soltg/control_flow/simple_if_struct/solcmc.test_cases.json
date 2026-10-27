@@ -1,0 +1,141 @@
+{
+  "contractName": "Csi4",
+  "stateVariables": [
+    "s"
+  ],
+  "source": "SolCMC route (solc CHC query + smt2map + smt2pl_to_constr.pl)",
+  "functions": [
+    {
+      "signature": "check()",
+      "params": [],
+      "test_cases": [
+        {
+          "id": 1,
+          "kind": "positive",
+          "error_code": 3,
+          "failed_assert": "vgood < 20",
+          "concrete_values": [
+            "s == 4"
+          ],
+          "constraints_z3": [
+            "True"
+          ],
+          "constraints_clpq": [
+            "(CLP(Q) failed: no output)"
+          ],
+          "constraints_z3_start": [
+            "True"
+          ],
+          "constraints_clpq_start": [
+            "(CLP(Q) failed: no output)"
+          ]
+        },
+        {
+          "id": 2,
+          "kind": "positive",
+          "error_code": 3,
+          "failed_assert": "vgood < 20",
+          "concrete_values": [
+            "s == 4"
+          ],
+          "constraints_z3": [
+            "True"
+          ],
+          "constraints_clpq": [
+            "(CLP(Q) failed: no output)"
+          ],
+          "constraints_z3_start": [
+            "True"
+          ],
+          "constraints_clpq_start": [
+            "(CLP(Q) failed: no output)"
+          ]
+        },
+        {
+          "id": 3,
+          "kind": "negative",
+          "error_code": 1,
+          "failed_assert": "s.x == 1",
+          "concrete_values": [
+            "s == 3"
+          ],
+          "constraints_z3": [
+            "True"
+          ],
+          "constraints_clpq": [
+            "(CLP(Q) failed: no output)"
+          ],
+          "constraints_z3_start": [
+            "True"
+          ],
+          "constraints_clpq_start": [
+            "(CLP(Q) failed: no output)"
+          ]
+        },
+        {
+          "id": 4,
+          "kind": "negative",
+          "error_code": 1,
+          "failed_assert": "s.x == 1",
+          "concrete_values": [
+            "s == 3"
+          ],
+          "constraints_z3": [
+            "True"
+          ],
+          "constraints_clpq": [
+            "(CLP(Q) failed: no output)"
+          ],
+          "constraints_z3_start": [
+            "True"
+          ],
+          "constraints_clpq_start": [
+            "(CLP(Q) failed: no output)"
+          ]
+        },
+        {
+          "id": 5,
+          "kind": "negative",
+          "error_code": 2,
+          "failed_assert": "s.x == 0",
+          "concrete_values": [
+            "s == 4"
+          ],
+          "constraints_z3": [
+            "True"
+          ],
+          "constraints_clpq": [
+            "(CLP(Q) failed: no output)"
+          ],
+          "constraints_z3_start": [
+            "True"
+          ],
+          "constraints_clpq_start": [
+            "(CLP(Q) failed: no output)"
+          ]
+        },
+        {
+          "id": 6,
+          "kind": "negative",
+          "error_code": 2,
+          "failed_assert": "s.x == 0",
+          "concrete_values": [
+            "s == 4"
+          ],
+          "constraints_z3": [
+            "True"
+          ],
+          "constraints_clpq": [
+            "(CLP(Q) failed: no output)"
+          ],
+          "constraints_z3_start": [
+            "True"
+          ],
+          "constraints_clpq_start": [
+            "(CLP(Q) failed: no output)"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "contractName": "cs5",
+  "stateVariables": [
+    "x"
+  ],
+  "functions": [
+    {
+      "signature": "g()",
+      "params": [],
+      "test_cases": [
+        {
+          "id": 1,
+          "kind": "negative",
+          "concrete_values": [
+            "x == 0"
+          ],
+          "constraints_z3": [
+            "x >= 1",
+            "x == 2"
+          ],
+          "constraints_clpq": [
+            "x=2"
+          ],
+          "constraints_z3_start": [
+            "x == 0"
+          ],
+          "constraints_clpq_start": [
+            "x=0"
+          ]
+        }
+      ]
+    }
+  ]
+}

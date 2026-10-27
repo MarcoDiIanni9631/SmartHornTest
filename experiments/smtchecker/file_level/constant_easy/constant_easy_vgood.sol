@@ -1,0 +1,14 @@
+uint constant x = 42;
+
+contract C {
+	function f() public pure { uint256 vgood = 42;
+		uint z = x;
+		assert(z == 41);
+	vgood = 1042; assert(vgood < 20);
+    }
+}
+// ====
+// SMTEngine: all
+// ----
+// Warning 6328: (80-95): CHC: Assertion violation happens here.\nCounterexample:\n\nz = 42\n\nTransaction trace:\nC.constructor()\nC.f()
+// Warning 3993: The BMC engine of the SMTChecker is deprecated and will be removed in a future release. Please use the CHC engine instead.

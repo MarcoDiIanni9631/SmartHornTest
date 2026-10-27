@@ -1,0 +1,39 @@
+{
+  "contractName": "Cfb2",
+  "stateVariables": [],
+  "functions": [
+    {
+      "signature": "f(uint,bool)",
+      "params": [
+        "x",
+        "b"
+      ],
+      "test_cases": [
+        {
+          "id": 1,
+          "kind": "negative",
+          "concrete_values": [
+            "x == 0",
+            "b == false"
+          ],
+          "constraints_z3": [
+            "x <= 9",
+            "b == 0"
+          ],
+          "constraints_clpq": [
+            "b=0",
+            "x<10"
+          ],
+          "constraints_z3_start": [
+            "x <= 9",
+            "b == 0"
+          ],
+          "constraints_clpq_start": [
+            "b=0",
+            "x<10"
+          ]
+        }
+      ]
+    }
+  ]
+}

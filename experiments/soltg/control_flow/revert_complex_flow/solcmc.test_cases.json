@@ -1,0 +1,50 @@
+{
+  "contractName": "Cr5",
+  "stateVariables": [],
+  "source": "SolCMC route (solc CHC query + smt2map + smt2pl_to_constr.pl)",
+  "functions": [
+    {
+      "signature": "f(bool,uint)",
+      "params": [
+        "b",
+        "a"
+      ],
+      "test_cases": [
+        {
+          "id": 1,
+          "kind": "negative",
+          "error_code": 1,
+          "failed_assert": "c == a",
+          "concrete_values": [
+            "b == 0",
+            "a == 0"
+          ],
+          "constraints_z3": [
+            "b == 0",
+            "-2 <= a",
+            "-1 <= a",
+            "0 <= a",
+            "a <= 256"
+          ],
+          "constraints_clpq": [
+            "b=0",
+            "a>=0",
+            "a=<256"
+          ],
+          "constraints_z3_start": [
+            "b == 0",
+            "-2 <= a",
+            "-1 <= a",
+            "0 <= a",
+            "a <= 256"
+          ],
+          "constraints_clpq_start": [
+            "b=0",
+            "a>=0",
+            "a=<256"
+          ]
+        }
+      ]
+    }
+  ]
+}

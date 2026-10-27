@@ -1,0 +1,31 @@
+contract Cwb11
+{
+	function f(uint x, uint y, bool b, bool c) public pure { uint256 vgood = 42;
+		require(x < 10);
+		while (x < 10) {
+			if (b) {
+				x = 20;
+				continue;
+			}
+			else {
+				require(y < 10);
+				while (y < 10) {
+					if (c) {
+						y = 20;
+						continue;
+					}
+					y = 15;
+					break;
+				}
+				assert(y >= 15);
+				x = y;
+			}
+		}
+		assert(x >= 15);
+	vgood = 1042; assert(vgood < 20);
+    }
+}
+// ====
+// SMTEngine: all
+// SMTSolvers: z3
+// ----

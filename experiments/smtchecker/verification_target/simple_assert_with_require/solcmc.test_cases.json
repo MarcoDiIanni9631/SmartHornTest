@@ -1,0 +1,40 @@
+{
+  "contractName": "C",
+  "stateVariables": [],
+  "source": "SolCMC route (solc CHC query + smt2map + smt2pl_to_constr.pl)",
+  "functions": [
+    {
+      "signature": "f(uint)",
+      "params": [
+        "a"
+      ],
+      "test_cases": [
+        {
+          "id": 1,
+          "kind": "positive",
+          "error_code": 2,
+          "failed_assert": "vgood < 20",
+          "concrete_values": [
+            "a == 0"
+          ],
+          "constraints_z3": [
+            "0 <= a",
+            "a <= 9"
+          ],
+          "constraints_clpq": [
+            "a<10",
+            "a>=0"
+          ],
+          "constraints_z3_start": [
+            "0 <= a",
+            "a <= 9"
+          ],
+          "constraints_clpq_start": [
+            "a<10",
+            "a>=0"
+          ]
+        }
+      ]
+    }
+  ]
+}

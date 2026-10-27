@@ -1,0 +1,19 @@
+contract C
+{
+	uint a;
+	function f(uint x) public {
+		uint y;
+		a = (y = x);
+	}
+	function g() public { uint256 vgood = 42;
+		f(1);
+		f(0);
+		assert(a > 0);
+	vgood = 1042; assert(vgood < 20);
+    }
+}
+// ====
+// SMTEngine: all
+// ----
+// Warning 6328: (120-133): CHC: Assertion violation happens here.\nCounterexample:\na = 0\n\nTransaction trace:\nC.constructor()\nState: a = 0\nC.g()\n    C.f(1) -- internal call\n    C.f(0) -- internal call
+// Warning 3993: The BMC engine of the SMTChecker is deprecated and will be removed in a future release. Please use the CHC engine instead.
