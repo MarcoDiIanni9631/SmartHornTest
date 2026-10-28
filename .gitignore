@@ -13,3 +13,5 @@ nohup.out
 __pycache__/
 *.pyc
 esperimenti/
+experiments/rerun/
+.yul.lock

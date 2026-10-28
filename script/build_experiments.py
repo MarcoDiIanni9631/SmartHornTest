@@ -51,6 +51,16 @@ def contracts():
         yield rel, src_path, att, {k: rep.esito(att, r[k]) for k in r}
 
 
+def functions():
+    """function analyzed with the yul2chc route (the --aux-hint of the run of 21/10)"""
+    f = {}
+    for l in rep.leggi(os.path.join(T21, "_lista.txt")).splitlines():
+        if l.strip():
+            _, rel, hint = l.split()
+            f[rel] = hint.strip("_")
+    return f
+
+
 def count_tests(path):
     import json
     try:
@@ -65,7 +75,7 @@ def main():
     if os.path.isdir(OUT):
         shutil.rmtree(os.path.join(OUT, "soltg"), ignore_errors=True)
         shutil.rmtree(os.path.join(OUT, "smtchecker"), ignore_errors=True)
-    rows, seen = [], set()
+    rows, seen, fun = [], set(), functions()
     for rel, src_path, att, es in contracts():
         bench, cat, name = target(rel)
         d = os.path.join(OUT, bench, cat, name)
@@ -74,7 +84,7 @@ def main():
         os.makedirs(d)
         shutil.copy2(src_path, os.path.join(d, name + ".sol"))
         row = {"benchmark": bench, "category": cat, "contract": name,
-               "expected": "bug" if att[0] == "bug" else "safe", "calls_needed": att[1]}
+               "function": fun[rel], "expected": "bug" if att[0] == "bug" else "safe", "calls_needed": att[1]}
         for route, short in (("solcmc", "solcmc"), ("yul", "yul2chc")):
             vg = os.path.join(T21, route, rel, name + ".sol")
             if os.path.exists(vg) and not os.path.exists(os.path.join(d, name + "_vgood.sol")):
