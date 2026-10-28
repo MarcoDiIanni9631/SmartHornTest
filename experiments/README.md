@@ -24,6 +24,11 @@ and the test cases found with the two routes (`solcmc.test_cases.json`,
 SmartHornTest (both routes), Mythril and Manticore, and the number of tests
 found.
 
+`foundry.csv` has one row per test case: the route, the values, the result of
+`forge test` on the original contract (without `vgood`) and whether the test
+case is confirmed (a negative test case fails with `panic: assertion failed
+(0x01)`, a positive one passes).
+
 `report.html` shows the same results as pie charts: click a slice to see its
 contracts, and a contract to see its test cases and its source code (open it
 in a browser; it is built by `script/build_report_html.py`).

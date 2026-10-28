@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""Builds experiments/: the benchmark of the thesis evaluation (SolTG 81,
-SMTChecker 151), with for every contract the original source, the source with
-the vgood marker (positive tests) and the test_cases.json of the two routes
-from the run of 21/10/2026 (test21Ottobre). summary.csv has the expected answer
-and the outcome of each tool from the report of 20/10/2026 (test20Ottobre).
+"""Builds experiments/: the benchmark of the thesis evaluation, with for every
+contract the original source, the source with the vgood marker (positive tests)
+and the test_cases.json of the two routes from the run of 21/10/2026
+(test21Ottobre). summary.csv has the expected answer and the outcome of each
+tool from the report of 20/10/2026 (test20Ottobre); foundry.csv has one row per
+test case with the result of forge test on the original contract (21/10/2026).
 Usage (on the server, from the repo root): python3 script/build_experiments.py"""
-import csv, glob, importlib.util, os, shutil
+import csv, glob, importlib.util, json, os, shutil
 
 P = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 T20, T21 = os.path.join(P, "test20Ottobre"), os.path.join(P, "test21Ottobre")
@@ -13,6 +14,9 @@ OUT = os.path.join(P, "experiments")
 spec = importlib.util.spec_from_file_location("rep", os.path.join(T20, "_report_confronto.py"))
 rep = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(rep)
+spec = importlib.util.spec_from_file_location("vg", os.path.join(T21, "_report_vgood.py"))
+vg = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(vg)
 
 OUTCOME = {"ok": "correct", "fn": "bug missed", "fn_multi": "bug needs several calls",
            "fp": "false alarm", "timeout": "timeout", "nonanalizzato": "not analyzed",
@@ -61,6 +65,33 @@ def functions():
     return f
 
 
+FOUNDRY = {"conf": "confirmed", "nonfall": "not confirmed: no assertion fails",
+           "rompe": "not confirmed: a real assertion fails", "revert": "not confirmed: other revert",
+           "dominio": "not confirmed: value out of the type", "manca": "not run"}
+
+
+def foundry_rows(rel, bench, cat, name, fg):
+    """one row per test case of the two routes, with the result of forge test"""
+    out = []
+    for route, short in (("solcmc", "solcmc"), ("yul", "yul2chc")):
+        res = fg[route].get(vg.base(route, rel), {})
+        i = 0
+        for j in glob.glob(os.path.join(T21, route, rel, "*.test_cases.json")):
+            for fn in json.load(open(j)).get("functions", []):
+                for tc in fn.get("test_cases", []):
+                    i += 1
+                    kind = tc.get("kind", "negative")
+                    t = f"test_{kind}_{i}()"
+                    x = res.get(t) if res else None
+                    out.append({"benchmark": bench, "category": cat, "contract": name, "route": short,
+                                "function": fn.get("signature", ""), "test": t, "kind": kind,
+                                "values": ", ".join(tc.get("concrete_values") or []),
+                                "forge": "" if x is None else ("PASS" if x["status"] == "Success" else "FAIL"),
+                                "reason": "" if x is None else " ".join((x.get("reason") or "").split()),
+                                "result": FOUNDRY[vg.esito_test(kind, x)]})
+    return out
+
+
 def count_tests(path):
     import json
     try:
@@ -76,6 +107,7 @@ def main():
         shutil.rmtree(os.path.join(OUT, "soltg"), ignore_errors=True)
         shutil.rmtree(os.path.join(OUT, "smtchecker"), ignore_errors=True)
     rows, seen, fun = [], set(), functions()
+    fg, ftests = {k: vg.forge(k) for k in ("solcmc", "yul")}, []
     for rel, src_path, att, es in contracts():
         bench, cat, name = target(rel)
         d = os.path.join(OUT, bench, cat, name)
@@ -86,9 +118,9 @@ def main():
         row = {"benchmark": bench, "category": cat, "contract": name,
                "function": fun[rel], "expected": "bug" if att[0] == "bug" else "safe", "calls_needed": att[1]}
         for route, short in (("solcmc", "solcmc"), ("yul", "yul2chc")):
-            vg = os.path.join(T21, route, rel, name + ".sol")
-            if os.path.exists(vg) and not os.path.exists(os.path.join(d, name + "_vgood.sol")):
-                shutil.copy2(vg, os.path.join(d, name + "_vgood.sol"))
+            vgood = os.path.join(T21, route, rel, name + ".sol")
+            if os.path.exists(vgood) and not os.path.exists(os.path.join(d, name + "_vgood.sol")):
+                shutil.copy2(vgood, os.path.join(d, name + "_vgood.sol"))
             js = glob.glob(os.path.join(T21, route, rel, "*.test_cases.json"))
             neg = pos = ""
             if js:
@@ -98,11 +130,21 @@ def main():
             row[short + "_negative_tests"], row[short + "_positive_tests"] = neg, pos
         row["mythril"], row["manticore"] = OUTCOME[es["myth"]], OUTCOME[es["mcore"]]
         rows.append(row)
+        ftests += foundry_rows(rel, bench, cat, name, fg)
     rows.sort(key=lambda x: (x["benchmark"] != "soltg", x["category"], x["contract"]))
     with open(os.path.join(OUT, "summary.csv"), "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=list(rows[0]))
         w.writeheader()
         w.writerows(rows)
+    ftests.sort(key=lambda x: (x["benchmark"] != "soltg", x["category"], x["contract"], x["route"], x["test"]))
+    with open(os.path.join(OUT, "foundry.csv"), "w", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=list(ftests[0]))
+        w.writeheader()
+        w.writerows(ftests)
+    for r in ("solcmc", "yul2chc"):
+        for k in ("negative", "positive"):
+            ts = [t for t in ftests if t["route"] == r and t["kind"] == k]
+            print("foundry", r, k, sum(t["result"] == "confirmed" for t in ts), "/", len(ts), "confirmed")
     for b in ("soltg", "smtchecker"):
         rs = [x for x in rows if x["benchmark"] == b]
         print(b, len(rs), "contracts,", sum(x["expected"] == "bug" for x in rs), "with a bug")

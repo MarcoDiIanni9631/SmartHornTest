@@ -1,0 +1,1142 @@
+benchmark,category,contract,route,function,test,kind,values,forge,reason,result
+soltg,constructors,constructor_1,solcmc,"set_max1(uint,uint)",test_positive_1(),positive,"x == 1, _x == 1, _y == 0",PASS,,confirmed
+soltg,constructors,constructor_1,solcmc,"set_max1(uint,uint)",test_positive_2(),positive,"x == 1, _x == 0, _y == 0",PASS,,confirmed
+soltg,constructors,constructor_1,solcmc,"set_max1(uint,uint)",test_positive_3(),positive,"x == 2, _x == 1, _y == 0",PASS,,confirmed
+soltg,constructors,constructor_1,solcmc,"set_max1(uint,uint)",test_positive_4(),positive,"x == 2, _x == 0, _y == 0",PASS,,confirmed
+soltg,constructors,constructor_1,solcmc,f1(uint),test_positive_5(),positive,"x == 1, _x == 0",PASS,,confirmed
+soltg,constructors,constructor_1,solcmc,f1(uint),test_positive_6(),positive,"x == 2, _x == 0",PASS,,confirmed
+soltg,constructors,constructor_2_fun_overloading,solcmc,f2(uint),test_positive_1(),positive,"x == 1, _x == 1, _y == 0",PASS,,confirmed
+soltg,constructors,constructor_2_fun_overloading,solcmc,f2(uint),test_positive_10(),positive,"x == 3, _x == 0",PASS,,confirmed
+soltg,constructors,constructor_2_fun_overloading,solcmc,f2(uint),test_positive_11(),positive,"x == 0, _x == 0",PASS,,confirmed
+soltg,constructors,constructor_2_fun_overloading,solcmc,f2(uint),test_positive_12(),positive,"x == 3, _x == 0",PASS,,confirmed
+soltg,constructors,constructor_2_fun_overloading,solcmc,f2(uint),test_positive_2(),positive,"x == 1, _x == 0, _y == 0",PASS,,confirmed
+soltg,constructors,constructor_2_fun_overloading,solcmc,f2(uint),test_positive_3(),positive,"x == 1, _x == 101, _y == 0",PASS,,confirmed
+soltg,constructors,constructor_2_fun_overloading,solcmc,f2(uint),test_positive_4(),positive,"x == 1, _x == 0, _y == 101",PASS,,confirmed
+soltg,constructors,constructor_2_fun_overloading,solcmc,f2(uint),test_positive_5(),positive,"x == 0, _x == 1, _y == 0",PASS,,confirmed
+soltg,constructors,constructor_2_fun_overloading,solcmc,f2(uint),test_positive_6(),positive,"x == 0, _x == 0, _y == 0",PASS,,confirmed
+soltg,constructors,constructor_2_fun_overloading,solcmc,f2(uint),test_positive_7(),positive,"x == 0, _x == 101, _y == 0",PASS,,confirmed
+soltg,constructors,constructor_2_fun_overloading,solcmc,f2(uint),test_positive_8(),positive,"x == 0, _x == 0, _y == 101",PASS,,confirmed
+soltg,constructors,constructor_2_fun_overloading,solcmc,f2(uint),test_positive_9(),positive,"x == 1, _x == 0",PASS,,confirmed
+soltg,constructors,constructor_5,solcmc,"g5(uint,uint)",test_positive_1(),positive,"x == 1, _x == 1, _y == 0",PASS,,confirmed
+soltg,constructors,constructor_5,solcmc,f5(uint),test_positive_10(),positive,"x == 3, _x == 0",PASS,,confirmed
+soltg,constructors,constructor_5,solcmc,f5(uint),test_positive_11(),positive,"x == 0, _x == 0",PASS,,confirmed
+soltg,constructors,constructor_5,solcmc,f5(uint),test_positive_12(),positive,"x == 3, _x == 0",PASS,,confirmed
+soltg,constructors,constructor_5,solcmc,"g5(uint,uint)",test_positive_2(),positive,"x == 1, _x == 0, _y == 0",PASS,,confirmed
+soltg,constructors,constructor_5,solcmc,"g5(uint,uint)",test_positive_3(),positive,"x == 1, _x == 101, _y == 0",PASS,,confirmed
+soltg,constructors,constructor_5,solcmc,"g5(uint,uint)",test_positive_4(),positive,"x == 1, _x == 0, _y == 101",PASS,,confirmed
+soltg,constructors,constructor_5,solcmc,"g5(uint,uint)",test_positive_5(),positive,"x == 0, _x == 1, _y == 0",PASS,,confirmed
+soltg,constructors,constructor_5,solcmc,"g5(uint,uint)",test_positive_6(),positive,"x == 0, _x == 0, _y == 0",PASS,,confirmed
+soltg,constructors,constructor_5,solcmc,"g5(uint,uint)",test_positive_7(),positive,"x == 0, _x == 101, _y == 0",PASS,,confirmed
+soltg,constructors,constructor_5,solcmc,"g5(uint,uint)",test_positive_8(),positive,"x == 0, _x == 0, _y == 101",PASS,,confirmed
+soltg,constructors,constructor_5,solcmc,f5(uint),test_positive_9(),positive,"x == 1, _x == 0",PASS,,confirmed
+soltg,control_flow,branches_assert_condition_2,solcmc,f(uint),test_positive_1(),positive,x == 11,PASS,,confirmed
+soltg,control_flow,branches_assert_condition_2,solcmc,f(uint),test_positive_2(),positive,x == 3,PASS,,confirmed
+soltg,control_flow,branches_assert_condition_2,solcmc,f(uint),test_positive_3(),positive,x == 0,PASS,,confirmed
+soltg,control_flow,branches_assert_condition_2,yul2chc,f(uint),test_negative_3(),negative,x == -1,FAIL,"revert: valore fuori dominio, la chiamata non si puo' scrivere: x: -1 fuori dal range di uint256",not confirmed: value out of the type
+soltg,control_flow,branches_assert_condition_2,yul2chc,f(uint),test_positive_1(),positive,x == 11,PASS,,confirmed
+soltg,control_flow,branches_assert_condition_2,yul2chc,f(uint),test_positive_2(),positive,x == 3,PASS,,confirmed
+soltg,control_flow,branches_assert_condition_2,yul2chc,f(uint),test_positive_4(),positive,x == 0,PASS,,confirmed
+soltg,control_flow,branches_in_modifiers_2,solcmc,set(uint),test_positive_1(),positive,"x == 0, _x == 0",PASS,,confirmed
+soltg,control_flow,branches_in_modifiers_2,solcmc,f(),test_positive_2(),positive,x == 0,PASS,,confirmed
+soltg,control_flow,branches_inside_modifiers_1,solcmc,g(),test_negative_1(),negative,x == 0,FAIL,panic: assertion failed (0x01),confirmed
+soltg,control_flow,branches_inside_modifiers_2,solcmc,g(),test_negative_1(),negative,x == 0,FAIL,panic: assertion failed (0x01),confirmed
+soltg,control_flow,branches_inside_modifiers_3,solcmc,g(),test_negative_1(),negative,x == 0,FAIL,panic: assertion failed (0x01),confirmed
+soltg,control_flow,branches_inside_modifiers_3,yul2chc,g(),test_negative_1(),negative,x == 0,FAIL,panic: assertion failed (0x01),confirmed
+soltg,control_flow,branches_inside_modifiers_4,solcmc,g(),test_negative_1(),negative,x == 0,FAIL,panic: assertion failed (0x01),confirmed
+soltg,control_flow,branches_merge_variables_3,solcmc,f(uint),test_positive_1(),positive,x == 11,PASS,,confirmed
+soltg,control_flow,branches_merge_variables_3,solcmc,f(uint),test_positive_2(),positive,x == 0,PASS,,confirmed
+soltg,control_flow,branches_merge_variables_3,yul2chc,f(uint),test_positive_1(),positive,x == 11,PASS,,confirmed
+soltg,control_flow,branches_merge_variables_3,yul2chc,f(uint),test_positive_2(),positive,x == 0,PASS,,confirmed
+soltg,control_flow,branches_merge_variables_5,solcmc,f(uint),test_positive_1(),positive,x == 11,PASS,,confirmed
+soltg,control_flow,branches_merge_variables_5,solcmc,f(uint),test_positive_2(),positive,x == 0,PASS,,confirmed
+soltg,control_flow,branches_merge_variables_5,yul2chc,f(uint),test_positive_1(),positive,x == 11,PASS,,confirmed
+soltg,control_flow,branches_merge_variables_5,yul2chc,f(uint),test_positive_2(),positive,x == 0,PASS,,confirmed
+soltg,control_flow,branches_merge_variables_6,solcmc,f(uint),test_positive_1(),positive,x == 11,PASS,,confirmed
+soltg,control_flow,branches_merge_variables_6,solcmc,f(uint),test_positive_2(),positive,x == 0,PASS,,confirmed
+soltg,control_flow,branches_merge_variables_6,yul2chc,f(uint),test_positive_1(),positive,x == 11,PASS,,confirmed
+soltg,control_flow,branches_merge_variables_6,yul2chc,f(uint),test_positive_2(),positive,x == 0,PASS,,confirmed
+soltg,control_flow,function_call_inside_branch,solcmc,f(),test_positive_1(),positive,,PASS,,confirmed
+soltg,control_flow,function_call_inside_branch,yul2chc,f(),test_positive_1(),positive,,PASS,,confirmed
+soltg,control_flow,function_call_inside_branch_2,solcmc,f(),test_positive_1(),positive,,PASS,,confirmed
+soltg,control_flow,function_call_inside_branch_2,yul2chc,f(),test_positive_1(),positive,,PASS,,confirmed
+soltg,control_flow,function_call_inside_branch_3,solcmc,f(),test_positive_1(),positive,,PASS,,confirmed
+soltg,control_flow,function_call_inside_branch_4,solcmc,f(),test_positive_1(),positive,,PASS,,confirmed
+soltg,control_flow,function_call_inside_else_branch,solcmc,f(),test_positive_1(),positive,,PASS,,confirmed
+soltg,control_flow,function_call_inside_else_branch,yul2chc,f(),test_positive_1(),positive,,PASS,,confirmed
+soltg,control_flow,function_call_inside_modifier_branch,solcmc,f(address),test_positive_1(),positive,a == 0,PASS,,confirmed
+soltg,control_flow,nested_if,solcmc,"f(uint256,uint256)",test_negative_10(),negative,"a == 0, b == 2",FAIL,panic: assertion failed (0x01),confirmed
+soltg,control_flow,nested_if,solcmc,"f(uint256,uint256)",test_positive_1(),positive,"a == 5, b == 0",PASS,,confirmed
+soltg,control_flow,nested_if,solcmc,"f(uint256,uint256)",test_positive_2(),positive,"a == 5, b == 0",PASS,,confirmed
+soltg,control_flow,nested_if,solcmc,"f(uint256,uint256)",test_positive_3(),positive,"a == 0, b == 0",PASS,,confirmed
+soltg,control_flow,nested_if,solcmc,"f(uint256,uint256)",test_positive_4(),positive,"a == 0, b == 0",PASS,,confirmed
+soltg,control_flow,nested_if,solcmc,"f(uint256,uint256)",test_positive_5(),positive,"a == 5, b == 0",PASS,,confirmed
+soltg,control_flow,nested_if,solcmc,"f(uint256,uint256)",test_positive_6(),positive,"a == 5, b == 0",PASS,,confirmed
+soltg,control_flow,nested_if,solcmc,"f(uint256,uint256)",test_positive_7(),positive,"a == 0, b == 0",PASS,,confirmed
+soltg,control_flow,nested_if,solcmc,"f(uint256,uint256)",test_positive_8(),positive,"a == 0, b == 0",PASS,,confirmed
+soltg,control_flow,nested_if,solcmc,"f(uint256,uint256)",test_positive_9(),positive,"a == 2, b == 0",PASS,,confirmed
+soltg,control_flow,nested_if,yul2chc,"f(uint256,uint256)",test_negative_1(),negative,"a == 0, b == 2",FAIL,panic: assertion failed (0x01),confirmed
+soltg,control_flow,nested_if,yul2chc,"f(uint256,uint256)",test_negative_12(),negative,"a == 0, b == 2",FAIL,panic: assertion failed (0x01),confirmed
+soltg,control_flow,nested_if,yul2chc,"f(uint256,uint256)",test_negative_13(),negative,"a == 0, b == 2",FAIL,panic: assertion failed (0x01),confirmed
+soltg,control_flow,nested_if,yul2chc,"f(uint256,uint256)",test_negative_14(),negative,"a == 2, b == 0",PASS,,not confirmed: no assertion fails
+soltg,control_flow,nested_if,yul2chc,"f(uint256,uint256)",test_negative_15(),negative,"a == 3, b == 0",PASS,,not confirmed: no assertion fails
+soltg,control_flow,nested_if,yul2chc,"f(uint256,uint256)",test_negative_16(),negative,"a == 5, b == 3",PASS,,not confirmed: no assertion fails
+soltg,control_flow,nested_if,yul2chc,"f(uint256,uint256)",test_negative_17(),negative,"a == 0, b == 2",FAIL,panic: assertion failed (0x01),confirmed
+soltg,control_flow,nested_if,yul2chc,"f(uint256,uint256)",test_negative_18(),negative,"a == 2, b == 0",PASS,,not confirmed: no assertion fails
+soltg,control_flow,nested_if,yul2chc,"f(uint256,uint256)",test_negative_19(),negative,"a == 3, b == 0",PASS,,not confirmed: no assertion fails
+soltg,control_flow,nested_if,yul2chc,"f(uint256,uint256)",test_negative_2(),negative,"a == 2, b == 0",PASS,,not confirmed: no assertion fails
+soltg,control_flow,nested_if,yul2chc,"f(uint256,uint256)",test_negative_20(),negative,"a == 5, b == 3",PASS,,not confirmed: no assertion fails
+soltg,control_flow,nested_if,yul2chc,"f(uint256,uint256)",test_negative_3(),negative,"a == 3, b == 0",PASS,,not confirmed: no assertion fails
+soltg,control_flow,nested_if,yul2chc,"f(uint256,uint256)",test_negative_4(),negative,"a == 5, b == 3",PASS,,not confirmed: no assertion fails
+soltg,control_flow,nested_if,yul2chc,"f(uint256,uint256)",test_negative_5(),negative,"a == 0, b == 2",FAIL,panic: assertion failed (0x01),confirmed
+soltg,control_flow,nested_if,yul2chc,"f(uint256,uint256)",test_negative_6(),negative,"a == 2, b == 0",PASS,,not confirmed: no assertion fails
+soltg,control_flow,nested_if,yul2chc,"f(uint256,uint256)",test_negative_7(),negative,"a == 3, b == 0",PASS,,not confirmed: no assertion fails
+soltg,control_flow,nested_if,yul2chc,"f(uint256,uint256)",test_negative_8(),negative,"a == 5, b == 3",PASS,,not confirmed: no assertion fails
+soltg,control_flow,nested_if,yul2chc,"f(uint256,uint256)",test_positive_10(),positive,"a == 3, b == 0",PASS,,confirmed
+soltg,control_flow,nested_if,yul2chc,"f(uint256,uint256)",test_positive_11(),positive,"a == 5, b == 3",PASS,,confirmed
+soltg,control_flow,nested_if,yul2chc,"f(uint256,uint256)",test_positive_21(),positive,"a == 2, b == 0",PASS,,confirmed
+soltg,control_flow,nested_if,yul2chc,"f(uint256,uint256)",test_positive_22(),positive,"a == 3, b == 0",PASS,,confirmed
+soltg,control_flow,nested_if,yul2chc,"f(uint256,uint256)",test_positive_9(),positive,"a == 2, b == 0",PASS,,confirmed
+soltg,control_flow,return_1,solcmc,f(),test_positive_1(),positive,,PASS,,confirmed
+soltg,control_flow,return_1_fail,solcmc,f(),test_negative_1(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+soltg,control_flow,return_2,solcmc,f(),test_positive_1(),positive,c == 0,PASS,,confirmed
+soltg,control_flow,return_2_fail,solcmc,f(),test_negative_1(),negative,c == 0,FAIL,panic: assertion failed (0x01),confirmed
+soltg,control_flow,return_in_both_branches,solcmc,f(),test_positive_1(),positive,,PASS,,confirmed
+soltg,control_flow,return_in_both_branches,yul2chc,f(),test_negative_1(),negative,,PASS,,not confirmed: no assertion fails
+soltg,control_flow,return_in_both_branches,yul2chc,f(),test_negative_3(),negative,,PASS,,not confirmed: no assertion fails
+soltg,control_flow,return_in_both_branches,yul2chc,f(),test_positive_2(),positive,,PASS,,confirmed
+soltg,control_flow,return_in_both_branches,yul2chc,f(),test_positive_4(),positive,,PASS,,confirmed
+soltg,control_flow,revert_complex_flow,solcmc,"f(bool,uint)",test_negative_1(),negative,"b == 0, a == 0",FAIL,panic: assertion failed (0x01),confirmed
+soltg,control_flow,revert_complex_flow,yul2chc,"f(bool,uint)",test_negative_1(),negative,"b == false, a == -1",FAIL,"revert: valore fuori dominio, la chiamata non si puo' scrivere: a: -1 fuori dal range di uint256",not confirmed: value out of the type
+soltg,control_flow,short_circuit_and,solcmc,g(),test_positive_1(),positive,x == 0,PASS,,confirmed
+soltg,control_flow,short_circuit_and,solcmc,g(),test_positive_2(),positive,x == 0,PASS,,confirmed
+soltg,control_flow,short_circuit_and,yul2chc,g(),test_positive_1(),positive,x == 0,PASS,,confirmed
+soltg,control_flow,short_circuit_and_fail,solcmc,g(),test_negative_1(),negative,x == 0,FAIL,panic: assertion failed (0x01),confirmed
+soltg,control_flow,short_circuit_and_fail,solcmc,g(),test_negative_2(),negative,x == 0,FAIL,panic: assertion failed (0x01),confirmed
+soltg,control_flow,short_circuit_and_fail,yul2chc,g(),test_negative_1(),negative,x == 0,FAIL,panic: assertion failed (0x01),confirmed
+soltg,control_flow,short_circuit_and_inside_branch,solcmc,g(),test_negative_1(),negative,x == 0,FAIL,panic: assertion failed (0x01),confirmed
+soltg,control_flow,short_circuit_and_inside_branch,yul2chc,g(),test_negative_1(),negative,x == 0,FAIL,panic: assertion failed (0x01),confirmed
+soltg,control_flow,short_circuit_and_need_both,solcmc,g(),test_positive_1(),positive,x == 0,PASS,,confirmed
+soltg,control_flow,short_circuit_and_need_both,yul2chc,g(),test_positive_1(),positive,x == 0,PASS,,confirmed
+soltg,control_flow,short_circuit_and_need_both_fail,solcmc,g(),test_negative_1(),negative,x == 0,FAIL,panic: assertion failed (0x01),confirmed
+soltg,control_flow,short_circuit_and_need_both_fail,yul2chc,g(),test_negative_1(),negative,x == 0,FAIL,panic: assertion failed (0x01),confirmed
+soltg,control_flow,short_circuit_or_inside_branch,solcmc,g(bool),test_negative_1(),negative,"x == 0, a == 0",FAIL,panic: assertion failed (0x01),confirmed
+soltg,control_flow,short_circuit_or_inside_branch,solcmc,g(bool),test_positive_2(),positive,"x == 0, a == 1",PASS,,confirmed
+soltg,control_flow,short_circuit_or_inside_branch,solcmc,g(bool),test_positive_3(),positive,"x == 0, a == 1",PASS,,confirmed
+soltg,control_flow,short_circuit_or_inside_branch,yul2chc,g(bool),test_negative_1(),negative,"a == false, x == 0",FAIL,panic: assertion failed (0x01),confirmed
+soltg,control_flow,short_circuit_or_inside_branch,yul2chc,g(bool),test_positive_2(),positive,"a == 2, x == 0",FAIL,"revert: valore fuori dominio, la chiamata non si puo' scrivere: a: 2 non e' un bool",not confirmed: value out of the type
+soltg,control_flow,simple_if,solcmc,"f(uint256,uint256)",test_positive_1(),positive,"a == 0, b == 0",PASS,,confirmed
+soltg,control_flow,simple_if,solcmc,"f(uint256,uint256)",test_positive_2(),positive,"a == 1, b == 0",PASS,,confirmed
+soltg,control_flow,simple_if,yul2chc,"f(uint256,uint256)",test_positive_1(),positive,"a == 0, b == 2",PASS,,confirmed
+soltg,control_flow,simple_if,yul2chc,"f(uint256,uint256)",test_positive_2(),positive,"a == 3, b == 2",PASS,,confirmed
+soltg,control_flow,simple_if2,solcmc,f(uint256),test_negative_2(),negative,a == 0,FAIL,panic: assertion failed (0x01),confirmed
+soltg,control_flow,simple_if2,solcmc,f(uint256),test_positive_1(),positive,a == 1,PASS,,confirmed
+soltg,control_flow,simple_if2,yul2chc,f(uint256),test_negative_1(),negative,a == 0,FAIL,panic: assertion failed (0x01),confirmed
+soltg,control_flow,simple_if2,yul2chc,f(uint256),test_negative_2(),negative,a == 0,FAIL,panic: assertion failed (0x01),confirmed
+soltg,control_flow,simple_if2,yul2chc,f(uint256),test_negative_4(),negative,a == 2,PASS,,not confirmed: no assertion fails
+soltg,control_flow,simple_if2,yul2chc,f(uint256),test_positive_3(),positive,a == 2,PASS,,confirmed
+soltg,control_flow,simple_if_state_var,solcmc,check(),test_negative_1(),negative,x == 0,FAIL,panic: assertion failed (0x01),confirmed
+soltg,control_flow,simple_if_tuple,solcmc,check(),test_negative_1(),negative,"x == 0, y == 0",FAIL,panic: assertion failed (0x01),confirmed
+soltg,control_flow,test_same_branch_twice,solcmc,f(),test_negative_1(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+soltg,control_flow,test_same_branch_twice,yul2chc,f(),test_negative_1(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+soltg,control_flow,test_same_branch_twice,yul2chc,f(),test_negative_2(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+soltg,control_flow,test_same_branch_twice,yul2chc,f(),test_negative_3(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+soltg,control_flow,test_same_branch_twice,yul2chc,f(),test_negative_4(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+soltg,control_flow,triple_nested_if,solcmc,f(),test_positive_1(),positive,"a == 0, b == 0, c == 0",PASS,,confirmed
+soltg,control_flow,triple_nested_if,yul2chc,f(),test_positive_1(),positive,"a == 0, b == 0, c == 0",PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_1(),positive,x == 1,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_10(),positive,x == 10,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_11(),positive,x == 11,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_12(),positive,x == 12,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_13(),positive,x == 13,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_14(),positive,x == 14,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_15(),positive,x == 15,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_16(),positive,x == 16,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_17(),positive,x == 17,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_18(),positive,x == 18,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_19(),positive,x == 19,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_2(),positive,x == 2,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_20(),positive,x == 20,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_21(),positive,x == 21,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_22(),positive,x == 22,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_23(),positive,x == 23,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_24(),positive,x == 24,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_25(),positive,x == 25,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_26(),positive,x == 26,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_27(),positive,x == 27,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_28(),positive,x == 28,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_29(),positive,x == 29,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_3(),positive,x == 3,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_30(),positive,x == 30,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_31(),positive,x == 31,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_32(),positive,x == 32,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_33(),positive,x == 33,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_34(),positive,x == 34,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_35(),positive,x == 35,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_36(),positive,x == 36,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_37(),positive,x == 37,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_38(),positive,x == 38,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_39(),positive,x == 39,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_4(),positive,x == 4,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_40(),positive,x == 40,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_41(),positive,x == 41,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_42(),positive,x == 42,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_43(),positive,x == 43,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_44(),positive,x == 44,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_45(),positive,x == 45,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_5(),positive,x == 5,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_6(),positive,x == 6,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_7(),positive,x == 7,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_8(),positive,x == 8,PASS,,confirmed
+soltg,invariants,loop_basic,solcmc,f(uint),test_positive_9(),positive,x == 9,PASS,,confirmed
+soltg,loops,do_while_1_fail,solcmc,f(uint),test_negative_11(),negative,x == 13,FAIL,panic: assertion failed (0x01),confirmed
+soltg,loops,do_while_1_fail,solcmc,f(uint),test_positive_1(),positive,x == 9,PASS,,confirmed
+soltg,loops,do_while_1_fail,solcmc,f(uint),test_positive_10(),positive,x == 0,PASS,,confirmed
+soltg,loops,do_while_1_fail,solcmc,f(uint),test_positive_2(),positive,x == 8,PASS,,confirmed
+soltg,loops,do_while_1_fail,solcmc,f(uint),test_positive_3(),positive,x == 7,PASS,,confirmed
+soltg,loops,do_while_1_fail,solcmc,f(uint),test_positive_4(),positive,x == 6,PASS,,confirmed
+soltg,loops,do_while_1_fail,solcmc,f(uint),test_positive_5(),positive,x == 5,PASS,,confirmed
+soltg,loops,do_while_1_fail,solcmc,f(uint),test_positive_6(),positive,x == 4,PASS,,confirmed
+soltg,loops,do_while_1_fail,solcmc,f(uint),test_positive_7(),positive,x == 3,PASS,,confirmed
+soltg,loops,do_while_1_fail,solcmc,f(uint),test_positive_8(),positive,x == 2,PASS,,confirmed
+soltg,loops,do_while_1_fail,solcmc,f(uint),test_positive_9(),positive,x == 1,PASS,,confirmed
+soltg,loops,for_1_break,solcmc,"f(uint,bool)",test_positive_1(),positive,"x == 9, b == 1",PASS,,confirmed
+soltg,loops,for_1_break,solcmc,"f(uint,bool)",test_positive_10(),positive,"x == 0, b == 1",PASS,,confirmed
+soltg,loops,for_1_break,solcmc,"f(uint,bool)",test_positive_11(),positive,"x == 0, b == 0",PASS,,confirmed
+soltg,loops,for_1_break,solcmc,"f(uint,bool)",test_positive_2(),positive,"x == 8, b == 1",PASS,,confirmed
+soltg,loops,for_1_break,solcmc,"f(uint,bool)",test_positive_3(),positive,"x == 7, b == 1",PASS,,confirmed
+soltg,loops,for_1_break,solcmc,"f(uint,bool)",test_positive_4(),positive,"x == 6, b == 1",PASS,,confirmed
+soltg,loops,for_1_break,solcmc,"f(uint,bool)",test_positive_5(),positive,"x == 5, b == 1",PASS,,confirmed
+soltg,loops,for_1_break,solcmc,"f(uint,bool)",test_positive_6(),positive,"x == 4, b == 1",PASS,,confirmed
+soltg,loops,for_1_break,solcmc,"f(uint,bool)",test_positive_7(),positive,"x == 3, b == 1",PASS,,confirmed
+soltg,loops,for_1_break,solcmc,"f(uint,bool)",test_positive_8(),positive,"x == 2, b == 1",PASS,,confirmed
+soltg,loops,for_1_break,solcmc,"f(uint,bool)",test_positive_9(),positive,"x == 1, b == 1",PASS,,confirmed
+soltg,loops,for_1_break_fail,solcmc,"f(uint,bool)",test_negative_13(),negative,"x == 0, b == 0",FAIL,panic: assertion failed (0x01),confirmed
+soltg,loops,for_1_break_fail,solcmc,"f(uint,bool)",test_positive_1(),positive,"x == 10, b == 1",PASS,,confirmed
+soltg,loops,for_1_break_fail,solcmc,"f(uint,bool)",test_positive_10(),positive,"x == 1, b == 1",PASS,,confirmed
+soltg,loops,for_1_break_fail,solcmc,"f(uint,bool)",test_positive_11(),positive,"x == 0, b == 1",PASS,,confirmed
+soltg,loops,for_1_break_fail,solcmc,"f(uint,bool)",test_positive_12(),positive,"x == 10, b == 0",PASS,,confirmed
+soltg,loops,for_1_break_fail,solcmc,"f(uint,bool)",test_positive_2(),positive,"x == 9, b == 1",PASS,,confirmed
+soltg,loops,for_1_break_fail,solcmc,"f(uint,bool)",test_positive_3(),positive,"x == 8, b == 1",PASS,,confirmed
+soltg,loops,for_1_break_fail,solcmc,"f(uint,bool)",test_positive_4(),positive,"x == 7, b == 1",PASS,,confirmed
+soltg,loops,for_1_break_fail,solcmc,"f(uint,bool)",test_positive_5(),positive,"x == 6, b == 1",PASS,,confirmed
+soltg,loops,for_1_break_fail,solcmc,"f(uint,bool)",test_positive_6(),positive,"x == 5, b == 1",PASS,,confirmed
+soltg,loops,for_1_break_fail,solcmc,"f(uint,bool)",test_positive_7(),positive,"x == 4, b == 1",PASS,,confirmed
+soltg,loops,for_1_break_fail,solcmc,"f(uint,bool)",test_positive_8(),positive,"x == 3, b == 1",PASS,,confirmed
+soltg,loops,for_1_break_fail,solcmc,"f(uint,bool)",test_positive_9(),positive,"x == 2, b == 1",PASS,,confirmed
+soltg,loops,for_1_break_fail,yul2chc,"f(uint,bool)",test_negative_1(),negative,"x == 0, b == false",FAIL,panic: assertion failed (0x01),confirmed
+soltg,loops,for_1_continue,solcmc,"f(uint,bool)",test_positive_1(),positive,"x == 0, b == 1",PASS,,confirmed
+soltg,loops,for_1_continue,solcmc,"f(uint,bool)",test_positive_10(),positive,"x == 1, b == 0",PASS,,confirmed
+soltg,loops,for_1_continue,solcmc,"f(uint,bool)",test_positive_11(),positive,"x == 0, b == 0",PASS,,confirmed
+soltg,loops,for_1_continue,solcmc,"f(uint,bool)",test_positive_2(),positive,"x == 9, b == 0",PASS,,confirmed
+soltg,loops,for_1_continue,solcmc,"f(uint,bool)",test_positive_3(),positive,"x == 8, b == 0",PASS,,confirmed
+soltg,loops,for_1_continue,solcmc,"f(uint,bool)",test_positive_4(),positive,"x == 7, b == 0",PASS,,confirmed
+soltg,loops,for_1_continue,solcmc,"f(uint,bool)",test_positive_5(),positive,"x == 6, b == 0",PASS,,confirmed
+soltg,loops,for_1_continue,solcmc,"f(uint,bool)",test_positive_6(),positive,"x == 5, b == 0",PASS,,confirmed
+soltg,loops,for_1_continue,solcmc,"f(uint,bool)",test_positive_7(),positive,"x == 4, b == 0",PASS,,confirmed
+soltg,loops,for_1_continue,solcmc,"f(uint,bool)",test_positive_8(),positive,"x == 3, b == 0",PASS,,confirmed
+soltg,loops,for_1_continue,solcmc,"f(uint,bool)",test_positive_9(),positive,"x == 2, b == 0",PASS,,confirmed
+soltg,loops,for_1_fail,solcmc,f(uint),test_negative_2(),negative,x == 4,FAIL,panic: assertion failed (0x01),confirmed
+soltg,loops,for_1_fail,solcmc,f(uint),test_positive_1(),positive,x == 0,PASS,,confirmed
+soltg,loops,for_1_fail,yul2chc,f(uint),test_negative_2(),negative,x == 4,FAIL,panic: assertion failed (0x01),confirmed
+soltg,loops,for_1_fail,yul2chc,f(uint),test_positive_1(),positive,x == -2,FAIL,"revert: valore fuori dominio, la chiamata non si puo' scrivere: x: -2 fuori dal range di uint256",not confirmed: value out of the type
+soltg,loops,while_1,solcmc,"f(uint,bool)",test_positive_1(),positive,"x == 10, b == 1",PASS,,confirmed
+soltg,loops,while_1,solcmc,"f(uint,bool)",test_positive_10(),positive,"x == 1, b == 1",PASS,,confirmed
+soltg,loops,while_1,solcmc,"f(uint,bool)",test_positive_11(),positive,"x == 0, b == 1",PASS,,confirmed
+soltg,loops,while_1,solcmc,"f(uint,bool)",test_positive_12(),positive,"x == 10, b == 0",PASS,,confirmed
+soltg,loops,while_1,solcmc,"f(uint,bool)",test_positive_2(),positive,"x == 9, b == 1",PASS,,confirmed
+soltg,loops,while_1,solcmc,"f(uint,bool)",test_positive_3(),positive,"x == 8, b == 1",PASS,,confirmed
+soltg,loops,while_1,solcmc,"f(uint,bool)",test_positive_4(),positive,"x == 7, b == 1",PASS,,confirmed
+soltg,loops,while_1,solcmc,"f(uint,bool)",test_positive_5(),positive,"x == 6, b == 1",PASS,,confirmed
+soltg,loops,while_1,solcmc,"f(uint,bool)",test_positive_6(),positive,"x == 5, b == 1",PASS,,confirmed
+soltg,loops,while_1,solcmc,"f(uint,bool)",test_positive_7(),positive,"x == 4, b == 1",PASS,,confirmed
+soltg,loops,while_1,solcmc,"f(uint,bool)",test_positive_8(),positive,"x == 3, b == 1",PASS,,confirmed
+soltg,loops,while_1,solcmc,"f(uint,bool)",test_positive_9(),positive,"x == 2, b == 1",PASS,,confirmed
+soltg,loops,while_1_break,solcmc,"f(uint,bool)",test_positive_1(),positive,"x == 9, b == 1",PASS,,confirmed
+soltg,loops,while_1_break,solcmc,"f(uint,bool)",test_positive_10(),positive,"x == 0, b == 1",PASS,,confirmed
+soltg,loops,while_1_break,solcmc,"f(uint,bool)",test_positive_11(),positive,"x == 0, b == 0",PASS,,confirmed
+soltg,loops,while_1_break,solcmc,"f(uint,bool)",test_positive_2(),positive,"x == 8, b == 1",PASS,,confirmed
+soltg,loops,while_1_break,solcmc,"f(uint,bool)",test_positive_3(),positive,"x == 7, b == 1",PASS,,confirmed
+soltg,loops,while_1_break,solcmc,"f(uint,bool)",test_positive_4(),positive,"x == 6, b == 1",PASS,,confirmed
+soltg,loops,while_1_break,solcmc,"f(uint,bool)",test_positive_5(),positive,"x == 5, b == 1",PASS,,confirmed
+soltg,loops,while_1_break,solcmc,"f(uint,bool)",test_positive_6(),positive,"x == 4, b == 1",PASS,,confirmed
+soltg,loops,while_1_break,solcmc,"f(uint,bool)",test_positive_7(),positive,"x == 3, b == 1",PASS,,confirmed
+soltg,loops,while_1_break,solcmc,"f(uint,bool)",test_positive_8(),positive,"x == 2, b == 1",PASS,,confirmed
+soltg,loops,while_1_break,solcmc,"f(uint,bool)",test_positive_9(),positive,"x == 1, b == 1",PASS,,confirmed
+soltg,loops,while_1_break_fail,solcmc,"f(uint,bool)",test_negative_11(),negative,"x == 0, b == 0",FAIL,panic: assertion failed (0x01),confirmed
+soltg,loops,while_1_break_fail,solcmc,"f(uint,bool)",test_positive_1(),positive,"x == 9, b == 1",PASS,,confirmed
+soltg,loops,while_1_break_fail,solcmc,"f(uint,bool)",test_positive_10(),positive,"x == 0, b == 1",PASS,,confirmed
+soltg,loops,while_1_break_fail,solcmc,"f(uint,bool)",test_positive_2(),positive,"x == 8, b == 1",PASS,,confirmed
+soltg,loops,while_1_break_fail,solcmc,"f(uint,bool)",test_positive_3(),positive,"x == 7, b == 1",PASS,,confirmed
+soltg,loops,while_1_break_fail,solcmc,"f(uint,bool)",test_positive_4(),positive,"x == 6, b == 1",PASS,,confirmed
+soltg,loops,while_1_break_fail,solcmc,"f(uint,bool)",test_positive_5(),positive,"x == 5, b == 1",PASS,,confirmed
+soltg,loops,while_1_break_fail,solcmc,"f(uint,bool)",test_positive_6(),positive,"x == 4, b == 1",PASS,,confirmed
+soltg,loops,while_1_break_fail,solcmc,"f(uint,bool)",test_positive_7(),positive,"x == 3, b == 1",PASS,,confirmed
+soltg,loops,while_1_break_fail,solcmc,"f(uint,bool)",test_positive_8(),positive,"x == 2, b == 1",PASS,,confirmed
+soltg,loops,while_1_break_fail,solcmc,"f(uint,bool)",test_positive_9(),positive,"x == 1, b == 1",PASS,,confirmed
+soltg,loops,while_1_continue,solcmc,"f(uint,bool)",test_positive_1(),positive,"x == 0, b == 1",PASS,,confirmed
+soltg,loops,while_1_continue,solcmc,"f(uint,bool)",test_positive_10(),positive,"x == 1, b == 0",PASS,,confirmed
+soltg,loops,while_1_continue,solcmc,"f(uint,bool)",test_positive_11(),positive,"x == 0, b == 0",PASS,,confirmed
+soltg,loops,while_1_continue,solcmc,"f(uint,bool)",test_positive_2(),positive,"x == 9, b == 0",PASS,,confirmed
+soltg,loops,while_1_continue,solcmc,"f(uint,bool)",test_positive_3(),positive,"x == 8, b == 0",PASS,,confirmed
+soltg,loops,while_1_continue,solcmc,"f(uint,bool)",test_positive_4(),positive,"x == 7, b == 0",PASS,,confirmed
+soltg,loops,while_1_continue,solcmc,"f(uint,bool)",test_positive_5(),positive,"x == 6, b == 0",PASS,,confirmed
+soltg,loops,while_1_continue,solcmc,"f(uint,bool)",test_positive_6(),positive,"x == 5, b == 0",PASS,,confirmed
+soltg,loops,while_1_continue,solcmc,"f(uint,bool)",test_positive_7(),positive,"x == 4, b == 0",PASS,,confirmed
+soltg,loops,while_1_continue,solcmc,"f(uint,bool)",test_positive_8(),positive,"x == 3, b == 0",PASS,,confirmed
+soltg,loops,while_1_continue,solcmc,"f(uint,bool)",test_positive_9(),positive,"x == 2, b == 0",PASS,,confirmed
+soltg,loops,while_1_continue_fail,solcmc,"f(uint,bool)",test_negative_4(),negative,"x == 10, b == 1",FAIL,panic: assertion failed (0x01),confirmed
+soltg,loops,while_1_continue_fail,solcmc,"f(uint,bool)",test_negative_5(),negative,"x == 0, b == 1",FAIL,panic: assertion failed (0x01),confirmed
+soltg,loops,while_1_continue_fail,solcmc,"f(uint,bool)",test_negative_6(),negative,"x == 10, b == 0",FAIL,panic: assertion failed (0x01),confirmed
+soltg,loops,while_1_continue_fail,solcmc,"f(uint,bool)",test_positive_1(),positive,"x == 17, b == 1",PASS,,confirmed
+soltg,loops,while_1_continue_fail,solcmc,"f(uint,bool)",test_positive_2(),positive,"x == 17, b == 0",PASS,,confirmed
+soltg,loops,while_1_continue_fail,solcmc,"f(uint,bool)",test_positive_3(),positive,"x == 0, b == 0",PASS,,confirmed
+soltg,loops,while_1_continue_fail,yul2chc,"f(uint,bool)",test_negative_1(),negative,"x == 10, b == 2",FAIL,"revert: valore fuori dominio, la chiamata non si puo' scrivere: b: 2 non e' un bool",not confirmed: value out of the type
+soltg,loops,while_1_continue_fail,yul2chc,"f(uint,bool)",test_positive_2(),positive,"x == 17, b == 2",FAIL,"revert: valore fuori dominio, la chiamata non si puo' scrivere: b: 2 non e' un bool",not confirmed: value out of the type
+soltg,loops,while_1_infinite,solcmc,"f(uint,bool)",test_positive_1(),positive,"x == 10, b == 1",PASS,,confirmed
+soltg,loops,while_1_infinite,solcmc,"f(uint,bool)",test_positive_10(),positive,"x == 1, b == 1",PASS,,confirmed
+soltg,loops,while_1_infinite,solcmc,"f(uint,bool)",test_positive_11(),positive,"x == 0, b == 1",PASS,,confirmed
+soltg,loops,while_1_infinite,solcmc,"f(uint,bool)",test_positive_12(),positive,"x == 10, b == 0",PASS,,confirmed
+soltg,loops,while_1_infinite,solcmc,"f(uint,bool)",test_positive_2(),positive,"x == 9, b == 1",PASS,,confirmed
+soltg,loops,while_1_infinite,solcmc,"f(uint,bool)",test_positive_3(),positive,"x == 8, b == 1",PASS,,confirmed
+soltg,loops,while_1_infinite,solcmc,"f(uint,bool)",test_positive_4(),positive,"x == 7, b == 1",PASS,,confirmed
+soltg,loops,while_1_infinite,solcmc,"f(uint,bool)",test_positive_5(),positive,"x == 6, b == 1",PASS,,confirmed
+soltg,loops,while_1_infinite,solcmc,"f(uint,bool)",test_positive_6(),positive,"x == 5, b == 1",PASS,,confirmed
+soltg,loops,while_1_infinite,solcmc,"f(uint,bool)",test_positive_7(),positive,"x == 4, b == 1",PASS,,confirmed
+soltg,loops,while_1_infinite,solcmc,"f(uint,bool)",test_positive_8(),positive,"x == 3, b == 1",PASS,,confirmed
+soltg,loops,while_1_infinite,solcmc,"f(uint,bool)",test_positive_9(),positive,"x == 2, b == 1",PASS,,confirmed
+soltg,loops,while_2,solcmc,f(uint),test_positive_1(),positive,x == 0,PASS,,confirmed
+soltg,loops,while_2,yul2chc,f(uint),test_positive_1(),positive,x == 3,PASS,,confirmed
+soltg,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_1(),positive,"x == 9, y == 0, b == 1, c == 1",PASS,,confirmed
+soltg,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_10(),positive,"x == 0, y == 0, b == 1, c == 1",PASS,,confirmed
+soltg,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_11(),positive,"x == 9, y == 0, b == 1, c == 0",PASS,,confirmed
+soltg,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_12(),positive,"x == 8, y == 0, b == 1, c == 0",PASS,,confirmed
+soltg,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_13(),positive,"x == 7, y == 0, b == 1, c == 0",PASS,,confirmed
+soltg,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_14(),positive,"x == 6, y == 0, b == 1, c == 0",PASS,,confirmed
+soltg,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_15(),positive,"x == 5, y == 0, b == 1, c == 0",PASS,,confirmed
+soltg,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_16(),positive,"x == 4, y == 0, b == 1, c == 0",PASS,,confirmed
+soltg,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_17(),positive,"x == 3, y == 0, b == 1, c == 0",PASS,,confirmed
+soltg,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_18(),positive,"x == 2, y == 0, b == 1, c == 0",PASS,,confirmed
+soltg,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_19(),positive,"x == 1, y == 0, b == 1, c == 0",PASS,,confirmed
+soltg,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_2(),positive,"x == 8, y == 0, b == 1, c == 1",PASS,,confirmed
+soltg,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_20(),positive,"x == 0, y == 0, b == 1, c == 0",PASS,,confirmed
+soltg,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_21(),positive,"x == 0, y == 9, b == 0, c == 1",PASS,,confirmed
+soltg,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_22(),positive,"x == 0, y == 8, b == 0, c == 1",PASS,,confirmed
+soltg,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_23(),positive,"x == 0, y == 7, b == 0, c == 1",PASS,,confirmed
+soltg,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_24(),positive,"x == 0, y == 6, b == 0, c == 1",PASS,,confirmed
+soltg,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_25(),positive,"x == 0, y == 5, b == 0, c == 1",PASS,,confirmed
+soltg,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_26(),positive,"x == 0, y == 4, b == 0, c == 1",PASS,,confirmed
+soltg,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_27(),positive,"x == 0, y == 3, b == 0, c == 1",PASS,,confirmed
+soltg,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_28(),positive,"x == 0, y == 2, b == 0, c == 1",PASS,,confirmed
+soltg,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_29(),positive,"x == 0, y == 1, b == 0, c == 1",PASS,,confirmed
+soltg,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_3(),positive,"x == 7, y == 0, b == 1, c == 1",PASS,,confirmed
+soltg,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_30(),positive,"x == 0, y == 0, b == 0, c == 1",PASS,,confirmed
+soltg,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_31(),positive,"x == 0, y == 0, b == 0, c == 0",PASS,,confirmed
+soltg,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_4(),positive,"x == 6, y == 0, b == 1, c == 1",PASS,,confirmed
+soltg,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_5(),positive,"x == 5, y == 0, b == 1, c == 1",PASS,,confirmed
+soltg,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_6(),positive,"x == 4, y == 0, b == 1, c == 1",PASS,,confirmed
+soltg,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_7(),positive,"x == 3, y == 0, b == 1, c == 1",PASS,,confirmed
+soltg,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_8(),positive,"x == 2, y == 0, b == 1, c == 1",PASS,,confirmed
+soltg,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_9(),positive,"x == 1, y == 0, b == 1, c == 1",PASS,,confirmed
+soltg,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_1(),negative,"x == 0, y == 9, b == 0, c == 1",FAIL,panic: assertion failed (0x01),confirmed
+soltg,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_10(),negative,"x == 0, y == 0, b == 0, c == 1",FAIL,panic: assertion failed (0x01),confirmed
+soltg,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_11(),negative,"x == 9, y == 0, b == 1, c == 1",FAIL,panic: assertion failed (0x01),confirmed
+soltg,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_12(),negative,"x == 8, y == 0, b == 1, c == 1",FAIL,panic: assertion failed (0x01),confirmed
+soltg,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_13(),negative,"x == 7, y == 0, b == 1, c == 1",FAIL,panic: assertion failed (0x01),confirmed
+soltg,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_14(),negative,"x == 6, y == 0, b == 1, c == 1",FAIL,panic: assertion failed (0x01),confirmed
+soltg,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_15(),negative,"x == 5, y == 0, b == 1, c == 1",FAIL,panic: assertion failed (0x01),confirmed
+soltg,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_16(),negative,"x == 4, y == 0, b == 1, c == 1",FAIL,panic: assertion failed (0x01),confirmed
+soltg,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_17(),negative,"x == 3, y == 0, b == 1, c == 1",FAIL,panic: assertion failed (0x01),confirmed
+soltg,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_18(),negative,"x == 2, y == 0, b == 1, c == 1",FAIL,panic: assertion failed (0x01),confirmed
+soltg,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_19(),negative,"x == 1, y == 0, b == 1, c == 1",FAIL,panic: assertion failed (0x01),confirmed
+soltg,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_2(),negative,"x == 0, y == 8, b == 0, c == 1",FAIL,panic: assertion failed (0x01),confirmed
+soltg,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_20(),negative,"x == 0, y == 0, b == 1, c == 1",FAIL,panic: assertion failed (0x01),confirmed
+soltg,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_21(),negative,"x == 9, y == 0, b == 1, c == 0",FAIL,panic: assertion failed (0x01),confirmed
+soltg,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_22(),negative,"x == 8, y == 0, b == 1, c == 0",FAIL,panic: assertion failed (0x01),confirmed
+soltg,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_23(),negative,"x == 7, y == 0, b == 1, c == 0",FAIL,panic: assertion failed (0x01),confirmed
+soltg,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_24(),negative,"x == 6, y == 0, b == 1, c == 0",FAIL,panic: assertion failed (0x01),confirmed
+soltg,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_25(),negative,"x == 5, y == 0, b == 1, c == 0",FAIL,panic: assertion failed (0x01),confirmed
+soltg,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_26(),negative,"x == 4, y == 0, b == 1, c == 0",FAIL,panic: assertion failed (0x01),confirmed
+soltg,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_27(),negative,"x == 3, y == 0, b == 1, c == 0",FAIL,panic: assertion failed (0x01),confirmed
+soltg,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_28(),negative,"x == 2, y == 0, b == 1, c == 0",FAIL,panic: assertion failed (0x01),confirmed
+soltg,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_29(),negative,"x == 1, y == 0, b == 1, c == 0",FAIL,panic: assertion failed (0x01),confirmed
+soltg,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_3(),negative,"x == 0, y == 7, b == 0, c == 1",FAIL,panic: assertion failed (0x01),confirmed
+soltg,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_30(),negative,"x == 0, y == 0, b == 1, c == 0",FAIL,panic: assertion failed (0x01),confirmed
+soltg,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_31(),negative,"x == 0, y == 0, b == 0, c == 0",FAIL,panic: assertion failed (0x01),confirmed
+soltg,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_4(),negative,"x == 0, y == 6, b == 0, c == 1",FAIL,panic: assertion failed (0x01),confirmed
+soltg,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_5(),negative,"x == 0, y == 5, b == 0, c == 1",FAIL,panic: assertion failed (0x01),confirmed
+soltg,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_6(),negative,"x == 0, y == 4, b == 0, c == 1",FAIL,panic: assertion failed (0x01),confirmed
+soltg,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_7(),negative,"x == 0, y == 3, b == 0, c == 1",FAIL,panic: assertion failed (0x01),confirmed
+soltg,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_8(),negative,"x == 0, y == 2, b == 0, c == 1",FAIL,panic: assertion failed (0x01),confirmed
+soltg,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_9(),negative,"x == 0, y == 1, b == 0, c == 1",FAIL,panic: assertion failed (0x01),confirmed
+soltg,loops,while_nested_continue,solcmc,"f(uint,uint,bool,bool)",test_positive_1(),positive,"x == 0, y == 0, b == 1, c == 1",PASS,,confirmed
+soltg,loops,while_nested_continue,solcmc,"f(uint,uint,bool,bool)",test_positive_2(),positive,"x == 0, y == 0, b == 1, c == 0",PASS,,confirmed
+soltg,loops,while_nested_continue,solcmc,"f(uint,uint,bool,bool)",test_positive_3(),positive,"x == 0, y == 0, b == 0, c == 1",PASS,,confirmed
+soltg,loops,while_nested_continue,solcmc,"f(uint,uint,bool,bool)",test_positive_4(),positive,"x == 0, y == 0, b == 0, c == 0",PASS,,confirmed
+soltg,loops,while_nested_continue,yul2chc,"f(uint,uint,bool,bool)",test_positive_1(),positive,"x == 0, y == 4, b == 3, c == 2",FAIL,"revert: valore fuori dominio, la chiamata non si puo' scrivere: b: 3 non e' un bool",not confirmed: value out of the type
+soltg,loops,while_nested_continue_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_2(),negative,"x == 0, y == 0, b == 0, c == 0",FAIL,panic: assertion failed (0x01),confirmed
+soltg,loops,while_nested_continue_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_3(),negative,"x == 0, y == 0, b == 1, c == 1",FAIL,panic: assertion failed (0x01),confirmed
+soltg,loops,while_nested_continue_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_4(),negative,"x == 0, y == 0, b == 1, c == 0",FAIL,panic: assertion failed (0x01),confirmed
+soltg,loops,while_nested_continue_fail,solcmc,"f(uint,uint,bool,bool)",test_positive_1(),positive,"x == 0, y == 0, b == 0, c == 1",PASS,,confirmed
+soltg,loops,while_nested_continue_fail,yul2chc,"f(uint,uint,bool,bool)",test_negative_1(),negative,"x == 0, y == 4, b == 3, c == 2",FAIL,"revert: valore fuori dominio, la chiamata non si puo' scrivere: b: 3 non e' un bool",not confirmed: value out of the type
+soltg,misc,Math,solcmc,"min(uint256,uint256)",test_negative_4(),negative,"a == 0, b == 0",FAIL,panic: assertion failed (0x01),confirmed
+soltg,misc,Math,solcmc,"average(uint256,uint256)",test_negative_5(),negative,"a == 0, b == 1",FAIL,panic: assertion failed (0x01),confirmed
+soltg,misc,Math,solcmc,"max(uint256,uint256)",test_positive_1(),positive,"a == 0, b == 0",PASS,,confirmed
+soltg,misc,Math,solcmc,"max(uint256,uint256)",test_positive_2(),positive,"a == 0, b == 1",PASS,,confirmed
+soltg,misc,Math,solcmc,"min(uint256,uint256)",test_positive_3(),positive,"a == 0, b == 1",PASS,,confirmed
+soltg,misc,Math,solcmc,"average(uint256,uint256)",test_positive_6(),positive,"a == 0, b == 0",PASS,,confirmed
+soltg,misc,Math,solcmc,"ceilDiv(uint256,uint256)",test_positive_7(),positive,"a == 0, b == 0",FAIL,panic: division or modulo by zero (0x12),not confirmed: other revert
+soltg,misc,Math,yul2chc,"max(uint256,uint256)",test_positive_1(),positive,"a == -1, b == 0",FAIL,"revert: valore fuori dominio, la chiamata non si puo' scrivere: a: -1 fuori dal range di uint256",not confirmed: value out of the type
+soltg,misc,Math,yul2chc,"max(uint256,uint256)",test_positive_2(),positive,"a == 0, b == 0",PASS,,confirmed
+soltg,misc,bytes,solcmc,"average(uint256,uint256)",test_positive_1(),positive,"a == 0, b == 0",PASS,,confirmed
+soltg,misc,bytes,solcmc,"Caverage(uint256,uint256)",test_positive_2(),positive,"a == 0, b == 1",PASS,,confirmed
+soltg,misc,bytes,solcmc,"Caverage(uint256,uint256)",test_positive_3(),positive,"a == 0, b == 0",PASS,,confirmed
+soltg,misc,bytes,yul2chc,"Caverage(uint256,uint256)",test_positive_1(),positive,"a == -1, b == 0",FAIL,"revert: valore fuori dominio, la chiamata non si puo' scrivere: a: -1 fuori dal range di uint256",not confirmed: value out of the type
+soltg,misc,bytes,yul2chc,"Caverage(uint256,uint256)",test_positive_2(),positive,"a == 0, b == 0",PASS,,confirmed
+soltg,misc,constructor_3_m,solcmc,f3(),test_positive_1(),positive,x == 0,PASS,,confirmed
+soltg,misc,constructor_3_m,solcmc,f3(),test_positive_2(),positive,x == 4,PASS,,confirmed
+soltg,misc,constructor_3_m,solcmc,f3(),test_positive_3(),positive,x == 6,PASS,,confirmed
+soltg,misc,doubleF,solcmc,f(),test_positive_1(),positive,x == 0,PASS,,confirmed
+soltg,misc,doubleF,solcmc,g(),test_positive_2(),positive,x == 0,PASS,,confirmed
+soltg,misc,doubleF,yul2chc,g(),test_positive_1(),positive,x == 0,PASS,,confirmed
+soltg,misc,exampl,solcmc,set(uint),test_positive_1(),positive,"a == 0, j == 0",PASS,,confirmed
+soltg,misc,exampl,solcmc,f(uint),test_positive_2(),positive,"a == 0, x == 1",PASS,,confirmed
+soltg,misc,exampl,solcmc,f(uint),test_positive_3(),positive,"a == 0, x == 0",PASS,,confirmed
+soltg,misc,exampl,yul2chc,f(uint),test_positive_1(),positive,"x == 1, a == 0",PASS,,confirmed
+soltg,misc,exampl,yul2chc,f(uint),test_positive_2(),positive,"x == 0, a == 0",PASS,,confirmed
+soltg,sanity,few_calls,solcmc,f(),test_positive_1(),positive,"a == 0, b == 0, c == 0",PASS,,confirmed
+soltg,sanity,few_calls,yul2chc,f(),test_positive_1(),positive,"a == 0, b == 0, c == 0",PASS,,confirmed
+soltg,sanity,loop_if,solcmc,"loop_if(uint256,uint256)",test_positive_1(),positive,"y == 0, z == 0",PASS,,confirmed
+soltg,sanity,loop_if,solcmc,"loop_if(uint256,uint256)",test_positive_2(),positive,"y == 11, z == 0",PASS,,confirmed
+soltg,sanity,loop_if,solcmc,"loop_if(uint256,uint256)",test_positive_3(),positive,"y == 0, z == 11",PASS,,confirmed
+soltg,sanity,loop_if,yul2chc,"loop_if(uint256,uint256)",test_positive_1(),positive,"y == 11, z == 3",PASS,,confirmed
+soltg,sanity,loop_if,yul2chc,"loop_if(uint256,uint256)",test_positive_2(),positive,"y == 0, z == 11",PASS,,confirmed
+soltg,sanity,loop_if,yul2chc,"loop_if(uint256,uint256)",test_positive_3(),positive,"y == 0, z == 0",PASS,,confirmed
+soltg,sanity,many_fun,solcmc,f2(uint256),test_positive_1(),positive,a == 0,PASS,,confirmed
+soltg,sanity,many_fun,solcmc,f2(uint256),test_positive_2(),positive,a == 10,PASS,,confirmed
+soltg,sanity,many_fun,solcmc,f3(uint256),test_positive_3(),positive,a == 1,PASS,,confirmed
+soltg,sanity,many_fun,solcmc,f3(uint256),test_positive_4(),positive,a == 0,PASS,,confirmed
+soltg,sanity,many_fun,solcmc,f4(uint256),test_positive_5(),positive,a == 0,PASS,,confirmed
+soltg,sanity,many_fun,solcmc,f4(uint256),test_positive_6(),positive,a == 1,PASS,,confirmed
+soltg,sanity,many_fun,solcmc,f5(uint256),test_positive_7(),positive,a == 1,PASS,,confirmed
+soltg,sanity,many_fun,solcmc,f5(uint256),test_positive_8(),positive,a == 0,PASS,,confirmed
+soltg,sanity,overloading,solcmc,f(uint),test_positive_1(),positive,"a == 0, x == 1, y == 0",PASS,,confirmed
+soltg,sanity,overloading,solcmc,f(uint),test_positive_2(),positive,"a == 0, x == 0, y == 0",PASS,,confirmed
+soltg,sanity,overloading,solcmc,f(uint),test_positive_3(),positive,"a == 0, x == 0",PASS,,confirmed
+soltg,sanity,overloading,solcmc,f(uint),test_positive_4(),positive,"a == 0, x == 1",PASS,,confirmed
+soltg,sanity,seq_calls,solcmc,call_2(),test_positive_1(),positive,a == 0,PASS,,confirmed
+soltg,sanity,seq_calls,solcmc,call_1(),test_positive_2(),positive,a == 0,PASS,,confirmed
+soltg,sanity,seq_calls,yul2chc,call_1(),test_positive_1(),positive,a == 0,PASS,,confirmed
+soltg,sanity,simple_if,solcmc,simple_if(uint256),test_positive_1(),positive,a == 0,PASS,,confirmed
+soltg,sanity,simple_if,solcmc,simple_if(uint256),test_positive_2(),positive,a == 5,PASS,,confirmed
+soltg,sanity,simple_if,yul2chc,simple_if(uint256),test_positive_1(),positive,a == -1,FAIL,"revert: valore fuori dominio, la chiamata non si puo' scrivere: a: -1 fuori dal range di uint256",not confirmed: value out of the type
+soltg,sanity,simple_if,yul2chc,simple_if(uint256),test_positive_2(),positive,a == 5,PASS,,confirmed
+soltg,sanity,simple_if_2,solcmc,simple_if_2(uint256),test_positive_1(),positive,a == 1,PASS,,confirmed
+soltg,sanity,simple_if_2,solcmc,simple_if_2(uint256),test_positive_2(),positive,a == 0,PASS,,confirmed
+soltg,sanity,simple_if_2,solcmc,simple_if_2(uint256),test_positive_3(),positive,a == 5,PASS,,confirmed
+soltg,sanity,simple_if_2,yul2chc,simple_if_2(uint256),test_positive_1(),positive,a == 1,PASS,,confirmed
+soltg,sanity,simple_if_2,yul2chc,simple_if_2(uint256),test_positive_2(),positive,a == -1,FAIL,"revert: valore fuori dominio, la chiamata non si puo' scrivere: a: -1 fuori dal range di uint256",not confirmed: value out of the type
+soltg,sanity,simple_if_2,yul2chc,simple_if_2(uint256),test_positive_3(),positive,a == 5,PASS,,confirmed
+soltg,sanity,state_machine_1,solcmc,i(),test_positive_1(),positive,x == 0,PASS,,confirmed
+soltg,sanity,state_machine_1,solcmc,f(),test_positive_2(),positive,x == 0,PASS,,confirmed
+soltg,sanity,state_machine_1,solcmc,g(),test_positive_3(),positive,x == 0,PASS,,confirmed
+soltg,sanity,state_machine_1,solcmc,h(),test_positive_4(),positive,x == 0,PASS,,confirmed
+soltg,sanity,state_machine_1,solcmc,j(),test_positive_5(),positive,x == 0,PASS,,confirmed
+soltg,sanity,state_machine_1,yul2chc,i(),test_positive_1(),positive,x == 0,PASS,,confirmed
+smtchecker,control_flow,assignment_in_declaration,solcmc,f(),test_positive_1(),positive,,PASS,,confirmed
+smtchecker,control_flow,assignment_in_declaration,yul2chc,f(),test_positive_1(),positive,,PASS,,confirmed
+smtchecker,control_flow,branches_assert_condition_1,solcmc,f(uint),test_positive_1(),positive,x == 11,PASS,,confirmed
+smtchecker,control_flow,branches_assert_condition_1,solcmc,f(uint),test_positive_2(),positive,x == 0,PASS,,confirmed
+smtchecker,control_flow,branches_assert_condition_1,yul2chc,f(uint),test_positive_1(),positive,x == 11,PASS,,confirmed
+smtchecker,control_flow,branches_assert_condition_1,yul2chc,f(uint),test_positive_2(),positive,x == 0,PASS,,confirmed
+smtchecker,control_flow,branches_assert_condition_2,solcmc,f(uint),test_positive_1(),positive,x == 11,PASS,,confirmed
+smtchecker,control_flow,branches_assert_condition_2,solcmc,f(uint),test_positive_2(),positive,x == 3,PASS,,confirmed
+smtchecker,control_flow,branches_assert_condition_2,solcmc,f(uint),test_positive_3(),positive,x == 0,PASS,,confirmed
+smtchecker,control_flow,branches_assert_condition_2,yul2chc,f(uint),test_negative_3(),negative,x == -1,FAIL,"revert: valore fuori dominio, la chiamata non si puo' scrivere: x: -1 fuori dal range di uint256",not confirmed: value out of the type
+smtchecker,control_flow,branches_assert_condition_2,yul2chc,f(uint),test_positive_1(),positive,x == 11,PASS,,confirmed
+smtchecker,control_flow,branches_assert_condition_2,yul2chc,f(uint),test_positive_2(),positive,x == 3,PASS,,confirmed
+smtchecker,control_flow,branches_assert_condition_2,yul2chc,f(uint),test_positive_4(),positive,x == 0,PASS,,confirmed
+smtchecker,control_flow,branches_merge_variables_1,solcmc,f(uint),test_positive_1(),positive,x == 0,PASS,,confirmed
+smtchecker,control_flow,branches_merge_variables_1,solcmc,f(uint),test_positive_2(),positive,x == 11,PASS,,confirmed
+smtchecker,control_flow,branches_merge_variables_1,yul2chc,f(uint),test_positive_1(),positive,x == 11,PASS,,confirmed
+smtchecker,control_flow,branches_merge_variables_1,yul2chc,f(uint),test_positive_2(),positive,x == 0,PASS,,confirmed
+smtchecker,control_flow,branches_merge_variables_2,solcmc,f(uint),test_positive_1(),positive,x == 0,PASS,,confirmed
+smtchecker,control_flow,branches_merge_variables_2,solcmc,f(uint),test_positive_2(),positive,x == 11,PASS,,confirmed
+smtchecker,control_flow,branches_merge_variables_2,yul2chc,f(uint),test_positive_1(),positive,x == 11,PASS,,confirmed
+smtchecker,control_flow,branches_merge_variables_2,yul2chc,f(uint),test_positive_2(),positive,x == 0,PASS,,confirmed
+smtchecker,control_flow,branches_merge_variables_3,solcmc,f(uint),test_positive_1(),positive,x == 11,PASS,,confirmed
+smtchecker,control_flow,branches_merge_variables_3,solcmc,f(uint),test_positive_2(),positive,x == 0,PASS,,confirmed
+smtchecker,control_flow,branches_merge_variables_3,yul2chc,f(uint),test_positive_1(),positive,x == 11,PASS,,confirmed
+smtchecker,control_flow,branches_merge_variables_3,yul2chc,f(uint),test_positive_2(),positive,x == 0,PASS,,confirmed
+smtchecker,control_flow,branches_merge_variables_4,solcmc,f(uint),test_positive_1(),positive,x == 11,PASS,,confirmed
+smtchecker,control_flow,branches_merge_variables_4,solcmc,f(uint),test_positive_2(),positive,x == 0,PASS,,confirmed
+smtchecker,control_flow,branches_merge_variables_4,yul2chc,f(uint),test_positive_1(),positive,x == 11,PASS,,confirmed
+smtchecker,control_flow,branches_merge_variables_4,yul2chc,f(uint),test_positive_2(),positive,x == 0,PASS,,confirmed
+smtchecker,control_flow,branches_merge_variables_5,solcmc,f(uint),test_positive_1(),positive,x == 11,PASS,,confirmed
+smtchecker,control_flow,branches_merge_variables_5,solcmc,f(uint),test_positive_2(),positive,x == 0,PASS,,confirmed
+smtchecker,control_flow,branches_merge_variables_5,yul2chc,f(uint),test_positive_1(),positive,x == 11,PASS,,confirmed
+smtchecker,control_flow,branches_merge_variables_5,yul2chc,f(uint),test_positive_2(),positive,x == 0,PASS,,confirmed
+smtchecker,control_flow,branches_merge_variables_6,solcmc,f(uint),test_positive_1(),positive,x == 11,PASS,,confirmed
+smtchecker,control_flow,branches_merge_variables_6,solcmc,f(uint),test_positive_2(),positive,x == 0,PASS,,confirmed
+smtchecker,control_flow,branches_merge_variables_6,yul2chc,f(uint),test_positive_1(),positive,x == 11,PASS,,confirmed
+smtchecker,control_flow,branches_merge_variables_6,yul2chc,f(uint),test_positive_2(),positive,x == 0,PASS,,confirmed
+smtchecker,control_flow,return_1,solcmc,f(),test_positive_1(),positive,,PASS,,confirmed
+smtchecker,control_flow,return_2,solcmc,f(),test_positive_1(),positive,c == 0,PASS,,confirmed
+smtchecker,control_flow,short_circuit_and,solcmc,g(),test_positive_1(),positive,x == 0,PASS,,confirmed
+smtchecker,control_flow,short_circuit_and,solcmc,g(),test_positive_2(),positive,x == 0,PASS,,confirmed
+smtchecker,control_flow,short_circuit_and,yul2chc,g(),test_positive_1(),positive,x == 0,PASS,,confirmed
+smtchecker,control_flow,short_circuit_and_inside_branch,solcmc,g(),test_negative_1(),negative,x == 0,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,control_flow,short_circuit_and_inside_branch,yul2chc,g(),test_negative_1(),negative,x == 0,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,control_flow,short_circuit_and_need_both,solcmc,g(),test_positive_1(),positive,x == 0,PASS,,confirmed
+smtchecker,control_flow,short_circuit_and_need_both,yul2chc,g(),test_positive_1(),positive,x == 0,PASS,,confirmed
+smtchecker,control_flow,short_circuit_or,solcmc,g(),test_positive_1(),positive,x == 0,PASS,,confirmed
+smtchecker,control_flow,short_circuit_or,solcmc,g(),test_positive_2(),positive,x == 0,PASS,,confirmed
+smtchecker,control_flow,short_circuit_or,yul2chc,g(),test_positive_1(),positive,x == 0,PASS,,confirmed
+smtchecker,control_flow,short_circuit_or_inside_branch,solcmc,g(bool),test_negative_1(),negative,"x == 0, a == 0",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,control_flow,short_circuit_or_inside_branch,solcmc,g(bool),test_positive_2(),positive,"x == 0, a == 1",PASS,,confirmed
+smtchecker,control_flow,short_circuit_or_inside_branch,solcmc,g(bool),test_positive_3(),positive,"x == 0, a == 1",PASS,,confirmed
+smtchecker,control_flow,short_circuit_or_inside_branch,yul2chc,g(bool),test_negative_1(),negative,"a == false, x == 0",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,control_flow,short_circuit_or_inside_branch,yul2chc,g(bool),test_positive_2(),positive,"a == 2, x == 0",FAIL,"revert: valore fuori dominio, la chiamata non si puo' scrivere: a: 2 non e' un bool",not confirmed: value out of the type
+smtchecker,control_flow,short_circuit_or_need_both,solcmc,g(),test_positive_1(),positive,x == 0,PASS,,confirmed
+smtchecker,control_flow,short_circuit_or_need_both,yul2chc,g(),test_positive_1(),positive,x == 0,PASS,,confirmed
+smtchecker,control_flow,ways_to_merge_variables_1,solcmc,f(uint),test_negative_2(),negative,x == 11,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,control_flow,ways_to_merge_variables_1,solcmc,f(uint),test_positive_1(),positive,x == 0,PASS,,confirmed
+smtchecker,control_flow,ways_to_merge_variables_1,yul2chc,f(uint),test_negative_1(),negative,x == 11,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,control_flow,ways_to_merge_variables_1,yul2chc,f(uint),test_positive_2(),positive,x == 0,PASS,,confirmed
+smtchecker,control_flow,ways_to_merge_variables_2,solcmc,f(uint),test_negative_2(),negative,x == 11,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,control_flow,ways_to_merge_variables_2,solcmc,f(uint),test_positive_1(),positive,x == 0,PASS,,confirmed
+smtchecker,control_flow,ways_to_merge_variables_2,yul2chc,f(uint),test_negative_1(),negative,x == 11,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,control_flow,ways_to_merge_variables_2,yul2chc,f(uint),test_positive_2(),positive,x == 0,PASS,,confirmed
+smtchecker,control_flow,ways_to_merge_variables_3,solcmc,f(uint),test_negative_2(),negative,x == 11,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,control_flow,ways_to_merge_variables_3,solcmc,f(uint),test_positive_1(),positive,x == 0,PASS,,confirmed
+smtchecker,control_flow,ways_to_merge_variables_3,yul2chc,f(uint),test_negative_1(),negative,x == 11,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,control_flow,ways_to_merge_variables_3,yul2chc,f(uint),test_positive_2(),positive,x == 0,PASS,,confirmed
+smtchecker,control_flow_branches_with_return,nested_if,solcmc,"test(uint256,uint256)",test_negative_10(),negative,"a == 0, b == 2",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,control_flow_branches_with_return,nested_if,solcmc,"test(uint256,uint256)",test_positive_1(),positive,"a == 5, b == 0",PASS,,confirmed
+smtchecker,control_flow_branches_with_return,nested_if,solcmc,"test(uint256,uint256)",test_positive_2(),positive,"a == 5, b == 0",PASS,,confirmed
+smtchecker,control_flow_branches_with_return,nested_if,solcmc,"test(uint256,uint256)",test_positive_3(),positive,"a == 0, b == 0",PASS,,confirmed
+smtchecker,control_flow_branches_with_return,nested_if,solcmc,"test(uint256,uint256)",test_positive_4(),positive,"a == 0, b == 0",PASS,,confirmed
+smtchecker,control_flow_branches_with_return,nested_if,solcmc,"test(uint256,uint256)",test_positive_5(),positive,"a == 5, b == 0",PASS,,confirmed
+smtchecker,control_flow_branches_with_return,nested_if,solcmc,"test(uint256,uint256)",test_positive_6(),positive,"a == 5, b == 0",PASS,,confirmed
+smtchecker,control_flow_branches_with_return,nested_if,solcmc,"test(uint256,uint256)",test_positive_7(),positive,"a == 0, b == 0",PASS,,confirmed
+smtchecker,control_flow_branches_with_return,nested_if,solcmc,"test(uint256,uint256)",test_positive_8(),positive,"a == 0, b == 0",PASS,,confirmed
+smtchecker,control_flow_branches_with_return,nested_if,solcmc,"test(uint256,uint256)",test_positive_9(),positive,"a == 2, b == 0",PASS,,confirmed
+smtchecker,control_flow_branches_with_return,nested_if,yul2chc,"test(uint256,uint256)",test_negative_1(),negative,"a == 0, b == 2",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,control_flow_branches_with_return,nested_if,yul2chc,"test(uint256,uint256)",test_negative_12(),negative,"a == 0, b == 2",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,control_flow_branches_with_return,nested_if,yul2chc,"test(uint256,uint256)",test_negative_13(),negative,"a == 0, b == 2",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,control_flow_branches_with_return,nested_if,yul2chc,"test(uint256,uint256)",test_negative_14(),negative,"a == 2, b == 0",PASS,,not confirmed: no assertion fails
+smtchecker,control_flow_branches_with_return,nested_if,yul2chc,"test(uint256,uint256)",test_negative_15(),negative,"a == 0, b == 0",PASS,,not confirmed: no assertion fails
+smtchecker,control_flow_branches_with_return,nested_if,yul2chc,"test(uint256,uint256)",test_negative_16(),negative,"a == 5, b == 3",PASS,,not confirmed: no assertion fails
+smtchecker,control_flow_branches_with_return,nested_if,yul2chc,"test(uint256,uint256)",test_negative_17(),negative,"a == 0, b == 2",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,control_flow_branches_with_return,nested_if,yul2chc,"test(uint256,uint256)",test_negative_18(),negative,"a == 2, b == 0",PASS,,not confirmed: no assertion fails
+smtchecker,control_flow_branches_with_return,nested_if,yul2chc,"test(uint256,uint256)",test_negative_19(),negative,"a == 0, b == 0",PASS,,not confirmed: no assertion fails
+smtchecker,control_flow_branches_with_return,nested_if,yul2chc,"test(uint256,uint256)",test_negative_2(),negative,"a == 2, b == 0",PASS,,not confirmed: no assertion fails
+smtchecker,control_flow_branches_with_return,nested_if,yul2chc,"test(uint256,uint256)",test_negative_20(),negative,"a == 5, b == 3",PASS,,not confirmed: no assertion fails
+smtchecker,control_flow_branches_with_return,nested_if,yul2chc,"test(uint256,uint256)",test_negative_3(),negative,"a == 0, b == 0",PASS,,not confirmed: no assertion fails
+smtchecker,control_flow_branches_with_return,nested_if,yul2chc,"test(uint256,uint256)",test_negative_4(),negative,"a == 5, b == 3",PASS,,not confirmed: no assertion fails
+smtchecker,control_flow_branches_with_return,nested_if,yul2chc,"test(uint256,uint256)",test_negative_5(),negative,"a == 0, b == 2",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,control_flow_branches_with_return,nested_if,yul2chc,"test(uint256,uint256)",test_negative_6(),negative,"a == 2, b == 0",PASS,,not confirmed: no assertion fails
+smtchecker,control_flow_branches_with_return,nested_if,yul2chc,"test(uint256,uint256)",test_negative_7(),negative,"a == 0, b == 0",PASS,,not confirmed: no assertion fails
+smtchecker,control_flow_branches_with_return,nested_if,yul2chc,"test(uint256,uint256)",test_negative_8(),negative,"a == 5, b == 3",PASS,,not confirmed: no assertion fails
+smtchecker,control_flow_branches_with_return,nested_if,yul2chc,"test(uint256,uint256)",test_positive_10(),positive,"a == 0, b == 0",PASS,,confirmed
+smtchecker,control_flow_branches_with_return,nested_if,yul2chc,"test(uint256,uint256)",test_positive_11(),positive,"a == 5, b == 3",PASS,,confirmed
+smtchecker,control_flow_branches_with_return,nested_if,yul2chc,"test(uint256,uint256)",test_positive_21(),positive,"a == 2, b == 0",PASS,,confirmed
+smtchecker,control_flow_branches_with_return,nested_if,yul2chc,"test(uint256,uint256)",test_positive_22(),positive,"a == 0, b == 0",PASS,,confirmed
+smtchecker,control_flow_branches_with_return,nested_if,yul2chc,"test(uint256,uint256)",test_positive_23(),positive,"a == 5, b == 3",PASS,,confirmed
+smtchecker,control_flow_branches_with_return,nested_if,yul2chc,"test(uint256,uint256)",test_positive_9(),positive,"a == 2, b == 0",PASS,,confirmed
+smtchecker,control_flow_branches_with_return,return_in_both_branches,solcmc,test(),test_positive_1(),positive,,PASS,,confirmed
+smtchecker,control_flow_branches_with_return,return_in_both_branches,yul2chc,test(),test_negative_1(),negative,,PASS,,not confirmed: no assertion fails
+smtchecker,control_flow_branches_with_return,return_in_both_branches,yul2chc,test(),test_negative_3(),negative,,PASS,,not confirmed: no assertion fails
+smtchecker,control_flow_branches_with_return,return_in_both_branches,yul2chc,test(),test_positive_2(),positive,,PASS,,confirmed
+smtchecker,control_flow_branches_with_return,return_in_both_branches,yul2chc,test(),test_positive_4(),positive,,PASS,,confirmed
+smtchecker,control_flow_branches_with_return,simple_if2,solcmc,test(uint256),test_negative_2(),negative,a == 0,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,control_flow_branches_with_return,simple_if2,solcmc,test(uint256),test_positive_1(),positive,a == 1,PASS,,confirmed
+smtchecker,control_flow_branches_with_return,simple_if2,yul2chc,test(uint256),test_negative_1(),negative,a == 0,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,control_flow_branches_with_return,simple_if2,yul2chc,test(uint256),test_negative_2(),negative,a == 0,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,control_flow_branches_with_return,simple_if2,yul2chc,test(uint256),test_negative_4(),negative,a == 2,PASS,,not confirmed: no assertion fails
+smtchecker,control_flow_branches_with_return,simple_if2,yul2chc,test(uint256),test_positive_3(),positive,a == 2,PASS,,confirmed
+smtchecker,control_flow_branches_with_return,simple_if_state_var,solcmc,check(),test_negative_1(),negative,x == 0,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,control_flow_branches_with_return,simple_if_tuple,solcmc,check(),test_negative_1(),negative,"x == 0, y == 0",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,control_flow_branches_with_return,triple_nested_if,solcmc,test(),test_positive_1(),positive,"a == 0, b == 0, c == 0",PASS,,confirmed
+smtchecker,control_flow_branches_with_return,triple_nested_if,yul2chc,test(),test_positive_1(),positive,"a == 0, b == 0, c == 0",PASS,,confirmed
+smtchecker,file_level,constant_easy,solcmc,f(),test_negative_1(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,file_level,constant_easy,yul2chc,f(),test_negative_1(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,file_level,recursion,solcmc,f(),test_positive_1(),positive,,PASS,,confirmed
+smtchecker,file_level,recursion,yul2chc,f(),test_positive_1(),positive,,PASS,,confirmed
+smtchecker,functions,function_inside_branch_modify_state_var,solcmc,g(bool),test_negative_2(),negative,"x == 0, b == 1",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,functions,function_inside_branch_modify_state_var,solcmc,g(bool),test_positive_1(),positive,"x == 0, b == 0",PASS,,confirmed
+smtchecker,functions,function_inside_branch_modify_state_var,yul2chc,g(bool),test_negative_2(),negative,"b == true, x == 0",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,functions,function_inside_branch_modify_state_var,yul2chc,g(bool),test_positive_1(),positive,"b == false, x == 0",PASS,,confirmed
+smtchecker,functions,function_inside_branch_modify_state_var_2,solcmc,g(bool),test_positive_1(),positive,"x == 0, b == 1",PASS,,confirmed
+smtchecker,functions,function_inside_branch_modify_state_var_2,solcmc,g(bool),test_positive_2(),positive,"x == 0, b == 0",PASS,,confirmed
+smtchecker,functions,function_inside_branch_modify_state_var_2,yul2chc,g(bool),test_positive_1(),positive,"b == false, x == 0",PASS,,confirmed
+smtchecker,functions,function_inside_branch_modify_state_var_2,yul2chc,g(bool),test_positive_2(),positive,"b == 2, x == 0",FAIL,"revert: valore fuori dominio, la chiamata non si puo' scrivere: b: 2 non e' un bool",not confirmed: value out of the type
+smtchecker,functions,function_inside_branch_modify_state_var_3,solcmc,h(bool),test_negative_2(),negative,"x == 0, b == 0",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,functions,function_inside_branch_modify_state_var_3,solcmc,g(bool),test_negative_3(),negative,"x == 0, b == 1",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,functions,function_inside_branch_modify_state_var_3,solcmc,h(bool),test_positive_1(),positive,"x == 0, b == 1",PASS,,confirmed
+smtchecker,functions,function_inside_branch_modify_state_var_3,solcmc,g(bool),test_positive_4(),positive,"x == 0, b == 0",PASS,,confirmed
+smtchecker,functions,function_inside_branch_modify_state_var_3,yul2chc,g(bool),test_negative_2(),negative,"b == true, x == 0",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,functions,function_inside_branch_modify_state_var_3,yul2chc,g(bool),test_positive_1(),positive,"b == false, x == 0",PASS,,confirmed
+smtchecker,functions,functions_identifier_nested_tuple_1,solcmc,f(),test_positive_1(),positive,x == 0,PASS,,confirmed
+smtchecker,functions,functions_identity_1,solcmc,g(),test_positive_1(),positive,,PASS,,confirmed
+smtchecker,functions,functions_identity_1,yul2chc,g(),test_positive_1(),positive,,PASS,,confirmed
+smtchecker,functions,functions_identity_2,solcmc,g(),test_positive_1(),positive,,PASS,,confirmed
+smtchecker,functions,functions_identity_2,yul2chc,g(),test_positive_1(),positive,,PASS,,confirmed
+smtchecker,functions,functions_identity_as_tuple,solcmc,h(uint),test_positive_1(),positive,x == 0,PASS,,confirmed
+smtchecker,functions,functions_identity_as_tuple,solcmc,g(),test_positive_2(),positive,,PASS,,confirmed
+smtchecker,functions,functions_identity_as_tuple,yul2chc,g(),test_positive_1(),positive,,PASS,,confirmed
+smtchecker,functions,functions_identity_as_tuple_fail,solcmc,h(uint),test_positive_1(),positive,x == 0,PASS,,confirmed
+smtchecker,functions,functions_identity_as_tuple_fail,solcmc,g(),test_positive_2(),positive,,FAIL,panic: assertion failed (0x01),not confirmed: a real assertion fails
+smtchecker,functions,functions_identity_as_tuple_fail,yul2chc,g(),test_positive_1(),positive,,FAIL,panic: assertion failed (0x01),not confirmed: a real assertion fails
+smtchecker,functions,functions_storage_var_1,solcmc,g(),test_positive_1(),positive,a == 0,PASS,,confirmed
+smtchecker,functions,functions_storage_var_1,yul2chc,g(),test_positive_1(),positive,a == 0,PASS,,confirmed
+smtchecker,functions,functions_storage_var_1_fail,solcmc,g(),test_negative_1(),negative,a == 0,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,functions,functions_storage_var_1_fail,yul2chc,g(),test_negative_1(),negative,a == 0,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,functions,functions_storage_var_2,solcmc,g(),test_positive_1(),positive,a == 0,PASS,,confirmed
+smtchecker,functions,functions_storage_var_2,yul2chc,g(),test_positive_1(),positive,a == 0,PASS,,confirmed
+smtchecker,functions,functions_storage_var_2_fail,solcmc,g(),test_negative_1(),negative,a == 0,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,functions,functions_storage_var_2_fail,yul2chc,g(),test_negative_1(),negative,a == 0,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,functions,internal_call_with_assertion_1,solcmc,f(),test_positive_1(),positive,x == 1,PASS,,confirmed
+smtchecker,functions,internal_multiple_calls_with_assertion_1,solcmc,f(),test_positive_1(),positive,x == 1,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_1(),positive,x == 1,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_10(),positive,x == 10,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_11(),positive,x == 11,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_12(),positive,x == 12,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_13(),positive,x == 13,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_14(),positive,x == 14,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_15(),positive,x == 15,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_16(),positive,x == 16,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_17(),positive,x == 17,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_18(),positive,x == 18,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_19(),positive,x == 19,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_2(),positive,x == 2,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_20(),positive,x == 20,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_21(),positive,x == 21,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_22(),positive,x == 22,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_23(),positive,x == 23,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_24(),positive,x == 24,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_25(),positive,x == 25,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_26(),positive,x == 26,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_27(),positive,x == 27,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_28(),positive,x == 28,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_29(),positive,x == 29,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_3(),positive,x == 3,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_30(),positive,x == 30,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_31(),positive,x == 31,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_32(),positive,x == 32,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_33(),positive,x == 33,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_34(),positive,x == 34,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_35(),positive,x == 35,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_36(),positive,x == 36,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_37(),positive,x == 37,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_38(),positive,x == 38,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_39(),positive,x == 39,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_4(),positive,x == 4,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_40(),positive,x == 40,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_41(),positive,x == 41,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_42(),positive,x == 42,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_43(),positive,x == 43,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_44(),positive,x == 44,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_45(),positive,x == 45,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_5(),positive,x == 5,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_6(),positive,x == 6,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_7(),positive,x == 7,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_8(),positive,x == 8,PASS,,confirmed
+smtchecker,invariants,loop_basic,solcmc,f(uint),test_positive_9(),positive,x == 9,PASS,,confirmed
+smtchecker,invariants,loop_basic_for,solcmc,f(uint),test_positive_1(),positive,x == 0,PASS,,confirmed
+smtchecker,invariants,loop_basic_for,solcmc,f(uint),test_positive_10(),positive,x == 9,PASS,,confirmed
+smtchecker,invariants,loop_basic_for,solcmc,f(uint),test_positive_11(),positive,x == 10,PASS,,confirmed
+smtchecker,invariants,loop_basic_for,solcmc,f(uint),test_positive_12(),positive,x == 11,PASS,,confirmed
+smtchecker,invariants,loop_basic_for,solcmc,f(uint),test_positive_13(),positive,x == 12,PASS,,confirmed
+smtchecker,invariants,loop_basic_for,solcmc,f(uint),test_positive_14(),positive,x == 13,PASS,,confirmed
+smtchecker,invariants,loop_basic_for,solcmc,f(uint),test_positive_15(),positive,x == 14,PASS,,confirmed
+smtchecker,invariants,loop_basic_for,solcmc,f(uint),test_positive_16(),positive,x == 15,PASS,,confirmed
+smtchecker,invariants,loop_basic_for,solcmc,f(uint),test_positive_17(),positive,x == 16,PASS,,confirmed
+smtchecker,invariants,loop_basic_for,solcmc,f(uint),test_positive_18(),positive,x == 17,PASS,,confirmed
+smtchecker,invariants,loop_basic_for,solcmc,f(uint),test_positive_19(),positive,x == 18,PASS,,confirmed
+smtchecker,invariants,loop_basic_for,solcmc,f(uint),test_positive_2(),positive,x == 1,PASS,,confirmed
+smtchecker,invariants,loop_basic_for,solcmc,f(uint),test_positive_20(),positive,x == 19,PASS,,confirmed
+smtchecker,invariants,loop_basic_for,solcmc,f(uint),test_positive_21(),positive,x == 20,PASS,,confirmed
+smtchecker,invariants,loop_basic_for,solcmc,f(uint),test_positive_22(),positive,x == 21,PASS,,confirmed
+smtchecker,invariants,loop_basic_for,solcmc,f(uint),test_positive_23(),positive,x == 22,PASS,,confirmed
+smtchecker,invariants,loop_basic_for,solcmc,f(uint),test_positive_24(),positive,x == 23,PASS,,confirmed
+smtchecker,invariants,loop_basic_for,solcmc,f(uint),test_positive_25(),positive,x == 24,PASS,,confirmed
+smtchecker,invariants,loop_basic_for,solcmc,f(uint),test_positive_26(),positive,x == 25,PASS,,confirmed
+smtchecker,invariants,loop_basic_for,solcmc,f(uint),test_positive_27(),positive,x == 26,PASS,,confirmed
+smtchecker,invariants,loop_basic_for,solcmc,f(uint),test_positive_28(),positive,x == 27,PASS,,confirmed
+smtchecker,invariants,loop_basic_for,solcmc,f(uint),test_positive_29(),positive,x == 28,PASS,,confirmed
+smtchecker,invariants,loop_basic_for,solcmc,f(uint),test_positive_3(),positive,x == 2,PASS,,confirmed
+smtchecker,invariants,loop_basic_for,solcmc,f(uint),test_positive_30(),positive,x == 29,PASS,,confirmed
+smtchecker,invariants,loop_basic_for,solcmc,f(uint),test_positive_31(),positive,x == 30,PASS,,confirmed
+smtchecker,invariants,loop_basic_for,solcmc,f(uint),test_positive_4(),positive,x == 3,PASS,,confirmed
+smtchecker,invariants,loop_basic_for,solcmc,f(uint),test_positive_5(),positive,x == 4,PASS,,confirmed
+smtchecker,invariants,loop_basic_for,solcmc,f(uint),test_positive_6(),positive,x == 5,PASS,,confirmed
+smtchecker,invariants,loop_basic_for,solcmc,f(uint),test_positive_7(),positive,x == 6,PASS,,confirmed
+smtchecker,invariants,loop_basic_for,solcmc,f(uint),test_positive_8(),positive,x == 7,PASS,,confirmed
+smtchecker,invariants,loop_basic_for,solcmc,f(uint),test_positive_9(),positive,x == 8,PASS,,confirmed
+smtchecker,invariants,state_machine_1,solcmc,i(),test_positive_1(),positive,x == 0,PASS,,confirmed
+smtchecker,invariants,state_machine_1,solcmc,f(),test_positive_2(),positive,x == 0,PASS,,confirmed
+smtchecker,invariants,state_machine_1,solcmc,g(),test_positive_3(),positive,x == 0,PASS,,confirmed
+smtchecker,invariants,state_machine_1,solcmc,h(),test_positive_4(),positive,x == 0,PASS,,confirmed
+smtchecker,invariants,state_machine_1,solcmc,j(),test_positive_5(),positive,x == 0,PASS,,confirmed
+smtchecker,invariants,state_machine_1,yul2chc,i(),test_positive_1(),positive,x == 0,PASS,,confirmed
+smtchecker,loops,do_while_1_fail,solcmc,f(uint),test_negative_11(),negative,x == 13,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,do_while_1_fail,solcmc,f(uint),test_positive_1(),positive,x == 9,PASS,,confirmed
+smtchecker,loops,do_while_1_fail,solcmc,f(uint),test_positive_10(),positive,x == 0,PASS,,confirmed
+smtchecker,loops,do_while_1_fail,solcmc,f(uint),test_positive_2(),positive,x == 8,PASS,,confirmed
+smtchecker,loops,do_while_1_fail,solcmc,f(uint),test_positive_3(),positive,x == 7,PASS,,confirmed
+smtchecker,loops,do_while_1_fail,solcmc,f(uint),test_positive_4(),positive,x == 6,PASS,,confirmed
+smtchecker,loops,do_while_1_fail,solcmc,f(uint),test_positive_5(),positive,x == 5,PASS,,confirmed
+smtchecker,loops,do_while_1_fail,solcmc,f(uint),test_positive_6(),positive,x == 4,PASS,,confirmed
+smtchecker,loops,do_while_1_fail,solcmc,f(uint),test_positive_7(),positive,x == 3,PASS,,confirmed
+smtchecker,loops,do_while_1_fail,solcmc,f(uint),test_positive_8(),positive,x == 2,PASS,,confirmed
+smtchecker,loops,do_while_1_fail,solcmc,f(uint),test_positive_9(),positive,x == 1,PASS,,confirmed
+smtchecker,loops,do_while_break,solcmc,f(),test_positive_1(),positive,,PASS,,confirmed
+smtchecker,loops,do_while_break_2,solcmc,f(),test_positive_1(),positive,,PASS,,confirmed
+smtchecker,loops,do_while_break_2,yul2chc,f(),test_positive_1(),positive,,PASS,,confirmed
+smtchecker,loops,do_while_break_2_fail,solcmc,f(),test_negative_1(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,do_while_break_2_fail,yul2chc,f(),test_negative_1(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,do_while_break_fail,solcmc,f(),test_negative_1(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,for_1_break,solcmc,"f(uint,bool)",test_positive_1(),positive,"x == 9, b == 1",PASS,,confirmed
+smtchecker,loops,for_1_break,solcmc,"f(uint,bool)",test_positive_10(),positive,"x == 0, b == 1",PASS,,confirmed
+smtchecker,loops,for_1_break,solcmc,"f(uint,bool)",test_positive_11(),positive,"x == 0, b == 0",PASS,,confirmed
+smtchecker,loops,for_1_break,solcmc,"f(uint,bool)",test_positive_2(),positive,"x == 8, b == 1",PASS,,confirmed
+smtchecker,loops,for_1_break,solcmc,"f(uint,bool)",test_positive_3(),positive,"x == 7, b == 1",PASS,,confirmed
+smtchecker,loops,for_1_break,solcmc,"f(uint,bool)",test_positive_4(),positive,"x == 6, b == 1",PASS,,confirmed
+smtchecker,loops,for_1_break,solcmc,"f(uint,bool)",test_positive_5(),positive,"x == 5, b == 1",PASS,,confirmed
+smtchecker,loops,for_1_break,solcmc,"f(uint,bool)",test_positive_6(),positive,"x == 4, b == 1",PASS,,confirmed
+smtchecker,loops,for_1_break,solcmc,"f(uint,bool)",test_positive_7(),positive,"x == 3, b == 1",PASS,,confirmed
+smtchecker,loops,for_1_break,solcmc,"f(uint,bool)",test_positive_8(),positive,"x == 2, b == 1",PASS,,confirmed
+smtchecker,loops,for_1_break,solcmc,"f(uint,bool)",test_positive_9(),positive,"x == 1, b == 1",PASS,,confirmed
+smtchecker,loops,for_1_break_fail,solcmc,"f(uint,bool)",test_negative_13(),negative,"x == 0, b == 0",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,for_1_break_fail,solcmc,"f(uint,bool)",test_positive_1(),positive,"x == 10, b == 1",PASS,,confirmed
+smtchecker,loops,for_1_break_fail,solcmc,"f(uint,bool)",test_positive_10(),positive,"x == 1, b == 1",PASS,,confirmed
+smtchecker,loops,for_1_break_fail,solcmc,"f(uint,bool)",test_positive_11(),positive,"x == 0, b == 1",PASS,,confirmed
+smtchecker,loops,for_1_break_fail,solcmc,"f(uint,bool)",test_positive_12(),positive,"x == 10, b == 0",PASS,,confirmed
+smtchecker,loops,for_1_break_fail,solcmc,"f(uint,bool)",test_positive_2(),positive,"x == 9, b == 1",PASS,,confirmed
+smtchecker,loops,for_1_break_fail,solcmc,"f(uint,bool)",test_positive_3(),positive,"x == 8, b == 1",PASS,,confirmed
+smtchecker,loops,for_1_break_fail,solcmc,"f(uint,bool)",test_positive_4(),positive,"x == 7, b == 1",PASS,,confirmed
+smtchecker,loops,for_1_break_fail,solcmc,"f(uint,bool)",test_positive_5(),positive,"x == 6, b == 1",PASS,,confirmed
+smtchecker,loops,for_1_break_fail,solcmc,"f(uint,bool)",test_positive_6(),positive,"x == 5, b == 1",PASS,,confirmed
+smtchecker,loops,for_1_break_fail,solcmc,"f(uint,bool)",test_positive_7(),positive,"x == 4, b == 1",PASS,,confirmed
+smtchecker,loops,for_1_break_fail,solcmc,"f(uint,bool)",test_positive_8(),positive,"x == 3, b == 1",PASS,,confirmed
+smtchecker,loops,for_1_break_fail,solcmc,"f(uint,bool)",test_positive_9(),positive,"x == 2, b == 1",PASS,,confirmed
+smtchecker,loops,for_1_break_fail,yul2chc,"f(uint,bool)",test_negative_1(),negative,"x == 0, b == false",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,for_1_continue,solcmc,"f(uint,bool)",test_positive_1(),positive,"x == 0, b == 1",PASS,,confirmed
+smtchecker,loops,for_1_continue,solcmc,"f(uint,bool)",test_positive_10(),positive,"x == 1, b == 0",PASS,,confirmed
+smtchecker,loops,for_1_continue,solcmc,"f(uint,bool)",test_positive_11(),positive,"x == 0, b == 0",PASS,,confirmed
+smtchecker,loops,for_1_continue,solcmc,"f(uint,bool)",test_positive_2(),positive,"x == 9, b == 0",PASS,,confirmed
+smtchecker,loops,for_1_continue,solcmc,"f(uint,bool)",test_positive_3(),positive,"x == 8, b == 0",PASS,,confirmed
+smtchecker,loops,for_1_continue,solcmc,"f(uint,bool)",test_positive_4(),positive,"x == 7, b == 0",PASS,,confirmed
+smtchecker,loops,for_1_continue,solcmc,"f(uint,bool)",test_positive_5(),positive,"x == 6, b == 0",PASS,,confirmed
+smtchecker,loops,for_1_continue,solcmc,"f(uint,bool)",test_positive_6(),positive,"x == 5, b == 0",PASS,,confirmed
+smtchecker,loops,for_1_continue,solcmc,"f(uint,bool)",test_positive_7(),positive,"x == 4, b == 0",PASS,,confirmed
+smtchecker,loops,for_1_continue,solcmc,"f(uint,bool)",test_positive_8(),positive,"x == 3, b == 0",PASS,,confirmed
+smtchecker,loops,for_1_continue,solcmc,"f(uint,bool)",test_positive_9(),positive,"x == 2, b == 0",PASS,,confirmed
+smtchecker,loops,for_1_continue_fail,solcmc,"f(uint,bool)",test_negative_1(),negative,"x == 9, b == 1",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,for_1_continue_fail,solcmc,"f(uint,bool)",test_negative_10(),negative,"x == 0, b == 1",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,for_1_continue_fail,solcmc,"f(uint,bool)",test_negative_11(),negative,"x == 9, b == 0",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,for_1_continue_fail,solcmc,"f(uint,bool)",test_negative_12(),negative,"x == 8, b == 0",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,for_1_continue_fail,solcmc,"f(uint,bool)",test_negative_13(),negative,"x == 7, b == 0",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,for_1_continue_fail,solcmc,"f(uint,bool)",test_negative_14(),negative,"x == 6, b == 0",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,for_1_continue_fail,solcmc,"f(uint,bool)",test_negative_15(),negative,"x == 5, b == 0",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,for_1_continue_fail,solcmc,"f(uint,bool)",test_negative_16(),negative,"x == 4, b == 0",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,for_1_continue_fail,solcmc,"f(uint,bool)",test_negative_17(),negative,"x == 3, b == 0",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,for_1_continue_fail,solcmc,"f(uint,bool)",test_negative_18(),negative,"x == 2, b == 0",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,for_1_continue_fail,solcmc,"f(uint,bool)",test_negative_19(),negative,"x == 1, b == 0",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,for_1_continue_fail,solcmc,"f(uint,bool)",test_negative_2(),negative,"x == 8, b == 1",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,for_1_continue_fail,solcmc,"f(uint,bool)",test_negative_20(),negative,"x == 0, b == 0",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,for_1_continue_fail,solcmc,"f(uint,bool)",test_negative_3(),negative,"x == 7, b == 1",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,for_1_continue_fail,solcmc,"f(uint,bool)",test_negative_4(),negative,"x == 6, b == 1",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,for_1_continue_fail,solcmc,"f(uint,bool)",test_negative_5(),negative,"x == 5, b == 1",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,for_1_continue_fail,solcmc,"f(uint,bool)",test_negative_6(),negative,"x == 4, b == 1",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,for_1_continue_fail,solcmc,"f(uint,bool)",test_negative_7(),negative,"x == 3, b == 1",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,for_1_continue_fail,solcmc,"f(uint,bool)",test_negative_8(),negative,"x == 2, b == 1",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,for_1_continue_fail,solcmc,"f(uint,bool)",test_negative_9(),negative,"x == 1, b == 1",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,for_break_direct,solcmc,f(uint),test_positive_1(),positive,x == 0,PASS,,confirmed
+smtchecker,loops,for_loop_2,solcmc,f(uint),test_positive_1(),positive,x == 0,PASS,,confirmed
+smtchecker,loops,for_loop_3,solcmc,f(uint),test_positive_1(),positive,x == 10,PASS,,confirmed
+smtchecker,loops,for_loop_4,solcmc,f(uint),test_negative_2(),negative,x == 0,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,for_loop_4,solcmc,f(uint),test_positive_1(),positive,x == 10,PASS,,confirmed
+smtchecker,loops,for_loop_4,yul2chc,f(uint),test_negative_1(),negative,x == 0,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,for_loop_4,yul2chc,f(uint),test_positive_2(),positive,x == 10,PASS,,confirmed
+smtchecker,loops,for_loop_5,solcmc,f(uint),test_negative_1(),negative,x == 10,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,for_loop_6,solcmc,f(uint),test_positive_1(),positive,x == 10,PASS,,confirmed
+smtchecker,loops,while_1,solcmc,"f(uint,bool)",test_positive_1(),positive,"x == 10, b == 1",PASS,,confirmed
+smtchecker,loops,while_1,solcmc,"f(uint,bool)",test_positive_10(),positive,"x == 1, b == 1",PASS,,confirmed
+smtchecker,loops,while_1,solcmc,"f(uint,bool)",test_positive_11(),positive,"x == 0, b == 1",PASS,,confirmed
+smtchecker,loops,while_1,solcmc,"f(uint,bool)",test_positive_12(),positive,"x == 10, b == 0",PASS,,confirmed
+smtchecker,loops,while_1,solcmc,"f(uint,bool)",test_positive_2(),positive,"x == 9, b == 1",PASS,,confirmed
+smtchecker,loops,while_1,solcmc,"f(uint,bool)",test_positive_3(),positive,"x == 8, b == 1",PASS,,confirmed
+smtchecker,loops,while_1,solcmc,"f(uint,bool)",test_positive_4(),positive,"x == 7, b == 1",PASS,,confirmed
+smtchecker,loops,while_1,solcmc,"f(uint,bool)",test_positive_5(),positive,"x == 6, b == 1",PASS,,confirmed
+smtchecker,loops,while_1,solcmc,"f(uint,bool)",test_positive_6(),positive,"x == 5, b == 1",PASS,,confirmed
+smtchecker,loops,while_1,solcmc,"f(uint,bool)",test_positive_7(),positive,"x == 4, b == 1",PASS,,confirmed
+smtchecker,loops,while_1,solcmc,"f(uint,bool)",test_positive_8(),positive,"x == 3, b == 1",PASS,,confirmed
+smtchecker,loops,while_1,solcmc,"f(uint,bool)",test_positive_9(),positive,"x == 2, b == 1",PASS,,confirmed
+smtchecker,loops,while_1_break,solcmc,"f(uint,bool)",test_positive_1(),positive,"x == 9, b == 1",PASS,,confirmed
+smtchecker,loops,while_1_break,solcmc,"f(uint,bool)",test_positive_10(),positive,"x == 0, b == 1",PASS,,confirmed
+smtchecker,loops,while_1_break,solcmc,"f(uint,bool)",test_positive_11(),positive,"x == 0, b == 0",PASS,,confirmed
+smtchecker,loops,while_1_break,solcmc,"f(uint,bool)",test_positive_2(),positive,"x == 8, b == 1",PASS,,confirmed
+smtchecker,loops,while_1_break,solcmc,"f(uint,bool)",test_positive_3(),positive,"x == 7, b == 1",PASS,,confirmed
+smtchecker,loops,while_1_break,solcmc,"f(uint,bool)",test_positive_4(),positive,"x == 6, b == 1",PASS,,confirmed
+smtchecker,loops,while_1_break,solcmc,"f(uint,bool)",test_positive_5(),positive,"x == 5, b == 1",PASS,,confirmed
+smtchecker,loops,while_1_break,solcmc,"f(uint,bool)",test_positive_6(),positive,"x == 4, b == 1",PASS,,confirmed
+smtchecker,loops,while_1_break,solcmc,"f(uint,bool)",test_positive_7(),positive,"x == 3, b == 1",PASS,,confirmed
+smtchecker,loops,while_1_break,solcmc,"f(uint,bool)",test_positive_8(),positive,"x == 2, b == 1",PASS,,confirmed
+smtchecker,loops,while_1_break,solcmc,"f(uint,bool)",test_positive_9(),positive,"x == 1, b == 1",PASS,,confirmed
+smtchecker,loops,while_1_break_fail,solcmc,"f(uint,bool)",test_negative_11(),negative,"x == 0, b == 0",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,while_1_break_fail,solcmc,"f(uint,bool)",test_positive_1(),positive,"x == 9, b == 1",PASS,,confirmed
+smtchecker,loops,while_1_break_fail,solcmc,"f(uint,bool)",test_positive_10(),positive,"x == 0, b == 1",PASS,,confirmed
+smtchecker,loops,while_1_break_fail,solcmc,"f(uint,bool)",test_positive_2(),positive,"x == 8, b == 1",PASS,,confirmed
+smtchecker,loops,while_1_break_fail,solcmc,"f(uint,bool)",test_positive_3(),positive,"x == 7, b == 1",PASS,,confirmed
+smtchecker,loops,while_1_break_fail,solcmc,"f(uint,bool)",test_positive_4(),positive,"x == 6, b == 1",PASS,,confirmed
+smtchecker,loops,while_1_break_fail,solcmc,"f(uint,bool)",test_positive_5(),positive,"x == 5, b == 1",PASS,,confirmed
+smtchecker,loops,while_1_break_fail,solcmc,"f(uint,bool)",test_positive_6(),positive,"x == 4, b == 1",PASS,,confirmed
+smtchecker,loops,while_1_break_fail,solcmc,"f(uint,bool)",test_positive_7(),positive,"x == 3, b == 1",PASS,,confirmed
+smtchecker,loops,while_1_break_fail,solcmc,"f(uint,bool)",test_positive_8(),positive,"x == 2, b == 1",PASS,,confirmed
+smtchecker,loops,while_1_break_fail,solcmc,"f(uint,bool)",test_positive_9(),positive,"x == 1, b == 1",PASS,,confirmed
+smtchecker,loops,while_1_continue,solcmc,"f(uint,bool)",test_positive_1(),positive,"x == 0, b == 1",PASS,,confirmed
+smtchecker,loops,while_1_continue,solcmc,"f(uint,bool)",test_positive_10(),positive,"x == 1, b == 0",PASS,,confirmed
+smtchecker,loops,while_1_continue,solcmc,"f(uint,bool)",test_positive_11(),positive,"x == 0, b == 0",PASS,,confirmed
+smtchecker,loops,while_1_continue,solcmc,"f(uint,bool)",test_positive_2(),positive,"x == 9, b == 0",PASS,,confirmed
+smtchecker,loops,while_1_continue,solcmc,"f(uint,bool)",test_positive_3(),positive,"x == 8, b == 0",PASS,,confirmed
+smtchecker,loops,while_1_continue,solcmc,"f(uint,bool)",test_positive_4(),positive,"x == 7, b == 0",PASS,,confirmed
+smtchecker,loops,while_1_continue,solcmc,"f(uint,bool)",test_positive_5(),positive,"x == 6, b == 0",PASS,,confirmed
+smtchecker,loops,while_1_continue,solcmc,"f(uint,bool)",test_positive_6(),positive,"x == 5, b == 0",PASS,,confirmed
+smtchecker,loops,while_1_continue,solcmc,"f(uint,bool)",test_positive_7(),positive,"x == 4, b == 0",PASS,,confirmed
+smtchecker,loops,while_1_continue,solcmc,"f(uint,bool)",test_positive_8(),positive,"x == 3, b == 0",PASS,,confirmed
+smtchecker,loops,while_1_continue,solcmc,"f(uint,bool)",test_positive_9(),positive,"x == 2, b == 0",PASS,,confirmed
+smtchecker,loops,while_1_continue_fail,solcmc,"f(uint,bool)",test_negative_4(),negative,"x == 10, b == 1",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,while_1_continue_fail,solcmc,"f(uint,bool)",test_negative_5(),negative,"x == 0, b == 1",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,while_1_continue_fail,solcmc,"f(uint,bool)",test_negative_6(),negative,"x == 10, b == 0",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,while_1_continue_fail,solcmc,"f(uint,bool)",test_positive_1(),positive,"x == 17, b == 1",PASS,,confirmed
+smtchecker,loops,while_1_continue_fail,solcmc,"f(uint,bool)",test_positive_2(),positive,"x == 17, b == 0",PASS,,confirmed
+smtchecker,loops,while_1_continue_fail,solcmc,"f(uint,bool)",test_positive_3(),positive,"x == 0, b == 0",PASS,,confirmed
+smtchecker,loops,while_1_continue_fail,yul2chc,"f(uint,bool)",test_negative_1(),negative,"x == 10, b == 2",FAIL,"revert: valore fuori dominio, la chiamata non si puo' scrivere: b: 2 non e' un bool",not confirmed: value out of the type
+smtchecker,loops,while_1_continue_fail,yul2chc,"f(uint,bool)",test_positive_2(),positive,"x == 17, b == 2",FAIL,"revert: valore fuori dominio, la chiamata non si puo' scrivere: b: 2 non e' un bool",not confirmed: value out of the type
+smtchecker,loops,while_1_fail,solcmc,f(uint),test_negative_12(),negative,x == 14,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,while_1_fail,solcmc,f(uint),test_positive_1(),positive,x == 10,PASS,,confirmed
+smtchecker,loops,while_1_fail,solcmc,f(uint),test_positive_10(),positive,x == 1,PASS,,confirmed
+smtchecker,loops,while_1_fail,solcmc,f(uint),test_positive_11(),positive,x == 0,PASS,,confirmed
+smtchecker,loops,while_1_fail,solcmc,f(uint),test_positive_2(),positive,x == 9,PASS,,confirmed
+smtchecker,loops,while_1_fail,solcmc,f(uint),test_positive_3(),positive,x == 8,PASS,,confirmed
+smtchecker,loops,while_1_fail,solcmc,f(uint),test_positive_4(),positive,x == 7,PASS,,confirmed
+smtchecker,loops,while_1_fail,solcmc,f(uint),test_positive_5(),positive,x == 6,PASS,,confirmed
+smtchecker,loops,while_1_fail,solcmc,f(uint),test_positive_6(),positive,x == 5,PASS,,confirmed
+smtchecker,loops,while_1_fail,solcmc,f(uint),test_positive_7(),positive,x == 4,PASS,,confirmed
+smtchecker,loops,while_1_fail,solcmc,f(uint),test_positive_8(),positive,x == 3,PASS,,confirmed
+smtchecker,loops,while_1_fail,solcmc,f(uint),test_positive_9(),positive,x == 2,PASS,,confirmed
+smtchecker,loops,while_1_infinite,solcmc,"f(uint,bool)",test_positive_1(),positive,"x == 10, b == 1",PASS,,confirmed
+smtchecker,loops,while_1_infinite,solcmc,"f(uint,bool)",test_positive_10(),positive,"x == 1, b == 1",PASS,,confirmed
+smtchecker,loops,while_1_infinite,solcmc,"f(uint,bool)",test_positive_11(),positive,"x == 0, b == 1",PASS,,confirmed
+smtchecker,loops,while_1_infinite,solcmc,"f(uint,bool)",test_positive_12(),positive,"x == 10, b == 0",PASS,,confirmed
+smtchecker,loops,while_1_infinite,solcmc,"f(uint,bool)",test_positive_2(),positive,"x == 9, b == 1",PASS,,confirmed
+smtchecker,loops,while_1_infinite,solcmc,"f(uint,bool)",test_positive_3(),positive,"x == 8, b == 1",PASS,,confirmed
+smtchecker,loops,while_1_infinite,solcmc,"f(uint,bool)",test_positive_4(),positive,"x == 7, b == 1",PASS,,confirmed
+smtchecker,loops,while_1_infinite,solcmc,"f(uint,bool)",test_positive_5(),positive,"x == 6, b == 1",PASS,,confirmed
+smtchecker,loops,while_1_infinite,solcmc,"f(uint,bool)",test_positive_6(),positive,"x == 5, b == 1",PASS,,confirmed
+smtchecker,loops,while_1_infinite,solcmc,"f(uint,bool)",test_positive_7(),positive,"x == 4, b == 1",PASS,,confirmed
+smtchecker,loops,while_1_infinite,solcmc,"f(uint,bool)",test_positive_8(),positive,"x == 3, b == 1",PASS,,confirmed
+smtchecker,loops,while_1_infinite,solcmc,"f(uint,bool)",test_positive_9(),positive,"x == 2, b == 1",PASS,,confirmed
+smtchecker,loops,while_2,solcmc,f(uint),test_positive_1(),positive,x == 0,PASS,,confirmed
+smtchecker,loops,while_2,yul2chc,f(uint),test_positive_1(),positive,x == 3,PASS,,confirmed
+smtchecker,loops,while_2_break,solcmc,f(),test_positive_1(),positive,,PASS,,confirmed
+smtchecker,loops,while_break_direct,solcmc,f(uint),test_positive_1(),positive,x == 0,PASS,,confirmed
+smtchecker,loops,while_break_direct,yul2chc,f(uint),test_positive_1(),positive,x == 2,PASS,,confirmed
+smtchecker,loops,while_loop_simple_2,solcmc,f(uint),test_positive_1(),positive,x == 0,PASS,,confirmed
+smtchecker,loops,while_loop_simple_4,solcmc,f(uint),test_positive_1(),positive,x == 3,PASS,,confirmed
+smtchecker,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_1(),positive,"x == 9, y == 0, b == 1, c == 1",PASS,,confirmed
+smtchecker,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_10(),positive,"x == 0, y == 0, b == 1, c == 1",PASS,,confirmed
+smtchecker,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_11(),positive,"x == 9, y == 0, b == 1, c == 0",PASS,,confirmed
+smtchecker,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_12(),positive,"x == 8, y == 0, b == 1, c == 0",PASS,,confirmed
+smtchecker,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_13(),positive,"x == 7, y == 0, b == 1, c == 0",PASS,,confirmed
+smtchecker,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_14(),positive,"x == 6, y == 0, b == 1, c == 0",PASS,,confirmed
+smtchecker,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_15(),positive,"x == 5, y == 0, b == 1, c == 0",PASS,,confirmed
+smtchecker,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_16(),positive,"x == 4, y == 0, b == 1, c == 0",PASS,,confirmed
+smtchecker,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_17(),positive,"x == 3, y == 0, b == 1, c == 0",PASS,,confirmed
+smtchecker,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_18(),positive,"x == 2, y == 0, b == 1, c == 0",PASS,,confirmed
+smtchecker,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_19(),positive,"x == 1, y == 0, b == 1, c == 0",PASS,,confirmed
+smtchecker,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_2(),positive,"x == 8, y == 0, b == 1, c == 1",PASS,,confirmed
+smtchecker,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_20(),positive,"x == 0, y == 0, b == 1, c == 0",PASS,,confirmed
+smtchecker,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_21(),positive,"x == 0, y == 9, b == 0, c == 1",PASS,,confirmed
+smtchecker,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_22(),positive,"x == 0, y == 8, b == 0, c == 1",PASS,,confirmed
+smtchecker,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_23(),positive,"x == 0, y == 7, b == 0, c == 1",PASS,,confirmed
+smtchecker,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_24(),positive,"x == 0, y == 6, b == 0, c == 1",PASS,,confirmed
+smtchecker,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_25(),positive,"x == 0, y == 5, b == 0, c == 1",PASS,,confirmed
+smtchecker,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_26(),positive,"x == 0, y == 4, b == 0, c == 1",PASS,,confirmed
+smtchecker,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_27(),positive,"x == 0, y == 3, b == 0, c == 1",PASS,,confirmed
+smtchecker,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_28(),positive,"x == 0, y == 2, b == 0, c == 1",PASS,,confirmed
+smtchecker,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_29(),positive,"x == 0, y == 1, b == 0, c == 1",PASS,,confirmed
+smtchecker,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_3(),positive,"x == 7, y == 0, b == 1, c == 1",PASS,,confirmed
+smtchecker,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_30(),positive,"x == 0, y == 0, b == 0, c == 1",PASS,,confirmed
+smtchecker,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_31(),positive,"x == 0, y == 0, b == 0, c == 0",PASS,,confirmed
+smtchecker,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_4(),positive,"x == 6, y == 0, b == 1, c == 1",PASS,,confirmed
+smtchecker,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_5(),positive,"x == 5, y == 0, b == 1, c == 1",PASS,,confirmed
+smtchecker,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_6(),positive,"x == 4, y == 0, b == 1, c == 1",PASS,,confirmed
+smtchecker,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_7(),positive,"x == 3, y == 0, b == 1, c == 1",PASS,,confirmed
+smtchecker,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_8(),positive,"x == 2, y == 0, b == 1, c == 1",PASS,,confirmed
+smtchecker,loops,while_nested_break,solcmc,"f(uint,uint,bool,bool)",test_positive_9(),positive,"x == 1, y == 0, b == 1, c == 1",PASS,,confirmed
+smtchecker,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_1(),negative,"x == 0, y == 9, b == 0, c == 1",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_10(),negative,"x == 0, y == 0, b == 0, c == 1",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_11(),negative,"x == 9, y == 0, b == 1, c == 1",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_12(),negative,"x == 8, y == 0, b == 1, c == 1",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_13(),negative,"x == 7, y == 0, b == 1, c == 1",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_14(),negative,"x == 6, y == 0, b == 1, c == 1",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_15(),negative,"x == 5, y == 0, b == 1, c == 1",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_16(),negative,"x == 4, y == 0, b == 1, c == 1",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_17(),negative,"x == 3, y == 0, b == 1, c == 1",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_18(),negative,"x == 2, y == 0, b == 1, c == 1",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_19(),negative,"x == 1, y == 0, b == 1, c == 1",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_2(),negative,"x == 0, y == 8, b == 0, c == 1",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_20(),negative,"x == 0, y == 0, b == 1, c == 1",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_21(),negative,"x == 9, y == 0, b == 1, c == 0",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_22(),negative,"x == 8, y == 0, b == 1, c == 0",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_23(),negative,"x == 7, y == 0, b == 1, c == 0",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_24(),negative,"x == 6, y == 0, b == 1, c == 0",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_25(),negative,"x == 5, y == 0, b == 1, c == 0",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_26(),negative,"x == 4, y == 0, b == 1, c == 0",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_27(),negative,"x == 3, y == 0, b == 1, c == 0",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_28(),negative,"x == 2, y == 0, b == 1, c == 0",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_29(),negative,"x == 1, y == 0, b == 1, c == 0",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_3(),negative,"x == 0, y == 7, b == 0, c == 1",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_30(),negative,"x == 0, y == 0, b == 1, c == 0",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_31(),negative,"x == 0, y == 0, b == 0, c == 0",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_4(),negative,"x == 0, y == 6, b == 0, c == 1",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_5(),negative,"x == 0, y == 5, b == 0, c == 1",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_6(),negative,"x == 0, y == 4, b == 0, c == 1",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_7(),negative,"x == 0, y == 3, b == 0, c == 1",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_8(),negative,"x == 0, y == 2, b == 0, c == 1",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,while_nested_break_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_9(),negative,"x == 0, y == 1, b == 0, c == 1",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,while_nested_continue,solcmc,"f(uint,uint,bool,bool)",test_positive_1(),positive,"x == 0, y == 0, b == 1, c == 1",PASS,,confirmed
+smtchecker,loops,while_nested_continue,solcmc,"f(uint,uint,bool,bool)",test_positive_2(),positive,"x == 0, y == 0, b == 1, c == 0",PASS,,confirmed
+smtchecker,loops,while_nested_continue,solcmc,"f(uint,uint,bool,bool)",test_positive_3(),positive,"x == 0, y == 0, b == 0, c == 1",PASS,,confirmed
+smtchecker,loops,while_nested_continue,solcmc,"f(uint,uint,bool,bool)",test_positive_4(),positive,"x == 0, y == 0, b == 0, c == 0",PASS,,confirmed
+smtchecker,loops,while_nested_continue,yul2chc,"f(uint,uint,bool,bool)",test_positive_1(),positive,"x == 0, y == 4, b == 3, c == 2",FAIL,"revert: valore fuori dominio, la chiamata non si puo' scrivere: b: 3 non e' un bool",not confirmed: value out of the type
+smtchecker,loops,while_nested_continue_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_2(),negative,"x == 0, y == 0, b == 0, c == 0",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,while_nested_continue_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_3(),negative,"x == 0, y == 0, b == 1, c == 1",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,while_nested_continue_fail,solcmc,"f(uint,uint,bool,bool)",test_negative_4(),negative,"x == 0, y == 0, b == 1, c == 0",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,loops,while_nested_continue_fail,solcmc,"f(uint,uint,bool,bool)",test_positive_1(),positive,"x == 0, y == 0, b == 0, c == 1",PASS,,confirmed
+smtchecker,loops,while_nested_continue_fail,yul2chc,"f(uint,uint,bool,bool)",test_negative_1(),negative,"x == 0, y == 4, b == 3, c == 2",FAIL,"revert: valore fuori dominio, la chiamata non si puo' scrivere: b: 3 non e' un bool",not confirmed: value out of the type
+smtchecker,math,addmulmod,solcmc,"test_mulmod(uint,uint)",test_positive_1(),positive,"x == 0, y == 0",PASS,,confirmed
+smtchecker,math,addmulmod,solcmc,"test_addmod(uint,uint)",test_positive_2(),positive,"x == 0, y == 0",PASS,,confirmed
+smtchecker,natspec,abstract_free_function_1,solcmc,f(uint),test_negative_2(),negative,x == 0,PASS,,not confirmed: no assertion fails
+smtchecker,natspec,abstract_free_function_1,solcmc,f(uint),test_positive_1(),positive,x == 0,PASS,,confirmed
+smtchecker,natspec,abstract_free_function_1,yul2chc,f(uint),test_positive_1(),positive,,PASS,,confirmed
+smtchecker,natspec,safe_assert_false_positive,solcmc,g(uint),test_negative_2(),negative,"x == 0, y == 0, _x == 0",PASS,,not confirmed: no assertion fails
+smtchecker,natspec,safe_assert_false_positive,solcmc,g(uint),test_negative_3(),negative,"x == 0, y == 0, _x == 1",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,natspec,safe_assert_false_positive,solcmc,g(uint),test_positive_1(),positive,"x == 0, y == 0, _x == 0",PASS,,confirmed
+smtchecker,natspec,safe_assert_false_positive,yul2chc,g(uint),test_negative_2(),negative,"_x == 2, x == 0, y == 0",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,natspec,safe_assert_false_positive,yul2chc,g(uint),test_positive_1(),positive,"_x == 0, x == 0, y == 0",PASS,,confirmed
+smtchecker,natspec,unsafe_assert_remains_unsafe,solcmc,g(uint),test_negative_2(),negative,"x == 0, y == 0, _x == 0",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,natspec,unsafe_assert_remains_unsafe,solcmc,g(uint),test_negative_3(),negative,"x == 0, y == 0, _x == 0",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,natspec,unsafe_assert_remains_unsafe,solcmc,g(uint),test_positive_1(),positive,"x == 0, y == 0, _x == 1",PASS,,confirmed
+smtchecker,natspec,unsafe_assert_remains_unsafe,yul2chc,g(uint),test_negative_2(),negative,"_x == 0, x == 0, y == 0",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,natspec,unsafe_assert_remains_unsafe,yul2chc,g(uint),test_negative_3(),negative,"_x == -1, x == 0, y == 0",FAIL,"revert: valore fuori dominio, la chiamata non si puo' scrivere: _x: -1 fuori dal range di uint256",not confirmed: value out of the type
+smtchecker,natspec,unsafe_assert_remains_unsafe,yul2chc,g(uint),test_positive_1(),positive,"_x == 1, x == 0, y == 0",PASS,,confirmed
+smtchecker,operators,bitwise_and_rational,solcmc,f(),test_negative_1(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,operators,bitwise_and_rational,yul2chc,f(),test_negative_1(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,operators,bitwise_and_uint,solcmc,f(),test_negative_2(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,operators,bitwise_and_uint,solcmc,f(),test_negative_3(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,operators,bitwise_and_uint,solcmc,f(),test_negative_4(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,operators,bitwise_and_uint,solcmc,f(),test_negative_5(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,operators,bitwise_and_uint,solcmc,f(),test_positive_1(),positive,,FAIL,panic: assertion failed (0x01),not confirmed: a real assertion fails
+smtchecker,operators,bitwise_not_uint,solcmc,f(),test_negative_2(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,operators,bitwise_not_uint,solcmc,f(),test_negative_3(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,operators,bitwise_not_uint,solcmc,f(),test_negative_4(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,operators,bitwise_not_uint,solcmc,f(),test_negative_5(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,operators,bitwise_not_uint,solcmc,f(),test_positive_1(),positive,,FAIL,panic: assertion failed (0x01),not confirmed: a real assertion fails
+smtchecker,operators,bitwise_not_uint,yul2chc,f(),test_negative_1(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,operators,bitwise_or_uint,solcmc,f(),test_negative_2(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,operators,bitwise_or_uint,solcmc,f(),test_negative_3(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,operators,bitwise_or_uint,solcmc,f(),test_negative_4(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,operators,bitwise_or_uint,solcmc,f(),test_negative_5(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,operators,bitwise_or_uint,solcmc,f(),test_positive_1(),positive,,FAIL,panic: assertion failed (0x01),not confirmed: a real assertion fails
+smtchecker,operators,compound_add_chain,solcmc,f(),test_positive_1(),positive,,PASS,,confirmed
+smtchecker,operators,compound_add_chain,yul2chc,f(),test_positive_1(),positive,,PASS,,confirmed
+smtchecker,operators,compound_assignment_division_1,solcmc,f(uint),test_negative_1(),negative,x == 2,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,operators,compound_assignment_division_1,yul2chc,f(uint),test_negative_1(),negative,x == 2,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,operators,compound_bitwise_and_uint,solcmc,f(),test_negative_1(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,operators,compound_bitwise_and_uint,solcmc,f(),test_negative_2(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,operators,compound_bitwise_and_uint,solcmc,f(),test_negative_3(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,operators,compound_bitwise_and_uint,solcmc,f(),test_negative_4(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,operators,compound_bitwise_and_uint,solcmc,f(),test_negative_5(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,operators,compound_bitwise_or_uint,solcmc,f(),test_negative_1(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,operators,compound_bitwise_or_uint,solcmc,f(),test_negative_2(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,operators,compound_bitwise_or_uint,solcmc,f(),test_negative_3(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,operators,compound_bitwise_or_uint,solcmc,f(),test_negative_4(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,operators,compound_mul,solcmc,f(uint),test_negative_1(),negative,x == 0,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,operators,compound_mul,yul2chc,f(uint),test_negative_1(),negative,x == 0,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,operators,compound_sub,solcmc,f(uint),test_negative_2(),negative,x == 99,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,operators,compound_sub,solcmc,f(uint),test_positive_1(),positive,x == 89,PASS,,confirmed
+smtchecker,operators,compound_sub,yul2chc,f(uint),test_negative_2(),negative,x == 99,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,operators,compound_sub,yul2chc,f(uint),test_positive_1(),positive,x == 89,PASS,,confirmed
+smtchecker,operators,conditional_assignment_1,solcmc,f(bool),test_negative_2(),negative,b == 1,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,operators,conditional_assignment_1,solcmc,f(bool),test_positive_1(),positive,b == 0,PASS,,confirmed
+smtchecker,operators,conditional_assignment_1,yul2chc,f(bool),test_negative_2(),negative,b == 3,FAIL,"revert: valore fuori dominio, la chiamata non si puo' scrivere: b: 3 non e' un bool",not confirmed: value out of the type
+smtchecker,operators,conditional_assignment_1,yul2chc,f(bool),test_positive_1(),positive,b == false,PASS,,confirmed
+smtchecker,operators,conditional_assignment_always_true,solcmc,f(bool),test_negative_1(),negative,b == 1,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,operators,conditional_assignment_always_true,yul2chc,f(bool),test_negative_1(),negative,b == 2,FAIL,"revert: valore fuori dominio, la chiamata non si puo' scrivere: b: 2 non e' un bool",not confirmed: value out of the type
+smtchecker,operators,conditional_assignment_function_1,solcmc,g(uint),test_negative_1(),negative,a == 6,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,operators,conditional_assignment_function_1,solcmc,g(uint),test_negative_2(),negative,a == 0,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,operators,conditional_assignment_function_1,yul2chc,g(uint),test_negative_1(),negative,a == 6,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,operators,conditional_assignment_function_1,yul2chc,g(uint),test_negative_2(),negative,a == 0,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,operators,conditional_assignment_nested_always_true,solcmc,"f(bool,bool)",test_positive_1(),positive,"b1 == 1, b2 == 1",PASS,,confirmed
+smtchecker,operators,conditional_assignment_nested_always_true,solcmc,"f(bool,bool)",test_positive_2(),positive,"b1 == 1, b2 == 1",PASS,,confirmed
+smtchecker,operators,conditional_assignment_nested_always_true,solcmc,"f(bool,bool)",test_positive_3(),positive,"b1 == 1, b2 == 1",PASS,,confirmed
+smtchecker,operators,conditional_assignment_nested_always_true,solcmc,"f(bool,bool)",test_positive_4(),positive,"b1 == 1, b2 == 1",PASS,,confirmed
+smtchecker,operators,conditional_assignment_nested_always_true,solcmc,"f(bool,bool)",test_positive_5(),positive,"b1 == 1, b2 == 0",PASS,,confirmed
+smtchecker,operators,conditional_assignment_nested_always_true,solcmc,"f(bool,bool)",test_positive_6(),positive,"b1 == 1, b2 == 0",PASS,,confirmed
+smtchecker,operators,conditional_assignment_nested_always_true,solcmc,"f(bool,bool)",test_positive_7(),positive,"b1 == 0, b2 == 1",PASS,,confirmed
+smtchecker,operators,conditional_assignment_nested_always_true,yul2chc,"f(bool,bool)",test_positive_1(),positive,"b1 == false, b2 == 3",FAIL,"revert: valore fuori dominio, la chiamata non si puo' scrivere: b2: 3 non e' un bool",not confirmed: value out of the type
+smtchecker,operators,conditional_assignment_nested_always_true,yul2chc,"f(bool,bool)",test_positive_2(),positive,"b1 == 4, b2 == 2",FAIL,"revert: valore fuori dominio, la chiamata non si puo' scrivere: b1: 4 non e' un bool",not confirmed: value out of the type
+smtchecker,operators,conditional_assignment_nested_unsafe,solcmc,"f(bool,bool)",test_negative_6(),negative,"b1 == 0, b2 == 0",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,operators,conditional_assignment_nested_unsafe,solcmc,"f(bool,bool)",test_positive_1(),positive,"b1 == 1, b2 == 1",PASS,,confirmed
+smtchecker,operators,conditional_assignment_nested_unsafe,solcmc,"f(bool,bool)",test_positive_2(),positive,"b1 == 1, b2 == 1",PASS,,confirmed
+smtchecker,operators,conditional_assignment_nested_unsafe,solcmc,"f(bool,bool)",test_positive_3(),positive,"b1 == 1, b2 == 0",PASS,,confirmed
+smtchecker,operators,conditional_assignment_nested_unsafe,solcmc,"f(bool,bool)",test_positive_4(),positive,"b1 == 1, b2 == 0",PASS,,confirmed
+smtchecker,operators,conditional_assignment_nested_unsafe,solcmc,"f(bool,bool)",test_positive_5(),positive,"b1 == 0, b2 == 1",PASS,,confirmed
+smtchecker,operators,conditional_assignment_nested_unsafe,yul2chc,"f(bool,bool)",test_negative_1(),negative,"b1 == false, b2 == false",FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,operators,conditional_assignment_nested_unsafe,yul2chc,"f(bool,bool)",test_positive_2(),positive,"b1 == false, b2 == 3",FAIL,"revert: valore fuori dominio, la chiamata non si puo' scrivere: b2: 3 non e' un bool",not confirmed: value out of the type
+smtchecker,operators,conditional_assignment_nested_unsafe,yul2chc,"f(bool,bool)",test_positive_3(),positive,"b1 == 4, b2 == 2",FAIL,"revert: valore fuori dominio, la chiamata non si puo' scrivere: b1: 4 non e' un bool",not confirmed: value out of the type
+smtchecker,operators,constant_propagation_2,solcmc,f(),test_positive_1(),positive,"x == 7, y == 3, z == 2",PASS,,confirmed
+smtchecker,operators,constant_propagation_2,yul2chc,f(),test_positive_1(),positive,,PASS,,confirmed
+smtchecker,operators,division_truncates_correctly_1,solcmc,"f(uint,uint)",test_positive_1(),positive,"x == 0, y == 0",PASS,,confirmed
+smtchecker,operators,division_truncates_correctly_1,yul2chc,"f(uint,uint)",test_positive_1(),positive,,PASS,,confirmed
+smtchecker,operators,mod_even,solcmc,f(uint),test_positive_1(),positive,x == 0,PASS,,confirmed
+smtchecker,operators,mod_n,solcmc,"f(uint,uint)",test_positive_1(),positive,"x == 0, y == 1",PASS,,confirmed
+smtchecker,operators,mod_n_uint16,solcmc,"f(uint16,uint16)",test_positive_1(),positive,"x == 0, y == 1",PASS,,confirmed
+smtchecker,operators,ternary_operator_nested_1,solcmc,f(uint),test_positive_1(),positive,x == 0,PASS,,confirmed
+smtchecker,operators,ternary_operator_nested_1,yul2chc,f(uint),test_positive_1(),positive,,PASS,,confirmed
+smtchecker,operators,ternary_operator_nested_4,solcmc,f(uint),test_positive_1(),positive,"s == 1, x == 0",PASS,,confirmed
+smtchecker,operators,ternary_operator_nested_4,solcmc,f(uint),test_positive_2(),positive,"s == 1, x == 1",PASS,,confirmed
+smtchecker,operators,ternary_operator_nested_4,yul2chc,f(uint),test_positive_1(),positive,"x == 0, s == 1",PASS,,confirmed
+smtchecker,operators,ternary_operator_nested_4,yul2chc,f(uint),test_positive_2(),positive,"x == 1, s == 1",PASS,,confirmed
+smtchecker,operators,tuple_rationals_conditional,solcmc,f(bool),test_negative_10(),negative,x == 0,PASS,,not confirmed: no assertion fails
+smtchecker,operators,tuple_rationals_conditional,solcmc,f(bool),test_negative_3(),negative,x == 1,PASS,,not confirmed: no assertion fails
+smtchecker,operators,tuple_rationals_conditional,solcmc,f(bool),test_negative_4(),negative,x == 0,PASS,,not confirmed: no assertion fails
+smtchecker,operators,tuple_rationals_conditional,solcmc,f(bool),test_negative_5(),negative,x == 1,PASS,,not confirmed: no assertion fails
+smtchecker,operators,tuple_rationals_conditional,solcmc,f(bool),test_negative_6(),negative,x == 0,PASS,,not confirmed: no assertion fails
+smtchecker,operators,tuple_rationals_conditional,solcmc,f(bool),test_negative_7(),negative,x == 1,PASS,,not confirmed: no assertion fails
+smtchecker,operators,tuple_rationals_conditional,solcmc,f(bool),test_negative_8(),negative,x == 0,PASS,,not confirmed: no assertion fails
+smtchecker,operators,tuple_rationals_conditional,solcmc,f(bool),test_negative_9(),negative,x == 1,PASS,,not confirmed: no assertion fails
+smtchecker,operators,tuple_rationals_conditional,solcmc,f(bool),test_positive_1(),positive,x == 1,PASS,,confirmed
+smtchecker,operators,tuple_rationals_conditional,solcmc,f(bool),test_positive_2(),positive,x == 0,PASS,,confirmed
+smtchecker,operators,unary_operators_tuple_3,solcmc,f(bool),test_negative_2(),negative,b == 1,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,operators,unary_operators_tuple_3,solcmc,f(bool),test_positive_1(),positive,b == 0,PASS,,confirmed
+smtchecker,operators,unary_operators_tuple_3,yul2chc,f(bool),test_negative_2(),negative,b == 2,FAIL,"revert: valore fuori dominio, la chiamata non si puo' scrivere: b: 2 non e' un bool",not confirmed: value out of the type
+smtchecker,operators,unary_operators_tuple_3,yul2chc,f(bool),test_positive_1(),positive,b == false,PASS,,confirmed
+smtchecker,special,blobhash_beyond_limit,solcmc,f(uint),test_positive_1(),positive,index == 9,PASS,,confirmed
+smtchecker,special,ether_units,solcmc,f(),test_negative_1(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,special,time_units,solcmc,f(),test_negative_1(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,typecast,cast_larger_1,solcmc,f(uint8),test_positive_1(),positive,x == 0,PASS,,confirmed
+smtchecker,typecast,cast_larger_1,yul2chc,f(uint8),test_negative_3(),negative,x == 300,FAIL,"revert: valore fuori dominio, la chiamata non si puo' scrivere: x: 300 fuori dal range di uint8",not confirmed: value out of the type
+smtchecker,typecast,cast_larger_1,yul2chc,f(uint8),test_positive_1(),positive,x == 299,FAIL,"revert: valore fuori dominio, la chiamata non si puo' scrivere: x: 299 fuori dal range di uint8",not confirmed: value out of the type
+smtchecker,typecast,cast_larger_1,yul2chc,f(uint8),test_positive_2(),positive,x == 0,PASS,,confirmed
+smtchecker,typecast,cast_larger_2,solcmc,f(),test_positive_1(),positive,,PASS,,confirmed
+smtchecker,typecast,cast_larger_2,yul2chc,f(),test_positive_1(),positive,,PASS,,confirmed
+smtchecker,typecast,cast_larger_2_fail,solcmc,f(),test_negative_1(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,typecast,cast_larger_2_fail,yul2chc,f(),test_negative_1(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,typecast,cast_smaller_1,solcmc,f(uint16),test_positive_1(),positive,x == 0,PASS,,confirmed
+smtchecker,typecast,cast_smaller_1,yul2chc,f(uint16),test_negative_3(),negative,x == 300,PASS,,not confirmed: no assertion fails
+smtchecker,typecast,cast_smaller_1,yul2chc,f(uint16),test_positive_1(),positive,x == 299,PASS,,confirmed
+smtchecker,typecast,cast_smaller_1,yul2chc,f(uint16),test_positive_2(),positive,x == 0,PASS,,confirmed
+smtchecker,typecast,cast_smaller_2,solcmc,f(),test_negative_2(),negative,,PASS,,not confirmed: no assertion fails
+smtchecker,typecast,cast_smaller_2,solcmc,f(),test_positive_1(),positive,,PASS,,confirmed
+smtchecker,typecast,cast_smaller_2,yul2chc,f(),test_negative_1(),negative,,PASS,,not confirmed: no assertion fails
+smtchecker,types,bool_int_mixed_1,solcmc,f(bool),test_positive_1(),positive,x == 1,PASS,,confirmed
+smtchecker,types,bool_int_mixed_1,solcmc,f(bool),test_positive_2(),positive,x == 0,PASS,,confirmed
+smtchecker,types,bool_int_mixed_1,yul2chc,f(bool),test_positive_1(),positive,x == false,PASS,,confirmed
+smtchecker,types,bool_int_mixed_1,yul2chc,f(bool),test_positive_2(),positive,x == true,PASS,,confirmed
+smtchecker,types,bool_int_mixed_2,solcmc,"f(bool,uint)",test_positive_1(),positive,"x == 1, a == 1",PASS,,confirmed
+smtchecker,types,bool_int_mixed_2,solcmc,"f(bool,uint)",test_positive_2(),positive,"x == 0, a == 0",PASS,,confirmed
+smtchecker,types,bool_int_mixed_2,solcmc,"f(bool,uint)",test_positive_3(),positive,"x == 0, a == 1",PASS,,confirmed
+smtchecker,types,bool_int_mixed_2,solcmc,"f(bool,uint)",test_positive_4(),positive,"x == 0, a == 1",PASS,,confirmed
+smtchecker,types,bool_int_mixed_2,solcmc,"f(bool,uint)",test_positive_5(),positive,"x == 0, a == 1",PASS,,confirmed
+smtchecker,types,bool_int_mixed_2,yul2chc,"f(bool,uint)",test_positive_1(),positive,"x == false, a == 2",PASS,,confirmed
+smtchecker,types,bool_int_mixed_2,yul2chc,"f(bool,uint)",test_positive_2(),positive,"x == 2, a == 1",FAIL,"revert: valore fuori dominio, la chiamata non si puo' scrivere: x: 2 non e' un bool",not confirmed: value out of the type
+smtchecker,types,bool_int_mixed_3,solcmc,"f(bool,bool)",test_positive_1(),positive,"x == 1, y == 1",PASS,,confirmed
+smtchecker,types,bool_int_mixed_3,solcmc,"f(bool,bool)",test_positive_2(),positive,"x == 1, y == 0",PASS,,confirmed
+smtchecker,types,bool_int_mixed_3,solcmc,"f(bool,bool)",test_positive_3(),positive,"x == 0, y == 1",PASS,,confirmed
+smtchecker,types,bool_int_mixed_3,solcmc,"f(bool,bool)",test_positive_4(),positive,"x == 0, y == 0",PASS,,confirmed
+smtchecker,types,bool_int_mixed_3,yul2chc,"f(bool,bool)",test_positive_1(),positive,"x == false, y == false",PASS,,confirmed
+smtchecker,types,bool_int_mixed_3,yul2chc,"f(bool,bool)",test_positive_2(),positive,"x == false, y == 2",FAIL,"revert: valore fuori dominio, la chiamata non si puo' scrivere: y: 2 non e' un bool",not confirmed: value out of the type
+smtchecker,types,bool_int_mixed_3,yul2chc,"f(bool,bool)",test_positive_3(),positive,"x == true, y == false",PASS,,confirmed
+smtchecker,types,bool_int_mixed_3,yul2chc,"f(bool,bool)",test_positive_4(),positive,"x == true, y == 2",FAIL,"revert: valore fuori dominio, la chiamata non si puo' scrivere: y: 2 non e' un bool",not confirmed: value out of the type
+smtchecker,types,bool_simple_3,solcmc,"f(bool,bool)",test_positive_1(),positive,"x == 1, y == 1",PASS,,confirmed
+smtchecker,types,bool_simple_3,solcmc,"f(bool,bool)",test_positive_2(),positive,"x == 1, y == 1",PASS,,confirmed
+smtchecker,types,bool_simple_3,solcmc,"f(bool,bool)",test_positive_3(),positive,"x == 1, y == 0",PASS,,confirmed
+smtchecker,types,bool_simple_3,solcmc,"f(bool,bool)",test_positive_4(),positive,"x == 1, y == 0",PASS,,confirmed
+smtchecker,types,bool_simple_3,solcmc,"f(bool,bool)",test_positive_5(),positive,"x == 0, y == 1",PASS,,confirmed
+smtchecker,types,bool_simple_3,solcmc,"f(bool,bool)",test_positive_6(),positive,"x == 0, y == 1",PASS,,confirmed
+smtchecker,types,bool_simple_3,solcmc,"f(bool,bool)",test_positive_7(),positive,"x == 0, y == 0",PASS,,confirmed
+smtchecker,types,bool_simple_3,solcmc,"f(bool,bool)",test_positive_8(),positive,"x == 0, y == 0",PASS,,confirmed
+smtchecker,types,bool_simple_3,yul2chc,"f(bool,bool)",test_positive_1(),positive,"x == false, y == 2",FAIL,"revert: valore fuori dominio, la chiamata non si puo' scrivere: y: 2 non e' un bool",not confirmed: value out of the type
+smtchecker,types,bool_simple_3,yul2chc,"f(bool,bool)",test_positive_2(),positive,"x == true, y == false",PASS,,confirmed
+smtchecker,types,bool_simple_3,yul2chc,"f(bool,bool)",test_positive_3(),positive,"x == true, y == 2",FAIL,"revert: valore fuori dominio, la chiamata non si puo' scrivere: y: 2 non e' un bool",not confirmed: value out of the type
+smtchecker,types,bool_simple_4,solcmc,f(bool),test_positive_1(),positive,x == 1,PASS,,confirmed
+smtchecker,types,bool_simple_4,solcmc,f(bool),test_positive_2(),positive,x == 0,PASS,,confirmed
+smtchecker,types,bool_simple_4,yul2chc,f(bool),test_positive_1(),positive,x == false,PASS,,confirmed
+smtchecker,types,bool_simple_4,yul2chc,f(bool),test_positive_2(),positive,x == 2,FAIL,"revert: valore fuori dominio, la chiamata non si puo' scrivere: x: 2 non e' un bool",not confirmed: value out of the type
+smtchecker,types,bool_simple_5,solcmc,f(bool),test_positive_1(),positive,x == 1,PASS,,confirmed
+smtchecker,types,bool_simple_5,solcmc,f(bool),test_positive_2(),positive,x == 0,PASS,,confirmed
+smtchecker,types,bool_simple_5,yul2chc,f(bool),test_positive_1(),positive,x == false,PASS,,confirmed
+smtchecker,types,bool_simple_5,yul2chc,f(bool),test_positive_2(),positive,x == 2,FAIL,"revert: valore fuori dominio, la chiamata non si puo' scrivere: x: 2 non e' un bool",not confirmed: value out of the type
+smtchecker,types,bool_simple_6,solcmc,f(bool),test_positive_1(),positive,x == 1,PASS,,confirmed
+smtchecker,types,bool_simple_6,yul2chc,f(bool),test_positive_1(),positive,x == 2,FAIL,"revert: valore fuori dominio, la chiamata non si puo' scrivere: x: 2 non e' un bool",not confirmed: value out of the type
+smtchecker,types,rational_large_1,solcmc,f(),test_negative_1(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,types,rational_large_1,yul2chc,f(),test_negative_1(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,types,storage_value_vars_4,solcmc,f(),test_negative_1(),negative,c == 0,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,types,storage_value_vars_4,yul2chc,f(),test_negative_1(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,types,tuple_1_chain_1,solcmc,i(),test_positive_1(),positive,,PASS,,confirmed
+smtchecker,types,tuple_1_chain_1,yul2chc,i(),test_positive_1(),positive,,PASS,,confirmed
+smtchecker,types,tuple_1_chain_2,solcmc,i(),test_positive_1(),positive,,PASS,,confirmed
+smtchecker,types,tuple_1_chain_2,yul2chc,i(),test_positive_1(),positive,,PASS,,confirmed
+smtchecker,types,tuple_1_chain_n,solcmc,i(),test_positive_1(),positive,,PASS,,confirmed
+smtchecker,types,tuple_1_chain_n,yul2chc,i(),test_positive_1(),positive,,PASS,,confirmed
+smtchecker,types,tuple_assignment,solcmc,g(),test_positive_1(),positive,,PASS,,confirmed
+smtchecker,types,tuple_assignment,yul2chc,g(),test_positive_1(),positive,,PASS,,confirmed
+smtchecker,types,tuple_assignment_compound,solcmc,f(),test_negative_1(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,types,tuple_assignment_compound,yul2chc,f(),test_negative_1(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,types,tuple_assignment_empty,solcmc,g(),test_negative_1(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,types,tuple_assignment_empty,yul2chc,g(),test_negative_1(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,types,tuple_assignment_multiple_calls,solcmc,g(),test_negative_2(),negative,,PASS,,not confirmed: no assertion fails
+smtchecker,types,tuple_assignment_multiple_calls,solcmc,g(),test_negative_3(),negative,,PASS,,not confirmed: no assertion fails
+smtchecker,types,tuple_assignment_multiple_calls,solcmc,g(),test_negative_4(),negative,,PASS,,not confirmed: no assertion fails
+smtchecker,types,tuple_assignment_multiple_calls,solcmc,g(),test_positive_1(),positive,,PASS,,confirmed
+smtchecker,types,tuple_assignment_multiple_calls,yul2chc,g(),test_positive_1(),positive,,PASS,,confirmed
+smtchecker,types,tuple_declarations,solcmc,g(),test_negative_2(),negative,,PASS,,not confirmed: no assertion fails
+smtchecker,types,tuple_declarations,solcmc,g(),test_negative_3(),negative,,PASS,,not confirmed: no assertion fails
+smtchecker,types,tuple_declarations,solcmc,g(),test_positive_1(),positive,,PASS,,confirmed
+smtchecker,types,tuple_declarations,yul2chc,g(),test_positive_1(),positive,,PASS,,confirmed
+smtchecker,types,tuple_declarations_empty,solcmc,g(),test_negative_2(),negative,,PASS,,not confirmed: no assertion fails
+smtchecker,types,tuple_declarations_empty,solcmc,g(),test_positive_1(),positive,,PASS,,confirmed
+smtchecker,types,tuple_declarations_empty,yul2chc,g(),test_positive_1(),positive,,PASS,,confirmed
+smtchecker,types,tuple_declarations_function,solcmc,g(),test_negative_10(),negative,,PASS,,not confirmed: no assertion fails
+smtchecker,types,tuple_declarations_function,solcmc,g(),test_negative_3(),negative,,PASS,,not confirmed: no assertion fails
+smtchecker,types,tuple_declarations_function,solcmc,g(),test_negative_4(),negative,,PASS,,not confirmed: no assertion fails
+smtchecker,types,tuple_declarations_function,solcmc,g(),test_negative_5(),negative,,PASS,,not confirmed: no assertion fails
+smtchecker,types,tuple_declarations_function,solcmc,g(),test_negative_6(),negative,,PASS,,not confirmed: no assertion fails
+smtchecker,types,tuple_declarations_function,solcmc,g(),test_negative_7(),negative,,PASS,,not confirmed: no assertion fails
+smtchecker,types,tuple_declarations_function,solcmc,g(),test_negative_8(),negative,,PASS,,not confirmed: no assertion fails
+smtchecker,types,tuple_declarations_function,solcmc,g(),test_negative_9(),negative,,PASS,,not confirmed: no assertion fails
+smtchecker,types,tuple_declarations_function,solcmc,g(),test_positive_1(),positive,,PASS,,confirmed
+smtchecker,types,tuple_declarations_function,solcmc,g(),test_positive_2(),positive,,PASS,,confirmed
+smtchecker,types,tuple_declarations_function,yul2chc,g(),test_positive_1(),positive,,PASS,,confirmed
+smtchecker,types,tuple_declarations_function_2,solcmc,g(),test_negative_10(),negative,,PASS,,not confirmed: no assertion fails
+smtchecker,types,tuple_declarations_function_2,solcmc,g(),test_negative_3(),negative,,PASS,,not confirmed: no assertion fails
+smtchecker,types,tuple_declarations_function_2,solcmc,g(),test_negative_4(),negative,,PASS,,not confirmed: no assertion fails
+smtchecker,types,tuple_declarations_function_2,solcmc,g(),test_negative_5(),negative,,PASS,,not confirmed: no assertion fails
+smtchecker,types,tuple_declarations_function_2,solcmc,g(),test_negative_6(),negative,,PASS,,not confirmed: no assertion fails
+smtchecker,types,tuple_declarations_function_2,solcmc,g(),test_negative_7(),negative,,PASS,,not confirmed: no assertion fails
+smtchecker,types,tuple_declarations_function_2,solcmc,g(),test_negative_8(),negative,,PASS,,not confirmed: no assertion fails
+smtchecker,types,tuple_declarations_function_2,solcmc,g(),test_negative_9(),negative,,PASS,,not confirmed: no assertion fails
+smtchecker,types,tuple_declarations_function_2,solcmc,g(),test_positive_1(),positive,,PASS,,confirmed
+smtchecker,types,tuple_declarations_function_2,solcmc,g(),test_positive_2(),positive,,PASS,,confirmed
+smtchecker,types,tuple_declarations_function_2,yul2chc,g(),test_positive_1(),positive,,PASS,,confirmed
+smtchecker,types,tuple_declarations_function_empty,solcmc,g(),test_negative_3(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,types,tuple_declarations_function_empty,solcmc,g(),test_negative_4(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,types,tuple_declarations_function_empty,solcmc,g(),test_positive_1(),positive,,FAIL,panic: assertion failed (0x01),not confirmed: a real assertion fails
+smtchecker,types,tuple_declarations_function_empty,solcmc,g(),test_positive_2(),positive,,FAIL,panic: assertion failed (0x01),not confirmed: a real assertion fails
+smtchecker,types,tuple_declarations_function_empty,yul2chc,g(),test_negative_1(),negative,,FAIL,panic: assertion failed (0x01),confirmed
+smtchecker,verification_target,simple_assert_with_require,solcmc,f(uint),test_positive_1(),positive,a == 0,PASS,,confirmed
+smtchecker,verification_target,simple_assert_with_require,yul2chc,f(uint),test_positive_1(),positive,a == 0,PASS,,confirmed

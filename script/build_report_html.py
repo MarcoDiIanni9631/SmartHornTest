@@ -2,34 +2,43 @@
 """Writes experiments/report.html, an interactive page with the results of the
 benchmark: one pie chart per tool and benchmark (click a slice to see its
 contracts) and, for every contract, the outcome of each tool, the test cases
-found by the two routes and the source code. Uses only experiments/
-(summary.csv and the contract folders).
+found by the two routes with the result of forge test, and the source code.
+Uses only experiments/ (summary.csv, foundry.csv and the contract folders).
 Usage (from the repo root): python3 script/build_report_html.py"""
 import csv, json, os
 
 E = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "experiments")
 
 
-def tests(path):
+def tests(path, foundry, key):
     try:
         data = json.load(open(path))
     except (OSError, ValueError):
         return None
-    return [{"f": fn.get("signature", ""), "k": tc.get("kind", ""), "a": tc.get("failed_assert", ""),
-             "v": tc.get("concrete_values", []),
-             "c": tc.get("constraints_clpq_start", tc.get("constraints_clpq", []))}
-            for fn in data.get("functions", []) for tc in fn.get("test_cases", [])]
+    out = []
+    for fn in data.get("functions", []):
+        for tc in fn.get("test_cases", []):
+            kind = tc.get("kind", "")
+            res, why = foundry.get(key + (f"test_{kind}_{len(out) + 1}()",), ("", ""))
+            out.append({"f": fn.get("signature", ""), "k": kind, "a": tc.get("failed_assert", ""),
+                        "v": tc.get("concrete_values", []),
+                        "c": tc.get("constraints_clpq_start", tc.get("constraints_clpq", [])),
+                        "fd": res, "fw": why})
+    return out
 
 
 def main():
     rows = []
+    foundry = {(t["benchmark"], t["category"], t["contract"], t["route"], t["test"]): (t["result"], t["reason"])
+               for t in csv.DictReader(open(os.path.join(E, "foundry.csv")))}
     for r in csv.DictReader(open(os.path.join(E, "summary.csv"))):
         d = os.path.join(E, r["benchmark"], r["category"], r["contract"])
         rows.append({"b": r["benchmark"], "cat": r["category"], "n": r["contract"], "fn": r["function"],
                      "exp": r["expected"], "calls": r["calls_needed"],
                      "out": {t: r[t] for t in ("solcmc", "yul2chc", "mythril", "manticore")},
                      "src": open(os.path.join(d, r["contract"] + ".sol"), errors="replace").read(),
-                     "tests": {t: tests(os.path.join(d, t + ".test_cases.json")) for t in ("solcmc", "yul2chc")}})
+                     "tests": {t: tests(os.path.join(d, t + ".test_cases.json"), foundry,
+                                        (r["benchmark"], r["category"], r["contract"], t)) for t in ("solcmc", "yul2chc")}})
     data = json.dumps(rows, separators=(",", ":")).replace("</", "<\\/")
     with open(os.path.join(E, "report.html"), "w") as f:
         f.write(PAGE.replace("__DATA__", data))
@@ -86,13 +95,10 @@ PAGE = r"""<!doctype html>
 </head>
 <body>
 <h1>SmartHornTest benchmark</h1>
-<p class="meta">Results of the evaluation in the PhD thesis of Marco Di Ianni (Chapter 6): SmartHornTest with the
-SolCMC and yul2chc routes, Mythril and Manticore, one transaction per test, depth bound 100, timeout 600 s.
-Click a slice of a pie chart to see its contracts, and a contract to see its test cases and its source code.
-A <b>negative</b> test case violates an assertion of the contract; a <b>positive</b> test case reaches the
-end of the function with all the assertions true. Data: <code>summary.csv</code> and the
-<code>*.test_cases.json</code> files in this folder.</p>
 <div id="benchmarks"></div>
+<h2>Foundry: test cases run on the original contracts</h2>
+<p class="muted">A negative test case is confirmed if the call fails with panic 0x01 (assertion failed), a positive one if the call succeeds.</p>
+<div id="foundry"></div>
 <h2>All contracts</h2>
 <div class="filters">
   <input id="q" type="search" placeholder="Search contract or category">
@@ -110,6 +116,9 @@ const TOOLS = [["solcmc", "SmartHornTest, SolCMC"], ["yul2chc", "SmartHornTest, 
 const OUT = [["correct", "#2f9e44"], ["bug missed", "#e03131"], ["bug needs several calls", "#f08c00"],
              ["false alarm", "#7048e8"], ["timeout", "#fab005"], ["not analyzed", "#adb5bd"], ["no expected answer", "#dee2e6"]];
 const COLOR = Object.fromEntries(OUT);
+const FD = [["confirmed", "#2f9e44"], ["not confirmed: no assertion fails", "#e03131"], ["not confirmed: a real assertion fails", "#7048e8"],
+            ["not confirmed: other revert", "#f08c00"], ["not confirmed: value out of the type", "#adb5bd"], ["not run", "#495057"]];
+const FCOLOR = Object.fromEntries(FD);
 const BENCH = [["soltg", "SolTG regression benchmark"], ["smtchecker", "SMTChecker tests of the Solidity compiler"]];
 
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
@@ -125,24 +134,29 @@ const negpos = ts => ts ? `${count(ts, "negative")} / ${count(ts, "positive")}` 
 function testsTable(ts) {
   if (!ts) return '<p class="muted">No test cases file for this route (see the outcome above).</p>';
   if (!ts.length) return '<p class="muted">No test cases.</p>';
-  return `<table><tr><th>#</th><th>Function</th><th>Kind</th><th>Assertion reached</th><th>Test case (values at the start of the call)</th><th>Input constraint (start of the call)</th></tr>` +
+  return `<table><tr><th>#</th><th>Function</th><th>Kind</th><th>Assertion reached</th><th>Test case (values at the start of the call)</th><th>Input constraint (start of the call)</th><th>Foundry</th></tr>` +
     ts.map((t, i) => `<tr><td>${i + 1}</td><td class="mono">${esc(t.f)}</td>
       <td><span class="badge ${t.k === "negative" ? "neg" : "pos"}">${esc(t.k)}</span></td>
       <td class="mono">${esc(t.a === "vgood < 20" ? "(end of the function)" : t.a || "–")}</td>
       <td class="mono">${esc(t.v.join(", ") || "any")}</td>
-      <td class="mono">${esc(t.c.map(big).join(" ∧ ") || "true")}</td></tr>`).join("") + "</table>";
+      <td class="mono">${esc(t.c.map(big).join(" ∧ ") || "true")}</td>
+      <td>${t.fd ? `<span class="badge" style="background:${FCOLOR[t.fd]}33;border:1px solid ${FCOLOR[t.fd]}">${esc(t.fd.replace("not confirmed: ", "not confirmed, "))}</span>` +
+        (t.fw ? `<br><span class="muted mono">${esc(t.fw)}</span>` : "") : "–"}</td></tr>`).join("") + "</table>";
 }
 
 function detail(c) {
   const exp = c.exp === "bug" ? "bug" + (c.calls > 1 ? ` (needs ${c.calls} calls)` : "") : "safe";
+  const cut = c.src.indexOf("// ===="), code = (cut < 0 ? c.src : c.src.slice(0, cut)).trimEnd(), footer = cut < 0 ? "" : c.src.slice(cut);
   return `<div class="detail">
     <div class="row"><span>Benchmark / category</span>${esc(c.b)} / ${esc(c.cat)}</div>
     <div class="row"><span>Expected answer</span>${esc(exp)}</div>
     <div class="row"><span>Function (yul2chc route)</span><span class="mono">${esc(c.fn)}</span></div>
     <div class="row"><span>Outcomes</span>${TOOLS.map(([k, l]) => `${esc(l)}: ${badge(c.out[k])}`).join(" ")}</div>
+    <h4>Source code</h4><pre>${esc(code)}</pre>
+    ${footer ? `<details><summary>Expected answer comment (end of the file)</summary><pre>${esc(footer)}</pre></details>` : ""}
     <h4>Test cases, SolCMC route (${count(c.tests.solcmc, "negative") || 0} negative, ${count(c.tests.solcmc, "positive") || 0} positive)</h4>${testsTable(c.tests.solcmc)}
     <h4>Test cases, yul2chc route (${count(c.tests.yul2chc, "negative") || 0} negative, ${count(c.tests.yul2chc, "positive") || 0} positive)</h4>${testsTable(c.tests.yul2chc)}
-    <details><summary>Source code</summary><pre>${esc(c.src)}</pre></details></div>`;
+    </div>`;
 }
 
 function pie(cs, tool, label, panel) {
@@ -190,6 +204,52 @@ for (const [b, title] of BENCH) {
   panel.hidden = true;
   TOOLS.forEach(([k, l]) => pies.appendChild(pie(cs, k, l, panel)));
   root.append(h, pies, panel);
+}
+
+function donut(label, groups, center, sub, onclick) {
+  const r = 64, C = 2 * Math.PI * r, n = groups.reduce((a, g) => a + g[2], 0);
+  let off = 0, svg = "", legend = "";
+  for (const [o, col, k] of groups) {
+    if (!k) continue;
+    const len = C * k / n;
+    svg += `<circle class="slice" data-o="${o}" cx="90" cy="90" r="${r}" fill="none" stroke="${col}" stroke-width="32"
+      stroke-dasharray="${len} ${C - len}" stroke-dashoffset="${-off}" transform="rotate(-90 90 90)"><title>${o}: ${k} of ${n}</title></circle>`;
+    legend += `<li data-o="${o}"><span class="sw" style="background:${col}"></span>${o}: <b>${k}</b></li>`;
+    off += len;
+  }
+  const fig = document.createElement("figure");
+  fig.className = "pie";
+  fig.innerHTML = `<figcaption><b>${esc(label)}</b></figcaption>
+    <svg viewBox="0 0 180 180" width="180" height="180" role="img" aria-label="${esc(label)}">${svg}
+    <text x="90" y="92" text-anchor="middle" class="pie-num" style="font-size:${String(center).length > 5 ? 19 : 26}px">${center}</text>
+    <text x="90" y="110" text-anchor="middle" class="pie-sub">${sub}</text></svg><ul class="legend">${legend}</ul>`;
+  fig.querySelectorAll("[data-o]").forEach(el => el.addEventListener("click", () => onclick(el.dataset.o)));
+  return fig;
+}
+
+{
+  const froot = document.getElementById("foundry"), pies = document.createElement("div"), panel = document.createElement("div");
+  pies.className = "pies";
+  panel.className = "panel";
+  panel.hidden = true;
+  for (const [route, rl] of [["solcmc", "SolCMC"], ["yul2chc", "yul2chc"]]) {
+    for (const kind of ["negative", "positive"]) {
+      const ts = DATA.flatMap(c => (c.tests[route] || []).filter(t => t.k === kind).map(t => [c, t]));
+      const ok = ts.filter(([, t]) => t.fd === "confirmed").length;
+      const label = `${rl}, ${kind} test cases`;
+      pies.appendChild(donut(label, FD.map(([o, col]) => [o, col, ts.filter(([, t]) => t.fd === o).length]),
+        `${ok}/${ts.length}`, `confirmed (${Math.round(100 * ok / ts.length)}%)`, o => {
+          const cs = [...new Set(ts.filter(([, t]) => t.fd === o).map(([c]) => c))];
+          panel.hidden = false;
+          panel.innerHTML = `<div class="panel-head"><span class="sw" style="background:${FCOLOR[o]}"></span>
+            <b>${esc(label)}: ${esc(o)}</b> <span class="muted">${ts.filter(([, t]) => t.fd === o).length} test cases in ${cs.length} contracts</span><button class="close">close</button></div>` +
+            cs.map(c => `<details class="item"><summary><b>${esc(c.n)}</b> <span class="muted">${esc(c.b)} / ${esc(c.cat)}, expected ${esc(c.exp)}</span></summary>${detail(c)}</details>`).join("");
+          panel.querySelector(".close").onclick = () => { panel.hidden = true; };
+          panel.scrollIntoView({behavior: "smooth", block: "nearest"});
+        }));
+    }
+  }
+  froot.append(pies, panel);
 }
 
 const tbody = document.getElementById("tbody");
