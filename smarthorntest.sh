@@ -14,8 +14,9 @@ USO
   Parte in background. Risultati e run.log finiscono nella cartella del file.
 
 OPZIONI (tutte facoltative)
-  -r STRADA    yul (default) o solcmc (solo .sol)
-  -f NOME      funzione da analizzare (solo .sol, strada yul; se manca: la prima del contratto;
+  -r STRADA    yul (default) o solcmc (solo .sol); con una cartella anche both (tutte e due)
+  -f NOME      funzione da analizzare (solo .sol, strada yul; se manca: la prima funzione
+               pubblica che contiene un assert;
                con solcmc si analizzano tutti gli assert del contratto)
   -p PRED      predicato di partenza (solo .pl; se manca lo capisce da solo:
                incorrect se il file viene da Yul, ff se viene da SolCMC)
@@ -33,6 +34,7 @@ ESEMPI
   smarthorntest test3/RewardPoints2.t_constr.pl
   smarthorntest cartella/Contratto.chc.pl -p ff -t 600
   smarthorntest cartella/ -r solcmc -t 600
+  smarthorntest cartella/ -r both -t 600 -v
 
 DOPO
   tail -5 <cartella>/run.log              e' finita? (cerca "Pipeline complete" / "Duration")
@@ -56,21 +58,23 @@ while getopts "r:f:p:t:d:sv" o; do case $o in
   s) EXTRA+=(--stop-first) ;; v) V=si ;;
   *) echo "Opzione sconosciuta (aiuto: smarthorntest -h)"; exit 1 ;; esac; done
 echo "Parametri: timeout $T s ${EXTRA[*]:-(nessuna altra opzione)}"
-[ "$S" = yul ] || [ "$S" = solcmc ] || { echo "Strada sconosciuta: $S (yul o solcmc)"; exit 1; }
+[ "$S" = yul ] || [ "$S" = solcmc ] || { [ "$S" = both ] && [ -d "$FILE" ]; } || { echo "Strada sconosciuta: $S (yul, solcmc o, con una cartella, both)"; exit 1; }
 if [ -d "$FILE" ]; then
   SOLS=("$FILE"/*.sol)
   [ -f "${SOLS[0]}" ] || { echo "Nessun .sol in $FILE"; exit 1; }
   (
     trap '' HUP
     for s in "${SOLS[@]}"; do
-      n=$(basename "$s" .sol); mkdir -p "$FILE/$n"
+      n=$(basename "$s" .sol); rm -rf "$FILE/$n"; mkdir -p "$FILE/$n"
       if [ $V = si ]; then python3 "$R/script/add_vgood.py" "$s" "$FILE/$n/$n.sol"; else cp "$s" "$FILE/$n/"; fi
-      echo "$(date +%H:%M) $n"
-      if [ "$S" = solcmc ]; then
+      if [ "$S" != yul ]; then
+        echo "$(date +%H:%M) $n, strada solcmc"
         mkdir -p "$FILE/$n/solcmc"
         (cd "$R" && bash script/solcmc_route.sh "$FILE/$n/$n.sol" --timeout "$T" "${EXTRA[@]}") > "$FILE/$n/solcmc/run.log" 2>&1
-      else
-        f=${F:-$(grep -oP 'function\s+\K\w+' "$s" | head -1)}
+      fi
+      if [ "$S" != solcmc ]; then
+        echo "$(date +%H:%M) $n, strada yul"
+        f=${F:-$(python3 "$R/script/default_function.py" "$s")}
         (cd "$R" && flock "$R/.yul.lock" bash script/sol2analysis.sh --gen-aux --aux-hint "_${f}_" --varz3 --varclpq \
           --timeout "$T" "${EXTRA[@]}" "$FILE/$n/$n.sol" incorrect) > "$FILE/$n/run.log" 2>&1
       fi
@@ -96,7 +100,7 @@ case $FILE in
            cd "$R" && nohup bash script/solcmc_route.sh "$FILE" --timeout "$T" "${EXTRA[@]}" > "$D/solcmc/run.log" 2>&1 &
            echo "Partita su $FILE (strada SolCMC, timeout $T s). Log: $D/solcmc/run.log"; exit 0
          fi
-         F=${F:-$(grep -oP 'function\s+\K\w+' "$FILE" | head -1)}
+         F=${F:-$(python3 "$R/script/default_function.py" "$FILE")}
          # un'analisi yul2chc alla volta: la conversione usa la cartella condivisa grey/
          cd "$R" && nohup flock "$R/.yul.lock" bash script/sol2analysis.sh --gen-aux --aux-hint "_${F}_" --varz3 --varclpq \
            --timeout "$T" "${EXTRA[@]}" "$FILE" incorrect > "$D/run.log" 2>&1 &
