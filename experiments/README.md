@@ -5,8 +5,15 @@ Di Ianni, Chapter 6).
 
 | folder | origin | contracts | with a bug |
 |---|---|---|---|
-| `soltg/` | regression benchmark of SolTG | 81 | 30 |
-| `smtchecker/` | SMTChecker tests of the Solidity compiler | 151 | 56 |
+| `soltg/` | regression benchmark of SolTG | 72 | 25 |
+| `smtchecker/` | SMTChecker tests of the Solidity compiler | 150 | 55 |
+
+Each file has one contract and at least one assertion in a public function;
+contracts with mappings, arrays, structs, inline assembly, external calls or
+`address(this).balance` are left out, as well as those whose bug needs more
+than one call (the tools run one call at a time). The code is the same as in
+the two benchmarks; in the SMTChecker files only the comment at the end, with
+the expected answer, was produced again with solc 0.8.29.
 
 Each contract has a folder with the contract (`<name>.sol`), the same contract
 with the `vgood` assertion used to get the positive tests (`<name>_vgood.sol`),
@@ -16,6 +23,10 @@ and the test cases found with the two routes (`solcmc.test_cases.json`,
 `summary.csv` has one row per contract: the expected answer, the outcome of
 SmartHornTest (both routes), Mythril and Manticore, and the number of tests
 found.
+
+`report.html` shows the same results as pie charts: click a slice to see its
+contracts, and a contract to see its test cases and its source code (open it
+in a browser; it is built by `script/build_report_html.py`).
 
 ## How to run again
 
