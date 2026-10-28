@@ -6,7 +6,7 @@
 # Descrizione:
 #   Analizza file .pl con l’interprete Prolog.
 #   Supporta automaticamente file .c associati (se presenti).
-#   Opzioni: --skip-existing, --stop-first, --stop-first-per-loop, ecc.
+#   Opzioni: --skip-existing, --stop-first, ecc.
 # ==========================================================
 
 set -u
@@ -25,7 +25,6 @@ LOOPLIMIT=""
 TIMEOUT_OVERRIDE=""
 SKIP_FILE=""
 STOP_FIRST="no"
-STOP_PER_LOOP="no"
 INPUT_PATH=""
 TARGET=""
 
@@ -38,7 +37,6 @@ while [ "$#" -gt 0 ]; do
     --timeout)       TIMEOUT_OVERRIDE="$2";    shift 2 ;;
     --skip-file)     SKIP_FILE="$2";           shift 2 ;;
     --stop-first)          STOP_FIRST="yes";          shift ;;
-    --stop-first-per-loop) STOP_PER_LOOP="yes";       shift ;;
     *)
       if [ -z "$INPUT_PATH" ]; then
         INPUT_PATH="$1"
@@ -59,7 +57,7 @@ MAXDEPTH="${MAXDEPTH:-10000000}"
 # ----------------------------------------------------------
 if [ -z "$INPUT_PATH" ] || [ -z "$TARGET" ]; then
   echo "Usage:"
-  echo "  nohup $0 [--debug] [--stop-first] [--stop-first-per-loop] [--skip-existing] [--maxdepth N] [--looplimit N] [--timeout SEC] [--skip-file F] <file_or_folder> <predicate> &"
+  echo "  nohup $0 [--debug] [--stop-first] [--skip-existing] [--maxdepth N] [--looplimit N] [--timeout SEC] [--skip-file F] <file_or_folder> <predicate> &"
   exit 1
 fi
 
@@ -151,7 +149,6 @@ run_prolog() {
   local extra_args=()
   [ "$DEBUG" = "yes" ]            && extra_args+=("--debug")
   [ "$STOP_FIRST" = "yes" ]       && extra_args+=("--stop-first")
-  [ "$STOP_PER_LOOP" = "yes" ]    && extra_args+=("--stop-first-per-loop")
   extra_args+=("$plfile" "$TARGET")
   extra_args+=("--maxdepth" "$MAXDEPTH")
   [ -n "$LOOPLIMIT" ]        && extra_args+=("--looplimit" "$LOOPLIMIT")
@@ -203,7 +200,6 @@ process_file() {
   echo "LoopLimit:   ${LOOPLIMIT:-default}" >> "$tmpout"
   echo "Timeout:     ${TIMEOUT_SEC}s" >> "$tmpout"
   echo "OnlyFirstTestGlobal: $STOP_FIRST" >> "$tmpout"
-  echo "OnlyFirstPerLoop: $STOP_PER_LOOP" >> "$tmpout"
   echo "Debug:            $DEBUG" >> "$tmpout"
   echo "SkipIfDone:       $SKIP_EXISTING" >> "$tmpout"
   [ -n "$SKIP_FILE" ] && echo "SkipFile:    $SKIP_FILE" >> "$tmpout"
@@ -234,7 +230,8 @@ process_file() {
   TAG_LIMIT=$(grep -q "Limite MaxDepth raggiunto" "$tmpout" && echo "MaxDepthReached" || echo "MaxDepthNotReached")
   TAG_PUSH=$(grep -q "z3_push_failed" "$tmpout" && echo "Z3PushFailed" || echo "Z3PushOK")
   TAG_TERM=$(grep -q "Ho raggiunto la terminazione dell'albero" "$tmpout" && echo "totalExplored" || echo "notFullyExplored")
-  TAG_ERROR=$(grep -Eqi "error|failed" "$tmpout" && echo "Error" || echo "NoError")
+  # solo errori veri di Prolog: "error" compare anche nei nomi dei predicati (error_target_N di SolCMC)
+  TAG_ERROR=$(grep -q "^ERROR" "$tmpout" && echo "Error" || echo "NoError")
 
   error_type="NoTypeError"
   if grep -qiE "ERROR:|Type error" "$tmpout"; then
@@ -260,7 +257,7 @@ process_file() {
 
 export -f process_file
 export -f run_prolog
-export MAIN SWIPL_BIN TIMEOUT_SEC TARGET SKIP_EXISTING MAXDEPTH LOOPLIMIT SKIP_FILE STOP_FIRST STOP_PER_LOOP ORIG_CMDLINE DEBUG SCRIPT_DIR
+export MAIN SWIPL_BIN TIMEOUT_SEC TARGET SKIP_EXISTING MAXDEPTH LOOPLIMIT SKIP_FILE STOP_FIRST ORIG_CMDLINE DEBUG SCRIPT_DIR
 
 # ----------------------------------------------------------
 # ESECUZIONE

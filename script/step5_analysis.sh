@@ -3,7 +3,6 @@
 # Runs the CHC analysis in the background with nohup. Produces a .zmiout file.
 #
 # Options:
-#   --stop-first-per-loop   one counterexample per loop (recommended)
 #   --stop-first            stop at the very first counterexample
 #   --timeout SEC           timeout in seconds (default: 300)
 #   --maxdepth N            maximum unfolding depth
@@ -12,7 +11,7 @@
 #   --debug                 verbose output
 #
 # Example:
-#   bash script/step5_analysis.sh --stop-first-per-loop --timeout 300 \
+#   bash script/step5_analysis.sh --timeout 300 \
 #     test/MyContract/MyContract.t_constr.pl incorrect
 
 set -euo pipefail
@@ -23,7 +22,7 @@ FLAGS=()
 POSITIONAL=()
 while [ $# -gt 0 ]; do
   case "$1" in
-    --stop-first|--stop-first-per-loop|--skip-existing|--debug)
+    --stop-first|--skip-existing|--debug)
       FLAGS+=("$1"); shift ;;
     --timeout|--maxdepth|--looplimit|--skip-file)
       FLAGS+=("$1" "$2"); shift 2 ;;

@@ -52,7 +52,7 @@ KEY = "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80"  # an
 # control bug is exactly "someone else can call it", so the caller must be
 # someone else.
 SENDER = "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
-SKIP_DIRS = ("senza_step4b", "_rimossi_dal_report", "_duplicati", "_timeout60",
+SKIP_DIRS = ("_rimossi_dal_report", "_duplicati", "_timeout60",
              "_vecchio_su_f", "_11set_incompleto", "_riprova_bmv5")
 
 

@@ -18,7 +18,7 @@
 #                   (step 9; implies --graph)
 #
 # Analysis options (passed to InterpreterAnalysis5.2.sh, step 5):
-#   --debug, --stop-first, --stop-first-per-loop, --skip-existing
+#   --debug, --stop-first, --skip-existing
 #   --maxdepth N, --looplimit N, --timeout SEC, --skip-file F
 #
 # Examples:
@@ -61,7 +61,7 @@ while [ "$#" -gt 0 ]; do
     --graph)        DO_GRAPH=true;      shift ;;
     --annotate)     DO_ANNOTATE=true;   shift ;;
     --highlight)    DO_HIGHLIGHT=true;  DO_GRAPH=true; shift ;;
-    --debug|--stop-first|--stop-first-per-loop|--skip-existing)
+    --debug|--stop-first|--skip-existing)
       ANALYSIS_FLAGS+=("$1"); shift ;;
     --maxdepth|--looplimit|--timeout|--skip-file)
       ANALYSIS_FLAGS+=("$1" "$2"); shift 2 ;;

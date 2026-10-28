@@ -21,7 +21,6 @@ OPZIONI (tutte facoltative)
                incorrect se il file viene da Yul, ff se viene da SolCMC)
   -t SECONDI   timeout
   -d N         maxdepth, numero massimo di passi di risoluzione
-  -l           --stop-first-per-loop (un solo test per ciclo)
   -s           --stop-first (si ferma al primo test)
   -v           solo con una cartella: aggiunge l'assert vgood a ogni contratto, cosi'
                escono anche i test positivi; Foundry gira sui contratti originali
@@ -30,7 +29,7 @@ ESEMPI
   smarthorntest test3/RewardPoints2.sol
   smarthorntest test3/RewardPoints2.sol -f claimRewards -t 60
   smarthorntest test3/RewardPoints2.sol -r solcmc -t 600
-  smarthorntest test3/RewardPoints2.sol -l -d 400
+  smarthorntest test3/RewardPoints2.sol -d 400
   smarthorntest test3/RewardPoints2.t_constr.pl
   smarthorntest cartella/Contratto.chc.pl -p ff -t 600
   smarthorntest cartella/ -r solcmc -t 600
@@ -47,15 +46,14 @@ H
 [ "$1" = -h ] || [ "$1" = --help ] || [ -z "$1" ] && { aiuto; exit 0; }
 [ -e "$1" ] || { echo "File non trovato: $1   (aiuto: smarthorntest -h)"; exit 1; }
 FILE=$(readlink -f "$1"); shift; D=$(dirname "$FILE"); R=$(cd "$(dirname "$0")" && pwd)
-TIMEOUT=1200; MAXDEPTH=; PER_LOOP=no; STOP_FIRST=no; FUNZIONE=; PREDICATO=
+TIMEOUT=1200; MAXDEPTH=; STOP_FIRST=no; FUNZIONE=; PREDICATO=
 [ -f "$R/smarthorntest.conf" ] && source "$R/smarthorntest.conf"
 F=$FUNZIONE; P=$PREDICATO; T=$TIMEOUT; S=yul; V=no; EXTRA=()
 [ -n "$MAXDEPTH" ] && EXTRA+=(--maxdepth "$MAXDEPTH")
-[ "$PER_LOOP" = si ] && EXTRA+=(--stop-first-per-loop)
 [ "$STOP_FIRST" = si ] && EXTRA+=(--stop-first)
-while getopts "r:f:p:t:d:lsv" o; do case $o in
+while getopts "r:f:p:t:d:sv" o; do case $o in
   r) S=$OPTARG ;; f) F=$OPTARG ;; p) P=$OPTARG ;; t) T=$OPTARG ;; d) EXTRA+=(--maxdepth "$OPTARG") ;;
-  l) EXTRA+=(--stop-first-per-loop) ;; s) EXTRA+=(--stop-first) ;; v) V=si ;;
+  s) EXTRA+=(--stop-first) ;; v) V=si ;;
   *) echo "Opzione sconosciuta (aiuto: smarthorntest -h)"; exit 1 ;; esac; done
 echo "Parametri: timeout $T s ${EXTRA[*]:-(nessuna altra opzione)}"
 [ "$S" = yul ] || [ "$S" = solcmc ] || { echo "Strada sconosciuta: $S (yul o solcmc)"; exit 1; }

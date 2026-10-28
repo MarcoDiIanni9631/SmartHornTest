@@ -55,7 +55,7 @@ import re
 import subprocess
 import sys
 
-SKIP_DIRS = ("senza_step4b", "_rimossi_dal_report", "_duplicati", "_timeout60",
+SKIP_DIRS = ("_rimossi_dal_report", "_duplicati", "_timeout60",
              "_vecchio_su_f", "_11set_incompleto", "_riprova_bmv5", "_esclusi")
 
 FOUNDRY_TOML = """[profile.default]
