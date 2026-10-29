@@ -1,0 +1,96 @@
+digraph "LotteryFaulty.t_clean_object" {
+rankdir="TB"
+ranksep="1.0"
+compound="true"
+splines="true"
+clusterrank="local"
+labeljust="l"
+margin="1.0"
+fontname="Monospace"
+fontsize="10"
+fontcolor="dimgray"
+pencolor="dimgray"
+stylesheet="diagrams.css"
+node [shape="ellipse",style="filled",fillcolor="white",fontname="Monospace",fontsize="9"]
+edge [fontname="Monospace",fontsize="9"]
+label="Cross-referencing diagram for object LotteryFaulty.t_clean\lGenerated on 2026-07-28, 23:12\l"
+
+subgraph "cluster_LotteryFaulty.t_clean_object" {
+bgcolor="snow"
+style="rounded"
+margin="10"
+label=<<TABLE border="0" cellborder="0"><TR><TD tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_LotteryFaulty/LotteryFaulty.t_clean.pl">LotteryFaulty.t_clean</TD></TR></TABLE>>
+tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_LotteryFaulty/LotteryFaulty.t_clean.pl"
+"new319/35" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_LotteryFaulty/LotteryFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new319/35</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new317/28" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_LotteryFaulty/LotteryFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new317/28</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new313/34" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_LotteryFaulty/LotteryFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new313/34</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new311/28" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_LotteryFaulty/LotteryFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new311/28</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new310/38" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_LotteryFaulty/LotteryFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new310/38</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new308/28" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_LotteryFaulty/LotteryFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new308/28</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new307/30" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_LotteryFaulty/LotteryFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new307/30</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new306/24" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_LotteryFaulty/LotteryFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new306/24</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new304/28" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_LotteryFaulty/LotteryFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new304/28</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new300/38" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_LotteryFaulty/LotteryFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new300/38</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new299/32" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_LotteryFaulty/LotteryFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new299/32</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new296/34" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_LotteryFaulty/LotteryFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new296/34</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new291/30" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_LotteryFaulty/LotteryFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new291/30</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new144/28" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_LotteryFaulty/LotteryFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new144/28</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new70/28" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_LotteryFaulty/LotteryFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new70/28</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new65/28" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_LotteryFaulty/LotteryFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new65/28</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new52/36" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_LotteryFaulty/LotteryFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new52/36</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new44/34" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_LotteryFaulty/LotteryFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new44/34</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new35/28" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_LotteryFaulty/LotteryFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new35/28</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new14/28" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_LotteryFaulty/LotteryFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new14/28</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new13/28" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_LotteryFaulty/LotteryFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new13/28</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new12/34" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_LotteryFaulty/LotteryFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new12/34</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new11/36" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_LotteryFaulty/LotteryFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new11/36</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new10/32" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_LotteryFaulty/LotteryFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new10/32</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new9/28" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_LotteryFaulty/LotteryFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new9/28</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new7/32" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_LotteryFaulty/LotteryFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new7/32</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new6/28" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_LotteryFaulty/LotteryFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new6/28</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new5/28" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_LotteryFaulty/LotteryFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new5/28</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new4/32" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_LotteryFaulty/LotteryFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new4/32</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new3/54" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_LotteryFaulty/LotteryFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new3/54</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new2/25" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_LotteryFaulty/LotteryFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new2/25</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new1/36" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_LotteryFaulty/LotteryFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new1/36</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"incorrect/0" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_LotteryFaulty/LotteryFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">incorrect/0</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new310/38" -> "new311/28" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new307/30" -> "new308/28" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new304/28" -> "new306/24" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new144/28" -> "new291/30" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new65/28" -> "new291/30" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new52/36" -> "new296/34" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new44/34" -> "new299/32" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new44/34" -> "new300/38" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new35/28" -> "new291/30" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new14/28" -> "new304/28" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new13/28" -> "new307/30" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new12/34" -> "new299/32" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new12/34" -> "new310/38" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new11/36" -> "new313/34" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new9/28" -> "new307/30" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new6/28" -> "new307/30" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new5/28" -> "new317/28" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new3/54" -> "new4/32" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new3/54" -> "new5/28" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new3/54" -> "new6/28" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new3/54" -> "new7/32" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new3/54" -> "new9/28" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new3/54" -> "new10/32" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new3/54" -> "new11/36" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new3/54" -> "new12/34" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new3/54" -> "new13/28" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new3/54" -> "new14/28" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new3/54" -> "new35/28" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new3/54" -> "new44/34" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new3/54" -> "new52/36" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new3/54" -> "new65/28" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new3/54" -> "new70/28" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new3/54" -> "new144/28" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new2/25" -> "new3/54" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new1/36" -> "new319/35" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"incorrect/0" -> "new1/36" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"incorrect/0" -> "new2/25" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+}
+
+}

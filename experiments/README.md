@@ -1,7 +1,6 @@
 # Experiments
 
-Benchmark and results of the evaluation of SmartHornTest (PhD thesis of Marco
-Di Ianni, Chapter 6).
+Benchmark and results of the evaluation of SmartHornTest.
 
 | folder | origin | contracts | with a bug |
 |---|---|---|---|

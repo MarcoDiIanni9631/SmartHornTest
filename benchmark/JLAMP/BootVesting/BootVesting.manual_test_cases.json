@@ -1,0 +1,86 @@
+{
+  "contractName": "BootVesting",
+  "stateVariables": [
+    "vestedFull",
+    "vestedPartial"
+  ],
+  "functions": [
+    {
+      "signature": "claimable(uint256,uint256,uint256,uint256)",
+      "params": [
+        "n",
+        "currentTime",
+        "start0",
+        "start1"
+      ],
+      "test_cases": [
+        {
+          "concrete_values": [
+            "n == 0",
+            "currentTime == 1",
+            "start0 == 0",
+            "start1 == 0",
+            "vestedFull == 0",
+            "vestedPartial == 0"
+          ],
+          "constraints_clpq": [
+            "n=0"
+          ],
+          "kind": "manual-require",
+          "id": 1
+        },
+        {
+          "concrete_values": [
+            "n == 3",
+            "currentTime == 1",
+            "start0 == 0",
+            "start1 == 0",
+            "vestedFull == 0",
+            "vestedPartial == 0"
+          ],
+          "constraints_clpq": [
+            "n>=1",
+            "n>2"
+          ],
+          "kind": "manual-require",
+          "id": 2
+        },
+        {
+          "concrete_values": [
+            "n == 1",
+            "currentTime == 0",
+            "start0 == 0",
+            "start1 == 0",
+            "vestedFull == 0",
+            "vestedPartial == 0"
+          ],
+          "constraints_clpq": [
+            "n>=1",
+            "n=<2",
+            "currentTime-start0=<0"
+          ],
+          "kind": "manual-require",
+          "id": 3
+        },
+        {
+          "concrete_values": [
+            "n == 1",
+            "currentTime == 1",
+            "start0 == 0",
+            "start1 == 1",
+            "vestedFull == 0",
+            "vestedPartial == 0"
+          ],
+          "constraints_clpq": [
+            "n>=1",
+            "n=<2",
+            "currentTime-start0>0",
+            "currentTime-start1=<0"
+          ],
+          "kind": "manual-require",
+          "id": 4
+        }
+      ]
+    }
+  ]
+}

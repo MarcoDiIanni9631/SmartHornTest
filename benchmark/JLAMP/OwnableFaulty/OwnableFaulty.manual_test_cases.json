@@ -1,0 +1,27 @@
+{
+  "contractName": "OwnableFaulty",
+  "stateVariables": [
+    "_owner"
+  ],
+  "functions": [
+    {
+      "signature": "unsafeSetOwner(uint256)",
+      "params": [
+        "newOwner"
+      ],
+      "test_cases": [
+        {
+          "concrete_values": [
+            "newOwner == 0",
+            "_owner == 0"
+          ],
+          "constraints_clpq": [
+            "newOwner=0"
+          ],
+          "kind": "manual-require",
+          "id": 1
+        }
+      ]
+    }
+  ]
+}

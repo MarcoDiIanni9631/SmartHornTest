@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Builds experiments/: the benchmark of the thesis evaluation, with for every
+"""Builds experiments/: the benchmark of the evaluation, with for every
 contract the original source, the source with the vgood marker (positive tests)
 and the test_cases.json of the two routes from the run of 21/10/2026
 (test21Ottobre). summary.csv has the expected answer and the outcome of each

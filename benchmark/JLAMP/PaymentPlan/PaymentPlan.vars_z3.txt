@@ -1,0 +1,165 @@
+================ TEST #1 ================
+[POSITIVE WITNESS — verimapGood]
+=== CONCRETE VALUES ===
+  amount == 1
+  chunk == 2
+  paidOut == 0
+  pending == 0
+
+=== PROJECTED CONSTRAINTS (Z3) ===
+  pending=0
+  amount>0
+  chunk>0
+  amount<chunk
+  0=<amount
+  amount=<115792089237316195423570985008687907853269984665640564039457584007913129639935
+  0=<chunk
+  chunk=<115792089237316195423570985008687907853269984665640564039457584007913129639935
+  amount=paidOut+0
+  paidOut=<amount
+  paidOut=0+amount
+  0=<paidOut
+  not(paidOut=0)
+
+================ TEST #2 ================
+[POSITIVE WITNESS — verimapGood]
+=== CONCRETE VALUES ===
+  amount == 1
+  chunk == 1
+  paidOut == 0
+  pending == 0
+
+=== PROJECTED CONSTRAINTS (Z3) ===
+  pending=0
+  amount>0
+  chunk>0
+  amount>=chunk
+  0=<amount
+  amount=<115792089237316195423570985008687907853269984665640564039457584007913129639935
+  0=<chunk
+  chunk=<115792089237316195423570985008687907853269984665640564039457584007913129639935
+  amount=paidOut+0
+  paidOut=<amount
+  paidOut=0+chunk
+  0=<paidOut
+  not(paidOut=0)
+
+================ TEST #3 ================
+=== CONCRETE VALUES ===
+  amount == 3
+  chunk == 2
+  paidOut == 0
+  pending == 0
+
+=== PROJECTED CONSTRAINTS (Z3) ===
+  pending=0
+  amount>0
+  chunk>0
+  amount>=chunk
+  0=<amount
+  amount=<115792089237316195423570985008687907853269984665640564039457584007913129639935
+  0=<chunk
+  chunk=<115792089237316195423570985008687907853269984665640564039457584007913129639935
+  paidOut=0+chunk
+  0=<paidOut
+  not(paidOut=0)
+
+================ TEST #4 ================
+[POSITIVE WITNESS — verimapGood]
+=== CONCRETE VALUES ===
+  amount == 2
+  chunk == 1
+  paidOut == 0
+  pending == 0
+
+=== PROJECTED CONSTRAINTS (Z3) ===
+  pending=0
+  amount>0
+  chunk>0
+  amount>=chunk
+  0=<amount
+  amount=<115792089237316195423570985008687907853269984665640564039457584007913129639935
+  0=<chunk
+  chunk=<115792089237316195423570985008687907853269984665640564039457584007913129639935
+  amount=paidOut+0
+  paidOut=<amount
+  not(paidOut=0)
+
+================ TEST #5 ================
+=== CONCRETE VALUES ===
+  amount == 5
+  chunk == 2
+  paidOut == 0
+  pending == 0
+
+=== PROJECTED CONSTRAINTS (Z3) ===
+  pending=0
+  amount>0
+  chunk>0
+  amount>=chunk
+  0=<amount
+  amount=<115792089237316195423570985008687907853269984665640564039457584007913129639935
+  0=<chunk
+  chunk=<115792089237316195423570985008687907853269984665640564039457584007913129639935
+  not(paidOut=0)
+
+================ TEST #6 ================
+[POSITIVE WITNESS — verimapGood]
+=== CONCRETE VALUES ===
+  amount == 3
+  chunk == 1
+  paidOut == 0
+  pending == 0
+
+=== PROJECTED CONSTRAINTS (Z3) ===
+  pending=0
+  amount>0
+  chunk>0
+  amount>=chunk
+  0=<amount
+  amount=<115792089237316195423570985008687907853269984665640564039457584007913129639935
+  0=<chunk
+  chunk=<115792089237316195423570985008687907853269984665640564039457584007913129639935
+  amount=paidOut+0
+  paidOut=<amount
+  not(paidOut=0)
+
+================ TEST #7 ================
+=== CONCRETE VALUES ===
+  amount == 7
+  chunk == 2
+  paidOut == 0
+  pending == 0
+
+=== PROJECTED CONSTRAINTS (Z3) ===
+  pending=0
+  amount>0
+  chunk>0
+  amount>=chunk
+  0=<amount
+  amount=<115792089237316195423570985008687907853269984665640564039457584007913129639935
+  0=<chunk
+  chunk=<115792089237316195423570985008687907853269984665640564039457584007913129639935
+  not(paidOut=0)
+
+================ TEST #8 ================
+[POSITIVE WITNESS — verimapGood]
+=== CONCRETE VALUES ===
+  amount == 4
+  chunk == 1
+  paidOut == 0
+  pending == 0
+
+=== PROJECTED CONSTRAINTS (Z3) ===
+  pending=0
+  amount>0
+  chunk>0
+  amount>=chunk
+  0=<amount
+  amount=<115792089237316195423570985008687907853269984665640564039457584007913129639935
+  0=<chunk
+  chunk=<115792089237316195423570985008687907853269984665640564039457584007913129639935
+  amount=paidOut+0
+  paidOut=<amount
+  not(paidOut=0)
+

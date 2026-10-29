@@ -1,0 +1,272 @@
+{
+  "contractName": "BootVesting",
+  "stateVariables": [
+    "vestedFull",
+    "vestedPartial"
+  ],
+  "functions": [
+    {
+      "signature": "claimable(uint256,uint256,uint256,uint256)",
+      "params": [
+        "n",
+        "currentTime",
+        "start0",
+        "start1"
+      ],
+      "test_cases": [
+        {
+          "id": 1,
+          "kind": "positive",
+          "concrete_values": [
+            "n == 2",
+            "currentTime == 1",
+            "start0 == 0",
+            "start1 == 0",
+            "vestedFull == 0",
+            "vestedPartial == 0"
+          ],
+          "constraints_z3": [
+            "n>=1",
+            "n=<2",
+            "currentTime>start0",
+            "currentTime>start1",
+            "0<n",
+            "0=<n",
+            "n=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "0=<currentTime",
+            "currentTime=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "0=<start0",
+            "start0=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "0=<start1",
+            "start1=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "vestedFull=0",
+            "not(vestedPartial=0)"
+          ],
+          "constraints_clpq": [
+            "vestedFull=0",
+            "n=<2",
+            "n>1",
+            "vestedPartial=2*currentTime-start0-start1",
+            "currentTime-1r2*start0-1r2*start1!=0",
+            "start0>=0",
+            "start1>=0",
+            "currentTime-start0<100",
+            "currentTime-start1>0",
+            "currentTime-start1<100",
+            "currentTime-start0>0",
+            "currentTime=<115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          ]
+        },
+        {
+          "id": 2,
+          "kind": "positive",
+          "concrete_values": [
+            "n == 2",
+            "currentTime == 100",
+            "start0 == 99",
+            "start1 == 0",
+            "vestedFull == 0",
+            "vestedPartial == 0"
+          ],
+          "constraints_z3": [
+            "n>=1",
+            "n=<2",
+            "currentTime>start0",
+            "currentTime>start1",
+            "0<n",
+            "0=<n",
+            "n=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "0=<currentTime",
+            "currentTime=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "0=<start0",
+            "start0=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "0=<start1",
+            "start1=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "0=<vestedPartial",
+            "0=<vestedFull",
+            "not(vestedFull=0)",
+            "not(vestedPartial=0)"
+          ],
+          "constraints_clpq": [
+            "vestedFull=100",
+            "n=<2",
+            "n>1",
+            "vestedPartial=currentTime-start0",
+            "currentTime-start0!=0",
+            "currentTime-start0>=0",
+            "currentTime-start0<100",
+            "currentTime-start1>=100",
+            "currentTime=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "start1>=0"
+          ]
+        },
+        {
+          "id": 3,
+          "kind": "positive",
+          "concrete_values": [
+            "n == 1",
+            "currentTime == 1",
+            "start0 == 0",
+            "start1 == 0",
+            "vestedFull == 0",
+            "vestedPartial == 0"
+          ],
+          "constraints_z3": [
+            "n>=1",
+            "n=<2",
+            "currentTime>start0",
+            "currentTime>start1",
+            "0<n",
+            "0=<n",
+            "n=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "0=<currentTime",
+            "currentTime=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "0=<start0",
+            "start0=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "0=<start1",
+            "start1=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "0=<vestedPartial",
+            "vestedFull=0",
+            "not(vestedPartial=0)"
+          ],
+          "constraints_clpq": [
+            "n=1",
+            "vestedFull=0",
+            "vestedPartial=currentTime-start0",
+            "currentTime-start0!=0",
+            "currentTime-start0>=0",
+            "start0>=0",
+            "currentTime-start0<100",
+            "currentTime-start1>0",
+            "currentTime=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "start1>=0"
+          ]
+        },
+        {
+          "id": 4,
+          "kind": "positive",
+          "concrete_values": [
+            "n == 2",
+            "currentTime == 100",
+            "start0 == 0",
+            "start1 == 99",
+            "vestedFull == 0",
+            "vestedPartial == 0"
+          ],
+          "constraints_z3": [
+            "n>=1",
+            "n=<2",
+            "currentTime>start0",
+            "currentTime>start1",
+            "0<n",
+            "0=<n",
+            "n=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "0=<currentTime",
+            "currentTime=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "0=<start0",
+            "start0=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "0=<start1",
+            "start1=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "0=<vestedPartial",
+            "0=<vestedFull",
+            "not(vestedFull=0)",
+            "not(vestedPartial=0)"
+          ],
+          "constraints_clpq": [
+            "vestedFull=100",
+            "n=<2",
+            "n>1",
+            "vestedPartial=currentTime-start1",
+            "currentTime-start1!=0",
+            "currentTime-start1>=0",
+            "currentTime-start0>=100",
+            "currentTime-start1<100",
+            "currentTime=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "start0>=0"
+          ]
+        },
+        {
+          "id": 5,
+          "kind": "positive",
+          "concrete_values": [
+            "n == 2",
+            "currentTime == 100",
+            "start0 == 0",
+            "start1 == 0",
+            "vestedFull == 0",
+            "vestedPartial == 0"
+          ],
+          "constraints_z3": [
+            "n>=1",
+            "n=<2",
+            "currentTime>start0",
+            "currentTime>start1",
+            "0<n",
+            "0=<n",
+            "n=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "0=<currentTime",
+            "currentTime=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "0=<start0",
+            "start0=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "0=<start1",
+            "start1=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "0=<vestedFull",
+            "not(vestedFull=0)",
+            "vestedPartial=0"
+          ],
+          "constraints_clpq": [
+            "vestedFull=200",
+            "vestedPartial=0",
+            "n=<2",
+            "n>1",
+            "currentTime-start0>=100",
+            "currentTime-start1>=100",
+            "currentTime=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "start0>=0",
+            "start1>=0"
+          ]
+        },
+        {
+          "id": 6,
+          "kind": "positive",
+          "concrete_values": [
+            "n == 1",
+            "currentTime == 100",
+            "start0 == 0",
+            "start1 == 0",
+            "vestedFull == 0",
+            "vestedPartial == 0"
+          ],
+          "constraints_z3": [
+            "n>=1",
+            "n=<2",
+            "currentTime>start0",
+            "currentTime>start1",
+            "0<n",
+            "0=<n",
+            "n=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "0=<currentTime",
+            "currentTime=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "0=<start0",
+            "start0=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "0=<start1",
+            "start1=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "0=<vestedFull",
+            "not(vestedFull=0)",
+            "vestedPartial=0"
+          ],
+          "constraints_clpq": [
+            "n=1",
+            "vestedFull=100",
+            "vestedPartial=0",
+            "currentTime-start0>=100",
+            "currentTime-start1>0",
+            "currentTime=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "start0>=0",
+            "start1>=0"
+          ]
+        }
+      ]
+    }
+  ]
+}

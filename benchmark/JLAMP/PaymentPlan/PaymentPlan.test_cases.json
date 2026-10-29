@@ -1,0 +1,270 @@
+{
+  "contractName": "PaymentPlan",
+  "stateVariables": [
+    "paidOut",
+    "pending"
+  ],
+  "functions": [
+    {
+      "signature": "withdraw(uint256,uint256)",
+      "params": [
+        "amount",
+        "chunk"
+      ],
+      "test_cases": [
+        {
+          "id": 1,
+          "kind": "positive",
+          "concrete_values": [
+            "amount == 1",
+            "chunk == 2",
+            "paidOut == 0",
+            "pending == 0"
+          ],
+          "constraints_z3": [
+            "pending=0",
+            "amount>0",
+            "chunk>0",
+            "amount<chunk",
+            "0=<amount",
+            "amount=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "0=<chunk",
+            "chunk=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "amount=paidOut+0",
+            "paidOut=<amount",
+            "paidOut=0+amount",
+            "0=<paidOut",
+            "not(paidOut=0)"
+          ],
+          "constraints_clpq": [
+            "pending=0",
+            "amount!=0",
+            "paidOut=amount",
+            "amount-chunk<0",
+            "amount>0",
+            "chunk=<115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          ]
+        },
+        {
+          "id": 2,
+          "kind": "positive",
+          "concrete_values": [
+            "amount == 1",
+            "chunk == 1",
+            "paidOut == 0",
+            "pending == 0"
+          ],
+          "constraints_z3": [
+            "pending=0",
+            "amount>0",
+            "chunk>0",
+            "amount>=chunk",
+            "0=<amount",
+            "amount=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "0=<chunk",
+            "chunk=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "amount=paidOut+0",
+            "paidOut=<amount",
+            "paidOut=0+chunk",
+            "0=<paidOut",
+            "not(paidOut=0)"
+          ],
+          "constraints_clpq": [
+            "pending=0",
+            "amount!=0",
+            "paidOut=amount",
+            "amount>0",
+            "amount=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "chunk=amount"
+          ]
+        },
+        {
+          "id": 3,
+          "kind": "negative",
+          "concrete_values": [
+            "amount == 3",
+            "chunk == 2",
+            "paidOut == 0",
+            "pending == 0"
+          ],
+          "constraints_z3": [
+            "pending=0",
+            "amount>0",
+            "chunk>0",
+            "amount>=chunk",
+            "0=<amount",
+            "amount=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "0=<chunk",
+            "chunk=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "paidOut=0+chunk",
+            "0=<paidOut",
+            "not(paidOut=0)"
+          ],
+          "constraints_clpq": [
+            "pending=0",
+            "chunk!=0",
+            "paidOut=chunk",
+            "amount-2*chunk<0",
+            "amount-chunk!=0",
+            "amount-chunk>=0",
+            "amount>0",
+            "amount=<115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          ]
+        },
+        {
+          "id": 4,
+          "kind": "positive",
+          "concrete_values": [
+            "amount == 2",
+            "chunk == 1",
+            "paidOut == 0",
+            "pending == 0"
+          ],
+          "constraints_z3": [
+            "pending=0",
+            "amount>0",
+            "chunk>0",
+            "amount>=chunk",
+            "0=<amount",
+            "amount=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "0=<chunk",
+            "chunk=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "amount=paidOut+0",
+            "paidOut=<amount",
+            "not(paidOut=0)"
+          ],
+          "constraints_clpq": [
+            "pending=0",
+            "amount!=0",
+            "paidOut=amount",
+            "amount>=0",
+            "amount=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "chunk=1r2*amount"
+          ]
+        },
+        {
+          "id": 5,
+          "kind": "negative",
+          "concrete_values": [
+            "amount == 5",
+            "chunk == 2",
+            "paidOut == 0",
+            "pending == 0"
+          ],
+          "constraints_z3": [
+            "pending=0",
+            "amount>0",
+            "chunk>0",
+            "amount>=chunk",
+            "0=<amount",
+            "amount=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "0=<chunk",
+            "chunk=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "not(paidOut=0)"
+          ],
+          "constraints_clpq": [
+            "pending=0",
+            "chunk!=0",
+            "paidOut=2*chunk",
+            "amount-3*chunk<0",
+            "amount-2*chunk>=0",
+            "amount-2*chunk!=0",
+            "amount=<115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          ]
+        },
+        {
+          "id": 6,
+          "kind": "positive",
+          "concrete_values": [
+            "amount == 3",
+            "chunk == 1",
+            "paidOut == 0",
+            "pending == 0"
+          ],
+          "constraints_z3": [
+            "pending=0",
+            "amount>0",
+            "chunk>0",
+            "amount>=chunk",
+            "0=<amount",
+            "amount=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "0=<chunk",
+            "chunk=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "amount=paidOut+0",
+            "paidOut=<amount",
+            "not(paidOut=0)"
+          ],
+          "constraints_clpq": [
+            "pending=0",
+            "amount!=0",
+            "paidOut=amount",
+            "amount>=0",
+            "amount=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "chunk=1r3*amount"
+          ]
+        },
+        {
+          "id": 7,
+          "kind": "negative",
+          "concrete_values": [
+            "amount == 7",
+            "chunk == 2",
+            "paidOut == 0",
+            "pending == 0"
+          ],
+          "constraints_z3": [
+            "pending=0",
+            "amount>0",
+            "chunk>0",
+            "amount>=chunk",
+            "0=<amount",
+            "amount=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "0=<chunk",
+            "chunk=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "not(paidOut=0)"
+          ],
+          "constraints_clpq": [
+            "pending=0",
+            "chunk!=0",
+            "paidOut=3*chunk",
+            "amount-3*chunk>=0",
+            "amount-3*chunk!=0",
+            "amount=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "amount-4*chunk<0"
+          ]
+        },
+        {
+          "id": 8,
+          "kind": "positive",
+          "concrete_values": [
+            "amount == 4",
+            "chunk == 1",
+            "paidOut == 0",
+            "pending == 0"
+          ],
+          "constraints_z3": [
+            "pending=0",
+            "amount>0",
+            "chunk>0",
+            "amount>=chunk",
+            "0=<amount",
+            "amount=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "0=<chunk",
+            "chunk=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "amount=paidOut+0",
+            "paidOut=<amount",
+            "not(paidOut=0)"
+          ],
+          "constraints_clpq": [
+            "pending=0",
+            "amount!=0",
+            "paidOut=amount",
+            "amount>=0",
+            "amount=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "chunk=1r4*amount"
+          ]
+        }
+      ]
+    }
+  ]
+}

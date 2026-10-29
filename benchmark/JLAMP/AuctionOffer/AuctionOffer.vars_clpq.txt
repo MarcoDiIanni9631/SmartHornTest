@@ -1,0 +1,14 @@
+=== CONCRETE VALUES ===
+  newBid == 2
+  payment == 1
+  bid == 0
+  cash == 0
+
+=== PROJECTED CONSTRAINTS (CLP(Q)) ===
+  payment!=0
+  payment>0
+  bid=newBid
+  cash=payment
+  newBid-payment>0
+  newBid!=0
+

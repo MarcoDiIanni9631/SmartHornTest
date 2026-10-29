@@ -1,0 +1,55 @@
+digraph "OwnableFaulty.t_clean_object" {
+rankdir="TB"
+ranksep="1.0"
+compound="true"
+splines="true"
+clusterrank="local"
+labeljust="l"
+margin="1.0"
+fontname="Monospace"
+fontsize="10"
+fontcolor="dimgray"
+pencolor="dimgray"
+stylesheet="diagrams.css"
+node [shape="ellipse",style="filled",fillcolor="white",fontname="Monospace",fontsize="9"]
+edge [fontname="Monospace",fontsize="9"]
+label="Cross-referencing diagram for object OwnableFaulty.t_clean\lGenerated on 2026-07-28, 23:13\l"
+
+subgraph "cluster_OwnableFaulty.t_clean_object" {
+bgcolor="snow"
+style="rounded"
+margin="10"
+label=<<TABLE border="0" cellborder="0"><TR><TD tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_OwnableFaulty/OwnableFaulty.t_clean.pl">OwnableFaulty.t_clean</TD></TR></TABLE>>
+tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_OwnableFaulty/OwnableFaulty.t_clean.pl"
+"new40/31" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_OwnableFaulty/OwnableFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new40/31</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new38/24" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_OwnableFaulty/OwnableFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new38/24</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new37/24" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_OwnableFaulty/OwnableFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new37/24</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new36/20" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_OwnableFaulty/OwnableFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new36/20</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new34/24" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_OwnableFaulty/OwnableFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new34/24</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new16/24" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_OwnableFaulty/OwnableFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new16/24</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new14/28" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_OwnableFaulty/OwnableFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new14/28</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new7/24" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_OwnableFaulty/OwnableFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new7/24</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new6/28" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_OwnableFaulty/OwnableFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new6/28</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new5/24" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_OwnableFaulty/OwnableFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new5/24</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new4/28" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_OwnableFaulty/OwnableFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new4/28</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new3/42" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_OwnableFaulty/OwnableFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new3/42</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new2/21" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_OwnableFaulty/OwnableFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new2/21</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new1/32" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_OwnableFaulty/OwnableFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">new1/32</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"incorrect/0" [shape="box",tooltip="testing-gas/trunk/TPLP_Contracts/21Jul_retest/26Jun_TPLP_OwnableFaulty/OwnableFaulty.t_clean.pl",style="filled",fillcolor="cornsilk",label=<<TABLE border="0" cellborder="0" cellspacing="0" cellpadding="0"><TR><TD> </TD><TD><FONT POINT-SIZE="11">incorrect/0</FONT></TD><TD> </TD></TR><TR><TD> </TD><TD><FONT POINT-SIZE="7">local</FONT></TD><TD> </TD></TR></TABLE>>]
+"new34/24" -> "new36/20" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new7/24" -> "new34/24" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new6/28" -> "new37/24" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new5/24" -> "new38/24" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new3/42" -> "new4/28" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new3/42" -> "new5/24" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new3/42" -> "new6/28" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new3/42" -> "new7/24" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new3/42" -> "new14/28" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new3/42" -> "new16/24" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new2/21" -> "new3/42" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"new1/32" -> "new40/31" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"incorrect/0" -> "new1/32" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+"incorrect/0" -> "new2/21" [arrowhead="normal",labeltooltip="calls",label=<calls>]
+}
+
+}
