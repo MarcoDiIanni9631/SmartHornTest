@@ -1,0 +1,6 @@
+Ran 3 tests for test/solcmc_AuctionOffer_solcmc__AuctionOffer.t.sol:Witnesses_AuctionOffer
+[FAIL: panic: assertion failed (0x01)] test_negative_1() (gas: 11459)
+[FAIL: panic: assertion failed (0x01)] test_negative_2() (gas: 11605)
+[FAIL: panic: assertion failed (0x01)] test_negative_3() (gas: 54221)
+Suite result: FAILED. 0 passed; 3 failed; 0 skipped; finished in 3.57ms (1.71ms CPU time)
+

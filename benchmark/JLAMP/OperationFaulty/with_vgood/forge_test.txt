@@ -1,0 +1,8 @@
+Ran 5 tests for test/yul__Operation_faulty.t.sol:Witnesses_Operation_faulty
+[FAIL: panic: assertion failed (0x01)] test_negative_1() (gas: 9301)
+[FAIL: panic: assertion failed (0x01)] test_negative_2() (gas: 9385)
+[FAIL: panic: assertion failed (0x01)] test_negative_4() (gas: 9256)
+[FAIL: panic: assertion failed (0x01)] test_negative_5() (gas: 9233)
+[PASS] test_positive_3() (gas: 9877)
+Suite result: FAILED. 1 passed; 4 failed; 0 skipped; finished in 38.61ms (21.12ms CPU time)
+

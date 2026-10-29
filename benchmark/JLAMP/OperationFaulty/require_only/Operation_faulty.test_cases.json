@@ -1,0 +1,109 @@
+{
+  "contractName": "Operation",
+  "stateVariables": [],
+  "functions": [
+    {
+      "signature": "positiveDifference(uint256,uint256)",
+      "params": [
+        "x",
+        "y"
+      ],
+      "test_cases": [
+        {
+          "id": 1,
+          "kind": "negative",
+          "concrete_values": [
+            "x == 1",
+            "y == 1"
+          ],
+          "constraints_z3": [
+            "x == y",
+            "y >= 1"
+          ],
+          "constraints_clpq": [
+            "x>0",
+            "y=x"
+          ],
+          "constraints_z3_start": [
+            "x == y",
+            "y >= 1"
+          ],
+          "constraints_clpq_start": [
+            "x>0",
+            "y=x"
+          ]
+        },
+        {
+          "id": 2,
+          "kind": "negative",
+          "concrete_values": [
+            "x == 2",
+            "y == 1"
+          ],
+          "constraints_z3": [
+            "Not(x <= y)",
+            "y >= 1"
+          ],
+          "constraints_clpq": [
+            "x-y>0",
+            "x-y!=0",
+            "y>0"
+          ],
+          "constraints_z3_start": [
+            "Not(x <= y)",
+            "y >= 1"
+          ],
+          "constraints_clpq_start": [
+            "x-y>0",
+            "x-y!=0",
+            "y>0"
+          ]
+        },
+        {
+          "id": 3,
+          "kind": "negative",
+          "concrete_values": [
+            "x == 1",
+            "y == 0"
+          ],
+          "constraints_z3": [
+            "x >= 1",
+            "y <= 0"
+          ],
+          "constraints_clpq": [
+            "x>0",
+            "y=<0"
+          ],
+          "constraints_z3_start": [
+            "x >= 1",
+            "y <= 0"
+          ],
+          "constraints_clpq_start": [
+            "x>0",
+            "y=<0"
+          ]
+        },
+        {
+          "id": 4,
+          "kind": "negative",
+          "concrete_values": [
+            "x == 0",
+            "y == 0"
+          ],
+          "constraints_z3": [
+            "x <= 0"
+          ],
+          "constraints_clpq": [
+            "x=<0"
+          ],
+          "constraints_z3_start": [
+            "x <= 0"
+          ],
+          "constraints_clpq_start": [
+            "x=<0"
+          ]
+        }
+      ]
+    }
+  ]
+}

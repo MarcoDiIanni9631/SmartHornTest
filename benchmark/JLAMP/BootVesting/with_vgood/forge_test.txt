@@ -1,0 +1,13 @@
+Ran 10 tests for test/completo_BootVesting_BootVesting_solcmc__BootVesting.t.sol:Witnesses_BootVesting
+[FAIL: panic: assertion failed (0x01)] test_negative_1() (gas: 10322)
+[FAIL: panic: assertion failed (0x01)] test_negative_10() (gas: 10184)
+[FAIL: panic: assertion failed (0x01)] test_negative_2() (gas: 10260)
+[FAIL: panic: assertion failed (0x01)] test_negative_9() (gas: 10155)
+[PASS] test_positive_3() (gas: 35892)
+[PASS] test_positive_4() (gas: 36604)
+[PASS] test_positive_5() (gas: 56693)
+[PASS] test_positive_6() (gas: 36121)
+[PASS] test_positive_7() (gas: 56626)
+[PASS] test_positive_8() (gas: 36955)
+Suite result: FAILED. 6 passed; 4 failed; 0 skipped; finished in 2.58ms (5.99ms CPU time)
+

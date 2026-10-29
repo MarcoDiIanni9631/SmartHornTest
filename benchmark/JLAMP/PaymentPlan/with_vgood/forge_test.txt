@@ -1,0 +1,14 @@
+Ran 11 tests for test/completo_PaymentPlan_PaymentPlan_solcmc__PaymentPlan.t.sol:Witnesses_PaymentPlan
+[FAIL: panic: assertion failed (0x01)] test_negative_1() (gas: 35036)
+[FAIL: panic: assertion failed (0x01)] test_negative_10() (gas: 9382)
+[FAIL: panic: assertion failed (0x01)] test_negative_11() (gas: 9702)
+[FAIL: panic: assertion failed (0x01)] test_negative_2() (gas: 35550)
+[FAIL: panic: assertion failed (0x01)] test_negative_3() (gas: 36262)
+[FAIL: panic: assertion failed (0x01)] test_negative_9() (gas: 9361)
+[PASS] test_positive_4() (gas: 34715)
+[PASS] test_positive_5() (gas: 34991)
+[PASS] test_positive_6() (gas: 35613)
+[PASS] test_positive_7() (gas: 36172)
+[PASS] test_positive_8() (gas: 36839)
+Suite result: FAILED. 5 passed; 6 failed; 0 skipped; finished in 2.41ms (6.51ms CPU time)
+

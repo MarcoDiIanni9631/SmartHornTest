@@ -1,0 +1,4 @@
+Ran 1 test for test/solcmc_LotteryFaulty_solcmc__LotteryFaulty.t.sol:Witnesses_LotteryFaulty
+[FAIL: panic: assertion failed (0x01)] test_negative_1() (gas: 35608)
+Suite result: FAILED. 0 passed; 1 failed; 0 skipped; finished in 2.68ms (506.71µs CPU time)
+

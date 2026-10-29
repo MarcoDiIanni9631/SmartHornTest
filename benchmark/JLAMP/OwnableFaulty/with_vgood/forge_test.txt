@@ -1,0 +1,6 @@
+Ran 3 tests for test/yul__OwnableFaulty.t.sol:Witnesses_OwnableFaulty
+[FAIL: panic: assertion failed (0x01)] test_negative_1() (gas: 8920)
+[FAIL: panic: assertion failed (0x01)] test_negative_2() (gas: 31184)
+[PASS] test_positive_3() (gas: 31182)
+Suite result: FAILED. 1 passed; 2 failed; 0 skipped; finished in 38.54ms (12.71ms CPU time)
+

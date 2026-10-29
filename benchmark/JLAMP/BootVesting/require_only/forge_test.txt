@@ -1,0 +1,7 @@
+Ran 4 tests for test/require_BootVesting_BootVesting_solcmc__BootVesting.t.sol:Witnesses_BootVesting
+[FAIL: panic: assertion failed (0x01)] test_negative_1() (gas: 10281)
+[FAIL: panic: assertion failed (0x01)] test_negative_2() (gas: 10132)
+[FAIL: panic: assertion failed (0x01)] test_negative_3() (gas: 10229)
+[FAIL: panic: assertion failed (0x01)] test_negative_4() (gas: 10234)
+Suite result: FAILED. 0 passed; 4 failed; 0 skipped; finished in 6.07ms (3.81ms CPU time)
+
