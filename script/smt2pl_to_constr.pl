@@ -91,15 +91,29 @@ write_all(S, Terms, Decls0) :-
     forall(member((:- mode(M)), Terms),
            ( expand_mode(Decls0, M, M2), format(S, ":- mode ~q.~n", [M2]) )),
     forall(member((:- query(Q)), Terms), format(S, ":- query ~q.~n", [Q])),
-    forall(( member(C0, Terms), is_clause(C0), \+ skipped_clause(C0) ),
-           ( expand_tx(Decls0, C0, C),
+    forall(( member(C0, Terms), is_clause(C0), \+ skipped_clause(C0), \+ C0 = (ff :- _) ),
+           ( return_no_error(C0, C1), expand_tx(Decls0, C1, C),
              convert_clause(C, Preds, Decls, Cs2), maplist(write_clause(S), Cs2) )),
     % solc prints one query per assert and only the last error target is the
     % goal of the last query: make ff reach every error target, so that all
-    % the asserts of the contract are checked
-    forall(( member(T/0, Preds), sub_atom(T, 0, _, _, error_target_),
-             \+ ( member((ff :- B), Terms), sub_term(T, B) ) ),
-           format(S, "ff :- constr(true), ~q.~n", [T])).
+    % the asserts of the contract are checked, in the order of the source
+    % (an assert that cannot fail would otherwise hide the ones after it)
+    findall(K-T, ( member(T/0, Preds), atom_concat(error_target_, KA, T),
+                   atom_number(KA, K) ), KTs),
+    msort(KTs, Sorted),
+    forall(member(_-T, Sorted), format(S, "ff :- constr(true), ~q.~n", [T])).
+
+% a summary reached from the return block of a function has error code 0:
+% solc sets it to 0 on entry and changes it only on the rules that jump to
+% the summary when an assert (or a called function) fails. Saying it here
+% lets a query for error code K > 0 drop this clause at once, instead of
+% going back through every loop of the function to find the 0 at its entry.
+return_no_error((H :- constr(B)), (H :- constr(and(B, E = 0)))) :-
+    functor(H, N, _), sub_atom(N, 0, _, _, summary_),
+    sub_term(G, B), compound(G), functor(G, GN, _),
+    sub_atom(GN, _, _, _, '_return_function_'), !,
+    arg(1, H, E).
+return_no_error(C, C).
 
 % ---------------------------------------------------------------- transaction fields
 

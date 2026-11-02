@@ -22,9 +22,34 @@ python3 "$R/script/solcmc_assume_asserts.py" "$d/${n}_solc.smt2" "$d/$n.smt2" > 
 [ -s "$d/$n.smt2.pl" ] || { echo "smt2map failed (see $d/smt2map.log)"; exit 1; }
 timeout 300 swipl -q -g main -t halt "$R/script/smt2pl_to_constr.pl" -- --single-tx "$d/$n.smt2.pl" "$d/$n.chc.pl" > "$d/convert.log" 2>&1
 [ -s "$d/$n.chc.pl" ] || { echo "conversion failed (see $d/convert.log)"; exit 1; }
-rm -f "$d/$n.chc.pl".*.zmiout
-(cd "$R/script" && bash InterpreterAnalysis5.2.sh "$@" "$d/$n.chc.pl" ff)
-z=$(ls "$d/$n.chc.pl".*.zmiout 2>/dev/null | head -1)
-[ -n "$z" ] || { echo "no .zmiout from the interpreter"; exit 1; }
+rm -f "$d/$n.chc.pl".*.zmiout "$d"/target_*/*.zmiout
+# one analysis per assert (error target), in parallel, as SolCMC checks each
+# assert on its own: an assert that cannot fail then only uses up its own
+# timeout, and does not hide the asserts the search would reach after it
+targets=$(sed -n 's/^ff :- constr(true), \(error_target_[0-9]*\)\.$/\1/p' "$d/$n.chc.pl")
+for t in $targets; do
+  mkdir -p "$d/target_${t#error_target_}"
+  { grep -v '^ff :- ' "$d/$n.chc.pl"; echo "ff :- constr(true), $t."; } > "$d/target_${t#error_target_}/$n.chc.pl"
+  (cd "$R/script" && bash InterpreterAnalysis5.2.sh "$@" "$d/target_${t#error_target_}/$n.chc.pl" ff) > "$d/target_${t#error_target_}/run.log" 2>&1 &
+done
+wait
+zs=$(ls "$d"/target_*/"$n.chc.pl".*.zmiout 2>/dev/null)
+[ -n "$zs" ] || { echo "no .zmiout from the interpreter"; exit 1; }
+# one .zmiout for the contract: the tests of every target, and the outcome
+# tags of the worst one (timeout, error, not fully explored) or derivable if
+# any target has a test
+tags=$(for z in $zs; do basename "$z" | sed "s/^$n\.chc\.pl\.//; s/\.zmiout$//"; done | python3 -c '
+import sys
+rows = [l.strip().split(".") for l in sys.stdin if l.strip()]
+# the tags that say nothing went wrong: if a target has another one, keep that
+fine = {"NoTimeoutReached", "nonDerivable", "MaxDepthNotReached", "totalExplored",
+        "Z3PushOK", "NoError", "NoTypeError"}
+out = []
+for col in zip(*rows):
+    other = [c for c in col if c not in fine]
+    out.append(other[0] if other else col[0])
+print(".".join(out))')
+z="$d/$n.chc.pl.$tags.zmiout"
+cat $zs > "$z"
 timeout 120 python3 "$R/script/solcmc_zmiout2json.py" "$d" > "$d/json.log" 2>&1
 echo "Pipeline complete: $(basename "$z" | sed 's/.*chc.pl.//' | cut -d. -f1-2), $(grep -c 'TEST #' "$z") test, json in $d/$n.test_cases.json"

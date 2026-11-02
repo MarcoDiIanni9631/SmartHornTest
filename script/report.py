@@ -36,7 +36,7 @@ def forge_results(root):
 def contract_dirs(root):
     for d, subs, files in os.walk(root):
         subs[:] = [s for s in subs if s not in ("foundry", "lib", "out", "cache", "src", "test")
-                   and not s.startswith("cov_")]
+                   and not s.startswith(("cov_", "target_"))]
         name = os.path.basename(d)
         zs = [f for f in files if f.endswith(".zmiout")]
         if name + ".sol" not in files:
