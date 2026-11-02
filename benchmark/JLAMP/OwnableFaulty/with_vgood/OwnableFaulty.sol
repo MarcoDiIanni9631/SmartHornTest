@@ -17,10 +17,9 @@ contract OwnableFaulty {
         require(newOwner != 0);
 
         uint256 owner_value;
-        assembly {
-            sstore(_owner.slot, newOwner)
-            owner_value := sload(_owner.slot)
-        }
+        // was inline assembly: sstore/sload on _owner.slot
+        _owner = newOwner;
+        owner_value = _owner;
 
         assert(owner_value <= MAX_ADDRESS);
     vgood = 1042; assert(vgood < 20);

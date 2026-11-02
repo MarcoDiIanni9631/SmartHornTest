@@ -9,13 +9,12 @@ contract Operation {
 
         int256 diff;
         
-        assembly {
-            switch gt(x, y)
-            case 0 {
-                diff := sub(y, x)
-            }
-            default { //bug: sub(y, x) insted of sub(x, y)
-                diff := sub(y, x)
+        // was inline assembly: sub wraps around, so unchecked
+        unchecked {
+            if (x > y) { //bug: y - x insted of x - y
+                diff = int256(y - x);
+            } else {
+                diff = int256(y - x);
             }
         }
 
