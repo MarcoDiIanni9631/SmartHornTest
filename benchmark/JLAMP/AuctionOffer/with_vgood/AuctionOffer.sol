@@ -11,10 +11,8 @@ contract AuctionOffer {
     uint public cash = 0;
 
     function offer(uint newBid, uint payment) public { uint256 vgood = 42;
-      assert(newBid > bid);  // added: fails when the require below fails
-      require(newBid > bid);
-      assert(payment > 0);  // added: fails when the require below fails
-      require(payment > 0);
+      assert(newBid > bid && payment > 0);  // added: fails when the require below fails
+      require(newBid > bid && payment > 0);
 
         bid = newBid;
         cash += payment;

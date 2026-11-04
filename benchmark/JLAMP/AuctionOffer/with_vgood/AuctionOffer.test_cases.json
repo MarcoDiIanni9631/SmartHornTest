@@ -17,7 +17,7 @@
           "id": 1,
           "kind": "negative",
           "error_code": 1,
-          "failed_assert": "newBid > bid",
+          "failed_assert": "newBid > bid && payment > 0",
           "concrete_values": [
             "bid == 0",
             "cash == 0",
@@ -25,12 +25,12 @@
             "payment == 0"
           ],
           "constraints_z3": [
-            "115792089237316195423570985008687907853269984665640564039457584007913129639935 >=\npayment",
-            "newBid <= bid",
-            "bid <= 0",
             "cash == 0",
+            "newBid <= bid",
             "0 <= newBid",
-            "0 <= payment"
+            "0 <= payment",
+            "115792089237316195423570985008687907853269984665640564039457584007913129639935 >=\npayment",
+            "bid <= 0"
           ],
           "constraints_clpq": [
             "newBid=0",
@@ -40,12 +40,12 @@
             "payment=<115792089237316195423570985008687907853269984665640564039457584007913129639935"
           ],
           "constraints_z3_start": [
-            "115792089237316195423570985008687907853269984665640564039457584007913129639935 >=\npayment",
-            "newBid <= bid",
             "cash == 0",
             "bid <= 0",
+            "newBid <= bid",
             "0 <= newBid",
-            "0 <= payment"
+            "0 <= payment",
+            "115792089237316195423570985008687907853269984665640564039457584007913129639935 >=\npayment"
           ],
           "constraints_clpq_start": [
             "bid=0",
@@ -58,8 +58,8 @@
         {
           "id": 2,
           "kind": "negative",
-          "error_code": 2,
-          "failed_assert": "payment > 0",
+          "error_code": 1,
+          "failed_assert": "newBid > bid && payment > 0",
           "concrete_values": [
             "bid == 0",
             "cash == 0",
@@ -100,7 +100,7 @@
         {
           "id": 3,
           "kind": "negative",
-          "error_code": 3,
+          "error_code": 2,
           "failed_assert": "cash >= bid",
           "concrete_values": [
             "bid == 0",
@@ -127,7 +127,7 @@
             "bid == 0",
             "payment >= 1",
             "115792089237316195423570985008687907853269984665640564039457584007913129639935 >=\nnewBid",
-            "payment + cash - 1*newBid <= -1"
+            "cash + payment - 1*newBid <= -1"
           ],
           "constraints_clpq_start": [
             "bid=0",
@@ -140,7 +140,7 @@
         {
           "id": 4,
           "kind": "positive",
-          "error_code": 4,
+          "error_code": 3,
           "failed_assert": "vgood < 20",
           "concrete_values": [
             "bid == 0",
@@ -158,7 +158,6 @@
           "constraints_clpq": [
             "payment=cash",
             "newBid=bid",
-            "bid>=0",
             "cash=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
             "bid-cash=<0",
             "bid>0"
@@ -173,7 +172,6 @@
           "constraints_clpq_start": [
             "bid=0",
             "cash=0",
-            "newBid>=0",
             "payment=<115792089237316195423570985008687907853269984665640564039457584007913129639935",
             "newBid-payment=<0",
             "newBid>0"

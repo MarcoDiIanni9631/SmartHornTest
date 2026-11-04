@@ -14,9 +14,9 @@ route.
 | `BootVesting/` | `claimable` |
 
 Each folder has the contract as in the paper (`.sol`) and the run in
-`with_vgood/`: each condition of a `require` becomes its own `require`, with
-an `assert` of the same condition before it, so the tool also finds the tests
-that violate that condition, and
+`with_vgood/`: an `assert` is added before each `require`, with the same
+condition, so the tool also finds the tests that violate the `require` (one
+for each condition of a `&&`), and
 a marker assert is added at the end of the function (`vgood`), so the tool
 also finds positive tests (runs that reach the end of the function).
 
