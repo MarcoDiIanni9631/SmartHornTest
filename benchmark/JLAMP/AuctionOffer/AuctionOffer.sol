@@ -11,8 +11,7 @@ contract AuctionOffer {
     uint public cash = 0;
 
     function offer(uint newBid, uint payment) public {
-      require(newBid > bid);
-      require(payment > 0);
+        require(newBid > bid && payment > 0);
 
         bid = newBid;
         cash += payment;
