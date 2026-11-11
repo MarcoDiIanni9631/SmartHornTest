@@ -4,13 +4,15 @@ Benchmark and results of the evaluation of SmartHornTest.
 
 | folder | origin | contracts | with a bug |
 |---|---|---|---|
-| `soltg/` | regression benchmark of SolTG | 72 | 25 |
-| `smtchecker/` | SMTChecker tests of the Solidity compiler | 150 | 55 |
+| `soltg/` | regression benchmark of SolTG | 71 | 24 |
+| `smtchecker/` | SMTChecker tests of the Solidity compiler | 135 | 51 |
 
 Each file has one contract and at least one assertion in a public function;
 contracts with mappings, arrays, structs, inline assembly, external calls or
 `address(this).balance` are left out, as well as those whose bug needs more
-than one call (the tools run one call at a time). The code is the same as in
+than one call (the tools run one call at a time). The 16 contracts with tuples
+or casts between integer types are also left out, because our conversion of
+the CHCs produced by SolCMC does not support them. The code is the same as in
 the two benchmarks; in the SMTChecker files only the comment at the end, with
 the expected answer, was produced again with solc 0.8.29.
 
@@ -20,8 +22,8 @@ and the test cases found with the two routes (`solcmc.test_cases.json`,
 `yul2chc.test_cases.json`).
 
 `summary.csv` has one row per contract: the expected answer, the outcome of
-SmartHornTest (both routes), Mythril and Manticore, and the number of tests
-found.
+SmartHornTest (both routes), Mythril, Manticore and SolTG (official version,
+same timeout), and the number of tests found.
 
 `foundry.csv` has one row per test case: the route, the values, the result of
 `forge test` on the original contract (without `vgood`) and whether the test

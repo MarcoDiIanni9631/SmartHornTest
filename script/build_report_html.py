@@ -35,7 +35,7 @@ def main():
         d = os.path.join(E, r["benchmark"], r["category"], r["contract"])
         rows.append({"b": r["benchmark"], "cat": r["category"], "n": r["contract"], "fn": r["function"],
                      "exp": r["expected"], "calls": r["calls_needed"],
-                     "out": {t: r[t] for t in ("solcmc", "yul2chc", "mythril", "manticore")},
+                     "out": {t: r[t] for t in ("solcmc", "yul2chc", "mythril", "manticore", "soltg")},
                      "src": open(os.path.join(d, r["contract"] + ".sol"), errors="replace").read(),
                      "tests": {t: tests(os.path.join(d, t + ".test_cases.json"), foundry,
                                         (r["benchmark"], r["category"], r["contract"], t)) for t in ("solcmc", "yul2chc")}})
@@ -106,13 +106,13 @@ PAGE = r"""<!doctype html>
   <select id="fe"><option value="">Bug and safe</option><option value="bug">With a bug</option><option value="safe">Safe</option></select>
 </div>
 <div class="scroll"><table>
-  <thead><tr><th>Benchmark</th><th>Contract</th><th>Expected</th><th>SolCMC</th><th>yul2chc</th><th>Mythril</th><th>Manticore</th><th>Tests SolCMC<br>neg / pos</th><th>Tests yul2chc<br>neg / pos</th></tr></thead>
+  <thead><tr><th>Benchmark</th><th>Contract</th><th>Expected</th><th>SolCMC</th><th>yul2chc</th><th>Mythril</th><th>Manticore</th><th>SolTG</th><th>Tests SolCMC<br>neg / pos</th><th>Tests yul2chc<br>neg / pos</th></tr></thead>
   <tbody id="tbody"></tbody>
 </table></div>
 <script id="data" type="application/json">__DATA__</script>
 <script>
 const DATA = JSON.parse(document.getElementById("data").textContent);
-const TOOLS = [["solcmc", "SmartHornTest, SolCMC"], ["yul2chc", "SmartHornTest, yul2chc"], ["mythril", "Mythril"], ["manticore", "Manticore"]];
+const TOOLS = [["solcmc", "SmartHornTest, SolCMC"], ["yul2chc", "SmartHornTest, yul2chc"], ["mythril", "Mythril"], ["manticore", "Manticore"], ["soltg", "SolTG"]];
 const OUT = [["correct", "#2f9e44"], ["bug missed", "#e03131"], ["bug needs several calls", "#f08c00"],
              ["false alarm", "#7048e8"], ["timeout", "#fab005"], ["not analyzed", "#adb5bd"], ["no expected answer", "#dee2e6"]];
 const COLOR = Object.fromEntries(OUT);

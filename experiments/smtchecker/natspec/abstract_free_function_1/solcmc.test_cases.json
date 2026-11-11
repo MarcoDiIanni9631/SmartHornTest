@@ -11,9 +11,9 @@
       "test_cases": [
         {
           "id": 1,
-          "kind": "positive",
-          "error_code": 2,
-          "failed_assert": "vgood < 20",
+          "kind": "negative",
+          "error_code": 1,
+          "failed_assert": "t == 0",
           "concrete_values": [
             "x == 0"
           ],
@@ -36,9 +36,9 @@
         },
         {
           "id": 2,
-          "kind": "negative",
-          "error_code": 1,
-          "failed_assert": "t == 0",
+          "kind": "positive",
+          "error_code": 2,
+          "failed_assert": "vgood < 20",
           "concrete_values": [
             "x == 0"
           ],

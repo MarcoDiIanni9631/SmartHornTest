@@ -17,25 +17,29 @@
           "failed_assert": "vgood < 20",
           "concrete_values": [
             "x == 10",
-            "b == 1"
+            "b == 0"
           ],
           "constraints_z3": [
-            "b == 1",
             "x <= 99",
+            "0 <= b",
+            "1 >= b",
             "x >= 10"
           ],
           "constraints_clpq": [
-            "b=1",
+            "b>=0",
+            "b=<1",
             "x<100",
             "x>=10"
           ],
           "constraints_z3_start": [
-            "b == 1",
             "x <= 99",
+            "0 <= b",
+            "1 >= b",
             "x >= 10"
           ],
           "constraints_clpq_start": [
-            "b=1",
+            "b>=0",
+            "b=<1",
             "x<100",
             "x>=10"
           ]
@@ -318,36 +322,6 @@
             "b=1",
             "x>=0",
             "x<1"
-          ]
-        },
-        {
-          "id": 12,
-          "kind": "positive",
-          "error_code": 2,
-          "failed_assert": "vgood < 20",
-          "concrete_values": [
-            "x == 10",
-            "b == 0"
-          ],
-          "constraints_z3": [
-            "b == 0",
-            "x <= 99",
-            "x >= 10"
-          ],
-          "constraints_clpq": [
-            "b=0",
-            "x<100",
-            "x>=10"
-          ],
-          "constraints_z3_start": [
-            "b == 0",
-            "x <= 99",
-            "x >= 10"
-          ],
-          "constraints_clpq_start": [
-            "b=0",
-            "x<100",
-            "x>=10"
           ]
         }
       ]

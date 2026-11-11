@@ -9,25 +9,6 @@
       "test_cases": [
         {
           "id": 1,
-          "kind": "positive",
-          "error_code": 5,
-          "failed_assert": "vgood < 20",
-          "concrete_values": [],
-          "constraints_z3": [
-            "True"
-          ],
-          "constraints_clpq": [
-            "(CLP(Q) failed: no output)"
-          ],
-          "constraints_z3_start": [
-            "True"
-          ],
-          "constraints_clpq_start": [
-            "(CLP(Q) failed: no output)"
-          ]
-        },
-        {
-          "id": 2,
           "kind": "negative",
           "error_code": 1,
           "failed_assert": "x | y != 0",
@@ -46,7 +27,7 @@
           ]
         },
         {
-          "id": 3,
+          "id": 2,
           "kind": "negative",
           "error_code": 2,
           "failed_assert": "x | y == 0xff",
@@ -65,7 +46,7 @@
           ]
         },
         {
-          "id": 4,
+          "id": 3,
           "kind": "negative",
           "error_code": 3,
           "failed_assert": "x | y == 0xffff",
@@ -84,10 +65,29 @@
           ]
         },
         {
-          "id": 5,
+          "id": 4,
           "kind": "negative",
           "error_code": 4,
           "failed_assert": "x | y == 0x0000",
+          "concrete_values": [],
+          "constraints_z3": [
+            "True"
+          ],
+          "constraints_clpq": [
+            "(CLP(Q) failed: no output)"
+          ],
+          "constraints_z3_start": [
+            "True"
+          ],
+          "constraints_clpq_start": [
+            "(CLP(Q) failed: no output)"
+          ]
+        },
+        {
+          "id": 5,
+          "kind": "positive",
+          "error_code": 5,
+          "failed_assert": "vgood < 20",
           "concrete_values": [],
           "constraints_z3": [
             "True"

@@ -1,0 +1,21 @@
+insieme,benchmark,tool,contratti,giuste,bug_non_trovati,falsi_allarmi,timeout,non_analizzati,bug_trovati,contratti_con_bug,foundry_neg_conf,foundry_neg,foundry_pos_conf,foundry_pos
+tutti,SolTG,Noi SolCMC,72,71,1,0,0,0,24,25,47,47,274,275
+tutti,SolTG,Noi yul2chc,72,46,5,2,11,8,16,25,18,37,40,48
+tutti,SolTG,Mythril,72,70,2,0,0,0,23,25,,,,
+tutti,SolTG,Manticore,72,64,1,0,7,0,24,25,,,,
+tutti,SolTG,SolTG,72,55,1,0,10,6,18,25,,,,
+tutti,SMTChecker,Noi SolCMC,150,140,0,7,1,2,55,55,101,133,335,341
+tutti,SMTChecker,Noi yul2chc,150,94,4,5,27,20,39,55,36,61,83,101
+tutti,SMTChecker,Mythril,150,148,1,1,0,0,54,55,,,,
+tutti,SMTChecker,Manticore,150,141,1,1,5,2,54,55,,,,
+tutti,SMTChecker,SolTG,150,119,5,0,16,10,44,55,,,,
+senza_tuple_cast,SolTG,Noi SolCMC,71,70,1,0,0,0,23,24,46,46,274,275
+senza_tuple_cast,SolTG,Noi yul2chc,71,45,5,2,11,8,15,24,18,37,40,48
+senza_tuple_cast,SolTG,Mythril,71,69,2,0,0,0,22,24,,,,
+senza_tuple_cast,SolTG,Manticore,71,63,1,0,7,0,23,24,,,,
+senza_tuple_cast,SolTG,SolTG,71,54,1,0,10,6,17,24,,,,
+senza_tuple_cast,SMTChecker,Noi SolCMC,135,132,0,0,1,2,51,51,96,98,321,325
+senza_tuple_cast,SMTChecker,Noi yul2chc,135,83,4,2,27,19,35,51,33,55,73,90
+senza_tuple_cast,SMTChecker,Mythril,135,133,1,1,0,0,50,51,,,,
+senza_tuple_cast,SMTChecker,Manticore,135,126,1,1,5,2,50,51,,,,
+senza_tuple_cast,SMTChecker,SolTG,135,105,5,0,15,10,40,51,,,,

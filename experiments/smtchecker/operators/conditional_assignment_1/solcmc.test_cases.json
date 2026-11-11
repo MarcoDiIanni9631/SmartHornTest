@@ -11,27 +11,6 @@
       "test_cases": [
         {
           "id": 1,
-          "kind": "positive",
-          "error_code": 2,
-          "failed_assert": "vgood < 20",
-          "concrete_values": [
-            "b == 0"
-          ],
-          "constraints_z3": [
-            "b == 0"
-          ],
-          "constraints_clpq": [
-            "b=0"
-          ],
-          "constraints_z3_start": [
-            "b == 0"
-          ],
-          "constraints_clpq_start": [
-            "b=0"
-          ]
-        },
-        {
-          "id": 2,
           "kind": "negative",
           "error_code": 1,
           "failed_assert": "a > 2",
@@ -49,6 +28,27 @@
           ],
           "constraints_clpq_start": [
             "b=1"
+          ]
+        },
+        {
+          "id": 2,
+          "kind": "positive",
+          "error_code": 2,
+          "failed_assert": "vgood < 20",
+          "concrete_values": [
+            "b == 0"
+          ],
+          "constraints_z3": [
+            "b == 0"
+          ],
+          "constraints_clpq": [
+            "b=0"
+          ],
+          "constraints_z3_start": [
+            "b == 0"
+          ],
+          "constraints_clpq_start": [
+            "b=0"
           ]
         }
       ]

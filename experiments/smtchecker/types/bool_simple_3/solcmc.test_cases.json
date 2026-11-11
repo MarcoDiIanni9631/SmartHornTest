@@ -16,23 +16,23 @@
           "error_code": 2,
           "failed_assert": "vgood < 20",
           "concrete_values": [
-            "x == 1",
+            "x == 0",
             "y == 1"
           ],
           "constraints_z3": [
-            "x == 1",
-            "y == 1"
+            "y == 1",
+            "x == 0"
           ],
           "constraints_clpq": [
-            "x=1",
+            "x=0",
             "y=1"
           ],
           "constraints_z3_start": [
-            "x == 1",
-            "y == 1"
+            "y == 1",
+            "x == 0"
           ],
           "constraints_clpq_start": [
-            "x=1",
+            "x=0",
             "y=1"
           ]
         },
@@ -42,24 +42,24 @@
           "error_code": 2,
           "failed_assert": "vgood < 20",
           "concrete_values": [
-            "x == 1",
-            "y == 1"
+            "x == 0",
+            "y == 0"
           ],
           "constraints_z3": [
-            "x == 1",
-            "y == 1"
+            "y == 0",
+            "x == 0"
           ],
           "constraints_clpq": [
-            "x=1",
-            "y=1"
+            "x=0",
+            "y=0"
           ],
           "constraints_z3_start": [
-            "x == 1",
-            "y == 1"
+            "y == 0",
+            "x == 0"
           ],
           "constraints_clpq_start": [
-            "x=1",
-            "y=1"
+            "x=0",
+            "y=0"
           ]
         },
         {
@@ -72,16 +72,16 @@
             "y == 0"
           ],
           "constraints_z3": [
-            "x == 1",
-            "y == 0"
+            "y == 0",
+            "x == 1"
           ],
           "constraints_clpq": [
             "x=1",
             "y=0"
           ],
           "constraints_z3_start": [
-            "x == 1",
-            "y == 0"
+            "y == 0",
+            "x == 1"
           ],
           "constraints_clpq_start": [
             "x=1",
@@ -95,127 +95,23 @@
           "failed_assert": "vgood < 20",
           "concrete_values": [
             "x == 1",
-            "y == 0"
+            "y == 1"
           ],
           "constraints_z3": [
-            "x == 1",
-            "y == 0"
+            "y == 1",
+            "x == 1"
           ],
           "constraints_clpq": [
             "x=1",
-            "y=0"
+            "y=1"
           ],
           "constraints_z3_start": [
-            "x == 1",
-            "y == 0"
+            "y == 1",
+            "x == 1"
           ],
           "constraints_clpq_start": [
             "x=1",
-            "y=0"
-          ]
-        },
-        {
-          "id": 5,
-          "kind": "positive",
-          "error_code": 2,
-          "failed_assert": "vgood < 20",
-          "concrete_values": [
-            "x == 0",
-            "y == 1"
-          ],
-          "constraints_z3": [
-            "x == 0",
-            "y == 1"
-          ],
-          "constraints_clpq": [
-            "x=0",
             "y=1"
-          ],
-          "constraints_z3_start": [
-            "x == 0",
-            "y == 1"
-          ],
-          "constraints_clpq_start": [
-            "x=0",
-            "y=1"
-          ]
-        },
-        {
-          "id": 6,
-          "kind": "positive",
-          "error_code": 2,
-          "failed_assert": "vgood < 20",
-          "concrete_values": [
-            "x == 0",
-            "y == 1"
-          ],
-          "constraints_z3": [
-            "x == 0",
-            "y == 1"
-          ],
-          "constraints_clpq": [
-            "x=0",
-            "y=1"
-          ],
-          "constraints_z3_start": [
-            "x == 0",
-            "y == 1"
-          ],
-          "constraints_clpq_start": [
-            "x=0",
-            "y=1"
-          ]
-        },
-        {
-          "id": 7,
-          "kind": "positive",
-          "error_code": 2,
-          "failed_assert": "vgood < 20",
-          "concrete_values": [
-            "x == 0",
-            "y == 0"
-          ],
-          "constraints_z3": [
-            "x == 0",
-            "y == 0"
-          ],
-          "constraints_clpq": [
-            "x=0",
-            "y=0"
-          ],
-          "constraints_z3_start": [
-            "x == 0",
-            "y == 0"
-          ],
-          "constraints_clpq_start": [
-            "x=0",
-            "y=0"
-          ]
-        },
-        {
-          "id": 8,
-          "kind": "positive",
-          "error_code": 2,
-          "failed_assert": "vgood < 20",
-          "concrete_values": [
-            "x == 0",
-            "y == 0"
-          ],
-          "constraints_z3": [
-            "x == 0",
-            "y == 0"
-          ],
-          "constraints_clpq": [
-            "x=0",
-            "y=0"
-          ],
-          "constraints_z3_start": [
-            "x == 0",
-            "y == 0"
-          ],
-          "constraints_clpq_start": [
-            "x=0",
-            "y=0"
           ]
         }
       ]

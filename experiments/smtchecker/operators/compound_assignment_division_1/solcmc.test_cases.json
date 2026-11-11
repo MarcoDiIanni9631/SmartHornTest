@@ -13,7 +13,7 @@
           "id": 1,
           "kind": "negative",
           "error_code": 3,
-          "failed_assert": null,
+          "failed_assert": "y == 0",
           "concrete_values": [
             "x == 2"
           ],

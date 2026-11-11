@@ -18,18 +18,16 @@
             "x == 0"
           ],
           "constraints_z3": [
-            "-10 <= x",
-            "0 <= x",
-            "x <= 9"
+            "x <= 9",
+            "0 <= x"
           ],
           "constraints_clpq": [
             "x>=0",
             "x=<9"
           ],
           "constraints_z3_start": [
-            "-10 <= x",
-            "0 <= x",
-            "x <= 9"
+            "x <= 9",
+            "0 <= x"
           ],
           "constraints_clpq_start": [
             "x>=0",

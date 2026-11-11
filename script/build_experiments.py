@@ -1,15 +1,21 @@
 #!/usr/bin/env python3
 """Builds experiments/: the benchmark of the evaluation, with for every
 contract the original source, the source with the vgood marker (positive tests)
-and the test_cases.json of the two routes from the run of 21/10/2026
-(test21Ottobre). summary.csv has the expected answer and the outcome of each
-tool from the report of 20/10/2026 (test20Ottobre); foundry.csv has one row per
-test case with the result of forge test on the original contract (21/10/2026).
+and the test_cases.json of the two routes: SolCMC route from the run of
+3/11/2026 (test3Novembre, converter fixed), yul2chc route from the run of
+21/10/2026 (test21Ottobre). summary.csv has the expected answer and the outcome
+of each tool, as in the comparison report (test20Ottobre/_report_confronto.py,
+SolTG = official version, run of 5/11/2026); foundry.csv has one row per test
+case with the result of forge test on the original contract. Contracts with
+tuples or casts are excluded (NON_APPLICABILI in the report script).
 Usage (on the server, from the repo root): python3 script/build_experiments.py"""
 import csv, glob, importlib.util, json, os, shutil
 
 P = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-T20, T21 = os.path.join(P, "test20Ottobre"), os.path.join(P, "test21Ottobre")
+T20, T21, T3 = os.path.join(P, "test20Ottobre"), os.path.join(P, "test21Ottobre"), os.path.join(P, "test3Novembre")
+# folder of the run with vgood (test cases) and of the Foundry project, per route
+VG = {"solcmc": os.path.join(T3, "solcmc"), "yul": os.path.join(T21, "yul")}
+FD = {"solcmc": T3, "yul": T21}
 OUT = os.path.join(P, "experiments")
 spec = importlib.util.spec_from_file_location("rep", os.path.join(T20, "_report_confronto.py"))
 rep = importlib.util.module_from_spec(spec)
@@ -36,7 +42,7 @@ def target(rel):
 
 def contracts():
     mano = rep.atteso_mano()
-    st = {"solcmc": rep.stato(os.path.join(T20, "solcmc_maxdepth100")), "yul": rep.stato(os.path.join(T20, "yul_maxdepth100")),
+    st = {"solcmc": rep.stato(rep.SOLCMC), "yul": rep.stato(os.path.join(T20, "yul_maxdepth100")),
           "myth": rep.stato(os.path.join(T20, "_tool", "mythril")), "mcore": rep.stato(os.path.join(T20, "_tool", "manticore"))}
     lista = [l.split()[1] for f in ("_lista.txt", "_lista_soltg_reg.txt")
              for l in rep.leggi(os.path.join(T20, f)).splitlines() if l.strip()]
@@ -49,7 +55,7 @@ def contracts():
             src_path = os.path.join(T20, "_tool", "mythril", rel, nome + ".sol")
         src = rep.leggi(src_path)
         att = rep.atteso(rel, rep.leggi(rep.UFFICIALE[rel]) if rel in rep.UFFICIALE else src, mano)
-        r = {"solcmc": rep.nostri(os.path.join(T20, "solcmc_maxdepth100"), rel, st["solcmc"]),
+        r = {"solcmc": rep.nostri(rep.SOLCMC, rel, st["solcmc"]), "soltg": rep.soltg(rel),
              "yul": rep.nostri(os.path.join(T20, "yul_maxdepth100"), rel, st["yul"]),
              "myth": rep.mythril(rel, st["myth"]), "mcore": rep.manticore(rel, st["mcore"])}
         yield rel, src_path, att, {k: rep.esito(att, r[k]) for k in r}
@@ -66,7 +72,7 @@ def functions():
 
 
 FOUNDRY = {"conf": "confirmed", "nonfall": "not confirmed: no assertion fails",
-           "rompe": "not confirmed: a real assertion fails", "revert": "not confirmed: other revert",
+           "assert_violato": "not confirmed: a real assertion fails", "revert": "not confirmed: other revert",
            "dominio": "not confirmed: value out of the type", "manca": "not run"}
 
 
@@ -76,7 +82,7 @@ def foundry_rows(rel, bench, cat, name, fg):
     for route, short in (("solcmc", "solcmc"), ("yul", "yul2chc")):
         res = fg[route].get(vg.base(route, rel), {})
         i = 0
-        for j in glob.glob(os.path.join(T21, route, rel, "*.test_cases.json")):
+        for j in glob.glob(os.path.join(VG[route], rel, "*.test_cases.json")):
             for fn in json.load(open(j)).get("functions", []):
                 for tc in fn.get("test_cases", []):
                     i += 1
@@ -107,7 +113,10 @@ def main():
         shutil.rmtree(os.path.join(OUT, "soltg"), ignore_errors=True)
         shutil.rmtree(os.path.join(OUT, "smtchecker"), ignore_errors=True)
     rows, seen, fun = [], set(), functions()
-    fg, ftests = {k: vg.forge(k) for k in ("solcmc", "yul")}, []
+    fg, ftests = {}, []
+    for k in ("solcmc", "yul"):
+        vg.T = FD[k]
+        fg[k] = vg.forge(k)
     for rel, src_path, att, es in contracts():
         bench, cat, name = target(rel)
         d = os.path.join(OUT, bench, cat, name)
@@ -118,17 +127,17 @@ def main():
         row = {"benchmark": bench, "category": cat, "contract": name,
                "function": fun[rel], "expected": "bug" if att[0] == "bug" else "safe", "calls_needed": att[1]}
         for route, short in (("solcmc", "solcmc"), ("yul", "yul2chc")):
-            vgood = os.path.join(T21, route, rel, name + ".sol")
+            vgood = os.path.join(VG[route], rel, name + ".sol")
             if os.path.exists(vgood) and not os.path.exists(os.path.join(d, name + "_vgood.sol")):
                 shutil.copy2(vgood, os.path.join(d, name + "_vgood.sol"))
-            js = glob.glob(os.path.join(T21, route, rel, "*.test_cases.json"))
+            js = glob.glob(os.path.join(VG[route], rel, "*.test_cases.json"))
             neg = pos = ""
             if js:
                 shutil.copy2(js[0], os.path.join(d, short + ".test_cases.json"))
                 neg, pos = count_tests(js[0])
             row[short] = OUTCOME[es[route]]
             row[short + "_negative_tests"], row[short + "_positive_tests"] = neg, pos
-        row["mythril"], row["manticore"] = OUTCOME[es["myth"]], OUTCOME[es["mcore"]]
+        row["mythril"], row["manticore"], row["soltg"] = OUTCOME[es["myth"]], OUTCOME[es["mcore"]], OUTCOME[es["soltg"]]
         rows.append(row)
         ftests += foundry_rows(rel, bench, cat, name, fg)
     rows.sort(key=lambda x: (x["benchmark"] != "soltg", x["category"], x["contract"]))
@@ -148,7 +157,7 @@ def main():
     for b in ("soltg", "smtchecker"):
         rs = [x for x in rows if x["benchmark"] == b]
         print(b, len(rs), "contracts,", sum(x["expected"] == "bug" for x in rs), "with a bug")
-        for t in ("solcmc", "yul2chc", "mythril", "manticore"):
+        for t in ("solcmc", "yul2chc", "mythril", "manticore", "soltg"):
             c = {}
             for x in rs:
                 c[x[t]] = c.get(x[t], 0) + 1

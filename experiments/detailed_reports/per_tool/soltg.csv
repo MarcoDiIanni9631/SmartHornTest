@@ -1,0 +1,223 @@
+contratto,cartella,benchmark,escluso,atteso,esito,test,pass,panic,s
+assignment_in_declaration,solcmc/control_flow/assignment_in_declaration,SMTChecker,,sicuro,giusto,1,1,0,620
+branches_assert_condition_1,solcmc/control_flow/branches_assert_condition_1,SMTChecker,,sicuro,giusto,2,2,0,620
+branches_assert_condition_2,solcmc/control_flow/branches_assert_condition_2,SMTChecker,,sicuro,giusto,3,3,0,619
+branches_merge_variables_1,solcmc/control_flow/branches_merge_variables_1,SMTChecker,,sicuro,giusto,2,2,0,619
+branches_merge_variables_2,solcmc/control_flow/branches_merge_variables_2,SMTChecker,,sicuro,giusto,2,2,0,622
+branches_merge_variables_3,solcmc/control_flow/branches_merge_variables_3,SMTChecker,,sicuro,giusto,2,2,0,651
+branches_merge_variables_4,solcmc/control_flow/branches_merge_variables_4,SMTChecker,,sicuro,giusto,2,2,0,628
+branches_merge_variables_5,solcmc/control_flow/branches_merge_variables_5,SMTChecker,,sicuro,giusto,2,2,0,624
+branches_merge_variables_6,solcmc/control_flow/branches_merge_variables_6,SMTChecker,,sicuro,giusto,2,2,0,624
+return_1,solcmc/control_flow/return_1,SMTChecker,,sicuro,timeout,0,0,0,615
+ways_to_merge_variables_1,solcmc/control_flow/ways_to_merge_variables_1,SMTChecker,,bug,giusto,2,1,1,623
+ways_to_merge_variables_2,solcmc/control_flow/ways_to_merge_variables_2,SMTChecker,,bug,giusto,2,1,1,621
+ways_to_merge_variables_3,solcmc/control_flow/ways_to_merge_variables_3,SMTChecker,,bug,giusto,2,1,1,621
+nested_if,solcmc/control_flow_branches_with_return/nested_if,SMTChecker,,bug,giusto,1,0,1,621
+return_in_both_branches,solcmc/control_flow_branches_with_return/return_in_both_branches,SMTChecker,,sicuro,giusto,1,1,0,621
+simple_if2,solcmc/control_flow_branches_with_return/simple_if2,SMTChecker,,bug,giusto,2,1,1,631
+constant_easy,solcmc/file_level/constant_easy,SMTChecker,,bug,giusto,1,0,1,623
+recursion,solcmc/file_level/recursion,SMTChecker,,sicuro,non analizzato,0,0,0,6
+loop_basic,solcmc/invariants_cicli/loop_basic,SMTChecker,,sicuro,giusto,1,1,0,617
+loop_basic_for,solcmc/invariants_cicli/loop_basic_for,SMTChecker,,sicuro,giusto,2,2,0,616
+loop_nested,solcmc/invariants_cicli/loop_nested,SMTChecker,,sicuro,timeout,0,0,0,609
+loop_nested_for,solcmc/invariants_cicli/loop_nested_for,SMTChecker,,sicuro,timeout,0,0,0,609
+do_while_1,solcmc/loops_cicli/do_while_1,SMTChecker,,sicuro,timeout,0,0,0,609
+do_while_1_fail,solcmc/loops_cicli/do_while_1_fail,SMTChecker,,bug,bug non trovato,2,2,0,616
+do_while_break,solcmc/loops_cicli/do_while_break,SMTChecker,,sicuro,giusto,1,1,0,615
+do_while_break_2,solcmc/loops_cicli/do_while_break_2,SMTChecker,,sicuro,giusto,1,1,0,613
+do_while_break_2_fail,solcmc/loops_cicli/do_while_break_2_fail,SMTChecker,,bug,giusto,1,0,1,638
+do_while_break_fail,solcmc/loops_cicli/do_while_break_fail,SMTChecker,,bug,giusto,1,0,1,627
+do_while_continue,solcmc/loops_cicli/do_while_continue,SMTChecker,,sicuro,timeout,0,0,0,619
+for_1_break,solcmc/loops_cicli/for_1_break,SMTChecker,,sicuro,giusto,2,2,0,627
+for_1_break_fail,solcmc/loops_cicli/for_1_break_fail,SMTChecker,,bug,giusto,3,2,1,621
+for_1_continue,solcmc/loops_cicli/for_1_continue,SMTChecker,,sicuro,giusto,2,2,0,621
+for_1_continue_fail,solcmc/loops_cicli/for_1_continue_fail,SMTChecker,,bug,giusto,1,0,1,620
+for_break_direct,solcmc/loops_cicli/for_break_direct,SMTChecker,,sicuro,giusto,1,1,0,620
+for_loop_1,solcmc/loops_cicli/for_loop_1,SMTChecker,,sicuro,timeout,0,0,0,611
+for_loop_2,solcmc/loops_cicli/for_loop_2,SMTChecker,,sicuro,giusto,1,1,0,617
+for_loop_3,solcmc/loops_cicli/for_loop_3,SMTChecker,,sicuro,giusto,1,1,0,627
+for_loop_4,solcmc/loops_cicli/for_loop_4,SMTChecker,,bug,bug non trovato,1,1,0,627
+for_loop_5,solcmc/loops_cicli/for_loop_5,SMTChecker,,bug,giusto,1,0,1,620
+for_loop_6,solcmc/loops_cicli/for_loop_6,SMTChecker,,sicuro,giusto,1,1,0,619
+for_loop_trivial_condition_1,solcmc/loops_cicli/for_loop_trivial_condition_1,SMTChecker,,sicuro,timeout,0,0,0,611
+for_loop_trivial_condition_2,solcmc/loops_cicli/for_loop_trivial_condition_2,SMTChecker,,sicuro,timeout,0,0,0,611
+for_loop_trivial_condition_3,solcmc/loops_cicli/for_loop_trivial_condition_3,SMTChecker,,sicuro,timeout,0,0,0,611
+while_1,solcmc/loops_cicli/while_1,SMTChecker,,sicuro,giusto,2,2,0,620
+while_1_break,solcmc/loops_cicli/while_1_break,SMTChecker,,sicuro,giusto,2,2,0,619
+while_1_break_fail,solcmc/loops_cicli/while_1_break_fail,SMTChecker,,bug,giusto,2,1,1,620
+while_1_continue,solcmc/loops_cicli/while_1_continue,SMTChecker,,sicuro,giusto,2,2,0,628
+while_1_continue_fail,solcmc/loops_cicli/while_1_continue_fail,SMTChecker,,bug,giusto,3,1,2,628
+while_1_fail,solcmc/loops_cicli/while_1_fail,SMTChecker,,bug,bug non trovato,2,2,0,628
+while_1_infinite,solcmc/loops_cicli/while_1_infinite,SMTChecker,,sicuro,giusto,2,2,0,620
+while_2,solcmc/loops_cicli/while_2,SMTChecker,,sicuro,giusto,1,1,0,620
+while_2_break,solcmc/loops_cicli/while_2_break,SMTChecker,,sicuro,giusto,1,1,0,620
+while_2_fail,solcmc/loops_cicli/while_2_fail,SMTChecker,,sicuro,timeout,0,0,0,611
+while_break_direct,solcmc/loops_cicli/while_break_direct,SMTChecker,,sicuro,giusto,1,1,0,619
+while_loop_simple_2,solcmc/loops_cicli/while_loop_simple_2,SMTChecker,,sicuro,giusto,1,1,0,619
+while_loop_simple_4,solcmc/loops_cicli/while_loop_simple_4,SMTChecker,,sicuro,giusto,1,1,0,619
+while_loop_simple_5,solcmc/loops_cicli/while_loop_simple_5,SMTChecker,,bug,giusto,2,0,2,629
+while_nested_break,solcmc/loops_cicli/while_nested_break,SMTChecker,,sicuro,giusto,3,3,0,620
+while_nested_break_fail,solcmc/loops_cicli/while_nested_break_fail,SMTChecker,,bug,giusto,3,0,3,620
+while_nested_continue,solcmc/loops_cicli/while_nested_continue,SMTChecker,,sicuro,giusto,2,2,0,620
+while_nested_continue_fail,solcmc/loops_cicli/while_nested_continue_fail,SMTChecker,,bug,giusto,2,0,2,620
+abstract_free_function_1,solcmc/natspec/abstract_free_function_1,SMTChecker,,bug,non analizzato,0,0,0,5
+bitwise_and_rational,solcmc/operators/bitwise_and_rational,SMTChecker,,bug,giusto,1,0,1,620
+bitwise_and_uint,solcmc/operators/bitwise_and_uint,SMTChecker,,bug,giusto,1,0,1,620
+bitwise_not_uint,solcmc/operators/bitwise_not_uint,SMTChecker,,bug,timeout,0,0,0,611
+bitwise_or_uint,solcmc/operators/bitwise_or_uint,SMTChecker,,bug,giusto,1,0,1,620
+compound_add_chain,solcmc/operators/compound_add_chain,SMTChecker,,sicuro,giusto,1,1,0,615
+compound_assignment_division_1,solcmc/operators/compound_assignment_division_1,SMTChecker,,bug,giusto,1,0,1,631
+compound_bitwise_and_uint,solcmc/operators/compound_bitwise_and_uint,SMTChecker,,bug,giusto,1,0,1,622
+compound_bitwise_or_uint,solcmc/operators/compound_bitwise_or_uint,SMTChecker,,bug,giusto,1,0,1,622
+compound_mul,solcmc/operators/compound_mul,SMTChecker,,bug,giusto,1,0,1,622
+compound_sub,solcmc/operators/compound_sub,SMTChecker,,bug,bug non trovato,1,1,0,622
+conditional_assignment_1,solcmc/operators/conditional_assignment_1,SMTChecker,,bug,giusto,1,0,1,622
+conditional_assignment_always_true,solcmc/operators/conditional_assignment_always_true,SMTChecker,,bug,giusto,1,0,1,622
+conditional_assignment_function_1,solcmc/operators/conditional_assignment_function_1,SMTChecker,,bug,giusto,1,0,1,622
+conditional_assignment_nested_always_true,solcmc/operators/conditional_assignment_nested_always_true,SMTChecker,,sicuro,giusto,1,1,0,622
+conditional_assignment_nested_unsafe,solcmc/operators/conditional_assignment_nested_unsafe,SMTChecker,,bug,bug non trovato,1,1,0,622
+constant_propagation_2,solcmc/operators/constant_propagation_2,SMTChecker,,sicuro,giusto,1,1,0,626
+division_truncates_correctly_1,solcmc/operators/division_truncates_correctly_1,SMTChecker,,sicuro,giusto,1,1,0,626
+mod_even,solcmc/operators/mod_even,SMTChecker,,sicuro,giusto,1,1,0,626
+mod_n,solcmc/operators/mod_n,SMTChecker,,sicuro,giusto,1,1,0,626
+mod_n_uint16,solcmc/operators/mod_n_uint16,SMTChecker,,sicuro,giusto,1,1,0,626
+ternary_operator_nested_1,solcmc/operators/ternary_operator_nested_1,SMTChecker,,sicuro,giusto,1,1,0,626
+tuple_rationals_conditional,solcmc/operators/tuple_rationals_conditional,SMTChecker,tuple,sicuro,giusto,1,1,0,626
+unary_operators_tuple_3,solcmc/operators/unary_operators_tuple_3,SMTChecker,,bug,giusto,2,1,1,626
+blobhash_beyond_limit,solcmc/special/blobhash_beyond_limit,SMTChecker,,sicuro,non analizzato,0,0,0,12
+ether_units,solcmc/special/ether_units,SMTChecker,,bug,giusto,1,0,1,626
+time_units,solcmc/special/time_units,SMTChecker,,bug,giusto,1,0,1,614
+cast_larger_1,solcmc/typecast/cast_larger_1,SMTChecker,cast,sicuro,giusto,1,1,0,612
+cast_larger_2,solcmc/typecast/cast_larger_2,SMTChecker,cast,sicuro,giusto,1,1,0,620
+cast_larger_2_fail,solcmc/typecast/cast_larger_2_fail,SMTChecker,cast,bug,giusto,1,0,1,619
+cast_smaller_1,solcmc/typecast/cast_smaller_1,SMTChecker,cast,sicuro,giusto,1,1,0,619
+cast_smaller_2,solcmc/typecast/cast_smaller_2,SMTChecker,cast,sicuro,timeout,0,0,0,606
+bool_int_mixed_1,solcmc/types/bool_int_mixed_1,SMTChecker,,sicuro,giusto,2,2,0,613
+bool_int_mixed_2,solcmc/types/bool_int_mixed_2,SMTChecker,,sicuro,giusto,1,1,0,613
+bool_int_mixed_3,solcmc/types/bool_int_mixed_3,SMTChecker,,sicuro,giusto,4,4,0,614
+bool_simple_3,solcmc/types/bool_simple_3,SMTChecker,,sicuro,giusto,1,1,0,613
+bool_simple_4,solcmc/types/bool_simple_4,SMTChecker,,sicuro,giusto,2,2,0,614
+bool_simple_5,solcmc/types/bool_simple_5,SMTChecker,,sicuro,giusto,1,1,0,613
+bool_simple_6,solcmc/types/bool_simple_6,SMTChecker,,sicuro,giusto,1,1,0,630
+rational_large_1,solcmc/types/rational_large_1,SMTChecker,,bug,giusto,1,0,1,622
+storage_value_vars_4,solcmc/types/storage_value_vars_4,SMTChecker,,bug,giusto,1,0,1,622
+tuple_1_chain_1,solcmc/types/tuple_1_chain_1,SMTChecker,,sicuro,giusto,1,1,0,622
+tuple_1_chain_2,solcmc/types/tuple_1_chain_2,SMTChecker,,sicuro,giusto,1,1,0,622
+tuple_1_chain_n,solcmc/types/tuple_1_chain_n,SMTChecker,,sicuro,giusto,1,1,0,620
+tuple_assignment,solcmc/types/tuple_assignment,SMTChecker,tuple,sicuro,giusto,1,1,0,617
+tuple_assignment_compound,solcmc/types/tuple_assignment_compound,SMTChecker,,bug,giusto,1,0,1,614
+tuple_assignment_empty,solcmc/types/tuple_assignment_empty,SMTChecker,tuple,bug,giusto,1,0,1,613
+tuple_declarations,solcmc/types/tuple_declarations,SMTChecker,tuple,sicuro,giusto,1,1,0,612
+tuple_declarations_empty,solcmc/types/tuple_declarations_empty,SMTChecker,tuple,sicuro,giusto,1,1,0,622
+tuple_declarations_function,solcmc/types/tuple_declarations_function,SMTChecker,tuple,sicuro,giusto,1,1,0,623
+tuple_declarations_function_2,solcmc/types/tuple_declarations_function_2,SMTChecker,tuple,sicuro,giusto,1,1,0,622
+tuple_declarations_function_empty,solcmc/types/tuple_declarations_function_empty,SMTChecker,tuple,bug,giusto,1,0,1,622
+transient_storage_state_variable,solcmc/unsupported/transient_storage_state_variable,SMTChecker,,sicuro,non analizzato,0,0,0,11
+simple_assert_with_require,solcmc/verification_target/simple_assert_with_require,SMTChecker,,sicuro,giusto,1,1,0,622
+return_2,solcmc_stato/control_flow/return_2,SMTChecker,,sicuro,timeout,0,0,0,618
+short_circuit_and,solcmc_stato/control_flow/short_circuit_and,SMTChecker,,sicuro,giusto,1,1,0,626
+short_circuit_and_inside_branch,solcmc_stato/control_flow/short_circuit_and_inside_branch,SMTChecker,,bug,giusto,1,0,1,626
+short_circuit_and_need_both,solcmc_stato/control_flow/short_circuit_and_need_both,SMTChecker,,sicuro,giusto,1,1,0,626
+short_circuit_or,solcmc_stato/control_flow/short_circuit_or,SMTChecker,,sicuro,giusto,1,1,0,626
+short_circuit_or_inside_branch,solcmc_stato/control_flow/short_circuit_or_inside_branch,SMTChecker,,bug,giusto,2,1,1,626
+short_circuit_or_need_both,solcmc_stato/control_flow/short_circuit_or_need_both,SMTChecker,,sicuro,giusto,1,1,0,626
+simple_if_state_var,solcmc_stato/control_flow_branches_with_return/simple_if_state_var,SMTChecker,,bug,giusto,1,0,1,626
+simple_if_tuple,solcmc_stato/control_flow_branches_with_return/simple_if_tuple,SMTChecker,tuple,bug,giusto,1,0,1,626
+triple_nested_if,solcmc_stato/control_flow_branches_with_return/triple_nested_if,SMTChecker,,sicuro,giusto,1,1,0,626
+function_inline_chain,solcmc_stato/functions/function_inline_chain,SMTChecker,,sicuro,timeout,0,0,0,616
+function_inside_branch_modify_state_var,solcmc_stato/functions/function_inside_branch_modify_state_var,SMTChecker,,bug,giusto,2,1,1,616
+function_inside_branch_modify_state_var_2,solcmc_stato/functions/function_inside_branch_modify_state_var_2,SMTChecker,,sicuro,giusto,2,2,0,616
+function_inside_branch_modify_state_var_3,solcmc_stato/functions/function_inside_branch_modify_state_var_3,SMTChecker,,bug,giusto,4,2,2,614
+functions_identifier_nested_tuple_1,solcmc_stato/functions/functions_identifier_nested_tuple_1,SMTChecker,,sicuro,non analizzato,0,0,0,7
+functions_identity_1,solcmc_stato/functions/functions_identity_1,SMTChecker,,sicuro,giusto,2,2,0,614
+functions_identity_2,solcmc_stato/functions/functions_identity_2,SMTChecker,,sicuro,non analizzato,0,0,0,7
+functions_identity_as_tuple,solcmc_stato/functions/functions_identity_as_tuple,SMTChecker,,sicuro,giusto,2,2,0,614
+functions_identity_as_tuple_fail,solcmc_stato/functions/functions_identity_as_tuple_fail,SMTChecker,,bug,giusto,2,1,1,614
+functions_recursive,solcmc_stato/functions/functions_recursive,SMTChecker,,sicuro,giusto,1,1,0,616
+functions_recursive_indirect,solcmc_stato/functions/functions_recursive_indirect,SMTChecker,,sicuro,giusto,2,2,0,612
+functions_storage_var_1,solcmc_stato/functions/functions_storage_var_1,SMTChecker,,sicuro,giusto,2,2,0,612
+functions_storage_var_1_fail,solcmc_stato/functions/functions_storage_var_1_fail,SMTChecker,,bug,giusto,2,1,1,611
+functions_storage_var_2,solcmc_stato/functions/functions_storage_var_2,SMTChecker,,sicuro,giusto,2,2,0,611
+functions_storage_var_2_fail,solcmc_stato/functions/functions_storage_var_2_fail,SMTChecker,,bug,giusto,2,1,1,612
+internal_call_with_assertion_1,solcmc_stato/functions/internal_call_with_assertion_1,SMTChecker,,sicuro,timeout,0,0,0,606
+internal_call_with_assertion_1_fail,solcmc_stato/functions/internal_call_with_assertion_1_fail,SMTChecker,,bug,timeout,0,0,0,606
+internal_multiple_calls_with_assertion_1,solcmc_stato/functions/internal_multiple_calls_with_assertion_1,SMTChecker,,sicuro,non analizzato,0,0,0,5
+internal_multiple_calls_with_assertion_1_fail,solcmc_stato/functions/internal_multiple_calls_with_assertion_1_fail,SMTChecker,,bug,non analizzato,0,0,0,5
+state_machine_1,solcmc_stato/invariants/state_machine_1,SMTChecker,,sicuro,giusto,8,8,0,612
+addmulmod,solcmc_stato/math/addmulmod,SMTChecker,,sicuro,giusto,2,2,0,611
+safe_assert_false_positive,solcmc_stato/natspec/safe_assert_false_positive,SMTChecker,,bug,non analizzato,0,0,0,4
+unsafe_assert_remains_unsafe,solcmc_stato/natspec/unsafe_assert_remains_unsafe,SMTChecker,,bug,non analizzato,0,0,0,4
+ternary_operator_nested_4,solcmc_stato/operators/ternary_operator_nested_4,SMTChecker,,sicuro,giusto,1,1,0,613
+tuple_assignment_multiple_calls,solcmc_stato/types/tuple_assignment_multiple_calls,SMTChecker,tuple,sicuro,giusto,2,2,0,611
+return_1_fail,soltg/fail/return_1_fail,SolTG,,bug,timeout,0,0,0,615
+return_2_fail,soltg/fail/return_2_fail,SolTG,,bug,timeout,0,0,0,559
+short_circuit_and_fail,soltg/fail/short_circuit_and_fail,SolTG,,bug,giusto,1,0,1,622
+short_circuit_and_need_both_fail,soltg/fail/short_circuit_and_need_both_fail,SolTG,,bug,giusto,1,0,1,622
+branches_merge_variables_3,soltg/originali/branches_merge_variables_3,SolTG,,sicuro,giusto,2,2,0,612
+branches_merge_variables_5,soltg/originali/branches_merge_variables_5,SolTG,,sicuro,giusto,2,2,0,613
+branches_merge_variables_6,soltg/originali/branches_merge_variables_6,SolTG,,sicuro,giusto,2,2,0,613
+function_call_inside_branch,soltg/originali/function_call_inside_branch,SolTG,,sicuro,non analizzato,0,0,0,4
+function_call_inside_branch_2,soltg/originali/function_call_inside_branch_2,SolTG,,sicuro,non analizzato,0,0,0,4
+function_call_inside_branch_3,soltg/originali/function_call_inside_branch_3,SolTG,,sicuro,non analizzato,0,0,0,4
+function_call_inside_branch_4,soltg/originali/function_call_inside_branch_4,SolTG,,sicuro,non analizzato,0,0,0,4
+function_call_inside_else_branch,soltg/originali/function_call_inside_else_branch,SolTG,,sicuro,non analizzato,0,0,0,4
+return_1,soltg/originali/return_1,SolTG,,sicuro,giusto,4,4,0,613
+short_circuit_and,soltg/originali/short_circuit_and,SolTG,,sicuro,giusto,1,1,0,613
+simple_if,soltg/originali/simple_if,SolTG,,sicuro,giusto,2,2,0,622
+constructor_1,soltg_reg/constructors/constructor_1,SolTG,,sicuro,giusto,4,4,0,622
+constructor_2_fun_overloading,soltg_reg/constructors/constructor_2_fun_overloading,SolTG,,sicuro,giusto,5,5,0,622
+constructor_5,soltg_reg/constructors/constructor_5,SolTG,,sicuro,giusto,6,6,0,622
+branches_assert_condition_2,soltg_reg/control_flow/branches_assert_condition_2,SolTG,,sicuro,giusto,3,3,0,621
+branches_inside_modifiers_1,soltg_reg/control_flow/branches_inside_modifiers_1,SolTG,,bug,timeout,0,0,0,606
+branches_inside_modifiers_2,soltg_reg/control_flow/branches_inside_modifiers_2,SolTG,,bug,giusto,1,0,1,623
+branches_inside_modifiers_3,soltg_reg/control_flow/branches_inside_modifiers_3,SolTG,,bug,giusto,1,0,1,618
+branches_inside_modifiers_4,soltg_reg/control_flow/branches_inside_modifiers_4,SolTG,,bug,timeout,0,0,0,611
+branches_in_modifiers,soltg_reg/control_flow/branches_with_return/branches_in_modifiers,SolTG,,sicuro,giusto,1,1,0,618
+branches_in_modifiers_2,soltg_reg/control_flow/branches_with_return/branches_in_modifiers_2,SolTG,,sicuro,giusto,1,1,0,618
+nested_if,soltg_reg/control_flow/branches_with_return/nested_if,SolTG,,bug,giusto,1,0,1,618
+return_in_both_branches,soltg_reg/control_flow/branches_with_return/return_in_both_branches,SolTG,,sicuro,giusto,1,1,0,618
+simple_if,soltg_reg/control_flow/branches_with_return/simple_if,SolTG,,sicuro,giusto,2,2,0,619
+simple_if2,soltg_reg/control_flow/branches_with_return/simple_if2,SolTG,,bug,giusto,2,1,1,618
+simple_if_state_var,soltg_reg/control_flow/branches_with_return/simple_if_state_var,SolTG,,bug,giusto,1,0,1,617
+simple_if_tuple,soltg_reg/control_flow/branches_with_return/simple_if_tuple,SolTG,tuple,bug,giusto,1,0,1,623
+triple_nested_if,soltg_reg/control_flow/branches_with_return/triple_nested_if,SolTG,,sicuro,giusto,1,1,0,616
+test_same_branch_twice,soltg_reg/control_flow/custom_tests/test_same_branch_twice,SolTG,,bug,giusto,1,0,1,616
+function_call_inside_modifier_branch,soltg_reg/control_flow/function_call_inside_modifier_branch,SolTG,,sicuro,non analizzato,0,0,0,5
+return_2,soltg_reg/control_flow/return_2,SolTG,,sicuro,timeout,0,0,0,609
+revert_complex_flow,soltg_reg/control_flow/revert_complex_flow,SolTG,,bug,giusto,1,0,1,616
+short_circuit_and_inside_branch,soltg_reg/control_flow/short_circuit_and_inside_branch,SolTG,,bug,giusto,1,0,1,616
+short_circuit_and_need_both,soltg_reg/control_flow/short_circuit_and_need_both,SolTG,,sicuro,giusto,1,1,0,616
+short_circuit_or_inside_branch,soltg_reg/control_flow/short_circuit_or_inside_branch,SolTG,,bug,giusto,2,1,1,616
+loop_basic,soltg_reg/invariants/loop_basic,SolTG,,sicuro,giusto,1,1,0,615
+loop_nested,soltg_reg/invariants/loop_nested,SolTG,,bug,timeout,0,0,0,605
+loop_nested_for,soltg_reg/invariants/loop_nested_for,SolTG,,sicuro,timeout,0,0,0,617
+do_while_1_fail,soltg_reg/loops/do_while_1_fail,SolTG,,bug,bug non trovato,2,2,0,624
+do_while_1_false_positives,soltg_reg/loops/do_while_1_false_positives,SolTG,,sicuro,timeout,0,0,0,610
+for_1_break,soltg_reg/loops/for_1_break,SolTG,,sicuro,giusto,2,2,0,618
+for_1_break_fail,soltg_reg/loops/for_1_break_fail,SolTG,,bug,giusto,3,2,1,618
+for_1_continue,soltg_reg/loops/for_1_continue,SolTG,,sicuro,giusto,2,2,0,618
+for_1_fail,soltg_reg/loops/for_1_fail,SolTG,,bug,timeout,0,0,0,610
+while_1,soltg_reg/loops/while_1,SolTG,,sicuro,giusto,2,2,0,618
+while_1_break,soltg_reg/loops/while_1_break,SolTG,,sicuro,giusto,2,2,0,618
+while_1_break_fail,soltg_reg/loops/while_1_break_fail,SolTG,,bug,giusto,2,1,1,618
+while_1_continue,soltg_reg/loops/while_1_continue,SolTG,,sicuro,giusto,2,2,0,634
+while_1_continue_fail,soltg_reg/loops/while_1_continue_fail,SolTG,,bug,giusto,3,1,2,635
+while_1_infinite,soltg_reg/loops/while_1_infinite,SolTG,,sicuro,giusto,2,2,0,634
+while_2,soltg_reg/loops/while_2,SolTG,,sicuro,giusto,1,1,0,626
+while_2_fail,soltg_reg/loops/while_2_fail,SolTG,,sicuro,timeout,0,0,0,619
+while_nested_break,soltg_reg/loops/while_nested_break,SolTG,,sicuro,giusto,3,3,0,626
+while_nested_break_fail,soltg_reg/loops/while_nested_break_fail,SolTG,,bug,giusto,3,0,3,627
+while_nested_continue,soltg_reg/loops/while_nested_continue,SolTG,,sicuro,giusto,2,2,0,627
+while_nested_continue_fail,soltg_reg/loops/while_nested_continue_fail,SolTG,,bug,giusto,2,0,2,627
+Math,soltg_reg/radice/Math,SolTG,,bug,giusto,6,3,2,627
+bytes,soltg_reg/radice/bytes,SolTG,,sicuro,giusto,1,1,0,619
+constructor_3_m,soltg_reg/radice/constructor_3_m,SolTG,,sicuro,giusto,2,2,0,614
+doubleF,soltg_reg/radice/doubleF,SolTG,,sicuro,giusto,3,3,0,612
+exampl,soltg_reg/radice/exampl,SolTG,,sicuro,giusto,3,3,0,612
+few_calls,soltg_reg/sanity/few_calls,SolTG,,sicuro,giusto,1,1,0,614
+loop_if,soltg_reg/sanity/loop_if,SolTG,,sicuro,giusto,2,2,0,613
+many_fun,soltg_reg/sanity/many_fun,SolTG,,sicuro,giusto,10,10,0,611
+overloading,soltg_reg/sanity/overloading,SolTG,,sicuro,giusto,2,2,0,612
+seq_calls,soltg_reg/sanity/seq_calls,SolTG,,sicuro,giusto,3,3,0,612
+simple_if_2,soltg_reg/sanity/simple_if_2,SolTG,,sicuro,giusto,3,3,0,613
+state_machine_1,soltg_reg/sanity/state_machine_1,SolTG,,sicuro,giusto,8,8,0,611
