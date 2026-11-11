@@ -15,8 +15,12 @@
 %        false = 0;
 %      - the rest (and, not, ~, implies, ite, = between booleans) is put in
 %        disjunctive normal form, and the clause is split in one clause per
-%        disjunct; ite inside an arithmetic term, x = ite(C, V, W), becomes
+%        disjunct; the disjuncts do not overlap (A or B becomes A or
+%        (not A and B)), so an input is in one clause only; ite inside an
+%        arithmetic term, x = ite(C, V, W), becomes
 %        (C and x = V) or (not C and x = W);
+%      - = between two boolean variables (a copy, b_1 = b_0) stays one
+%        equality between 0/1 ints, so the clause is not split on their value;
 %   3. the transaction (tx_type) argument of every predicate becomes one int
 %      argument per field in tx_fields/1 (block.timestamp, msg.sender, ...),
 %      and 'block.timestamp'(Tx) becomes that int: so the requires on them
@@ -365,10 +369,18 @@ nnf(true, P, _, L) :- !, ( P == (+) -> L = true ; L = false ).
 nnf(false, P, _, L) :- !, ( P == (+) -> L = false ; L = true ).
 nnf(and(A, B), P, Bs, F) :- !,
     nnf(A, P, Bs, FA), nnf(B, P, Bs, FB),
-    ( P == (+) -> F = and(FA, FB) ; F = or(FA, FB) ).
+% not(A and B) is (not A) or (A and not B): the two cases do not overlap
+    (   P == (+)
+    ->  F = and(FA, FB)
+    ;   nnf(A, +, Bs, PA), F = or(FA, and(PA, FB))
+    ).
 nnf(or(A, B), P, Bs, F) :- !,
     nnf(A, P, Bs, FA), nnf(B, P, Bs, FB),
-    ( P == (+) -> F = or(FA, FB) ; F = and(FA, FB) ).
+% A or B is A or (not A and B): the two cases do not overlap
+    (   P == (+)
+    ->  nnf(A, -, Bs, NA), F = or(FA, and(NA, FB))
+    ;   F = and(FA, FB)
+    ).
 nnf(not(A), P, Bs, F) :- !, flip(P, Q), nnf(A, Q, Bs, F).
 nnf(~(A), P, Bs, F) :- !, flip(P, Q), nnf(A, Q, Bs, F).
 % A -> B is (not A) or (A and B); not (A -> B) is A and not B
@@ -383,6 +395,13 @@ nnf(ite(C, A, B), P, Bs, F) :- !,
     nnf(A, P, Bs, FA), nnf(B, P, Bs, FB),
     F = or(and(PC, FA), and(NC, FB)).
 % = between booleans: iff
+% = between two boolean variables (a copy, b_1 = b_0) stays one
+% equality between 0/1 ints, so the clause is not split on their value
+nnf(X = Y, P, Bs, F) :- var(X), var(Y), memq(X, Bs), memq(Y, Bs), !,
+    (   P == (+)
+    ->  F = and(X = Y, and(0 =< X, X =< 1))
+    ;   F = or(and(X = 1, Y = 0), and(X = 0, Y = 1))
+    ).
 nnf(X = Y, P, Bs, F) :- ( is_bool(X, Bs) ; is_bool(Y, Bs) ), !,
     nnf(X, +, Bs, PX), nnf(X, -, Bs, NX),
     nnf(Y, +, Bs, PY), nnf(Y, -, Bs, NY),

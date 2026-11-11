@@ -34,6 +34,7 @@ import importlib.util
 import json
 import os
 import re
+import subprocess
 import sys
 
 
@@ -80,6 +81,37 @@ def interface_state_vars(smt):
     names = [base_name(a) for a in m.group(2).split()]
     # this abi crypto state | state variables
     return names[4:]
+
+
+def error_conditions(folder, name, sol):
+    """Error code -> text of the assert condition, from the CHCs of solc:
+    a rule ending in (not expr_N_k)) (= error_j CODE) fails the assert whose
+    condition is the AST node N; solc --ast-compact-json gives its source."""
+    q = os.path.join(folder, name + "_solc.smt2")
+    if not os.path.exists(q):
+        q = os.path.join(folder, name + ".smt2")
+    pairs = re.findall(r"\(not expr_(\d+)_\d+\)\) \(= error_\d+ (\d+)\)", open(q).read())
+    if not pairs:
+        return {}
+    try:
+        out = subprocess.run(["solc", "--ast-compact-json", sol], capture_output=True,
+                             text=True, timeout=60).stdout
+        ast = json.loads(out[out.index("{"):])
+    except Exception:
+        return {}
+    src = open(sol, "rb").read()
+    text = {}
+    stack = [ast]
+    while stack:
+        n = stack.pop()
+        if isinstance(n, dict):
+            if "id" in n and "src" in n:
+                s0, ln = map(int, n["src"].split(":")[:2])
+                text[n["id"]] = src[s0:s0 + ln].decode(errors="replace")
+            stack.extend(n.values())
+        elif isinstance(n, list):
+            stack.extend(n)
+    return {int(code): " ".join(text[int(node)].split()) for node, code in pairs if int(node) in text}
 
 
 def function_asserts(src, func):
@@ -140,6 +172,7 @@ def main(folder):
     sol = os.path.join(folder, name + ".sol")
     smt = open(os.path.join(folder, name + ".smt2")).read()
     src = open(sol, errors="replace").read()
+    err_cond = error_conditions(folder, name, sol)
     zs = glob.glob(os.path.join(folder, "*.zmiout"))
     if not zs:
         sys.exit(f"no .zmiout in {folder}")
@@ -167,7 +200,7 @@ def main(folder):
         params = params_of(src, func)
         asserts = function_asserts(src, func)
         err = int(values.get(args[0], "0"))
-        cond = asserts[err - 1] if 0 < err <= len(asserts) else None
+        cond = err_cond.get(err) or (asserts[err - 1] if 0 < err <= len(asserts) else None)
         # SolCMC numbers the errors over the whole contract, so err does not always
         # match the k-th assert of the function: as in the Yul route
         # (classify_test_from_vmapgood_consts in main.pl), the test is positive
