@@ -38,6 +38,8 @@ in a browser; it is built by `script/build_report_html.py`).
 
 Depth bound 100, timeout 600 s, one call at a time, solc 0.8.29, SWI-Prolog
 9.3.31, Z3 4.15.3.
+The yul2chc route uses the branch `thesis` of yul-chc, which `script/install.sh`
+installs; it fixes the encoding of functions with several return statements.
 
 All the contracts, then the Foundry tests and the coverage (several hours):
 

@@ -51,7 +51,6 @@
           "constraints_z3": [
             "y == 0",
             "_x != 0",
-            "x != 0",
             "x == 1*_x"
           ],
           "constraints_clpq": [

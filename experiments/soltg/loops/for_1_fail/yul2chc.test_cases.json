@@ -12,7 +12,7 @@
           "id": 1,
           "kind": "positive",
           "concrete_values": [
-            "x == -2"
+            "x == 0"
           ],
           "constraints_z3": [
             "x <= 3"

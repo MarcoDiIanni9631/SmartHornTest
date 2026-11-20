@@ -12,7 +12,10 @@
         {
           "id": 1,
           "kind": "positive",
-          "concrete_values": [],
+          "concrete_values": [
+            "x == 0",
+            "y == 0"
+          ],
           "constraints_z3": [
             "True"
           ],

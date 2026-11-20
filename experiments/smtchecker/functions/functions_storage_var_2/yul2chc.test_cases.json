@@ -15,7 +15,6 @@
             "a == 0"
           ],
           "constraints_z3": [
-            "a >= 2",
             "a == 42"
           ],
           "constraints_clpq": [

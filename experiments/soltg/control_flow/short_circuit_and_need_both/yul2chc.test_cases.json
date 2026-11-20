@@ -15,7 +15,6 @@
             "x == 0"
           ],
           "constraints_z3": [
-            "x >= 1",
             "x == 2"
           ],
           "constraints_clpq": [

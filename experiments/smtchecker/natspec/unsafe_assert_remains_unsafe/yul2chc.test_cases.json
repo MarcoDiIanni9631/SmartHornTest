@@ -20,8 +20,6 @@
             "y == 0"
           ],
           "constraints_z3": [
-            "_x != 0",
-            "x >= 1",
             "y >= 1",
             "x == 1*_x",
             "y == 1*_x"
@@ -83,10 +81,9 @@
           ],
           "constraints_z3": [
             "y == 0",
-            "_x != 0",
             "x <= 0",
-            "x != 0",
-            "x == 1*_x"
+            "x == 1*_x",
+            "x != 0"
           ],
           "constraints_clpq": [
             "y=0",
@@ -97,8 +94,8 @@
           "constraints_z3_start": [
             "x == 0",
             "y == 0",
-            "_x != 0",
-            "_x <= 0"
+            "_x <= 0",
+            "_x != 0"
           ],
           "constraints_clpq_start": [
             "x=0",

@@ -27,6 +27,8 @@ PROJECTS_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 
 GREY_REPO_URL="${GREY_REPO_URL:-https://github.com/MarcoDiIanni9631/grey.git}"
 YULCHC_REPO_URL="${YULCHC_REPO_URL:-https://github.com/MarcoDiIanni9631/yul-chc.git}"
+# branch with the yul-chc version used in the thesis (fix for functions with several returns)
+YULCHC_BRANCH="${YULCHC_BRANCH:-thesis}"
 SWIZ3_REPO_URL="${SWIZ3_REPO_URL:-https://github.com/MarcoDiIanni9631/swi-prolog-z3.git}"
 ARCHIVE_URL="${ARCHIVE_URL:-https://github.com/Z3Prover/z3/releases/download/z3-4.15.2/z3-4.15.2-x64-glibc-2.39.zip}"
 SKIP_Z3="${SKIP_Z3:-0}"
@@ -82,17 +84,17 @@ download() {
 #    (skipped if the folder is already there)
 # ------------------------------------------------------------------
 clone_if_missing() {
-  local dir="$1" url="$2"
+  local dir="$1" url="$2" branch="$3"
   if [ -d "$dir/.git" ]; then
     echo "Skipping $(basename "$dir"): already cloned"
   else
     echo "Cloning $(basename "$dir")..."
-    git clone --quiet "$url" "$dir"
+    git clone --quiet ${branch:+--branch "$branch"} "$url" "$dir"
   fi
 }
 
 clone_if_missing "$PROJECTS_ROOT/grey" "$GREY_REPO_URL"
-clone_if_missing "$PROJECTS_ROOT/yul-chc" "$YULCHC_REPO_URL"
+clone_if_missing "$PROJECTS_ROOT/yul-chc" "$YULCHC_REPO_URL" "$YULCHC_BRANCH"
 clone_if_missing "$PROJECTS_ROOT/swi-prolog-z3" "$SWIZ3_REPO_URL"
 # forge-std: used by witnesses2foundry.py to write the Foundry tests
 if [ -f "$PROJECTS_ROOT/forge-std/src/Test.sol" ]; then

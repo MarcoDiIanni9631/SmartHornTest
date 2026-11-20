@@ -37,16 +37,16 @@
             "z == 11"
           ],
           "constraints_z3": [
-            "z >= 11",
-            "y <= 10"
+            "y <= 10",
+            "z >= 11"
           ],
           "constraints_clpq": [
             "y=<10",
             "z>10"
           ],
           "constraints_z3_start": [
-            "z >= 11",
-            "y <= 10"
+            "y <= 10",
+            "z >= 11"
           ],
           "constraints_clpq_start": [
             "y=<10",

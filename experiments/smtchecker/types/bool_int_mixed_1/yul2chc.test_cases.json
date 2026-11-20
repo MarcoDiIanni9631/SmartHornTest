@@ -34,15 +34,13 @@
             "x == true"
           ],
           "constraints_z3": [
-            "x == 1",
-            "x != 0"
+            "x == 1"
           ],
           "constraints_clpq": [
             "x=1"
           ],
           "constraints_z3_start": [
-            "x == 1",
-            "x != 0"
+            "x == 1"
           ],
           "constraints_clpq_start": [
             "x=1"

@@ -3,7 +3,7 @@
 contract the original source, the source with the vgood marker (positive tests)
 and the test_cases.json of the two routes: SolCMC route from the run of
 3/11/2026 (test3Novembre, converter fixed), yul2chc route from the run of
-21/10/2026 (test21Ottobre). summary.csv has the expected answer and the outcome
+19/11/2026 (test19Novembre, yul-chc branch thesis, fix for functions with several returns). summary.csv has the expected answer and the outcome
 of each tool, as in the comparison report (test20Ottobre/_report_confronto.py,
 SolTG = official version, run of 5/11/2026); foundry.csv has one row per test
 case with the result of forge test on the original contract. Contracts with
@@ -13,9 +13,10 @@ import csv, glob, importlib.util, json, os, shutil
 
 P = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 T20, T21, T3 = os.path.join(P, "test20Ottobre"), os.path.join(P, "test21Ottobre"), os.path.join(P, "test3Novembre")
+T19 = os.path.join(P, "test19Novembre")
 # folder of the run with vgood (test cases) and of the Foundry project, per route
-VG = {"solcmc": os.path.join(T3, "solcmc"), "yul": os.path.join(T21, "yul")}
-FD = {"solcmc": T3, "yul": T21}
+VG = {"solcmc": os.path.join(T3, "solcmc"), "yul": os.path.join(T19, "yul_con_vgood")}
+FD = {"solcmc": T3, "yul": T19}
 OUT = os.path.join(P, "experiments")
 spec = importlib.util.spec_from_file_location("rep", os.path.join(T20, "_report_confronto.py"))
 rep = importlib.util.module_from_spec(spec)
@@ -42,7 +43,7 @@ def target(rel):
 
 def contracts():
     mano = rep.atteso_mano()
-    st = {"solcmc": rep.stato(rep.SOLCMC), "yul": rep.stato(os.path.join(T20, "yul_maxdepth100")),
+    st = {"solcmc": rep.stato(rep.SOLCMC), "yul": rep.stato(os.path.join(T19, "yul_senza_vgood")),
           "myth": rep.stato(os.path.join(T20, "_tool", "mythril")), "mcore": rep.stato(os.path.join(T20, "_tool", "manticore"))}
     lista = [l.split()[1] for f in ("_lista.txt", "_lista_soltg_reg.txt")
              for l in rep.leggi(os.path.join(T20, f)).splitlines() if l.strip()]
@@ -56,7 +57,7 @@ def contracts():
         src = rep.leggi(src_path)
         att = rep.atteso(rel, rep.leggi(rep.UFFICIALE[rel]) if rel in rep.UFFICIALE else src, mano)
         r = {"solcmc": rep.nostri(rep.SOLCMC, rel, st["solcmc"]), "soltg": rep.soltg(rel),
-             "yul": rep.nostri(os.path.join(T20, "yul_maxdepth100"), rel, st["yul"]),
+             "yul": rep.nostri(os.path.join(T19, "yul_senza_vgood"), rel, st["yul"]),
              "myth": rep.mythril(rel, st["myth"]), "mcore": rep.manticore(rel, st["mcore"])}
         yield rel, src_path, att, {k: rep.esito(att, r[k]) for k in r}
 

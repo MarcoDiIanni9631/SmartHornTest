@@ -18,12 +18,12 @@ soltg,control_flow,function_call_inside_branch_3,f,safe,1,correct,0,1,correct,0,
 soltg,control_flow,function_call_inside_branch_4,f,safe,1,correct,0,1,correct,0,0,correct,correct,not analyzed
 soltg,control_flow,function_call_inside_else_branch,f,safe,1,correct,0,1,correct,0,1,correct,correct,not analyzed
 soltg,control_flow,function_call_inside_modifier_branch,f,safe,1,correct,0,1,not analyzed,,,correct,correct,not analyzed
-soltg,control_flow,nested_if,f,bug,1,correct,1,3,correct,17,5,correct,correct,correct
-soltg,control_flow,return_1,f,safe,1,correct,0,1,not analyzed,,,correct,correct,correct
-soltg,control_flow,return_1_fail,f,bug,1,correct,1,0,not analyzed,,,correct,correct,timeout
+soltg,control_flow,nested_if,f,bug,1,correct,1,3,correct,1,3,correct,correct,correct
+soltg,control_flow,return_1,f,safe,1,correct,0,1,timeout,0,1,correct,correct,correct
+soltg,control_flow,return_1_fail,f,bug,1,correct,1,0,correct,1,0,correct,correct,timeout
 soltg,control_flow,return_2,f,safe,1,correct,0,1,not analyzed,,,correct,correct,timeout
 soltg,control_flow,return_2_fail,f,bug,1,correct,1,0,not analyzed,,,correct,correct,timeout
-soltg,control_flow,return_in_both_branches,f,safe,1,correct,0,1,false alarm,2,2,correct,correct,correct
+soltg,control_flow,return_in_both_branches,f,safe,1,correct,0,1,correct,0,1,correct,correct,correct
 soltg,control_flow,revert_complex_flow,f,bug,1,correct,1,0,correct,1,0,correct,correct,correct
 soltg,control_flow,short_circuit_and,g,safe,1,correct,0,1,correct,0,1,correct,correct,correct
 soltg,control_flow,short_circuit_and_fail,g,bug,1,correct,1,0,correct,1,0,correct,correct,correct
@@ -32,9 +32,9 @@ soltg,control_flow,short_circuit_and_need_both,g,safe,1,correct,0,1,correct,0,1,
 soltg,control_flow,short_circuit_and_need_both_fail,g,bug,1,correct,1,0,correct,1,0,correct,correct,correct
 soltg,control_flow,short_circuit_or_inside_branch,g,bug,1,correct,1,1,correct,1,1,correct,correct,correct
 soltg,control_flow,simple_if,f,safe,1,correct,0,2,correct,0,2,correct,correct,correct
-soltg,control_flow,simple_if2,f,bug,1,correct,1,1,correct,3,1,correct,correct,correct
+soltg,control_flow,simple_if2,f,bug,1,correct,1,1,correct,1,1,correct,correct,correct
 soltg,control_flow,simple_if_state_var,check,bug,1,correct,1,0,bug missed,0,0,correct,correct,correct
-soltg,control_flow,test_same_branch_twice,f,bug,1,correct,1,0,correct,4,0,correct,correct,correct
+soltg,control_flow,test_same_branch_twice,f,bug,1,correct,1,0,correct,1,0,correct,correct,correct
 soltg,control_flow,triple_nested_if,f,safe,1,correct,0,1,correct,0,1,correct,correct,correct
 soltg,invariants,loop_basic,f,safe,1,correct,0,45,timeout,0,0,correct,timeout,correct
 soltg,invariants,loop_nested,f,bug,1,bug missed,0,0,timeout,0,0,bug missed,correct,timeout
@@ -79,7 +79,7 @@ smtchecker,control_flow,branches_merge_variables_3,f,safe,1,correct,0,2,correct,
 smtchecker,control_flow,branches_merge_variables_4,f,safe,1,correct,0,2,correct,0,2,correct,correct,correct
 smtchecker,control_flow,branches_merge_variables_5,f,safe,1,correct,0,2,correct,0,2,correct,correct,correct
 smtchecker,control_flow,branches_merge_variables_6,f,safe,1,correct,0,2,correct,0,2,correct,correct,correct
-smtchecker,control_flow,return_1,f,safe,1,correct,0,1,not analyzed,,,correct,correct,timeout
+smtchecker,control_flow,return_1,f,safe,1,correct,0,1,timeout,0,1,correct,correct,timeout
 smtchecker,control_flow,return_2,f,safe,1,correct,0,1,not analyzed,,,correct,correct,timeout
 smtchecker,control_flow,short_circuit_and,g,safe,1,correct,0,1,correct,0,1,correct,correct,correct
 smtchecker,control_flow,short_circuit_and_inside_branch,g,bug,1,correct,1,0,correct,1,0,correct,correct,correct
@@ -90,9 +90,9 @@ smtchecker,control_flow,short_circuit_or_need_both,g,safe,1,correct,0,1,correct,
 smtchecker,control_flow,ways_to_merge_variables_1,f,bug,1,correct,1,1,correct,1,1,correct,correct,correct
 smtchecker,control_flow,ways_to_merge_variables_2,f,bug,1,correct,1,1,correct,1,1,correct,correct,correct
 smtchecker,control_flow,ways_to_merge_variables_3,f,bug,1,correct,1,1,correct,1,1,correct,correct,correct
-smtchecker,control_flow_branches_with_return,nested_if,test,bug,1,correct,1,3,correct,17,6,correct,correct,correct
-smtchecker,control_flow_branches_with_return,return_in_both_branches,test,safe,1,correct,0,1,false alarm,2,2,correct,correct,correct
-smtchecker,control_flow_branches_with_return,simple_if2,test,bug,1,correct,1,1,correct,3,1,correct,correct,correct
+smtchecker,control_flow_branches_with_return,nested_if,test,bug,1,correct,1,3,correct,1,3,correct,correct,correct
+smtchecker,control_flow_branches_with_return,return_in_both_branches,test,safe,1,correct,0,1,correct,0,1,correct,correct,correct
+smtchecker,control_flow_branches_with_return,simple_if2,test,bug,1,correct,1,1,correct,1,1,correct,correct,correct
 smtchecker,control_flow_branches_with_return,simple_if_state_var,check,bug,1,correct,1,0,bug missed,0,0,correct,correct,correct
 smtchecker,control_flow_branches_with_return,triple_nested_if,test,safe,1,correct,0,1,correct,0,1,correct,correct,correct
 smtchecker,file_level,constant_easy,f,bug,1,correct,1,0,correct,1,0,correct,correct,correct

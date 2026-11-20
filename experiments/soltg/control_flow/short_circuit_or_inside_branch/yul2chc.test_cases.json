@@ -19,7 +19,6 @@
           ],
           "constraints_z3": [
             "a == 0",
-            "x >= 1",
             "x == 102"
           ],
           "constraints_clpq": [
